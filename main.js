@@ -687,42 +687,93 @@ function toggleLanguage() {
 }
 
 // ---------------------------------------------------------------------------
-// 3. Diagram A: Connected Ecosystem Interactivity
+// 3. Diagram A: Connected Ecosystem Interactivity & Autonomous Live Telemetry
 // ---------------------------------------------------------------------------
 function initDiagramA() {
   const nodes = document.querySelectorAll(".node-interactive, .diagram-core-node");
   const infoText = document.getElementById("diagram-a-info-text");
+  const throughputEl = document.querySelector(".tele-pill.live [data-i18n='telemetryThroughput']");
+  const latencyEl = document.querySelector(".tele-pill[data-i18n='telemetryLatency']");
+  const svg = document.getElementById("ecosystem-svg");
+
+  const nodeTypes = ["citizens", "ministries", "defi-core", "registries", "infra"];
+  let currentIndex = 0;
+  let isUserInteracting = false;
+  let pauseTimeout = null;
+
+  const selectNode = (nodeType, manual = false) => {
+    const dict = translations[currentLang] || translations.en;
+    nodes.forEach(n => {
+      const match = n.getAttribute("data-node") === nodeType;
+      n.classList.toggle("active", match);
+    });
+
+    if (infoText) {
+      infoText.style.opacity = "0.35";
+      infoText.style.filter = "blur(1px)";
+      setTimeout(() => {
+        if (nodeType === "citizens") infoText.textContent = dict.nodeInfoCitizens;
+        else if (nodeType === "ministries") infoText.textContent = dict.nodeInfoMinistries;
+        else if (nodeType === "defi-core") infoText.textContent = dict.nodeInfoDefiCore;
+        else if (nodeType === "registries") infoText.textContent = dict.nodeInfoRegistries;
+        else if (nodeType === "infra") infoText.textContent = dict.nodeInfoInfra;
+        infoText.style.opacity = "1";
+        infoText.style.filter = "none";
+      }, 120);
+    }
+
+    if (manual) {
+      isUserInteracting = true;
+      clearTimeout(pauseTimeout);
+      pauseTimeout = setTimeout(() => {
+        isUserInteracting = false;
+      }, 12000);
+    }
+  };
 
   nodes.forEach(node => {
-    const updateNodeInfo = () => {
-      const nodeType = node.getAttribute("data-node");
-      const dict = translations[currentLang] || translations.en;
-      
-      nodes.forEach(n => n.classList.remove("active"));
-      node.classList.add("active");
-
-      if (nodeType === "citizens") {
-        infoText.textContent = dict.nodeInfoCitizens;
-      } else if (nodeType === "ministries") {
-        infoText.textContent = dict.nodeInfoMinistries;
-      } else if (nodeType === "defi-core") {
-        infoText.textContent = dict.nodeInfoDefiCore;
-      } else if (nodeType === "registries") {
-        infoText.textContent = dict.nodeInfoRegistries;
-      } else if (nodeType === "infra") {
-        infoText.textContent = dict.nodeInfoInfra;
-      }
-    };
-
-    node.addEventListener("mouseenter", updateNodeInfo);
-    node.addEventListener("click", updateNodeInfo);
+    const nodeType = node.getAttribute("data-node");
+    node.addEventListener("mouseenter", () => selectNode(nodeType, true));
+    node.addEventListener("click", () => selectNode(nodeType, true));
     node.addEventListener("keydown", (e) => {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
-        updateNodeInfo();
+        selectNode(nodeType, true);
       }
     });
   });
+
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!prefersReducedMotion) {
+    // Autonomous layer cycling every 4.2 seconds
+    setInterval(() => {
+      if (!isUserInteracting) {
+        currentIndex = (currentIndex + 1) % nodeTypes.length;
+        selectNode(nodeTypes[currentIndex], false);
+      }
+    }, 4200);
+
+    // Continuous live telemetry fluctuation
+    setInterval(() => {
+      if (throughputEl) {
+        const jitter = Math.floor(Math.random() * 90) - 45;
+        const base = 18450 + jitter;
+        throughputEl.textContent = `${base.toLocaleString()} req/s`;
+      }
+      if (latencyEl) {
+        const latencyJitter = (3.8 + Math.random() * 0.4).toFixed(1);
+        latencyEl.textContent = `< ${latencyJitter}ms`;
+      }
+    }, 2400);
+
+    // Periodic ambient traffic pulse across ecosystem
+    setInterval(() => {
+      if (!isUserInteracting && svg) {
+        svg.classList.add("traffic-burst");
+        setTimeout(() => svg.classList.remove("traffic-burst"), 2200);
+      }
+    }, 11000);
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -948,16 +999,38 @@ function updateCapabilityPanel(index) {
 
 function initDiagramC() {
   const capCards = document.querySelectorAll(".cap-card");
+  let isUserInteracting = false;
+  let pauseTimeout = null;
+
   capCards.forEach(card => {
     const index = parseInt(card.getAttribute("data-cap"), 10);
-    card.addEventListener("click", () => updateCapabilityPanel(index));
+    const handleSelect = () => {
+      isUserInteracting = true;
+      clearTimeout(pauseTimeout);
+      updateCapabilityPanel(index);
+      pauseTimeout = setTimeout(() => {
+        isUserInteracting = false;
+      }, 15000);
+    };
+
+    card.addEventListener("click", handleSelect);
     card.addEventListener("keydown", (e) => {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
-        updateCapabilityPanel(index);
+        handleSelect();
       }
     });
   });
+
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!prefersReducedMotion) {
+    setInterval(() => {
+      if (!isUserInteracting) {
+        let nextIndex = (activeCapIndex % 6) + 1;
+        updateCapabilityPanel(nextIndex);
+      }
+    }, 5500);
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -1055,26 +1128,60 @@ function renderBlueprintStage(stepNum) {
 
 function initDiagramB() {
   const stepItems = document.querySelectorAll(".journey-step-item");
+  const progressBar = document.getElementById("journey-progress-fill");
+  let isUserInteracting = false;
+  let pauseTimeout = null;
+  let currentStep = 1;
   
   // Render initial phase 1 blueprint
   renderBlueprintStage(1);
+  if (progressBar) progressBar.style.width = "20%";
+
+  const setStep = (step, manual = false) => {
+    currentStep = step;
+    stepItems.forEach(s => {
+      const sNum = parseInt(s.getAttribute("data-step"), 10) || 1;
+      s.classList.toggle("active", sNum === step);
+      if (sNum === step && manual) {
+        s.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+      }
+    });
+
+    if (progressBar) {
+      progressBar.style.width = `${step * 20}%`;
+    }
+
+    renderBlueprintStage(step);
+
+    if (manual) {
+      isUserInteracting = true;
+      clearTimeout(pauseTimeout);
+      pauseTimeout = setTimeout(() => {
+        isUserInteracting = false;
+      }, 15000);
+    }
+  };
 
   stepItems.forEach(item => {
-    const handleSelect = () => {
-      const step = parseInt(item.getAttribute("data-step"), 10) || 1;
-      stepItems.forEach(s => s.classList.remove("active"));
-      item.classList.add("active");
-      renderBlueprintStage(step);
-    };
-
-    item.addEventListener("click", handleSelect);
+    const step = parseInt(item.getAttribute("data-step"), 10) || 1;
+    item.addEventListener("click", () => setStep(step, true));
     item.addEventListener("keydown", (e) => {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
-        handleSelect();
+        setStep(step, true);
       }
     });
   });
+
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!prefersReducedMotion) {
+    setInterval(() => {
+      if (!isUserInteracting) {
+        currentStep = (currentStep % 5) + 1;
+        setStep(currentStep, false);
+      }
+    }, 4200);
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -1429,76 +1536,94 @@ function initInteropSimulator() {
 
   showPayloadFn = showPayload;
 
+  let isUserInteracting = false;
+  let pauseTimeout = null;
+
   // Node Click Handlers for Interactive Payload Inspection
   nodes.forEach((node, idx) => {
     node?.addEventListener("click", () => {
+      isUserInteracting = true;
+      clearTimeout(pauseTimeout);
       nodes.forEach(n => n?.classList.remove("active"));
       node.classList.add("active");
       showPayload(idx + 1);
+      pauseTimeout = setTimeout(() => {
+        isUserInteracting = false;
+      }, 15000);
     });
   });
 
-  if (!btn || !logContainer) return;
+  const payloadCard = document.getElementById("interop-payload-panel");
+  payloadCard?.addEventListener("mouseenter", () => {
+    isUserInteracting = true;
+  });
+  payloadCard?.addEventListener("mouseleave", () => {
+    clearTimeout(pauseTimeout);
+    pauseTimeout = setTimeout(() => {
+      isUserInteracting = false;
+    }, 4000);
+  });
 
   const appendLog = (msg, type = "text-info") => {
+    if (!logContainer) return;
     const p = document.createElement("p");
     p.className = `console-line ${type}`;
     p.textContent = msg;
     logContainer.appendChild(p);
+    while (logContainer.children.length > 35) {
+      logContainer.removeChild(logContainer.firstChild);
+    }
     logContainer.scrollTop = logContainer.scrollHeight;
   };
 
-  btn.addEventListener("click", () => {
-    btn.disabled = true;
-    btn.classList.add("btn-loading");
+  const runSimulationCycle = () => {
+    const isAr = (currentLang === "ar");
 
     // Reset nodes & badges
     nodes.forEach(n => n?.classList.remove("active", "highlight-success"));
     badges.forEach(b => {
       if (b) {
         b.className = "node-status-badge badge-pending";
-        b.textContent = currentLang === "ar" ? "قيد الانتظار" : "Awaiting";
+        b.textContent = isAr ? "قيد الانتظار" : "Awaiting";
       }
     });
-
-    logContainer.innerHTML = "";
-    appendLog(currentLang === "ar" ? "> بدء محاكاة دورة حياة المعاملة الحكومية السيادية..." : "> Initiating sovereign inter-agency transaction test...", "text-muted");
 
     const steps = [
       {
         idx: 0,
-        badgeText: currentLang === "ar" ? "تم التحقق ✓" : "Verified ✓",
-        log: currentLang === "ar" ? "[0.00s] طلب مواطن: تم استقبال المعاملة عبر بوابة مصر الرقمية (الرقم القومي: 29801...)" : "[0.00s] Inbound Request: Digital Egypt Portal (Citizen ID: 29801... authenticated)",
-        delay: 350
+        badgeText: isAr ? "تم التحقق ✓" : "Verified ✓",
+        log: isAr ? "[0.00s] طلب مواطن: تم استقبال المعاملة عبر بوابة مصر الرقمية (الرقم القومي: 29801...)" : "[0.00s] Inbound Request: Digital Egypt Portal (Citizen ID: 29801... authenticated)",
+        delay: 0
       },
       {
         idx: 1,
-        badgeText: currentLang === "ar" ? "مؤمّن ومشفّر ✓" : "mTLS / WAF OK ✓",
-        log: currentLang === "ar" ? "[0.09s] بوابة DEFI السيادية: فحص أمني سيبراني شامل واجتياز جدران الحماية WAF" : "[0.09s] DEFI Sovereign Gateway: Mutual TLS handshake validated · Zero-Trust inspection cleared",
-        delay: 850
+        badgeText: isAr ? "مؤمّن ومشفّر ✓" : "mTLS / WAF OK ✓",
+        log: isAr ? "[0.09s] بوابة DEFI السيادية: فحص أمني سيبراني شامل واجتياز جدران الحماية WAF" : "[0.09s] DEFI Sovereign Gateway: Mutual TLS handshake validated · Zero-Trust inspection cleared",
+        delay: 500
       },
       {
         idx: 2,
-        badgeText: currentLang === "ar" ? "تطابق الهوية ✓" : "ID Verified ✓",
-        log: currentLang === "ar" ? "[0.18s] مصلحة الأحوال المدنية: التحقق اللحظي من البصمة والبيانات الحيوية" : "[0.18s] Civil Registry Sync: Biometric cryptographic token validated against Base Register",
-        delay: 1450
+        badgeText: isAr ? "تطابق الهوية ✓" : "ID Verified ✓",
+        log: isAr ? "[0.18s] مصلحة الأحوال المدنية: التحقق اللحظي من البصمة والبيانات الحيوية" : "[0.18s] Civil Registry Sync: Biometric cryptographic token validated against Base Register",
+        delay: 1100
       },
       {
         idx: 3,
-        badgeText: currentLang === "ar" ? "تم التنفيذ الوزاري ✓" : "Executed ✓",
-        log: currentLang === "ar" ? "[0.27s] النظام المركزي للوزارة: اعتماد الخدمة الحكومية وتحديث السجل المؤسسي" : "[0.27s] Ministerial Core (MOE/IDSC): Inter-agency workflow executed and state updated",
-        delay: 2050
+        badgeText: isAr ? "تم التنفيذ الوزاري ✓" : "Executed ✓",
+        log: isAr ? "[0.27s] النظام المركزي للوزارة: اعتماد الخدمة الحكومية وتحديث السجل المؤسسي" : "[0.27s] Ministerial Core (MOE/IDSC): Inter-agency workflow executed and state updated",
+        delay: 1700
       },
       {
         idx: 4,
-        badgeText: currentLang === "ar" ? "معتمد في السحابة ✓" : "Tier IV Signed ✓",
-        log: currentLang === "ar" ? "[0.34s] السحابة السيادية Tier-IV: توثيق البصمة الرقمية للمعاملة (رمز الاستجابة 200 بنجاح)" : "[0.34s] Sovereign Tier-IV Cloud: Audit trail cryptographically sealed · Status 200 OK Delivered",
-        delay: 2650
+        badgeText: isAr ? "معتمد في السحابة ✓" : "Tier IV Signed ✓",
+        log: isAr ? "[0.34s] السحابة السيادية Tier-IV: توثيق البصمة الرقمية للمعاملة (رمز الاستجابة 200 بنجاح)" : "[0.34s] Sovereign Tier-IV Cloud: Audit trail cryptographically sealed · Status 200 OK Delivered",
+        delay: 2300
       }
     ];
 
     steps.forEach(({ idx, badgeText, log, delay }) => {
       setTimeout(() => {
+        if (isUserInteracting) return;
         nodes.forEach((n, i) => {
           if (i === idx) {
             n?.classList.add("active", "highlight-success");
@@ -1515,15 +1640,24 @@ function initInteropSimulator() {
 
         showPayload(idx + 1);
         appendLog(log, idx === 4 ? "text-success" : "text-info");
-
-        if (idx === 4) {
-          setTimeout(() => {
-            btn.disabled = false;
-            btn.classList.remove("btn-loading");
-          }, 800);
-        }
       }, delay);
     });
+  };
+
+  // Run autonomous continuous simulation
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!prefersReducedMotion) {
+    runSimulationCycle();
+    setInterval(() => {
+      if (!isUserInteracting) {
+        runSimulationCycle();
+      }
+    }, 4500);
+  }
+
+  btn?.addEventListener("click", () => {
+    isUserInteracting = false;
+    runSimulationCycle();
   });
 }
 
@@ -1667,17 +1801,30 @@ function initNationalGrid() {
 
   selectRegionFn = selectRegion;
 
+  const regionKeys = ["cairo", "alex", "canal", "upper", "nac"];
+  let isUserInteracting = false;
+  let pauseTimeout = null;
+
+  const handleManualSelect = (regKey) => {
+    isUserInteracting = true;
+    clearTimeout(pauseTimeout);
+    selectRegion(regKey);
+    pauseTimeout = setTimeout(() => {
+      isUserInteracting = false;
+    }, 15000);
+  };
+
   regionBtns.forEach(btn => {
     btn.addEventListener("click", () => {
       const regKey = btn.getAttribute("data-region");
-      selectRegion(regKey);
+      handleManualSelect(regKey);
     });
   });
 
   hubNodes.forEach(node => {
     node.addEventListener("click", () => {
       const regKey = node.getAttribute("data-hub");
-      selectRegion(regKey);
+      handleManualSelect(regKey);
     });
   });
 
@@ -1685,8 +1832,9 @@ function initNationalGrid() {
   selectRegion(currentSelectedRegion);
 
   // Ping Regional Hub button
-  pingBtn?.addEventListener("click", () => {
-    pingBtn.disabled = true;
+  const triggerPing = (auto = false) => {
+    if (!pingBtn) return;
+    if (!auto) pingBtn.disabled = true;
     pingBtn.innerHTML = `<span class="ping-wave"></span> <span>${currentLang === "ar" ? "جاري القياس..." : "Pinging Hub..."}</span>`;
 
     setTimeout(() => {
@@ -1694,10 +1842,32 @@ function initNationalGrid() {
       pingBtn.innerHTML = `<span class="ping-wave"></span> <span>${currentLang === "ar" ? `زمن الاستجابة: ${randomLatency}ms (آمن ✓)` : `Latency: ${randomLatency}ms (Secure ✓)`}</span>`;
       setTimeout(() => {
         pingBtn.innerHTML = `<span class="ping-wave"></span> <span>${currentLang === "ar" ? "فحص اتصال المركز" : "Ping Regional Hub"}</span>`;
-        pingBtn.disabled = false;
-      }, 2000);
+        if (!auto) pingBtn.disabled = false;
+      }, 2400);
     }, 600);
+  };
+
+  pingBtn?.addEventListener("click", () => {
+    isUserInteracting = true;
+    clearTimeout(pauseTimeout);
+    triggerPing(false);
+    pauseTimeout = setTimeout(() => {
+      isUserInteracting = false;
+    }, 15000);
   });
+
+  // Autonomous region cycling every 5.5 seconds
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!prefersReducedMotion) {
+    let regIndex = 0;
+    setInterval(() => {
+      if (!isUserInteracting) {
+        regIndex = (regIndex + 1) % regionKeys.length;
+        selectRegion(regionKeys[regIndex]);
+        triggerPing(true);
+      }
+    }, 5500);
+  }
 }
 
 // ---------------------------------------------------------------------------
