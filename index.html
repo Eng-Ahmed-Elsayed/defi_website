@@ -61,6 +61,9 @@
           <li><a href="#ecosystem" class="nav-link" data-i18n="navEcosystem">Digital Ecosystem</a></li>
           <li><a href="#capabilities" class="nav-link" data-i18n="navCapabilities">Capabilities</a></li>
           <li><a href="#journey" class="nav-link" data-i18n="navJourney">Operating Model</a></li>
+          <li><a href="#interop" class="nav-link" data-i18n="navInterop">Data Bus</a></li>
+          <li><a href="#sectors" class="nav-link" data-i18n="navSectors">Sectors</a></li>
+          <li><a href="#national-grid" class="nav-link" data-i18n="navGrid">National Grid</a></li>
           <li><a href="#impact" class="nav-link" data-i18n="navImpact">Impact & Partners</a></li>
           <li><a href="#careers" class="nav-link" data-i18n="navCareers">Careers</a></li>
         </ul>
@@ -109,6 +112,9 @@
         <li><a href="#ecosystem" class="mobile-nav-item" data-i18n="navEcosystem">Digital Ecosystem</a></li>
         <li><a href="#capabilities" class="mobile-nav-item" data-i18n="navCapabilities">Capabilities</a></li>
         <li><a href="#journey" class="mobile-nav-item" data-i18n="navJourney">Operating Model</a></li>
+        <li><a href="#interop" class="mobile-nav-item" data-i18n="navInterop">Data Bus</a></li>
+        <li><a href="#sectors" class="mobile-nav-item" data-i18n="navSectors">Sectors</a></li>
+        <li><a href="#national-grid" class="mobile-nav-item" data-i18n="navGrid">National Grid</a></li>
         <li><a href="#impact" class="mobile-nav-item" data-i18n="navImpact">Impact & Partners</a></li>
         <li><a href="#careers" class="mobile-nav-item" data-i18n="navCareers">Careers</a></li>
       </ul>
@@ -129,6 +135,7 @@
          SECTION 1: HERO & DIAGRAM A (Connected Digital Ecosystem)
          ========================================================================= -->
     <section class="hero-section" id="hero">
+      <canvas id="hero-particles" class="hero-particles-canvas" aria-hidden="true"></canvas>
       <div class="hero-bg-glow glow-1" aria-hidden="true"></div>
       <div class="hero-bg-glow glow-2" aria-hidden="true"></div>
       <div class="hero-grid-pattern" aria-hidden="true"></div>
@@ -196,25 +203,46 @@
                 <span class="status-indicator"></span>
                 <span class="diagram-title-text" data-i18n="diagramATitle">Diagram A · National Digital Ecosystem</span>
               </div>
-              <span class="diagram-tag" data-i18n="diagramAInteractiveTag">Interactive Architecture</span>
+              <div class="diagram-header-right">
+                <div class="diagram-telemetry-strip" aria-label="Live Telemetry">
+                  <span class="tele-pill live"><span class="tele-dot"></span> <span data-i18n="telemetryThroughput">18,450 req/s</span></span>
+                  <span class="tele-pill" data-i18n="telemetryLatency">&lt; 4.2ms</span>
+                  <span class="tele-pill" data-i18n="telemetrySecurity">Tier IV Sovereign</span>
+                </div>
+                <span class="diagram-tag" data-i18n="diagramAInteractiveTag">Interactive Architecture</span>
+              </div>
             </div>
 
             <div class="diagram-canvas-container">
-              <!-- Handcrafted Semantic Responsive SVG Visual -->
-              <svg class="ecosystem-svg" viewBox="0 0 680 440" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="diagramADesc">
+              <!-- Handcrafted Semantic Responsive SVG Visual with Animated Pulse Streams -->
+              <svg class="ecosystem-svg" id="ecosystem-svg" viewBox="0 0 680 440" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="diagramADesc">
                 <title id="diagramADesc">Architecture diagram illustrating DEFI bridging Citizens, Government Ministries, Integration Backbone, and Secure National Infrastructure.</title>
                 
                 <!-- Background Connection Traces with Pulse Animations -->
-                <g class="network-traces" opacity="0.4">
+                <g class="network-traces" opacity="0.5">
                   <!-- Flow Lines from Top to DEFI Core -->
-                  <path d="M 170 85 L 170 150 L 340 180" stroke="url(#blueGrad)" stroke-width="2" stroke-dasharray="4 4" class="animated-trace"/>
-                  <path d="M 510 85 L 510 150 L 340 180" stroke="url(#purpleGrad)" stroke-width="2" stroke-dasharray="4 4" class="animated-trace"/>
+                  <path id="trace-citizens-core" d="M 170 85 L 170 150 L 340 180" stroke="url(#blueGrad)" stroke-width="2" stroke-dasharray="4 4" class="animated-trace"/>
+                  <path id="trace-ministries-core" d="M 510 85 L 510 150 L 340 180" stroke="url(#purpleGrad)" stroke-width="2" stroke-dasharray="4 4" class="animated-trace"/>
                   
                   <!-- Flow Lines from DEFI Core to Foundation -->
-                  <path d="M 340 250 L 170 290 L 170 345" stroke="url(#blueGrad)" stroke-width="2" stroke-dasharray="4 4" class="animated-trace"/>
-                  <path d="M 340 250 L 510 290 L 510 345" stroke="url(#purpleGrad)" stroke-width="2" stroke-dasharray="4 4" class="animated-trace"/>
-                  <path d="M 340 250 L 340 345" stroke="url(#tealGrad)" stroke-width="2.5" class="solid-trace"/>
+                  <path id="trace-core-registries" d="M 340 250 L 170 290 L 170 345" stroke="url(#blueGrad)" stroke-width="2" stroke-dasharray="4 4" class="animated-trace"/>
+                  <path id="trace-core-infra" d="M 340 250 L 510 290 L 510 345" stroke="url(#purpleGrad)" stroke-width="2" stroke-dasharray="4 4" class="animated-trace"/>
+                  <path id="trace-core-center" d="M 340 250 L 340 345" stroke="url(#tealGrad)" stroke-width="2.5" class="solid-trace"/>
                 </g>
+
+                <!-- Animated Data Packets Traveling Along Paths -->
+                <circle r="4.5" fill="#38BDF8" class="data-packet" filter="drop-shadow(0 0 6px #38BDF8)">
+                  <animateMotion dur="2.4s" repeatCount="indefinite" path="M 170 85 L 170 150 L 340 180" />
+                </circle>
+                <circle r="4.5" fill="#C084FC" class="data-packet" filter="drop-shadow(0 0 6px #C084FC)">
+                  <animateMotion dur="2.8s" repeatCount="indefinite" path="M 510 85 L 510 150 L 340 180" />
+                </circle>
+                <circle r="4.5" fill="#38BDF8" class="data-packet" filter="drop-shadow(0 0 6px #38BDF8)">
+                  <animateMotion dur="2.6s" repeatCount="indefinite" path="M 340 250 L 170 290 L 170 345" />
+                </circle>
+                <circle r="4.5" fill="#2DD4BF" class="data-packet" filter="drop-shadow(0 0 6px #2DD4BF)">
+                  <animateMotion dur="2.2s" repeatCount="indefinite" path="M 340 250 L 510 290 L 510 345" />
+                </circle>
 
                 <!-- Layer 1 (Top Left): Citizens & Business Channels -->
                 <g class="diagram-node node-interactive" data-node="citizens" tabindex="0" role="button" aria-label="Citizens and Businesses Layer">
@@ -283,10 +311,16 @@
 
             <!-- Dynamic Node Info Box (Updated on Node Click/Hover) -->
             <div class="diagram-info-panel" id="diagram-a-tooltip">
-              <span class="info-icon">ℹ️</span>
-              <p class="info-text" id="diagram-a-info-text" data-i18n="diagramADefaultInfo">
-                Click or hover any ecosystem layer above to inspect how DEFI orchestrates data, governance, and services across Egypt's national digital landscape.
-              </p>
+              <div class="info-content-wrap">
+                <span class="info-icon">ℹ️</span>
+                <p class="info-text" id="diagram-a-info-text" data-i18n="diagramADefaultInfo">
+                  Click or hover any ecosystem layer above to inspect how DEFI orchestrates data, governance, and services across Egypt's national digital landscape.
+                </p>
+              </div>
+              <button type="button" class="btn btn-sm btn-simulate" id="btn-simulate-traffic" title="Trigger an animated digital traffic burst across Egypt's architecture">
+                <span class="pulse-indicator"></span>
+                <span data-i18n="btnSimulateTraffic">Simulate Live Flow</span>
+              </button>
             </div>
           </div>
         </div>
@@ -435,23 +469,38 @@
             </button>
           </div>
 
-          <!-- Active Detail Display Panel -->
+          <!-- Active Detail Display Panel with Interactive Architectural Schematic -->
           <div class="cap-detail-panel card-glass" id="cap-detail-display" role="tabpanel" aria-labelledby="tab-cap-1">
-            <div class="cap-detail-header">
-              <div class="cap-detail-badge" id="cap-detail-index">PILLAR 01</div>
-              <h3 class="cap-detail-title" id="cap-detail-heading" data-i18n="cap1Heading">Business Architecture</h3>
-            </div>
-            <p class="cap-detail-body" id="cap-detail-desc" data-i18n="cap1Desc">
-              Aligning governmental strategies with operational models to support public-sector transformation, process optimization, and effective integration of government IT systems.
-            </p>
-            <div class="cap-detail-footer">
-              <div class="cap-impact-box">
-                <span class="impact-label" data-i18n="capImpactLabel">Institutional Impact:</span>
-                <span class="impact-value" id="cap-detail-impact" data-i18n="cap1Impact">Streamlined inter-agency processes and eliminated departmental silos.</span>
+            <div class="cap-detail-layout">
+              <div class="cap-detail-info">
+                <div class="cap-detail-header">
+                  <div class="cap-detail-badge" id="cap-detail-index">PILLAR 01</div>
+                  <h3 class="cap-detail-title" id="cap-detail-heading" data-i18n="cap1Heading">Business Architecture</h3>
+                </div>
+                <p class="cap-detail-body" id="cap-detail-desc" data-i18n="cap1Desc">
+                  Aligning governmental strategies with operational models to support public-sector transformation, process optimization, and effective integration of government IT systems.
+                </p>
+                <div class="cap-detail-footer">
+                  <div class="cap-impact-box">
+                    <span class="impact-label" data-i18n="capImpactLabel">Institutional Impact:</span>
+                    <span class="impact-value" id="cap-detail-impact" data-i18n="cap1Impact">Streamlined inter-agency processes and eliminated departmental silos.</span>
+                  </div>
+                  <div class="cap-deliverables-box">
+                    <span class="deliverable-label" data-i18n="capDeliverableLabel">Key Deliverables:</span>
+                    <span class="deliverable-value" id="cap-detail-deliv" data-i18n="cap1Deliv">Operating Models · Enterprise Process Blueprints · Transformation Roadmaps</span>
+                  </div>
+                </div>
               </div>
-              <div class="cap-deliverables-box">
-                <span class="deliverable-label" data-i18n="capDeliverableLabel">Key Deliverables:</span>
-                <span class="deliverable-value" id="cap-detail-deliv" data-i18n="cap1Deliv">Operating Models · Enterprise Process Blueprints · Transformation Roadmaps</span>
+
+              <!-- Interactive Architecture Schematic Graphic Container -->
+              <div class="cap-detail-visual-wrap">
+                <div class="cap-visual-header">
+                  <span class="cap-visual-tag" id="cap-visual-title">Architecture Schematic · Strategy & TOGAF Process Flow</span>
+                  <span class="tele-dot"></span>
+                </div>
+                <div class="cap-visual-canvas" id="cap-detail-visual" aria-label="Interactive Architecture Diagram for Selected Pillar">
+                  <!-- Rendered dynamically by JavaScript -->
+                </div>
               </div>
             </div>
           </div>
@@ -557,6 +606,179 @@
             </div>
 
           </div>
+
+          <!-- Interactive Architecture Blueprint Stage Visualizer -->
+          <div class="journey-blueprint-card card-glass" id="journey-stage-display">
+            <div class="blueprint-top-bar">
+              <div class="blueprint-phase-badge" id="blueprint-phase-num">PHASE 01 BLUEPRINT</div>
+              <h4 class="blueprint-title" id="blueprint-phase-title">Institutional Assessment & Enterprise Governance</h4>
+              <div class="blueprint-status-indicator">
+                <span class="tele-dot"></span>
+                <span id="blueprint-status-text">Quality Gate: Validated</span>
+              </div>
+            </div>
+            
+            <div class="blueprint-canvas-container" id="blueprint-svg-container" aria-label="Interactive Architecture Stage Blueprint">
+              <!-- Rendered dynamically by JavaScript -->
+            </div>
+
+            <div class="blueprint-meta-bar">
+              <div class="blueprint-meta-item">
+                <span class="meta-label" data-i18n="blueprintStakeholdersLabel">Primary Stakeholders:</span>
+                <span class="meta-val" id="blueprint-stakeholders">Executive Cabinet · Ministerial CIOs · ITIDA</span>
+              </div>
+              <div class="blueprint-meta-item">
+                <span class="meta-label" data-i18n="blueprintStandardLabel">Verification Standard:</span>
+                <span class="meta-val" id="blueprint-standard">Decree 132/2020 Compliance Gate A</span>
+              </div>
+              <div class="blueprint-meta-item">
+                <span class="meta-label" data-i18n="blueprintDeliverableLabel">Key Deliverable:</span>
+                <span class="meta-val" id="blueprint-deliverable">National Enterprise Architecture Blueprint</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Journey Control Bar -->
+          <div class="journey-controls-bar">
+            <button type="button" class="btn btn-primary btn-sm btn-simulate" id="btn-simulate-journey">
+              <span class="pulse-indicator"></span>
+              <span data-i18n="btnSimulateJourney">Play Lifecycle Progression</span>
+            </button>
+            <span class="journey-hint-text" data-i18n="journeyHint">
+              Click any phase card above or trigger progression to inspect institutional deliverables and quality gates.
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 4B: DIAGRAM D (Sovereign Interoperability Engine & Data Bus Simulator)
+         ========================================================================= -->
+    <section class="section section-interoperability" id="interop" aria-label="Sovereign Interoperability Engine">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag" data-i18n="interopTag">SOVEREIGN INTEGRATION BUS</div>
+          <h2 class="section-title" data-i18n="interopTitle">
+            Diagram D · Sovereign Interoperability <span class="gradient-text">Engine & Data Bus</span>
+          </h2>
+          <p class="section-desc max-w-2xl" data-i18n="interopSub">
+            Live architectural simulation of inter-agency data flow orchestrating citizen service requests, national identity verification, and multi-ministerial fulfillment.
+          </p>
+        </div>
+
+        <div class="interop-simulator-card card-glass">
+          <div class="simulator-top-bar">
+            <div class="sim-status">
+              <span class="status-indicator"></span>
+              <span class="sim-title" data-i18n="simStatusTitle">Live Sovereign Bus: Standby / Operational</span>
+            </div>
+            <div class="sim-controls">
+              <button type="button" class="btn btn-primary btn-sm btn-sim-trigger" id="btn-trigger-interop-sim">
+                <span class="btn-sim-icon">⚡</span>
+                <span data-i18n="btnRunSim">Run Interoperability Test</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 5 Stage Pipeline Nodes -->
+          <div class="interop-pipeline-flow" role="region" aria-label="5-Stage Sovereign Flow">
+            <!-- Stage 1 -->
+            <div class="interop-node active" id="sim-node-1" data-node-stage="1">
+              <div class="node-icon-wrap">📱</div>
+              <span class="node-step">01</span>
+              <h4 class="node-heading" data-i18n="simNode1Title">Citizen Touchpoint</h4>
+              <p class="node-detail" data-i18n="simNode1Desc">Digital Egypt Portal / App</p>
+              <div class="node-status-badge badge-success" id="badge-stage-1">Standby</div>
+            </div>
+
+            <div class="interop-link" id="sim-link-1" aria-hidden="true"><span class="flow-pulse"></span></div>
+
+            <!-- Stage 2 -->
+            <div class="interop-node" id="sim-node-2" data-node-stage="2">
+              <div class="node-icon-wrap">🛡️</div>
+              <span class="node-step">02</span>
+              <h4 class="node-heading" data-i18n="simNode2Title">DEFI Sovereign Gateway</h4>
+              <p class="node-detail" data-i18n="simNode2Desc">Mutual TLS & WAF Inspection</p>
+              <div class="node-status-badge badge-pending" id="badge-stage-2">Awaiting</div>
+            </div>
+
+            <div class="interop-link" id="sim-link-2" aria-hidden="true"><span class="flow-pulse"></span></div>
+
+            <!-- Stage 3 -->
+            <div class="interop-node" id="sim-node-3" data-node-stage="3">
+              <div class="node-icon-wrap">🆔</div>
+              <span class="node-step">03</span>
+              <h4 class="node-heading" data-i18n="simNode3Title">Civil Registry Sync</h4>
+              <p class="node-detail" data-i18n="simNode3Desc">National ID Verification</p>
+              <div class="node-status-badge badge-pending" id="badge-stage-3">Awaiting</div>
+            </div>
+
+            <div class="interop-link" id="sim-link-3" aria-hidden="true"><span class="flow-pulse"></span></div>
+
+            <!-- Stage 4 -->
+            <div class="interop-node" id="sim-node-4" data-node-stage="4">
+              <div class="node-icon-wrap">🏛️</div>
+              <span class="node-step">04</span>
+              <h4 class="node-heading" data-i18n="simNode4Title">Ministerial Core Backend</h4>
+              <p class="node-detail" data-i18n="simNode4Desc">MOE / Cabinet IDSC / Health</p>
+              <div class="node-status-badge badge-pending" id="badge-stage-4">Awaiting</div>
+            </div>
+
+            <div class="interop-link" id="sim-link-4" aria-hidden="true"><span class="flow-pulse"></span></div>
+
+            <!-- Stage 5 -->
+            <div class="interop-node" id="sim-node-5" data-node-stage="5">
+              <div class="node-icon-wrap">☁️</div>
+              <span class="node-step">05</span>
+              <h4 class="node-heading" data-i18n="simNode5Title">Sovereign Tier IV Cloud</h4>
+              <p class="node-detail" data-i18n="simNode5Desc">Audit Trail & Signed Output</p>
+              <div class="node-status-badge badge-pending" id="badge-stage-5">Awaiting</div>
+            </div>
+          </div>
+
+          <!-- Real-Time Execution Console & Cryptographic Payload Inspector -->
+          <div class="interop-interactive-workbench">
+            <!-- Cryptographic Payload Inspector Card -->
+            <div class="interop-payload-card card-glass" id="interop-payload-panel">
+              <div class="payload-header">
+                <div class="payload-title-wrap">
+                  <span class="payload-badge" id="payload-stage-pill">STAGE 01 PAYLOAD</span>
+                  <h4 class="payload-heading" id="payload-title" data-i18n="payloadTitle">Citizen Inbound Request</h4>
+                </div>
+                <span class="payload-security" id="payload-sec-badge">🔒 mTLS 1.3 · Zero-Trust</span>
+              </div>
+              <div class="payload-code-block">
+                <pre><code id="payload-json-display">{
+  "protocol": "HTTPS/3 (QUIC) · mTLS 1.3",
+  "source_entity": "Digital Egypt Portal / App",
+  "national_id_hash": "SHA256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4...",
+  "service_requested": "Unified_Health_Insurance_Enrollment",
+  "token_validation": "JWT_VERIFIED_DEFI_HSM",
+  "latency": "0.85 ms",
+  "state_status": "READY_FOR_INTEROP"
+}</code></pre>
+              </div>
+              <div class="payload-footer">
+                <span class="payload-latency" id="payload-latency-text">⏱️ Ingestion Latency: <strong>0.85 ms</strong></span>
+                <span class="payload-inspect-hint" data-i18n="payloadHint">Click any stage above to inspect live cryptographic payload</span>
+              </div>
+            </div>
+
+            <!-- Real-Time Execution Console -->
+            <div class="interop-console-wrap">
+              <div class="console-header">
+                <span class="console-dot dot-red"></span>
+                <span class="console-dot dot-yellow"></span>
+                <span class="console-dot dot-green"></span>
+                <span class="console-title" data-i18n="consoleTitle">DEFI Enterprise Service Bus — Live Transaction Monitor</span>
+              </div>
+              <div class="console-body" id="interop-console-log">
+                <p class="console-line text-muted">&gt; System initialized under Prime Minister Decree No. 132/2020.</p>
+                <p class="console-line text-muted">&gt; Ready for inter-agency transaction test. Click "Run Interoperability Test" above.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -636,6 +858,289 @@
             <div class="partner-stat-tag" data-i18n="partner4Tag">200+ Modernized Services</div>
           </div>
 
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 5B: SECTORS IN FOCUS
+         ========================================================================= -->
+    <section class="section section-sectors" id="sectors" aria-label="Sovereign Sectors in Focus">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag" data-i18n="sectorsTag">SOVEREIGN VERTICALS</div>
+          <h2 class="section-title" data-i18n="sectorsTitle">
+            Transforming Strategic <span class="gradient-text">National Sectors</span>
+          </h2>
+          <p class="section-desc max-w-2xl" data-i18n="sectorsSub">
+            DEFI designs and operates mission-critical digital systems across Egypt's high-priority governmental domains.
+          </p>
+        </div>
+
+        <div class="sectors-grid">
+          <!-- Sector 1: Education -->
+          <div class="sector-card card-glass">
+            <div class="sector-icon-header">
+              <span class="sector-icon">🎓</span>
+              <span class="sector-badge" data-i18n="sector1Badge">Education & Youth</span>
+            </div>
+            <h3 class="sector-name" data-i18n="sector1Title">National Exam & Evaluation Grid</h3>
+            <p class="sector-summary" data-i18n="sector1Desc">
+              Mission-critical nationwide testing infrastructure supporting millions of concurrent secondary school students with zero downtime and military-grade paperless security.
+            </p>
+            <div class="sector-metric-pill">
+              <span class="pill-number">2M+</span>
+              <span class="pill-text" data-i18n="sector1Metric">Concurrent Candidates</span>
+            </div>
+          </div>
+
+          <!-- Sector 2: Cabinet IDSC -->
+          <div class="sector-card card-glass">
+            <div class="sector-icon-header">
+              <span class="sector-icon">📊</span>
+              <span class="sector-badge" data-i18n="sector2Badge">Executive Intelligence</span>
+            </div>
+            <h3 class="sector-name" data-i18n="sector2Title">National Crisis & Decision Hub</h3>
+            <p class="sector-summary" data-i18n="sector2Desc">
+              Real-time executive dashboards aggregating macroeconomic indicators, commodity supplies, and multi-agency KPIs directly to the Prime Minister and Cabinet leadership.
+            </p>
+            <div class="sector-metric-pill">
+              <span class="pill-number">100%</span>
+              <span class="pill-text" data-i18n="sector2Metric">Executive Decision Visibility</span>
+            </div>
+          </div>
+
+          <!-- Sector 3: Health -->
+          <div class="sector-card card-glass">
+            <div class="sector-icon-header">
+              <span class="sector-icon">🏥</span>
+              <span class="sector-badge" data-i18n="sector3Badge">Universal Healthcare</span>
+            </div>
+            <h3 class="sector-name" data-i18n="sector3Title">Unified Medical Registry & E-Health</h3>
+            <p class="sector-summary" data-i18n="sector3Desc">
+              Interoperable electronic health records (EHR) seamlessly integrating university hospitals, public clinics, and the Universal Health Insurance authority across governorates.
+            </p>
+            <div class="sector-metric-pill">
+              <span class="pill-number">100M+</span>
+              <span class="pill-text" data-i18n="sector3Metric">Unified Citizen Health ID</span>
+            </div>
+          </div>
+
+          <!-- Sector 4: Justice & Land -->
+          <div class="sector-card card-glass">
+            <div class="sector-icon-header">
+              <span class="sector-icon">⚖️</span>
+              <span class="sector-badge" data-i18n="sector4Badge">Justice & Cadastre</span>
+            </div>
+            <h3 class="sector-name" data-i18n="sector4Title">Sovereign Land & Property Register</h3>
+            <p class="sector-summary" data-i18n="sector4Desc">
+              Cryptographically audited digital title deed registry and automated notary workflows eliminating property disputes and accelerating investment registration.
+            </p>
+            <div class="sector-metric-pill">
+              <span class="pill-number">100%</span>
+              <span class="pill-text" data-i18n="sector4Metric">Fraud-Resistant Deeds</span>
+            </div>
+          </div>
+
+          <!-- Sector 5: Smart Cities -->
+          <div class="sector-card card-glass">
+            <div class="sector-icon-header">
+              <span class="sector-icon">🏙️</span>
+              <span class="sector-badge" data-i18n="sector5Badge">Smart Governance</span>
+            </div>
+            <h3 class="sector-name" data-i18n="sector5Title">New Capital IoT & Municipal Hub</h3>
+            <p class="sector-summary" data-i18n="sector5Desc">
+              Integrated urban operations center uniting utility metering, smart traffic management, and unified municipal billing in Egypt's fourth-generation sovereign cities.
+            </p>
+            <div class="sector-metric-pill">
+              <span class="pill-number">24/7</span>
+              <span class="pill-text" data-i18n="sector5Metric">Automated City Operations</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 5C: NATIONAL COMMAND CENTER · SOVEREIGN DIGITAL GRID
+         ========================================================================= -->
+    <section class="section section-national-grid" id="national-grid" aria-label="National Sovereign Digital Grid">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag" data-i18n="gridTag">SOVEREIGN COVERAGE & UPTIME</div>
+          <h2 class="section-title" data-i18n="gridTitle">
+            National Command Center · <span class="gradient-text">Sovereign Digital Grid</span>
+          </h2>
+          <p class="section-desc max-w-2xl" data-i18n="gridSub">
+            Real-time telemetry and high-availability operations across 27 Egyptian governorates unified under the sovereign digital infrastructure backbone.
+          </p>
+        </div>
+
+        <div class="grid-command-dashboard card-glass">
+          <!-- Top Grid Status & Regional Controls -->
+          <div class="grid-controls-row">
+            <div class="grid-live-indicator">
+              <span class="status-indicator"></span>
+              <span class="grid-status-title" data-i18n="gridStatusTitle">Sovereign Backbone: Active · 99.999% National SLA</span>
+            </div>
+            <!-- Regional Selector Buttons -->
+            <div class="grid-regions-selector" role="tablist" aria-label="Egypt Regional Hubs">
+              <button type="button" class="region-pill-btn active" role="tab" aria-selected="true" data-region="cairo" id="reg-btn-cairo">
+                <span class="reg-dot"></span>
+                <span data-i18n="regCairo">Greater Cairo Core</span>
+              </button>
+              <button type="button" class="region-pill-btn" role="tab" aria-selected="false" data-region="alex" id="reg-btn-alex">
+                <span class="reg-dot"></span>
+                <span data-i18n="regAlex">Alexandria & Delta</span>
+              </button>
+              <button type="button" class="region-pill-btn" role="tab" aria-selected="false" data-region="canal" id="reg-btn-canal">
+                <span class="reg-dot"></span>
+                <span data-i18n="regCanal">Suez Canal Axis</span>
+              </button>
+              <button type="button" class="region-pill-btn" role="tab" aria-selected="false" data-region="upper" id="reg-btn-upper">
+                <span class="reg-dot"></span>
+                <span data-i18n="regUpper">Upper Egypt Spine</span>
+              </button>
+              <button type="button" class="region-pill-btn" role="tab" aria-selected="false" data-region="nac" id="reg-btn-nac">
+                <span class="reg-dot"></span>
+                <span data-i18n="regNac">New Capital Gov Cloud</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Command Grid Interactive Layout: Left SVG Network Map, Right Regional Telemetry -->
+          <div class="grid-interactive-layout">
+            <!-- Left: Egypt Sovereign Constellation Map SVG -->
+            <div class="grid-map-container" aria-label="Egypt National Digital Grid Architecture">
+              <svg class="national-grid-svg" id="national-grid-svg" viewBox="0 0 600 420" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
+                <defs>
+                  <radialGradient id="hubGlow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.8"/>
+                    <stop offset="100%" stop-color="#38BDF8" stop-opacity="0"/>
+                  </radialGradient>
+                  <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#00F0FF" stop-opacity="1"/>
+                    <stop offset="100%" stop-color="#1E5FD8" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+
+                <!-- High-Speed Sovereign Fiber Traces -->
+                <g class="grid-fiber-rings" stroke="#1E3A5F" stroke-width="1.8">
+                  <!-- Alexandria to Cairo -->
+                  <path d="M 230 70 L 300 170" stroke="url(#blueGrad)" stroke-width="2.5" class="laser-path"/>
+                  <!-- Cairo to Suez Canal -->
+                  <path d="M 300 170 L 410 160" stroke="url(#blueGrad)" stroke-width="2.5" class="laser-path"/>
+                  <!-- Cairo to New Administrative Capital -->
+                  <path d="M 300 170 L 360 210" stroke="url(#tealGrad)" stroke-width="3" class="laser-path"/>
+                  <!-- Cairo to Upper Egypt -->
+                  <path d="M 300 170 L 330 290 L 370 370" stroke="url(#purpleGrad)" stroke-width="2.5" class="laser-path"/>
+                  <!-- Redundant Failover Ring: Alexandria to Suez Canal -->
+                  <path d="M 230 70 L 410 160" stroke="#334155" stroke-dasharray="4 4" stroke-width="1.5"/>
+                  <!-- Redundant Failover Ring: NAC to Upper Egypt -->
+                  <path d="M 360 210 L 370 370" stroke="#334155" stroke-dasharray="4 4" stroke-width="1.5"/>
+                </g>
+
+                <!-- Animated Data Pulses Traveling Along National Spine -->
+                <circle r="4.5" fill="#38BDF8" filter="drop-shadow(0 0 6px #38BDF8)">
+                  <animateMotion dur="2.5s" repeatCount="indefinite" path="M 230 70 L 300 170" />
+                </circle>
+                <circle r="4.5" fill="#2DD4BF" filter="drop-shadow(0 0 6px #2DD4BF)">
+                  <animateMotion dur="2s" repeatCount="indefinite" path="M 300 170 L 360 210" />
+                </circle>
+                <circle r="4.5" fill="#C084FC" filter="drop-shadow(0 0 6px #C084FC)">
+                  <animateMotion dur="3.2s" repeatCount="indefinite" path="M 300 170 L 330 290 L 370 370" />
+                </circle>
+
+                <!-- Regional Hub 1: Alexandria & Mediterranean Axis -->
+                <g class="grid-hub-node" id="hub-node-alex" data-hub="alex" tabindex="0" role="button" aria-label="Alexandria Hub">
+                  <circle cx="230" cy="70" r="28" fill="url(#hubGlow)" opacity="0.4"/>
+                  <circle cx="230" cy="70" r="14" fill="#0B192C" stroke="#38BDF8" stroke-width="2.5" class="hub-ring"/>
+                  <circle cx="230" cy="70" r="5" fill="#38BDF8"/>
+                  <text x="230" y="42" text-anchor="middle" class="hub-label" id="map-lbl-alex">Alexandria</text>
+                  <text x="230" y="102" text-anchor="middle" class="hub-sublabel" id="map-sub-alex">Mediterranean Node</text>
+                </g>
+
+                <!-- Regional Hub 2: Suez Canal & Port Said Axis -->
+                <g class="grid-hub-node" id="hub-node-canal" data-hub="canal" tabindex="0" role="button" aria-label="Suez Canal Hub">
+                  <circle cx="410" cy="160" r="28" fill="url(#hubGlow)" opacity="0.4"/>
+                  <circle cx="410" cy="160" r="14" fill="#0B192C" stroke="#38BDF8" stroke-width="2.5" class="hub-ring"/>
+                  <circle cx="410" cy="160" r="5" fill="#38BDF8"/>
+                  <text x="410" y="132" text-anchor="middle" class="hub-label" id="map-lbl-canal">Suez Canal</text>
+                  <text x="410" y="192" text-anchor="middle" class="hub-sublabel" id="map-sub-canal">Logistics Corridor</text>
+                </g>
+
+                <!-- Regional Hub 3: Greater Cairo Core (Central Spine) -->
+                <g class="grid-hub-node active" id="hub-node-cairo" data-hub="cairo" tabindex="0" role="button" aria-label="Greater Cairo Core Hub">
+                  <circle cx="300" cy="170" r="40" fill="url(#coreGlow)" opacity="0.5" class="hub-pulse-beacon"/>
+                  <circle cx="300" cy="170" r="18" fill="#0B192C" stroke="#00F0FF" stroke-width="3" class="hub-ring active-ring"/>
+                  <circle cx="300" cy="170" r="7" fill="#00F0FF"/>
+                  <text x="300" y="138" text-anchor="middle" class="hub-label core-label" id="map-lbl-cairo">Greater Cairo</text>
+                  <text x="300" y="206" text-anchor="middle" class="hub-sublabel core-sublabel" id="map-sub-cairo">National Operations Core</text>
+                </g>
+
+                <!-- Regional Hub 4: New Administrative Capital (Tier IV Sovereign Cloud) -->
+                <g class="grid-hub-node" id="hub-node-nac" data-hub="nac" tabindex="0" role="button" aria-label="New Administrative Capital Hub">
+                  <circle cx="360" cy="210" r="30" fill="url(#hubGlow)" opacity="0.4"/>
+                  <circle cx="360" cy="210" r="15" fill="#0B192C" stroke="#2DD4BF" stroke-width="2.5" class="hub-ring"/>
+                  <circle cx="360" cy="210" r="6" fill="#2DD4BF"/>
+                  <text x="360" y="242" text-anchor="middle" class="hub-label" id="map-lbl-nac">New Capital</text>
+                  <text x="360" y="258" text-anchor="middle" class="hub-sublabel" id="map-sub-nac">Tier IV Sovereign Cloud</text>
+                </g>
+
+                <!-- Regional Hub 5: Upper Egypt Spine (Assiut, Sohag, Luxor, Aswan) -->
+                <g class="grid-hub-node" id="hub-node-upper" data-hub="upper" tabindex="0" role="button" aria-label="Upper Egypt Hub">
+                  <circle cx="370" cy="370" r="30" fill="url(#hubGlow)" opacity="0.4"/>
+                  <circle cx="370" cy="370" r="14" fill="#0B192C" stroke="#A855F7" stroke-width="2.5" class="hub-ring"/>
+                  <circle cx="370" cy="370" r="5" fill="#A855F7"/>
+                  <text x="370" y="342" text-anchor="middle" class="hub-label" id="map-lbl-upper">Upper Egypt</text>
+                  <text x="370" y="402" text-anchor="middle" class="hub-sublabel" id="map-sub-upper">Assiut / Luxor / Aswan Spine</text>
+                </g>
+              </svg>
+            </div>
+
+            <!-- Right: Dynamic Regional Telemetry & Operations Panel -->
+            <div class="grid-telemetry-panel" id="grid-telemetry-box">
+              <div class="telemetry-card-top">
+                <span class="region-badge-pill" id="reg-display-badge">CENTRAL SPINE</span>
+                <h3 class="region-display-title" id="reg-display-title" data-i18n="regCairoTitle">Greater Cairo Operations Core</h3>
+                <p class="region-display-desc" id="reg-display-desc" data-i18n="regCairoDesc">
+                  Serving the central ministries, sovereign data registers, and 24+ million citizens with high-concurrency request routing and instant civil identification.
+                </p>
+              </div>
+
+              <!-- Live KPI Gauges for Selected Region -->
+              <div class="region-kpi-grid">
+                <div class="region-kpi-item">
+                  <span class="kpi-num" id="reg-kpi-throughput">54,200 req/s</span>
+                  <span class="kpi-label" data-i18n="kpiThroughput">Peak Throughput</span>
+                </div>
+                <div class="region-kpi-item">
+                  <span class="kpi-num" id="reg-kpi-latency">1.8 ms</span>
+                  <span class="kpi-label" data-i18n="kpiLatency">Internal Bus Latency</span>
+                </div>
+                <div class="region-kpi-item">
+                  <span class="kpi-num" id="reg-kpi-uptime">99.998%</span>
+                  <span class="kpi-label" data-i18n="kpiUptime">Validated SLA</span>
+                </div>
+                <div class="region-kpi-item">
+                  <span class="kpi-num" id="reg-kpi-entities">25+ Bodies</span>
+                  <span class="kpi-label" data-i18n="kpiEntities">Interconnected Entities</span>
+                </div>
+              </div>
+
+              <!-- Security & Sovereign Compliance Bar -->
+              <div class="region-compliance-bar">
+                <div class="compliance-item">
+                  <span class="compliance-icon">🔒</span>
+                  <span class="compliance-text" id="reg-display-sec">End-to-End HSM Encryption · Decree 132/2020 Compliance</span>
+                </div>
+                <button type="button" class="btn btn-outline btn-sm btn-ping-hub" id="btn-ping-region">
+                  <span class="ping-wave"></span>
+                  <span data-i18n="btnPingHub">Ping Regional Hub</span>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
