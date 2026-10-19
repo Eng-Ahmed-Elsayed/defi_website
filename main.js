@@ -13,6 +13,7 @@ const translations = {
     officialNotice: "OFFICIAL PUBLIC-SECTOR ENTITY",
     mandateBanner: "Established under Prime Minister Decree No. 132/2020 | Supporting MCIT & ITIDA National Transformation",
     hqLocation: "📍 Smart Village, B145, Cairo",
+    navHome: "Home",
     navAbout: "About DEFI",
     navEcosystem: "Digital Ecosystem",
     navCapabilities: "Capabilities",
@@ -21,10 +22,26 @@ const translations = {
     navSectors: "Sectors",
     navGrid: "National Grid",
     navImpact: "Impact & Partners",
+    navNews: "Insights",
     navCareers: "Careers",
     navContactCTA: "Contact Us",
     langLabel: "عربي",
     drawerLangLabel: "تبديل إلى العربية",
+
+    // Mandate Pillars & Page CTAs
+    mandatePillar1Title: "Decree No. 132/2020",
+    mandatePillar1Sub: "Prime Minister Mandate",
+    mandatePillar2Title: "MCIT & ITIDA Partner",
+    mandatePillar2Sub: "Technical Transformation Arm",
+    mandatePillar3Title: "National Data Bus",
+    mandatePillar3Sub: "Interoperable Architecture",
+    mandatePillar4Title: "Sovereign Cloud",
+    mandatePillar4Sub: "Tier-IV High-Availability",
+    aboutCta: "Read Our Full Institutional Profile",
+    capAllCta: "Explore All 6 Enterprise Capability Pillars",
+    impactAllCta: "View Verified Institutional Partners & Impact",
+    sectorsAllCta: "View All Sovereign Sectors & Infrastructure",
+    careersAllCta: "Explore Engineering Opportunities & Roles",
 
     // Hero Section
     heroBadgePre: "MANDATE 132/2020",
@@ -316,6 +333,7 @@ const translations = {
     officialNotice: "جهة وطنية حكومية متخصصة",
     mandateBanner: "أُنشئت بموجب قرار رئيس مجلس الوزراء رقم 132 لسنة 2020 | دعم التحول الرقمي تحت مظلة الاتصالات وإيتيدا",
     hqLocation: "📍 القرية الذكية، مبنى B145، القاهرة",
+    navHome: "الرئيسية",
     navAbout: "عن مصر الرقمية",
     navEcosystem: "المنظومة الرقمية",
     navCapabilities: "القدرات المؤسسية",
@@ -324,10 +342,26 @@ const translations = {
     navSectors: "القطاعات",
     navGrid: "الشبكة السيادية",
     navImpact: "الشركاء والأثر",
+    navNews: "الأخبار والرؤى",
     navCareers: "الوظائف",
     navContactCTA: "تواصل معنا",
     langLabel: "English",
     drawerLangLabel: "Switch to English",
+
+    // Mandate Pillars & Page CTAs
+    mandatePillar1Title: "قرار رقم 132/2020",
+    mandatePillar1Sub: "قرار التأسيس من رئاسة الوزراء",
+    mandatePillar2Title: "شريك الاتصالات وإيتيدا",
+    mandatePillar2Sub: "الذراع التقني والاستراتيجي للتحول",
+    mandatePillar3Title: "ناقل البيانات الوطني",
+    mandatePillar3Sub: "معايير الربط والتكامل البيني",
+    mandatePillar4Title: "السحابة السيادية الآمنة",
+    mandatePillar4Sub: "بنية تشغيلية سيادية Tier-IV 24/7",
+    aboutCta: "الاطلاع على الملف المؤسسي الكامل",
+    capAllCta: "استكشاف كافة ركائز القدرات المؤسسية الست",
+    impactAllCta: "استعراض الشركاء والأثر المؤسسي المعتمد",
+    sectorsAllCta: "استعراض كافة القطاعات والبنية السيادية",
+    careersAllCta: "استكشاف الفرص والكفاءات المطلوبة",
 
     // Hero Section
     heroBadgePre: "قرار رقم 132/2020",
@@ -1231,6 +1265,32 @@ function initNavigation() {
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && mobileDrawer?.classList.contains("open")) {
       closeDrawer();
+    }
+  });
+
+  // Active link highlighting based on current URL path
+  const currentPath = window.location.pathname.replace(/\/+$/, "") || "/";
+  const allNavLinks = document.querySelectorAll(".desktop-nav .nav-link, .desktop-nav .nav-item, .mobile-nav-item");
+  
+  allNavLinks.forEach(link => {
+    const rawHref = link.getAttribute("href") || "";
+    const cleanHref = rawHref.split("?")[0].split("#")[0].replace(/\/+$/, "") || "/";
+    const isHome = (cleanHref === "/" || cleanHref === "/index.html" || cleanHref === "index.html");
+    const isCurrentHome = (currentPath === "/" || currentPath === "/index.html" || currentPath === "" || currentPath.endsWith("/index.html"));
+    
+    let isMatch = false;
+    if (isHome) {
+      isMatch = isCurrentHome;
+    } else {
+      isMatch = currentPath === cleanHref || currentPath.endsWith(cleanHref);
+    }
+
+    if (isMatch) {
+      link.classList.add("active");
+      link.setAttribute("aria-current", "page");
+    } else {
+      link.classList.remove("active");
+      link.removeAttribute("aria-current");
     }
   });
 

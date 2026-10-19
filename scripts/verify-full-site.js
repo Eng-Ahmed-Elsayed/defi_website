@@ -156,9 +156,11 @@ async function runVerification() {
     await mobileToggle.click();
     await new Promise(r => setTimeout(r, 400));
     await page.screenshot({ path: path.join(OUT_DIR, '18-mobile-drawer.png'), fullPage: false });
-    console.log('✓ Mobile drawer opened and verified');
-    const closeBtn = await page.$('#mobile-close-btn');
-    if (closeBtn) await closeBtn.click();
+    await page.evaluate(() => {
+      const btn = document.getElementById('mobile-close-btn');
+      if (btn) btn.click();
+    });
+    await new Promise(r => setTimeout(r, 400));
   }
 
   // Compact Mobile 360x800
