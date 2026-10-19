@@ -1,0 +1,61 @@
+<div class="operating-model-wrapper" role="region" [attr.aria-label]="lang.t().journeyTitle">
+  <!-- Top Tag -->
+  <div class="journey-header">
+    <span class="journey-tag">{{ lang.t().journeyTag }}</span>
+    <h3 class="journey-title" [innerHTML]="lang.t().journeyTitle"></h3>
+    <p class="journey-subtitle">{{ lang.t().journeySubtitle }}</p>
+  </div>
+
+  <!-- 5-Step Pipeline Flow Navigation -->
+  <div class="pipeline-container" role="tablist" [attr.aria-label]="lang.t().journeyTitle">
+    @for (step of lang.t().journeySteps; track step.step; let i = $index) {
+      <button 
+        type="button" 
+        class="pipeline-step-btn" 
+        [class.active]="activeStepIndex() === i"
+        (click)="setActiveStep(i)"
+        role="tab"
+        [attr.aria-selected]="activeStepIndex() === i"
+        [id]="'step-tab-' + i"
+        [attr.aria-controls]="'step-panel-' + i">
+        <div class="step-num-pill">{{ step.step }}</div>
+        <div class="step-meta">
+          <span class="step-name">{{ step.name }}</span>
+          <span class="step-phase-tag">{{ step.phase }}</span>
+        </div>
+        @if (i < lang.t().journeySteps.length - 1) {
+          <div class="step-connector" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M7 4l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        }
+      </button>
+    }
+  </div>
+
+  <!-- Active Step Detail Card -->
+  @if (getActiveStep(); as activeStep) {
+    <div 
+      class="active-step-card" 
+      role="tabpanel" 
+      [id]="'step-panel-' + activeStepIndex()" 
+      [attr.aria-labelledby]="'step-tab-' + activeStepIndex()">
+      <div class="card-top">
+        <div class="step-badge-large">{{ activeStep.step }}</div>
+        <div>
+          <span class="phase-label">{{ activeStep.phase }}</span>
+          <h4 class="step-card-title">{{ activeStep.name }}</h4>
+        </div>
+      </div>
+      <p class="step-card-desc">{{ activeStep.description }}</p>
+      <div class="step-output-box">
+        <span class="output-label">
+          <span aria-hidden="true">🎯</span>
+          {{ lang.isArabic() ? 'المخرج المؤسسي المعتمد:' : 'Verified Institutional Output:' }}
+        </span>
+        <strong class="output-value">{{ activeStep.output }}</strong>
+      </div>
+    </div>
+  }
+</div>

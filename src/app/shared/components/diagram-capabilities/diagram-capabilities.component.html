@@ -1,0 +1,72 @@
+<div class="capabilities-matrix-wrapper" role="region" [attr.aria-label]="lang.t().capabilityTitle">
+  <div class="matrix-header">
+    <span class="matrix-tag">{{ lang.t().capabilityTag }}</span>
+    <h3 class="matrix-title" [innerHTML]="lang.t().capabilityTitle"></h3>
+    <p class="matrix-subtitle">{{ lang.t().capabilitySubtitle }}</p>
+  </div>
+
+  <!-- 6 Capability Pillar Selector Grid -->
+  <div class="pillars-grid" role="tablist" [attr.aria-label]="lang.t().capabilityTitle">
+    @for (pillar of lang.t().capabilityPillars; track pillar.id) {
+      <button 
+        type="button" 
+        class="pillar-card-btn" 
+        [class.active]="selectedPillarId() === pillar.id"
+        (click)="selectPillar(pillar.id)"
+        role="tab"
+        [attr.aria-selected]="selectedPillarId() === pillar.id"
+        [id]="'pillar-tab-' + pillar.id"
+        [attr.aria-controls]="'pillar-panel-' + pillar.id">
+        <div class="pillar-icon" aria-hidden="true">{{ pillar.icon }}</div>
+        <div class="pillar-card-text">
+          <strong class="pillar-title">{{ pillar.title }}</strong>
+          <span class="pillar-snippet">{{ pillar.subtitle }}</span>
+        </div>
+        <div class="pillar-indicator" aria-hidden="true"></div>
+      </button>
+    }
+  </div>
+
+  <!-- Dynamic Capability Inspector -->
+  @if (getSelectedPillar(); as pillar) {
+    <div 
+      class="pillar-inspector-card" 
+      role="tabpanel" 
+      [id]="'pillar-panel-' + pillar.id" 
+      [attr.aria-labelledby]="'pillar-tab-' + pillar.id">
+      <div class="inspector-top">
+        <div class="inspector-icon-large">{{ pillar.icon }}</div>
+        <div>
+          <span class="inspector-badge">{{ lang.isArabic() ? 'مهمة مؤسسية معتمدة' : 'Verified Enterprise Mandate' }}</span>
+          <h4 class="inspector-heading">{{ pillar.heading }}</h4>
+        </div>
+      </div>
+
+      <p class="inspector-desc">{{ pillar.description }}</p>
+
+      <div class="inspector-grid">
+        <!-- Strategic Impact -->
+        <div class="impact-box">
+          <strong class="box-title">
+            <span aria-hidden="true">⚡</span>
+            {{ lang.isArabic() ? 'الأثر الاستراتيجي في القطاع العام:' : 'Strategic Public-Sector Impact:' }}
+          </strong>
+          <p class="box-text">{{ pillar.strategicImpact }}</p>
+        </div>
+
+        <!-- Deliverables -->
+        <div class="deliverables-box">
+          <strong class="box-title">
+            <span aria-hidden="true">📦</span>
+            {{ lang.isArabic() ? 'المخرجات المعمارية المعتمدة:' : 'Approved Architectural Deliverables:' }}
+          </strong>
+          <div class="deliverables-tags">
+            @for (item of pillar.keyDeliverables; track item) {
+              <span class="deliverable-tag">{{ item }}</span>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>

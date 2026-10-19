@@ -1,0 +1,124 @@
+<main id="main-content" class="sectors-page">
+  <!-- Page Header Hero -->
+  <section class="page-hero-section" aria-label="Sectors Header">
+    <div class="container page-hero-container">
+      <span class="section-tag">{{ lang.isArabic() ? 'القطاعات والحلول الاستراتيجية' : 'STRATEGIC PUBLIC DOMAINS' }}</span>
+      <h1 class="page-hero-title">{{ lang.t().sectorsHeroTitle }}</h1>
+      <p class="page-hero-subhead">{{ lang.t().sectorsHeroSubtitle }}</p>
+    </div>
+  </section>
+
+  <!-- 4 Sectors Grid -->
+  <section class="section sectors-grid-section" aria-labelledby="sectors-grid-heading">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" id="sectors-grid-heading">{{ lang.isArabic() ? 'القطاعات الحيوية المدعومة بالبنية المؤسسية' : 'Vital Public Sectors Powered by DEFI Architecture' }}</h2>
+        <p class="section-subhead">{{ lang.isArabic() ? 'حلول معمارية وهندسية تخصصية تلبي المتطلبات المعقدة لكل قطاع على حدة مع ضمان التكامل القومي.' : 'Customized architectural frameworks meeting the specific legal and operational demands of each public domain.' }}</p>
+      </div>
+
+      <div class="sectors-grid">
+        @for (sector of lang.t().sectorsList; track sector.id) {
+          <div class="sector-card glass-panel">
+            <div class="sector-card-top">
+              <span class="sector-tag-pill">{{ sector.tag }}</span>
+              @if (sector.verifiedReference) {
+                <span class="verified-ref-pill">✓ {{ sector.verifiedReference }}</span>
+              }
+            </div>
+
+            <h3 class="sector-title">{{ sector.title }}</h3>
+            <p class="sector-desc">{{ sector.description }}</p>
+
+            <!-- Capabilities used -->
+            <div class="sector-caps-row">
+              <span class="caps-label">{{ lang.isArabic() ? 'الركائز المعمارية المطبقة:' : 'Capabilities Applied:' }}</span>
+              <div class="caps-chips">
+                @for (cap of sector.capabilitiesUsed; track cap) {
+                  <span class="cap-chip">{{ cap }}</span>
+                }
+              </div>
+            </div>
+
+            <!-- Public impact -->
+            <div class="sector-impact-box">
+              <strong class="impact-title">
+                <span aria-hidden="true">📈</span>
+                {{ lang.isArabic() ? 'الأثر القومي المباشر:' : 'Measurable National Impact:' }}
+              </strong>
+              <p class="impact-text">{{ sector.publicImpact }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Sector Integration Architecture Diagram -->
+  <section class="section sector-arch-section" aria-labelledby="arch-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">{{ lang.isArabic() ? 'الربط والتكامل البيني' : 'SYSTEM INTEROPERABILITY' }}</span>
+        <h2 class="section-title" id="arch-heading">{{ lang.isArabic() ? 'معمارية الربط والتكامل القطاعي الموحد' : 'Unified Cross-Sector Integration Architecture' }}</h2>
+        <p class="section-subhead">{{ lang.isArabic() ? 'كيف تربط منظومة DEFI بين القطاعات المختلفة عبر ناقل البيانات الوطني الآمن دون تكرار للبيانات.' : 'How DEFI bridges sectoral domains through a secure national data bus, ensuring zero data duplication and instant inter-agency verification.' }}</p>
+      </div>
+
+      <div class="arch-flow-diagram" role="img" [attr.aria-label]="lang.isArabic() ? 'مخطط الربط القطاعي' : 'Cross-Sector Integration Flow'">
+        <div class="arch-tier-sectors">
+          <div class="arch-node">
+            <span class="node-icon">🏛️</span>
+            <strong>{{ lang.isArabic() ? 'الإدارة الحكومية' : 'Public Admin' }}</strong>
+          </div>
+          <div class="arch-node">
+            <span class="node-icon">🎓</span>
+            <strong>{{ lang.isArabic() ? 'منظومة التعليم' : 'Education (MOE)' }}</strong>
+          </div>
+          <div class="arch-node">
+            <span class="node-icon">📊</span>
+            <strong>{{ lang.isArabic() ? 'دعم القرار' : 'Decision Support (IDSC)' }}</strong>
+          </div>
+          <div class="arch-node">
+            <span class="node-icon">🏢</span>
+            <strong>{{ lang.isArabic() ? 'الهيئات والخدمات' : 'Public Authorities' }}</strong>
+          </div>
+        </div>
+
+        <div class="arch-bus-connector">
+          <div class="bus-label">
+            <span class="bus-pulse"></span>
+            <strong>{{ lang.isArabic() ? 'ناقل البيانات والتكامل القومي (DEFI Integration Bus & API Gateway)' : 'DEFI National Integration Bus & API Gateway' }}</strong>
+          </div>
+        </div>
+
+        <div class="arch-tier-foundations">
+          <div class="foundation-box">
+            <span class="found-icon">🗄️</span>
+            <strong>{{ lang.isArabic() ? 'السجلات الوطنية الموحدة' : 'Unified Base Registries' }}</strong>
+            <p>{{ lang.isArabic() ? 'المواطنون · الأراضي · الشركات' : 'Civil · Commercial · Property Records' }}</p>
+          </div>
+          <div class="foundation-box">
+            <span class="found-icon">🛡️</span>
+            <strong>{{ lang.isArabic() ? 'السحابة السيادية والأمان' : 'Sovereign Cloud & Security' }}</strong>
+            <p>{{ lang.isArabic() ? 'تشفير وطني · جاهزية 99.99%' : 'Sovereign Encryption · 99.99% Uptime' }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Row -->
+  <section class="section sector-cta-section">
+    <div class="container text-center">
+      <div class="cta-actions-wrapper">
+        <a routerLink="/impact" class="btn btn-primary">
+          <span>{{ lang.isArabic() ? 'الاطلاع على الشركاء والأثر' : 'View Impact & Verified Partners' }}</span>
+          <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3.333 8h9.334M8 3.333L12.667 8 8 12.667" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a routerLink="/contact" class="btn btn-secondary">
+          <span>{{ lang.t().navContactCTA }}</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>

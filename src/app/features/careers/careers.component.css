@@ -1,0 +1,232 @@
+/* Page Hero */
+.page-hero-section {
+  padding-block: 4.5rem 3rem;
+  background: radial-gradient(circle at 50% 0%, rgba(30, 95, 216, 0.15), transparent 70%),
+              var(--color-primary-navy);
+  border-bottom: 1px solid var(--color-navy-border);
+  text-align: center;
+}
+
+.page-hero-container {
+  max-width: 860px;
+}
+
+.page-hero-title {
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.2;
+  margin-block-end: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.page-hero-subhead {
+  font-size: 1.15rem;
+  color: #CBD5E1;
+  line-height: 1.65;
+}
+
+/* Why DEFI Section */
+.why-defi-box {
+  background: linear-gradient(135deg, rgba(15, 33, 55, 0.9), rgba(19, 42, 71, 0.9));
+  border: 1px solid rgba(197, 160, 89, 0.35);
+  padding: 3rem;
+  border-radius: var(--radius-xl);
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .why-defi-box {
+    padding: 2rem 1.5rem;
+  }
+}
+
+.why-defi-title {
+  color: #FFFFFF;
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  font-weight: 800;
+  margin-block-end: 1.25rem;
+}
+
+.why-defi-desc {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #E2E8F0;
+  max-width: 840px;
+  margin-inline: auto;
+  margin-block-end: 2.5rem;
+}
+
+.why-defi-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+@media (max-width: 600px) {
+  .why-defi-stats {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.why-stat {
+  background: rgba(11, 25, 44, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.why-stat-num {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #60A5FA;
+  line-height: 1;
+  margin-block-end: 0.35rem;
+}
+
+.why-stat-label {
+  font-size: 0.82rem;
+  color: var(--color-text-light);
+}
+
+/* Domains Grid */
+.domains-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 860px) {
+  .domains-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.domain-card {
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.domain-focus-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--color-egypt-gold);
+  background: rgba(197, 160, 89, 0.12);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  margin-block-end: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.domain-title {
+  color: #FFFFFF;
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin-block-end: 0.75rem;
+}
+
+.domain-desc {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #CBD5E1;
+  margin-block-end: 1.75rem;
+}
+
+.domain-tech-strip {
+  margin-block-start: auto;
+  padding-block-start: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tech-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-text-light);
+  margin-block-end: 0.65rem;
+}
+
+.tech-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.tech-pill {
+  font-size: 0.78rem;
+  color: #93C5FD;
+  background: rgba(30, 95, 216, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
+}
+
+/* Apply Banner */
+.apply-banner {
+  background: linear-gradient(135deg, rgba(15, 33, 55, 0.95), rgba(30, 95, 216, 0.25));
+  border: 1px solid rgba(197, 160, 89, 0.4);
+  padding: 3rem;
+  border-radius: var(--radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+}
+
+@media (max-width: 900px) {
+  .apply-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 2.25rem 1.5rem;
+  }
+}
+
+.apply-content {
+  max-width: 680px;
+}
+
+.apply-title {
+  color: #FFFFFF;
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.25;
+  margin-block: 0.75rem;
+}
+
+.apply-desc {
+  font-size: 1rem;
+  color: #CBD5E1;
+  line-height: 1.65;
+  margin-block-end: 1.25rem;
+}
+
+.apply-meta-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+}
+
+.apply-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+@media (max-width: 900px) {
+  .apply-meta-item {
+    justify-content: center;
+  }
+}

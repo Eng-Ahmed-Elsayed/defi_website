@@ -1,0 +1,129 @@
+<!-- Accessible Skip Link -->
+<a href="#main-content" class="skip-link">{{ lang.t().skipLink }}</a>
+
+<!-- Institutional Top Announcement Bar -->
+<aside class="top-announcement" aria-label="Official Mandate Information">
+  <div class="container announcement-inner">
+    <div class="announcement-badge">
+      <span class="badge-dot" aria-hidden="true"></span>
+      <span>{{ lang.t().officialNotice }}</span>
+    </div>
+    <p class="announcement-text">{{ lang.t().mandateBanner }}</p>
+    <div class="announcement-links">
+      <span class="headquarters-pill">{{ lang.t().hqLocation }}</span>
+    </div>
+  </div>
+</aside>
+
+<!-- Main Header Navigation -->
+<header class="site-header" id="site-header">
+  <div class="container header-container">
+    <!-- Brand Logo -->
+    <a routerLink="/" class="brand-link" aria-label="DEFI Home">
+      <span class="brand-logo-badge">
+        <img src="/defi-logo-gradient.png" alt="Digital Egypt For Investment Logo" class="brand-logo" width="200" height="58">
+      </span>
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <nav class="desktop-nav" aria-label="Primary Navigation">
+      <ul class="nav-list">
+        @for (item of lang.t().navItems; track item.id) {
+          <li>
+            <a [routerLink]="item.route" routerLinkActive="active" class="nav-link">
+              {{ item.label }}
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="header-actions">
+      <!-- Language Switcher Toggle -->
+      <button 
+        type="button" 
+        class="lang-switch-btn" 
+        (click)="lang.toggleLanguage()" 
+        [attr.aria-label]="lang.isArabic() ? 'Switch to English' : 'التحويل إلى اللغة العربية'">
+        <span class="lang-icon" aria-hidden="true">🌐</span>
+        <span class="lang-current">{{ lang.t().langSwitchLabel }}</span>
+      </button>
+
+      <!-- Direct Contact CTA -->
+      <a routerLink="/contact" routerLinkActive="active" class="btn btn-primary header-cta">
+        <span>{{ lang.t().navContactCTA }}</span>
+        <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3.333 8h9.334M8 3.333L12.667 8 8 12.667" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+
+      <!-- Mobile Hamburger Button -->
+      <button 
+        type="button" 
+        class="mobile-toggle-btn" 
+        (click)="toggleMobileMenu()" 
+        [attr.aria-expanded]="isMobileMenuOpen()" 
+        aria-controls="mobile-nav-drawer" 
+        [attr.aria-label]="lang.t().mobileMenuAria">
+        <span class="hamburger-bar" [class.open]="isMobileMenuOpen()"></span>
+        <span class="hamburger-bar" [class.open]="isMobileMenuOpen()"></span>
+        <span class="hamburger-bar" [class.open]="isMobileMenuOpen()"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Navigation Drawer -->
+<div 
+  class="mobile-drawer-overlay" 
+  [class.active]="isMobileMenuOpen()" 
+  (click)="closeMobileMenu()" 
+  aria-hidden="true">
+</div>
+
+<aside 
+  class="mobile-nav-drawer" 
+  id="mobile-nav-drawer" 
+  [class.open]="isMobileMenuOpen()" 
+  aria-label="Mobile Navigation" 
+  [attr.aria-hidden]="!isMobileMenuOpen()">
+  
+  <div class="drawer-header">
+    <span class="brand-logo-badge">
+      <img src="/defi-logo-gradient.png" alt="DEFI Logo" class="drawer-logo" width="160" height="46">
+    </span>
+    <button type="button" class="drawer-close-btn" (click)="closeMobileMenu()" aria-label="Close menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 6L6 18M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+
+  <nav class="mobile-nav-links">
+    <ul>
+      @for (item of lang.t().navItems; track item.id) {
+        <li>
+          <a [routerLink]="item.route" routerLinkActive="active" (click)="closeMobileMenu()" class="mobile-nav-item">
+            {{ item.label }}
+          </a>
+        </li>
+      }
+      <li>
+        <a routerLink="/contact" routerLinkActive="active" (click)="closeMobileMenu()" class="mobile-nav-item contact-highlight">
+          {{ lang.t().navContactCTA }}
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="drawer-footer">
+    <button type="button" class="btn btn-outline drawer-lang-btn" (click)="lang.toggleLanguage()">
+      <span aria-hidden="true">🌐</span>
+      <span>{{ lang.t().langSwitchLabel }}</span>
+    </button>
+    <div class="drawer-decree-pill">
+      <span>⚖️ Decree No. 132/2020</span>
+    </div>
+  </div>
+</aside>

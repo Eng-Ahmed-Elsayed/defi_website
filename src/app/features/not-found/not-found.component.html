@@ -1,0 +1,25 @@
+<main id="main-content" class="not-found-page">
+  <div class="container not-found-container">
+    <div class="not-found-card glass-panel">
+      <span class="error-badge">404 · ERROR</span>
+      <h1 class="error-code">404</h1>
+      <h2 class="not-found-title">{{ lang.t().notFoundTitle }}</h2>
+      <p class="not-found-desc">{{ lang.t().notFoundDesc }}</p>
+
+      <div class="not-found-actions">
+        <a routerLink="/" class="btn btn-primary">
+          <span>{{ lang.t().notFoundReturnHome }}</span>
+          <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3.333 8h9.334M8 3.333L12.667 8 8 12.667" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a routerLink="/capabilities" class="btn btn-secondary">
+          <span>{{ lang.t().heroCtaSecondary }}</span>
+        </a>
+        <a routerLink="/contact" class="btn btn-outline">
+          <span>{{ lang.t().navContactCTA }}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</main>

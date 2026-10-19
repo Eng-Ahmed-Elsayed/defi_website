@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DEFI | Digital Egypt For Investment — شركة مصر الرقمية للاستثمار</title>
+  <meta name="description" content="Digital Egypt For Investment (DEFI) — Established by Prime Minister Decree No. 132/2020. Leading enterprise digital transformation, government enterprise architecture, IT infrastructure, and citizen-centric solutions for Egypt's public sector.">
+  <meta name="keywords" content="DEFI, Digital Egypt For Investment, ITIDA, MCIT, Egypt Digital Transformation, Government IT, Enterprise Architecture, مصر الرقمية للاستثمار">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://defi.com.eg/">
+  <meta property="og:title" content="Digital Egypt For Investment (DEFI) | Enterprise Public-Sector Transformation">
+  <meta property="og:description" content="Building the digital foundations for a connected Egypt. Specialized in enterprise architecture, secure IT infrastructure, and citizen-first digital services under Prime Minister Decree No. 132/2020.">
+  <meta property="og:image" content="/defi-logo-gradient.png">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/defi-logo-gradient.png">
+  
+  <!-- Google Fonts: Plus Jakarta Sans (EN) & IBM Plex Sans Arabic / Cairo (AR) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <!-- Skip Link for Accessibility -->
+  <a href="#main-content" class="skip-link" data-i18n="skipLink">Skip to main content</a>
+
+  <!-- Institutional Top Announcement Bar -->
+  <aside class="top-announcement" aria-label="Official Mandate Information">
+    <div class="container announcement-inner">
+      <div class="announcement-badge">
+        <span class="badge-dot"></span>
+        <span data-i18n="officialNotice">OFFICIAL PUBLIC-SECTOR ENTITY</span>
+      </div>
+      <p class="announcement-text" data-i18n="mandateBanner">
+        Established under Prime Minister Decree No. 132/2020 | Supporting MCIT & ITIDA National Transformation
+      </p>
+      <div class="announcement-links">
+        <span class="headquarters-pill" data-i18n="hqLocation">📍 Smart Village, B145, Cairo</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Corporate Navigation Header -->
+  <header class="site-header" id="site-header">
+    <div class="container header-container">
+      <!-- Brand Logo -->
+      <a href="#" class="brand-link" aria-label="DEFI Home">
+        <span class="brand-logo-badge">
+          <img src="/defi-logo-gradient.png" alt="Digital Egypt For Investment Logo" class="brand-logo" width="220" height="64">
+        </span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="desktop-nav" aria-label="Primary Navigation">
+        <ul class="nav-list">
+          <li><a href="#about" class="nav-link" data-i18n="navAbout">About DEFI</a></li>
+          <li><a href="#ecosystem" class="nav-link" data-i18n="navEcosystem">Digital Ecosystem</a></li>
+          <li><a href="#capabilities" class="nav-link" data-i18n="navCapabilities">Capabilities</a></li>
+          <li><a href="#journey" class="nav-link" data-i18n="navJourney">Operating Model</a></li>
+          <li><a href="#impact" class="nav-link" data-i18n="navImpact">Impact & Partners</a></li>
+          <li><a href="#careers" class="nav-link" data-i18n="navCareers">Careers</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Actions: Language Switch & Contact CTA -->
+      <div class="header-actions">
+        <!-- Language Switcher Toggle -->
+        <button type="button" class="lang-switch-btn" id="lang-toggle-btn" aria-label="Switch Language to Arabic">
+          <span class="lang-icon" aria-hidden="true">🌐</span>
+          <span class="lang-current" id="lang-label">عربي</span>
+        </button>
+
+        <!-- Direct Contact CTA -->
+        <a href="#contact" class="btn btn-primary header-cta" data-i18n="navContactCTA">
+          <span>Contact Us</span>
+          <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3.333 8h9.334M8 3.333L12.667 8 8 12.667" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+
+        <!-- Mobile Menu Hamburger Button -->
+        <button type="button" class="mobile-toggle-btn" id="mobile-menu-trigger" aria-expanded="false" aria-controls="mobile-nav-drawer" aria-label="Open mobile navigation menu">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-drawer-overlay" id="mobile-overlay" aria-hidden="true"></div>
+  <aside class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Mobile Navigation" aria-hidden="true">
+    <div class="drawer-header">
+      <span class="brand-logo-badge">
+        <img src="/defi-logo-gradient.png" alt="DEFI Logo" class="drawer-logo" width="160" height="46">
+      </span>
+      <button type="button" class="drawer-close-btn" id="mobile-close-btn" aria-label="Close navigation menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <nav class="mobile-nav-links">
+      <ul>
+        <li><a href="#about" class="mobile-nav-item" data-i18n="navAbout">About DEFI</a></li>
+        <li><a href="#ecosystem" class="mobile-nav-item" data-i18n="navEcosystem">Digital Ecosystem</a></li>
+        <li><a href="#capabilities" class="mobile-nav-item" data-i18n="navCapabilities">Capabilities</a></li>
+        <li><a href="#journey" class="mobile-nav-item" data-i18n="navJourney">Operating Model</a></li>
+        <li><a href="#impact" class="mobile-nav-item" data-i18n="navImpact">Impact & Partners</a></li>
+        <li><a href="#careers" class="mobile-nav-item" data-i18n="navCareers">Careers</a></li>
+      </ul>
+    </nav>
+    <div class="drawer-footer">
+      <button type="button" class="btn btn-outline drawer-lang-btn" id="drawer-lang-toggle">
+        <span aria-hidden="true">🌐</span>
+        <span id="drawer-lang-label">تبديل إلى العربية</span>
+      </button>
+      <a href="#contact" class="btn btn-primary drawer-contact-btn" data-i18n="navContactCTA">Contact Us</a>
+    </div>
+  </aside>
+
+  <!-- Main Page Content -->
+  <main id="main-content">
+    
+    <!-- =========================================================================
+         SECTION 1: HERO & DIAGRAM A (Connected Digital Ecosystem)
+         ========================================================================= -->
+    <section class="hero-section" id="hero">
+      <div class="hero-bg-glow glow-1" aria-hidden="true"></div>
+      <div class="hero-bg-glow glow-2" aria-hidden="true"></div>
+      <div class="hero-grid-pattern" aria-hidden="true"></div>
+
+      <div class="container hero-container">
+        <!-- Hero Text & Context -->
+        <div class="hero-content">
+          <div class="hero-pill">
+            <span class="hero-pill-badge" data-i18n="heroBadgePre">MANDATE 132/2020</span>
+            <span class="hero-pill-text" data-i18n="heroBadgeText">Executive Digital Transformation Partner</span>
+          </div>
+
+          <h1 class="hero-title" data-i18n="heroHeadline">
+            Architecting the <span class="gradient-text">Digital Foundations</span> for Egypt's Public Sector
+          </h1>
+
+          <p class="hero-subhead" data-i18n="heroSubhead">
+            Empowering ministries and public institutions with strategic enterprise architecture, mission-critical infrastructure, and citizen-centric digital platforms that accelerate national transformation.
+          </p>
+
+          <!-- CTAs -->
+          <div class="hero-actions">
+            <a href="#ecosystem" class="btn btn-primary btn-lg">
+              <span data-i18n="heroCtaPrimary">Explore the Ecosystem</span>
+              <svg class="btn-arrow" width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3.333 8h9.334M8 3.333L12.667 8 8 12.667" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a href="#capabilities" class="btn btn-outline btn-lg" data-i18n="heroCtaSecondary">
+              Our Capabilities
+            </a>
+          </div>
+
+          <!-- Hero Metrics Ticker (Official Verified Metrics) -->
+          <div class="hero-metrics-bar">
+            <div class="hero-metric-item">
+              <div class="metric-num">50<span class="metric-plus">+</span></div>
+              <div class="metric-label" data-i18n="metricClients">Enterprise Clients</div>
+            </div>
+            <div class="metric-divider" aria-hidden="true"></div>
+            <div class="hero-metric-item">
+              <div class="metric-num">200<span class="metric-plus">+</span></div>
+              <div class="metric-label" data-i18n="metricConsultants">Expert Consultants</div>
+            </div>
+            <div class="metric-divider" aria-hidden="true"></div>
+            <div class="hero-metric-item">
+              <div class="metric-num">25<span class="metric-plus">+</span></div>
+              <div class="metric-label" data-i18n="metricGovEntities">Government Entities</div>
+            </div>
+            <div class="metric-divider" aria-hidden="true"></div>
+            <div class="hero-metric-item">
+              <div class="metric-num">200<span class="metric-plus">+</span></div>
+              <div class="metric-label" data-i18n="metricServices">Digital Services</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==========================================================
+             DIAGRAM A: The Connected National Digital Ecosystem (Hero)
+             ========================================================== -->
+        <div class="hero-visual" id="ecosystem" aria-label="Diagram A: Connected National Digital Ecosystem">
+          <div class="diagram-wrapper card-glass">
+            <div class="diagram-header">
+              <div class="diagram-status">
+                <span class="status-indicator"></span>
+                <span class="diagram-title-text" data-i18n="diagramATitle">Diagram A · National Digital Ecosystem</span>
+              </div>
+              <span class="diagram-tag" data-i18n="diagramAInteractiveTag">Interactive Architecture</span>
+            </div>
+
+            <div class="diagram-canvas-container">
+              <!-- Handcrafted Semantic Responsive SVG Visual -->
+              <svg class="ecosystem-svg" viewBox="0 0 680 440" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="diagramADesc">
+                <title id="diagramADesc">Architecture diagram illustrating DEFI bridging Citizens, Government Ministries, Integration Backbone, and Secure National Infrastructure.</title>
+                
+                <!-- Background Connection Traces with Pulse Animations -->
+                <g class="network-traces" opacity="0.4">
+                  <!-- Flow Lines from Top to DEFI Core -->
+                  <path d="M 170 85 L 170 150 L 340 180" stroke="url(#blueGrad)" stroke-width="2" stroke-dasharray="4 4" class="animated-trace"/>
+                  <path d="M 510 85 L 510 150 L 340 180" stroke="url(#purpleGrad)" stroke-width="2" stroke-dasharray="4 4" class="animated-trace"/>
+                  
+                  <!-- Flow Lines from DEFI Core to Foundation -->
+                  <path d="M 340 250 L 170 290 L 170 345" stroke="url(#blueGrad)" stroke-width="2" stroke-dasharray="4 4" class="animated-trace"/>
+                  <path d="M 340 250 L 510 290 L 510 345" stroke="url(#purpleGrad)" stroke-width="2" stroke-dasharray="4 4" class="animated-trace"/>
+                  <path d="M 340 250 L 340 345" stroke="url(#tealGrad)" stroke-width="2.5" class="solid-trace"/>
+                </g>
+
+                <!-- Layer 1 (Top Left): Citizens & Business Channels -->
+                <g class="diagram-node node-interactive" data-node="citizens" tabindex="0" role="button" aria-label="Citizens and Businesses Layer">
+                  <rect x="50" y="30" width="240" height="70" rx="12" class="node-box" />
+                  <circle cx="80" cy="65" r="18" fill="#1E5FD8" fill-opacity="0.2" stroke="#1E5FD8" stroke-width="1.5"/>
+                  <path d="M74 72 C74 68 77 65 80 65 C83 65 86 68 86 72 M80 62 A3.5 3.5 0 1 0 80 55 A3.5 3.5 0 1 0 80 62" stroke="#60A5FA" stroke-width="1.8" stroke-linecap="round"/>
+                  <text x="110" y="58" class="svg-node-title" data-i18n="nodeTouchpointsTitle">Citizen & Business Channels</text>
+                  <text x="110" y="76" class="svg-node-sub" data-i18n="nodeTouchpointsSub">Portals · Mobile Apps · Service Centers</text>
+                </g>
+
+                <!-- Layer 1 (Top Right): Ministries & Public Entities -->
+                <g class="diagram-node node-interactive" data-node="ministries" tabindex="0" role="button" aria-label="Government Entities Layer">
+                  <rect x="390" y="30" width="240" height="70" rx="12" class="node-box" />
+                  <circle cx="420" cy="65" r="18" fill="#6366F1" fill-opacity="0.2" stroke="#6366F1" stroke-width="1.5"/>
+                  <path d="M412 71 L428 71 M414 71 L414 62 L420 57 L426 62 L426 71 M420 62 L420 71" stroke="#A78BFA" stroke-width="1.8" stroke-linecap="round"/>
+                  <text x="450" y="58" class="svg-node-title" data-i18n="nodeEntitiesTitle">Government Entities & Ministries</text>
+                  <text x="450" y="76" class="svg-node-sub" data-i18n="nodeEntitiesSub">MOE · IDSC · 25+ Public Bodies</text>
+                </g>
+
+                <!-- Layer 2 (Center Core): DEFI Digital Enablement Backbone -->
+                <g class="diagram-core-node" data-node="defi-core" tabindex="0" role="button" aria-label="DEFI Digital Enablement Backbone">
+                  <rect x="180" y="160" width="320" height="96" rx="16" class="core-box" />
+                  <circle cx="225" cy="208" r="24" fill="#087E8B" fill-opacity="0.3" stroke="#00D2D3" stroke-width="2"/>
+                  <!-- Stylized Pyramid / Trace Icon -->
+                  <path d="M214 216 L225 198 L236 216 Z M225 204 L236 204 L240 200" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <text x="260" y="198" class="svg-core-title" data-i18n="nodeCoreTitle">DEFI Digital Enablement Backbone</text>
+                  <text x="260" y="218" class="svg-core-sub" data-i18n="nodeCoreSub1">Enterprise Architecture · Interoperability</text>
+                  <text x="260" y="234" class="svg-core-sub-secondary" data-i18n="nodeCoreSub2">National Data Bus · Secure Integration APIs</text>
+                </g>
+
+                <!-- Layer 3 (Bottom Left): National Registries & Data Assets -->
+                <g class="diagram-node node-interactive" data-node="registries" tabindex="0" role="button" aria-label="National Registries Layer">
+                  <rect x="50" y="340" width="240" height="70" rx="12" class="node-box" />
+                  <circle cx="80" cy="375" r="18" fill="#1E5FD8" fill-opacity="0.2" stroke="#1E5FD8" stroke-width="1.5"/>
+                  <path d="M72 370 C72 367 88 367 88 370 C88 373 72 373 72 370 M72 375 C72 378 88 378 88 375 M72 380 C72 383 88 383 88 380" stroke="#60A5FA" stroke-width="1.8"/>
+                  <text x="110" y="368" class="svg-node-title" data-i18n="nodeDataTitle">National Registries & Data</text>
+                  <text x="110" y="386" class="svg-node-sub" data-i18n="nodeDataSub">Interoperable Base Registers</text>
+                </g>
+
+                <!-- Layer 3 (Bottom Center): Secure Cloud & Infrastructure -->
+                <g class="diagram-node node-interactive" data-node="infra" tabindex="0" role="button" aria-label="Cloud and Infrastructure Layer">
+                  <rect x="390" y="340" width="240" height="70" rx="12" class="node-box" />
+                  <circle cx="420" cy="375" r="18" fill="#087E8B" fill-opacity="0.2" stroke="#087E8B" stroke-width="1.5"/>
+                  <path d="M412 378 C410 378 408 376 408 373 C408 370 411 368 414 368 C415 365 418 363 422 363 C426 363 429 366 430 369 C433 369 435 372 435 375 C435 378 433 380 430 380 L412 380" stroke="#2DD4BF" stroke-width="1.8" stroke-linecap="round"/>
+                  <text x="450" y="368" class="svg-node-title" data-i18n="nodeInfraTitle">Secure Cloud & Infrastructure</text>
+                  <text x="450" y="386" class="svg-node-sub" data-i18n="nodeInfraSub">High-Availability Gov Centers · 24/7 Ops</text>
+                </g>
+
+                <!-- Gradients Defs -->
+                <defs>
+                  <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#1E5FD8" />
+                    <stop offset="100%" stop-color="#38BDF8" />
+                  </linearGradient>
+                  <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#6366F1" />
+                    <stop offset="100%" stop-color="#A855F7" />
+                  </linearGradient>
+                  <linearGradient id="tealGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#087E8B" />
+                    <stop offset="100%" stop-color="#14B8A6" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+
+            <!-- Dynamic Node Info Box (Updated on Node Click/Hover) -->
+            <div class="diagram-info-panel" id="diagram-a-tooltip">
+              <span class="info-icon">ℹ️</span>
+              <p class="info-text" id="diagram-a-info-text" data-i18n="diagramADefaultInfo">
+                Click or hover any ecosystem layer above to inspect how DEFI orchestrates data, governance, and services across Egypt's national digital landscape.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 2: INSTITUTIONAL PURPOSE & MANDATE (Decree 132/2020)
+         ========================================================================= -->
+    <section class="section section-institutional" id="about">
+      <div class="container">
+        <div class="institutional-grid">
+          <div class="institutional-left">
+            <div class="section-tag" data-i18n="aboutTag">ESTABLISHED AUTHORITY</div>
+            <h2 class="section-title" data-i18n="aboutTitle">
+              Empowering Egypt's Public Sector Under <span class="gradient-text">Decree No. 132/2020</span>
+            </h2>
+            <p class="section-desc" data-i18n="aboutDesc1">
+              Digital Egypt For Investment Co. (DEFI) was founded pursuant to Prime Minister Decree No. 132/2020 to serve as the specialized technical and strategic arm supporting the Ministry of Communications and Information Technology (MCIT) and the Information Technology Industry Development Agency (ITIDA).
+            </p>
+            <p class="section-desc" data-i18n="aboutDesc2">
+              By combining enterprise-grade IT architecture with a deep understanding of governmental mandates, DEFI bridges the gap between ambitious national transformation policies and resilient, secure operational reality.
+            </p>
+
+            <div class="pillars-row">
+              <div class="pillar-box">
+                <span class="pillar-icon">🏛️</span>
+                <h3 class="pillar-title" data-i18n="pillar1Title">Public Sector Focus</h3>
+                <p class="pillar-desc" data-i18n="pillar1Desc">Dedicated exclusively to government authorities, public service agencies, and national projects.</p>
+              </div>
+              <div class="pillar-box">
+                <span class="pillar-icon">🔒</span>
+                <h3 class="pillar-title" data-i18n="pillar2Title">Governance & Security</h3>
+                <p class="pillar-desc" data-i18n="pillar2Desc">Rigorous compliance with Egyptian state data sovereignty, security, and quality benchmarks.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="institutional-right">
+            <!-- Strategic Alignment Card -->
+            <div class="stat-highlight-card">
+              <div class="card-seal">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  <path d="M9 12l2 2 4-4"/>
+                </svg>
+              </div>
+              <h3 class="highlight-title" data-i18n="mandateCardTitle">National Mandate & Mission</h3>
+              <ul class="highlight-list">
+                <li>
+                  <strong data-i18n="mandatePt1Title">Modernizing Public Services:</strong>
+                  <span data-i18n="mandatePt1Desc">Transforming legacy administrative workflows into intuitive, citizen-centric digital platforms.</span>
+                </li>
+                <li>
+                  <strong data-i18n="mandatePt2Title">Interoperable Infrastructure:</strong>
+                  <span data-i18n="mandatePt2Desc">Establishing enterprise architecture frameworks that seamlessly link federal registries and services.</span>
+                </li>
+                <li>
+                  <strong data-i18n="mandatePt3Title">Operational Continuity:</strong>
+                  <span data-i18n="mandatePt3Desc">Managing and safeguarding mission-critical systems with 24/7 reliability and performance monitoring.</span>
+                </li>
+              </ul>
+
+              <!-- Official Core Values -->
+              <div class="values-bar">
+                <span class="val-label" data-i18n="valuesLabel">Core Values:</span>
+                <div class="val-tags">
+                  <span class="val-tag" data-i18n="val1">Innovation</span>
+                  <span class="val-tag" data-i18n="val2">Excellence</span>
+                  <span class="val-tag" data-i18n="val3">Collaboration</span>
+                  <span class="val-tag" data-i18n="val4">Integrity</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 3: DIAGRAM C (The National Capability Matrix)
+         ========================================================================= -->
+    <section class="section section-capabilities" id="capabilities">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag" data-i18n="capTag">VERIFIED CAPABILITY MATRIX</div>
+          <h2 class="section-title" data-i18n="capTitle">
+            Diagram C · The 6 Institutional <span class="gradient-text">Capability Pillars</span>
+          </h2>
+          <p class="section-desc max-w-2xl" data-i18n="capSub">
+            Rather than generic tech offerings, DEFI provides six integrated enterprise pillars verified on our official service charter. Select any pillar below to inspect its operational mandate.
+          </p>
+        </div>
+
+        <!-- DIAGRAM C: Interactive Capability Matrix Layout -->
+        <div class="capability-matrix-container">
+          <!-- Capability Selector Grid -->
+          <div class="cap-selector-grid" role="tablist" aria-label="DEFI Capability Pillars">
+            
+            <!-- Pillar 1: Business Architecture -->
+            <button type="button" class="cap-card active" role="tab" aria-selected="true" id="tab-cap-1" aria-controls="panel-cap-1" data-cap="1">
+              <div class="cap-card-num">01</div>
+              <div class="cap-card-icon">🏛️</div>
+              <h3 class="cap-card-title" data-i18n="cap1Title">Business Architecture</h3>
+              <p class="cap-card-snippet" data-i18n="cap1Snippet">Strategy & operating model alignment</p>
+            </button>
+
+            <!-- Pillar 2: Solution Architecture -->
+            <button type="button" class="cap-card" role="tab" aria-selected="false" id="tab-cap-2" aria-controls="panel-cap-2" data-cap="2">
+              <div class="cap-card-num">02</div>
+              <div class="cap-card-icon">⚙️</div>
+              <h3 class="cap-card-title" data-i18n="cap2Title">Solution Architecture</h3>
+              <p class="cap-card-snippet" data-i18n="cap2Snippet">Scalable platforms & interoperability</p>
+            </button>
+
+            <!-- Pillar 3: IT Operations -->
+            <button type="button" class="cap-card" role="tab" aria-selected="false" id="tab-cap-3" aria-controls="panel-cap-3" data-cap="3">
+              <div class="cap-card-num">03</div>
+              <div class="cap-card-icon">🛡️</div>
+              <h3 class="cap-card-title" data-i18n="cap3Title">IT Operations</h3>
+              <p class="cap-card-snippet" data-i18n="cap3Snippet">System reliability & 24/7 performance</p>
+            </button>
+
+            <!-- Pillar 4: Citizen Experience -->
+            <button type="button" class="cap-card" role="tab" aria-selected="false" id="tab-cap-4" aria-controls="panel-cap-4" data-cap="4">
+              <div class="cap-card-num">04</div>
+              <div class="cap-card-icon">👥</div>
+              <h3 class="cap-card-title" data-i18n="cap4Title">Citizen Experience</h3>
+              <p class="cap-card-snippet" data-i18n="cap4Snippet">Accessible, intuitive public service design</p>
+            </button>
+
+            <!-- Pillar 5: Project Management -->
+            <button type="button" class="cap-card" role="tab" aria-selected="false" id="tab-cap-5" aria-controls="panel-cap-5" data-cap="5">
+              <div class="cap-card-num">05</div>
+              <div class="cap-card-icon">📊</div>
+              <h3 class="cap-card-title" data-i18n="cap5Title">Project Management</h3>
+              <p class="cap-card-snippet" data-i18n="cap5Snippet">On-time delivery with public governance</p>
+            </button>
+
+            <!-- Pillar 6: Quality Governance -->
+            <button type="button" class="cap-card" role="tab" aria-selected="false" id="tab-cap-6" aria-controls="panel-cap-6" data-cap="6">
+              <div class="cap-card-num">06</div>
+              <div class="cap-card-icon">✅</div>
+              <h3 class="cap-card-title" data-i18n="cap6Title">Quality Governance</h3>
+              <p class="cap-card-snippet" data-i18n="cap6Snippet">Audits, testing & regulatory compliance</p>
+            </button>
+          </div>
+
+          <!-- Active Detail Display Panel -->
+          <div class="cap-detail-panel card-glass" id="cap-detail-display" role="tabpanel" aria-labelledby="tab-cap-1">
+            <div class="cap-detail-header">
+              <div class="cap-detail-badge" id="cap-detail-index">PILLAR 01</div>
+              <h3 class="cap-detail-title" id="cap-detail-heading" data-i18n="cap1Heading">Business Architecture</h3>
+            </div>
+            <p class="cap-detail-body" id="cap-detail-desc" data-i18n="cap1Desc">
+              Aligning governmental strategies with operational models to support public-sector transformation, process optimization, and effective integration of government IT systems.
+            </p>
+            <div class="cap-detail-footer">
+              <div class="cap-impact-box">
+                <span class="impact-label" data-i18n="capImpactLabel">Institutional Impact:</span>
+                <span class="impact-value" id="cap-detail-impact" data-i18n="cap1Impact">Streamlined inter-agency processes and eliminated departmental silos.</span>
+              </div>
+              <div class="cap-deliverables-box">
+                <span class="deliverable-label" data-i18n="capDeliverableLabel">Key Deliverables:</span>
+                <span class="deliverable-value" id="cap-detail-deliv" data-i18n="cap1Deliv">Operating Models · Enterprise Process Blueprints · Transformation Roadmaps</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 4: DIAGRAM B (Transformation Journey / Operating Model)
+         ========================================================================= -->
+    <section class="section section-journey" id="journey">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag" data-i18n="journeyTag">DELIVERY METHODOLOGY</div>
+          <h2 class="section-title" data-i18n="journeyTitle">
+            Diagram B · The Public-Sector <span class="gradient-text">Transformation Journey</span>
+          </h2>
+          <p class="section-desc max-w-2xl" data-i18n="journeySub">
+            How DEFI guides government institutions from strategic mandate through architectural engineering to resilient 24/7 service operation.
+          </p>
+        </div>
+
+        <!-- DIAGRAM B: Interactive Stepper Pipeline -->
+        <div class="journey-stepper-container">
+          <!-- Stepper Track (Desktop Horizontal, Mobile Vertical) -->
+          <div class="journey-track" role="list">
+            
+            <!-- Step 1 -->
+            <div class="journey-step-item active" data-step="1" tabindex="0" role="listitem">
+              <div class="step-marker">
+                <span class="step-num">01</span>
+              </div>
+              <div class="step-content">
+                <span class="step-phase" data-i18n="step1Phase">PHASE 1</span>
+                <h3 class="step-title" data-i18n="step1Title">Assess & Align</h3>
+                <p class="step-summary" data-i18n="step1Summary">Evaluate agency workflows, define objectives, and establish enterprise architecture governance.</p>
+                <div class="step-tag" data-i18n="step1Tag">Governance & Strategy</div>
+              </div>
+            </div>
+
+            <!-- Connector -->
+            <div class="step-connector" aria-hidden="true"></div>
+
+            <!-- Step 2 -->
+            <div class="journey-step-item" data-step="2" tabindex="0" role="listitem">
+              <div class="step-marker">
+                <span class="step-num">02</span>
+              </div>
+              <div class="step-content">
+                <span class="step-phase" data-i18n="step2Phase">PHASE 2</span>
+                <h3 class="step-title" data-i18n="step2Title">Architect & Design</h3>
+                <p class="step-summary" data-i18n="step2Summary">Engineer secure, scalable solution blueprints complying with national interoperability standards.</p>
+                <div class="step-tag" data-i18n="step2Tag">Solution Architecture</div>
+              </div>
+            </div>
+
+            <!-- Connector -->
+            <div class="step-connector" aria-hidden="true"></div>
+
+            <!-- Step 3 -->
+            <div class="journey-step-item" data-step="3" tabindex="0" role="listitem">
+              <div class="step-marker">
+                <span class="step-num">03</span>
+              </div>
+              <div class="step-content">
+                <span class="step-phase" data-i18n="step3Phase">PHASE 3</span>
+                <h3 class="step-title" data-i18n="step3Title">Integrate & Deploy</h3>
+                <p class="step-summary" data-i18n="step3Summary">Modernize legacy systems, integrate API registries, and execute phased public deployment.</p>
+                <div class="step-tag" data-i18n="step3Tag">Execution & Integration</div>
+              </div>
+            </div>
+
+            <!-- Connector -->
+            <div class="step-connector" aria-hidden="true"></div>
+
+            <!-- Step 4 -->
+            <div class="journey-step-item" data-step="4" tabindex="0" role="listitem">
+              <div class="step-marker">
+                <span class="step-num">04</span>
+              </div>
+              <div class="step-content">
+                <span class="step-phase" data-i18n="step4Phase">PHASE 4</span>
+                <h3 class="step-title" data-i18n="step4Title">Operate & Safeguard</h3>
+                <p class="step-summary" data-i18n="step4Summary">Manage 24/7 continuity, infrastructure reliability, data security, and high-availability operations.</p>
+                <div class="step-tag" data-i18n="step4Tag">Operations & Continuity</div>
+              </div>
+            </div>
+
+            <!-- Connector -->
+            <div class="step-connector" aria-hidden="true"></div>
+
+            <!-- Step 5 -->
+            <div class="journey-step-item" data-step="5" tabindex="0" role="listitem">
+              <div class="step-marker">
+                <span class="step-num">05</span>
+              </div>
+              <div class="step-content">
+                <span class="step-phase" data-i18n="step5Phase">PHASE 5</span>
+                <h3 class="step-title" data-i18n="step5Title">Elevate & Evolve</h3>
+                <p class="step-summary" data-i18n="step5Summary">Refine citizen experience, conduct rigorous quality audits, and scale for national impact.</p>
+                <div class="step-tag" data-i18n="step5Tag">Citizen Experience CX</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 5: VERIFIED INSTITUTIONAL IMPACT & PARTNERS
+         ========================================================================= -->
+    <section class="section section-impact" id="impact">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag" data-i18n="impactTag">VERIFIED TRACK RECORD</div>
+          <h2 class="section-title" data-i18n="impactTitle">
+            Trusted by Egypt's <span class="gradient-text">Leading Institutions</span>
+          </h2>
+          <p class="section-desc max-w-2xl" data-i18n="impactSub">
+            We work closely with prominent government bodies committed to modernizing public services, elevating citizen experience, and executing Egypt's national digital agenda.
+          </p>
+        </div>
+
+        <!-- Verified Partners Grid -->
+        <div class="partners-grid">
+          
+          <!-- Partner 1: MOE -->
+          <div class="partner-card card-glass">
+            <div class="partner-card-header">
+              <div class="partner-icon-wrap">
+                <span class="partner-icon">🎓</span>
+              </div>
+              <div class="partner-badge" data-i18n="partnerBadgeGov">MINISTERIAL PARTNER</div>
+            </div>
+            <h3 class="partner-name" data-i18n="partner1Name">Ministry of Education & Technical Education</h3>
+            <p class="partner-desc" data-i18n="partner1Desc">
+              Supporting large-scale educational systems and digital examinations infrastructure to serve millions of students and educators nationwide.
+            </p>
+            <div class="partner-stat-tag" data-i18n="partner1Tag">National Education Platforms</div>
+          </div>
+
+          <!-- Partner 2: IDSC -->
+          <div class="partner-card card-glass">
+            <div class="partner-card-header">
+              <div class="partner-icon-wrap">
+                <span class="partner-icon">🏛️</span>
+              </div>
+              <div class="partner-badge" data-i18n="partnerBadgeGov">CABINET AUTHORITY</div>
+            </div>
+            <h3 class="partner-name" data-i18n="partner2Name">Information and Decision Support Center (IDSC)</h3>
+            <p class="partner-desc" data-i18n="partner2Desc">
+              The Egyptian Cabinet's premier think tank and decision support hub, collaborating on data platforms and institutional intelligence solutions.
+            </p>
+            <div class="partner-stat-tag" data-i18n="partner2Tag">Executive Decision Platforms</div>
+          </div>
+
+          <!-- Partner 3: ITIDA / MCIT -->
+          <div class="partner-card card-glass">
+            <div class="partner-card-header">
+              <div class="partner-icon-wrap">
+                <span class="partner-icon">🌐</span>
+              </div>
+              <div class="partner-badge" data-i18n="partnerBadgeSponsor">FOUNDING SPONSOR</div>
+            </div>
+            <h3 class="partner-name" data-i18n="partner3Name">MCIT & ITIDA</h3>
+            <p class="partner-desc" data-i18n="partner3Desc">
+              Aligned with the Ministry of Communications and Information Technology and ITIDA to advance Egypt's digital knowledge-based economy under Decree 132/2020.
+            </p>
+            <div class="partner-stat-tag" data-i18n="partner3Tag">National Digital Strategy</div>
+          </div>
+
+          <!-- Partner 4: 25+ Gov Clients -->
+          <div class="partner-card card-glass highlight-stat-box">
+            <div class="big-metric-wrap">
+              <span class="big-metric-num">25<span class="accent-gold">+</span></span>
+            </div>
+            <h3 class="partner-name" data-i18n="partner4Name">Government Authorities & Entities</h3>
+            <p class="partner-desc" data-i18n="partner4Desc">
+              Delivering cross-sectoral enterprise architecture, interoperability solutions, and citizen service workflows across key governmental domains.
+            </p>
+            <div class="partner-stat-tag" data-i18n="partner4Tag">200+ Modernized Services</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 6: CAREERS & NATIONAL MISSION CTA
+         ========================================================================= -->
+    <section class="section section-careers" id="careers">
+      <div class="container">
+        <div class="careers-card card-glass">
+          <div class="careers-content">
+            <div class="section-tag" data-i18n="careersTag">JOIN OUR MISSION</div>
+            <h2 class="careers-title" data-i18n="careersTitle">
+              Be Part of Egypt's <span class="gradient-text">Digital Future</span>
+            </h2>
+            <p class="careers-desc" data-i18n="careersDesc">
+              Whether you are an enterprise architect, software engineer, security specialist, or digital transformation consultant—we offer you the opportunity to engineer solutions that impact millions of citizens every day.
+            </p>
+            
+            <div class="careers-features">
+              <div class="feature-item">
+                <span class="feature-check">✓</span>
+                <span data-i18n="careerFeat1">Nationwide sovereign impact</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-check">✓</span>
+                <span data-i18n="careerFeat2">Over 200 expert technology peers</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-check">✓</span>
+                <span data-i18n="careerFeat3">Enterprise-grade architecture standards</span>
+              </div>
+            </div>
+
+            <div class="careers-actions">
+              <a href="mailto:info@defi.com.eg?subject=Career%20Inquiry%20-%20DEFI" class="btn btn-primary btn-lg">
+                <span data-i18n="careerBtn">Inquire About Opportunities</span>
+                <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3.333 8h9.334M8 3.333L12.667 8 8 12.667" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <span class="careers-email-note" data-i18n="careerNote">Send your CV directly to: info@defi.com.eg</span>
+            </div>
+          </div>
+
+          <div class="careers-badge-visual">
+            <div class="crest-container">
+              <span class="brand-logo-badge crest-badge">
+                <img src="/defi-logo-gradient.png" alt="DEFI Symbol" class="crest-logo" width="180" height="52">
+              </span>
+              <div class="crest-mandate-box">
+                <span class="crest-decree" data-i18n="crestDecree">DECREE 132/2020</span>
+                <span class="crest-label" data-i18n="crestLabel">National Digital Delivery</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 7: CONTACT & INSTITUTIONAL HEADQUARTERS
+         ========================================================================= -->
+    <section class="section section-contact" id="contact">
+      <div class="container">
+        <div class="contact-grid">
+          
+          <!-- Contact Details -->
+          <div class="contact-info">
+            <div class="section-tag" data-i18n="contactTag">GET IN TOUCH</div>
+            <h2 class="section-title" data-i18n="contactTitle">
+              Connect with Our <span class="gradient-text">Leadership Team</span>
+            </h2>
+            <p class="section-desc" data-i18n="contactDesc">
+              For public-sector partnership inquiries, enterprise architecture evaluations, or institutional collaboration, our teams at Smart Village are ready to assist.
+            </p>
+
+            <div class="contact-cards-list">
+              <!-- Location Card -->
+              <div class="contact-info-card">
+                <div class="contact-card-icon">📍</div>
+                <div class="contact-card-content">
+                  <h3 class="contact-card-title" data-i18n="contactAddressTitle">Headquarters</h3>
+                  <p class="contact-card-text" data-i18n="contactAddressText">
+                    Smart Village, Building B145, Cairo-Alexandria Desert Road, Giza, Egypt
+                  </p>
+                </div>
+              </div>
+
+              <!-- Email Card -->
+              <div class="contact-info-card">
+                <div class="contact-card-icon">✉️</div>
+                <div class="contact-card-content">
+                  <h3 class="contact-card-title" data-i18n="contactEmailTitle">Official Correspondence</h3>
+                  <a href="mailto:info@defi.com.eg" class="contact-card-link">info@defi.com.eg</a>
+                </div>
+              </div>
+
+              <!-- Legal Registration Card -->
+              <div class="contact-info-card">
+                <div class="contact-card-icon">📜</div>
+                <div class="contact-card-content">
+                  <h3 class="contact-card-title" data-i18n="contactLegalTitle">Corporate Status</h3>
+                  <p class="contact-card-text" data-i18n="contactLegalText">
+                    Egyptian Joint Stock Company established by Prime Minister Decree No. 132/2020 under MCIT & ITIDA.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Direct Inquiry Form (Front-end scoped for public sector stakeholders) -->
+          <div class="contact-form-wrap card-glass">
+            <h3 class="form-title" data-i18n="formTitle">Institutional Inquiry Form</h3>
+            <p class="form-subtitle" data-i18n="formSub">Direct your inquiry to our enterprise advisory team.</p>
+
+            <form id="institutional-inquiry-form" class="inquiry-form" novalidate>
+              <div class="form-group">
+                <label for="form-name" data-i18n="formNameLabel">Full Name</label>
+                <input type="text" id="form-name" name="name" class="form-input" required placeholder="e.g. Dr. Ahmed Hassan" data-i18n-ph="formNamePh">
+              </div>
+
+              <div class="form-group">
+                <label for="form-entity" data-i18n="formEntityLabel">Government Entity / Organization</label>
+                <input type="text" id="form-entity" name="entity" class="form-input" required placeholder="e.g. Ministry / Public Authority" data-i18n-ph="formEntityPh">
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-half">
+                  <label for="form-email" data-i18n="formEmailLabel">Official Email</label>
+                  <input type="email" id="form-email" name="email" class="form-input" required placeholder="name@entity.gov.eg" data-i18n-ph="formEmailPh">
+                </div>
+                <div class="form-group col-half">
+                  <label for="form-topic" data-i18n="formTopicLabel">Inquiry Pillar</label>
+                  <select id="form-topic" name="topic" class="form-select">
+                    <option value="business-architecture" data-i18n="opt1">Business Architecture</option>
+                    <option value="solution-architecture" data-i18n="opt2">Solution Architecture</option>
+                    <option value="it-operations" data-i18n="opt3">IT Operations & Continuity</option>
+                    <option value="citizen-experience" data-i18n="opt4">Citizen Experience (CX)</option>
+                    <option value="project-management" data-i18n="opt5">Project Management & Governance</option>
+                    <option value="careers" data-i18n="opt6">Careers & Talent</option>
+                    <option value="general" data-i18n="opt7">General Institutional Inquiry</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="form-message" data-i18n="formMessageLabel">Message / Scope Overview</label>
+                <textarea id="form-message" name="message" class="form-textarea" rows="4" required placeholder="Please outline your entity's requirements or inquiry..." data-i18n-ph="formMessagePh"></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block form-submit-btn" id="form-submit-button">
+                <span data-i18n="formSubmit">Transmit Inquiry</span>
+                <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3.333 8h9.334M8 3.333L12.667 8 8 12.667" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+
+              <div class="form-feedback" id="form-status" role="alert" aria-live="polite"></div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       CORPORATE FOOTER
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-top">
+        <div class="footer-brand-col">
+          <a href="#" class="footer-brand-link">
+            <span class="brand-logo-badge">
+              <img src="/defi-logo-gradient.png" alt="DEFI Logo" class="footer-logo" width="180" height="52">
+            </span>
+          </a>
+          <p class="footer-mission-text" data-i18n="footerMission">
+            Digital Egypt For Investment Co. (DEFI) — Delivering enterprise architecture, digital transformation, and mission-critical government platforms under Prime Minister Decree No. 132/2020.
+          </p>
+          <div class="footer-social-links">
+            <a href="https://www.linkedin.com/company/digital-egypt-for-investment-co/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Official LinkedIn Company Profile">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-links-col">
+          <h4 class="footer-col-title" data-i18n="footerNavTitle">Navigation</h4>
+          <ul class="footer-nav-list">
+            <li><a href="#about" data-i18n="navAbout">About DEFI</a></li>
+            <li><a href="#ecosystem" data-i18n="navEcosystem">Digital Ecosystem</a></li>
+            <li><a href="#capabilities" data-i18n="navCapabilities">Capabilities</a></li>
+            <li><a href="#journey" data-i18n="navJourney">Operating Model</a></li>
+            <li><a href="#impact" data-i18n="navImpact">Impact & Partners</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-col">
+          <h4 class="footer-col-title" data-i18n="footerCapTitle">Verified Pillars</h4>
+          <ul class="footer-nav-list">
+            <li><a href="#capabilities" data-i18n="cap1Title">Business Architecture</a></li>
+            <li><a href="#capabilities" data-i18n="cap2Title">Solution Architecture</a></li>
+            <li><a href="#capabilities" data-i18n="cap3Title">IT Operations</a></li>
+            <li><a href="#capabilities" data-i18n="cap4Title">Citizen Experience</a></li>
+            <li><a href="#capabilities" data-i18n="cap5Title">Project Management</a></li>
+            <li><a href="#capabilities" data-i18n="cap6Title">Quality Governance</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-col">
+          <h4 class="footer-col-title" data-i18n="footerGovTitle">Institutional Context</h4>
+          <p class="footer-decree-text" data-i18n="footerDecreeText">
+            Established under Prime Minister Decree No. 132/2020. Operating under the auspices of MCIT and ITIDA.
+          </p>
+          <div class="footer-contact-mini">
+            <span>📍 Smart Village, B145, Cairo</span>
+            <span>✉️ <a href="mailto:info@defi.com.eg">info@defi.com.eg</a></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="copyright-text" data-i18n="footerCopyright">
+          © 2026 Digital Egypt For Investment Co. (DEFI). Established pursuant to Prime Minister Decree No. 132/2020. All rights reserved.
+        </p>
+        <div class="footer-bottom-links">
+          <a href="#hero" class="back-to-top-link" data-i18n="backToTop">
+            <span>Back to top</span>
+            <span aria-hidden="true">↑</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="container footer-container">
+    <!-- Column 1: Organization & Mandate -->
+    <div class="footer-col footer-col-brand">
+      <a routerLink="/" class="footer-brand-link" aria-label="DEFI Home">
+        <span class="brand-logo-badge">
+          <img src="/defi-logo-gradient.png" alt="DEFI Logo" class="footer-logo" width="180" height="52">
+        </span>
+      </a>
+      <div class="footer-decree-badge">
+        <span class="badge-dot" aria-hidden="true"></span>
+        <span>{{ lang.t().footerDecreeBadge }}</span>
+      </div>
+      <p class="footer-about-text">
+        {{ lang.t().footerAboutText }}
+      </p>
+    </div>
+
+    <!-- Column 2: Institutional Navigation -->
+    <div class="footer-col">
+      <h3 class="footer-col-title">{{ lang.t().footerQuickLinksTitle }}</h3>
+      <ul class="footer-links-list">
+        @for (item of lang.t().navItems; track item.id) {
+          <li>
+            <a [routerLink]="item.route" class="footer-link">{{ item.label }}</a>
+          </li>
+        }
+        <li>
+          <a routerLink="/contact" class="footer-link">{{ lang.t().navContactCTA }}</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Column 3: Capability Pillars -->
+    <div class="footer-col">
+      <h3 class="footer-col-title">{{ lang.t().footerCapabilitiesTitle }}</h3>
+      <ul class="footer-links-list">
+        @for (pillar of lang.t().capabilityPillars; track pillar.id) {
+          <li>
+            <a routerLink="/capabilities" class="footer-link">{{ pillar.title }}</a>
+          </li>
+        }
+      </ul>
+    </div>
+
+    <!-- Column 4: Headquarters & Contact -->
+    <div class="footer-col footer-col-contact">
+      <h3 class="footer-col-title">{{ lang.t().footerContactTitle }}</h3>
+      <address class="footer-address">
+        <div class="contact-entry">
+          <span class="entry-icon" aria-hidden="true">📍</span>
+          <div>
+            <strong>{{ lang.t().contactHqTitle }}</strong>
+            <p>{{ lang.t().contactHqAddress }}</p>
+          </div>
+        </div>
+        <div class="contact-entry">
+          <span class="entry-icon" aria-hidden="true">✉️</span>
+          <div>
+            <strong>{{ lang.t().contactEmailTitle }}</strong>
+            <p><a [href]="'mailto:' + lang.t().contactOfficialEmail" class="footer-link-highlight">{{ lang.t().contactOfficialEmail }}</a></p>
+          </div>
+        </div>
+      </address>
+    </div>
+  </div>
+
+  <!-- Bottom Legal Strip -->
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <p class="copyright">{{ lang.t().copyrightNotice }}</p>
+      <p class="affiliations-text">{{ lang.t().allRightsReserved }}</p>
+    </div>
+  </div>
+</footer>

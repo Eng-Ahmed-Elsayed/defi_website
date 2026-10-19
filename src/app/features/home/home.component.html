@@ -1,0 +1,206 @@
+<main id="main-content">
+  <!-- 1. Hero Section -->
+  <section class="hero-section" aria-label="Hero Section">
+    <div class="container hero-container">
+      <div class="hero-content">
+        <!-- Mandate Badge -->
+        <div class="hero-badge">
+          <span class="badge-pre">{{ lang.t().heroBadgePre }}</span>
+          <span class="badge-divider" aria-hidden="true">|</span>
+          <span class="badge-text">{{ lang.t().heroBadgeText }}</span>
+        </div>
+
+        <!-- Headline & Subhead -->
+        <h1 class="hero-headline" [innerHTML]="lang.t().heroHeadline"></h1>
+        <p class="hero-subhead">{{ lang.t().heroSubhead }}</p>
+
+        <!-- CTA Action Buttons -->
+        <div class="hero-actions">
+          <button type="button" class="btn btn-primary" (click)="scrollTo('ecosystem-section')">
+            <span>{{ lang.t().heroCtaPrimary }}</span>
+            <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3.333 8h9.334M8 3.333L12.667 8 8 12.667" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button type="button" class="btn btn-secondary" (click)="scrollTo('capabilities-section')">
+            <span>{{ lang.t().heroCtaSecondary }}</span>
+          </button>
+        </div>
+
+        <!-- 4 Verified Metrics Counter Grid -->
+        <div class="hero-metrics-grid" role="region" aria-label="Verified National Scale Metrics">
+          @for (metric of lang.t().metrics; track metric.id) {
+            <div class="metric-card">
+              <div class="metric-value-row">
+                <span class="metric-number">{{ metric.value }}</span>
+              </div>
+              <strong class="metric-label">{{ metric.label }}</strong>
+              <span class="metric-sub">{{ metric.description }}</span>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Diagram A Section: The Connected National Digital Ecosystem -->
+  <section class="section ecosystem-section" id="ecosystem-section" aria-labelledby="ecosystem-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">{{ lang.t().diagramAInteractiveTag }}</span>
+        <h2 class="section-title" id="ecosystem-heading">{{ lang.t().diagramATitle }}</h2>
+        <p class="section-subhead">{{ lang.t().diagramASubtitle }}</p>
+      </div>
+
+      <app-diagram-ecosystem></app-diagram-ecosystem>
+    </div>
+  </section>
+
+  <!-- 3. Authority & Decree 132/2020 Section -->
+  <section class="section authority-section" id="authority-section" aria-labelledby="authority-heading">
+    <div class="container">
+      <div class="authority-grid">
+        <!-- Left: Legal Mandate & Narrative -->
+        <div class="authority-content">
+          <span class="section-tag">{{ lang.t().authorityTag }}</span>
+          <h2 class="section-title" id="authority-heading" [innerHTML]="lang.t().authorityTitle"></h2>
+          <p class="authority-lead">{{ lang.t().authorityDesc1 }}</p>
+          <p class="authority-sub">{{ lang.t().authorityDesc2 }}</p>
+
+          <div class="authority-pillars-list">
+            @for (pillar of lang.t().mandatePillars; track pillar.title) {
+              <div class="authority-pillar-item">
+                <div class="pillar-check" aria-hidden="true">✓</div>
+                <div>
+                  <strong class="pillar-item-title">{{ pillar.title }}</strong>
+                  <p class="pillar-item-desc">{{ pillar.desc }}</p>
+                </div>
+              </div>
+            }
+          </div>
+
+          <div class="authority-actions">
+            <a routerLink="/about" class="btn btn-outline">
+              <span>{{ lang.isArabic() ? 'اقرأ المزيد عن التكليف الرسمي' : 'Learn More About DEFI Mandate' }}</span>
+              <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3.333 8h9.334M8 3.333L12.667 8 8 12.667" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Mandate Card & Core Values -->
+        <div class="authority-card-col">
+          <div class="mandate-card glass-panel">
+            <div class="mandate-card-header">
+              <span class="seal-icon" aria-hidden="true">⚖️</span>
+              <h3 class="mandate-card-title">{{ lang.t().mandateCardTitle }}</h3>
+            </div>
+            <ul class="mandate-points-list">
+              @for (point of lang.t().mandatePoints; track point.title) {
+                <li class="mandate-point-entry">
+                  <strong>{{ point.title }}</strong>
+                  <span>{{ point.desc }}</span>
+                </li>
+              }
+            </ul>
+
+            <div class="card-values-strip">
+              <span class="values-title">{{ lang.t().valuesLabel }}</span>
+              <div class="values-chips">
+                @for (val of lang.t().corporateValues; track val.name) {
+                  <span class="value-chip" [title]="val.description">
+                    <span aria-hidden="true">{{ val.icon }}</span>
+                    {{ val.name }}
+                  </span>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Diagram C Section: Verified Capability Matrix -->
+  <section class="section capabilities-section" id="capabilities-section" aria-labelledby="capabilities-heading">
+    <div class="container">
+      <app-diagram-capabilities></app-diagram-capabilities>
+
+      <div class="capabilities-cta-row">
+        <a routerLink="/capabilities" class="btn btn-primary">
+          <span>{{ lang.isArabic() ? 'استكشاف تفاصيل القدرات والخدمات' : 'Explore Detailed Capabilities & Deliverables' }}</span>
+          <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3.333 8h9.334M8 3.333L12.667 8 8 12.667" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Diagram B Section: Institutional Operating Model Flow -->
+  <section class="section journey-section" id="journey-section" aria-labelledby="journey-heading">
+    <div class="container">
+      <app-diagram-operating-model></app-diagram-operating-model>
+    </div>
+  </section>
+
+  <!-- 6. Verified Impact & Ministerial Partners Section -->
+  <section class="section impact-section" id="impact-section" aria-labelledby="impact-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">{{ lang.t().impactTag }}</span>
+        <h2 class="section-title" id="impact-heading" [innerHTML]="lang.t().impactTitle"></h2>
+        <p class="section-subhead">{{ lang.t().impactSubtitle }}</p>
+      </div>
+
+      <div class="partners-grid">
+        @for (partner of lang.t().partnerList; track partner.acronym) {
+          <div class="partner-card glass-panel">
+            <div class="partner-card-top">
+              <span class="partner-badge">{{ partner.verifiedStatus }}</span>
+              <span class="partner-category">{{ partner.category }}</span>
+            </div>
+            <h3 class="partner-name">{{ lang.isArabic() ? partner.arabicName : partner.name }}</h3>
+            <span class="partner-acronym">({{ partner.acronym }})</span>
+            <p class="partner-scope">{{ partner.scope }}</p>
+          </div>
+        }
+      </div>
+
+      <div class="impact-cta-row">
+        <a routerLink="/impact" class="btn btn-outline">
+          <span>{{ lang.isArabic() ? 'عرض كافة مؤشرات الأثر والشركاء' : 'View Full Impact Metrics & Partners' }}</span>
+          <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3.333 8h9.334M8 3.333L12.667 8 8 12.667" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Strategic Consultation / Executive CTA Strip -->
+  <section class="section cta-strip-section" aria-label="Executive Consultation">
+    <div class="container">
+      <div class="cta-banner">
+        <div class="cta-content">
+          <span class="cta-pre">{{ lang.isArabic() ? 'القرية الذكية · مبنى B145' : 'Smart Village · Building B145' }}</span>
+          <h2 class="cta-title">
+            {{ lang.isArabic() ? 'هل تبحث عن شريك معتمد للبنية المؤسسية لمؤسستك؟' : 'Partner with Egypt\'s Dedicated Enterprise Transformation Team' }}
+          </h2>
+          <p class="cta-desc">
+            {{ lang.isArabic() ? 'تواصل مع مستشاري ومهندسي DEFI لبحث تحديث الأنظمة، وميكنة الإجراءات، والربط الحكومي الموحد.' : 'Engage with our enterprise architects to explore platform modernization, cross-agency integration, and sovereign public services.' }}
+          </p>
+        </div>
+        <div class="cta-actions">
+          <a routerLink="/contact" class="btn btn-gold btn-large">
+            <span>{{ lang.t().navContactCTA }}</span>
+            <svg class="btn-arrow" width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3.333 8h9.334M8 3.333L12.667 8 8 12.667" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

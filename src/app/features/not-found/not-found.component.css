@@ -1,0 +1,66 @@
+.not-found-page {
+  padding-block: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+}
+
+.not-found-container {
+  max-width: 680px;
+}
+
+.not-found-card {
+  padding: 3.5rem 2.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-color: rgba(197, 160, 89, 0.4);
+}
+
+.error-badge {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--color-egypt-gold);
+  background: rgba(197, 160, 89, 0.12);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  margin-block-end: 1rem;
+  letter-spacing: 0.08em;
+}
+
+.error-code {
+  font-size: clamp(4.5rem, 9vw, 7rem);
+  font-weight: 800;
+  line-height: 1;
+  background: linear-gradient(135deg, #FFFFFF 20%, #60A5FA 70%, #C5A059 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-block-end: 1rem;
+}
+
+.not-found-title {
+  color: #FFFFFF;
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-block-end: 0.75rem;
+}
+
+.not-found-desc {
+  font-size: 1.05rem;
+  color: var(--color-text-light);
+  line-height: 1.65;
+  max-width: 520px;
+  margin-block-end: 2.25rem;
+}
+
+.not-found-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}

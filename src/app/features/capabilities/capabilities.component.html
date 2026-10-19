@@ -1,0 +1,149 @@
+<main id="main-content" class="capabilities-page">
+  <!-- Page Header Hero -->
+  <section class="page-hero-section" aria-label="Capabilities Header">
+    <div class="container page-hero-container">
+      <span class="section-tag">{{ lang.t().capabilityTag }}</span>
+      <h1 class="page-hero-title">{{ lang.t().capHeroTitle }}</h1>
+      <p class="page-hero-subhead">{{ lang.t().capHeroSubtitle }}</p>
+    </div>
+  </section>
+
+  <!-- Capabilities Deep-Dive Section -->
+  <section class="section cap-detail-section" aria-labelledby="cap-detail-heading">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" id="cap-detail-heading">{{ lang.isArabic() ? 'المصفوفة التفاعلية للركائز المؤسسية' : 'Interactive Architectural Pillar Navigator' }}</h2>
+        <p class="section-subhead">{{ lang.t().capDetailPrompt }}</p>
+      </div>
+
+      <!-- Pillar Selector Tabs -->
+      <div class="cap-tabs-nav" role="tablist" [attr.aria-label]="lang.t().capHeroTitle">
+        @for (pillar of lang.t().capabilityPillars; track pillar.id) {
+          <button 
+            type="button" 
+            class="cap-tab-btn" 
+            [class.active]="activePillarId() === pillar.id"
+            (click)="setActivePillar(pillar.id)"
+            role="tab"
+            [attr.aria-selected]="activePillarId() === pillar.id"
+            [id]="'cap-tab-' + pillar.id"
+            [attr.aria-controls]="'cap-panel-' + pillar.id">
+            <span class="tab-icon" aria-hidden="true">{{ pillar.icon }}</span>
+            <span class="tab-title">{{ pillar.title }}</span>
+          </button>
+        }
+      </div>
+
+      <!-- Active Pillar Detailed View -->
+      @if (getActivePillar(); as pillar) {
+        <div 
+          class="cap-active-card glass-panel" 
+          role="tabpanel" 
+          [id]="'cap-panel-' + pillar.id" 
+          [attr.aria-labelledby]="'cap-tab-' + pillar.id">
+          
+          <div class="cap-card-header">
+            <div class="cap-icon-box" aria-hidden="true">{{ pillar.icon }}</div>
+            <div>
+              <span class="cap-badge">{{ lang.isArabic() ? 'ركيزة معمارية معتمدة' : 'Verified Enterprise Pillar' }}</span>
+              <h3 class="cap-heading">{{ pillar.heading }}</h3>
+              <p class="cap-sub">{{ pillar.subtitle }}</p>
+            </div>
+          </div>
+
+          <div class="cap-content-body">
+            <h4 class="body-section-title">{{ lang.isArabic() ? 'النطاق والمهمة المعمارية:' : 'Mandate & Architecture Scope:' }}</h4>
+            <p class="cap-description">{{ pillar.description }}</p>
+
+            <div class="cap-details-grid">
+              <!-- Strategic Impact -->
+              <div class="detail-box impact-highlight">
+                <h5 class="box-heading">
+                  <span aria-hidden="true">⚡</span>
+                  {{ lang.isArabic() ? 'الأثر الاستراتيجي في المنظومة الحكومية:' : 'Strategic Public-Sector Impact:' }}
+                </h5>
+                <p class="box-desc">{{ pillar.strategicImpact }}</p>
+              </div>
+
+              <!-- Key Deliverables -->
+              <div class="detail-box deliverables-highlight">
+                <h5 class="box-heading">
+                  <span aria-hidden="true">📦</span>
+                  {{ lang.isArabic() ? 'المخرجات والوثائق المعمارية المعتمدة:' : 'Approved Architectural Deliverables:' }}
+                </h5>
+                <ul class="deliverables-list">
+                  @for (deliv of pillar.keyDeliverables; track deliv) {
+                    <li class="deliverable-item">
+                      <span class="item-bullet" aria-hidden="true">✓</span>
+                      <span>{{ deliv }}</span>
+                    </li>
+                  }
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- Enterprise Architecture Integration Lifecycle Diagram -->
+  <section class="section cap-lifecycle-section" aria-labelledby="lifecycle-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">{{ lang.isArabic() ? 'التكامل المعماري' : 'CONTINUOUS LIFECYCLE' }}</span>
+        <h2 class="section-title" id="lifecycle-heading">{{ lang.isArabic() ? 'دورة التكامل بين ركائز القدرات' : 'How the 6 Capability Pillars Connect' }}</h2>
+        <p class="section-subhead">{{ lang.isArabic() ? 'تتكامل الركائز الست لتشكل إطاراً عمرانياً متصلاً يضمن الانتقال السلس من استراتيجية الأعمال إلى التشغيل المستقر للأنظمة العامة.' : 'The 6 pillars operate as an interconnected framework ensuring smooth translation from business strategy to reliable 24/7 public service operations.' }}</p>
+      </div>
+
+      <div class="lifecycle-grid">
+        <div class="lifecycle-card">
+          <span class="cycle-step">01</span>
+          <strong>{{ lang.isArabic() ? 'بنية الأعمال' : 'Business Arch' }}</strong>
+          <p>{{ lang.isArabic() ? 'مواءمة الاستراتيجيات وتبسيط الإجراءات الحكومية' : 'Strategy alignment & workflow optimization' }}</p>
+        </div>
+        <div class="cycle-arrow" aria-hidden="true">→</div>
+        <div class="lifecycle-card">
+          <span class="cycle-step">02</span>
+          <strong>{{ lang.isArabic() ? 'بنية الحلول' : 'Solution Arch' }}</strong>
+          <p>{{ lang.isArabic() ? 'المخططات الهندسية ومنصات الربط البيني' : 'Platform blueprints & API interoperability' }}</p>
+        </div>
+        <div class="cycle-arrow" aria-hidden="true">→</div>
+        <div class="lifecycle-card">
+          <span class="cycle-step">03</span>
+          <strong>{{ lang.isArabic() ? 'حوكمة الجودة' : 'Quality Gov' }}</strong>
+          <p>{{ lang.isArabic() ? 'التدقيق والاختبار والامتثال للمعايير' : 'Verification, security & compliance audits' }}</p>
+        </div>
+        <div class="cycle-arrow" aria-hidden="true">→</div>
+        <div class="lifecycle-card">
+          <span class="cycle-step">04</span>
+          <strong>{{ lang.isArabic() ? 'تشغيل تكنولوجيا المعلومات' : 'IT Operations' }}</strong>
+          <p>{{ lang.isArabic() ? 'مراقبة دائمة 24/7 وجاهزية قصوى' : '24/7 monitoring & high availability' }}</p>
+        </div>
+        <div class="cycle-arrow" aria-hidden="true">→</div>
+        <div class="lifecycle-card">
+          <span class="cycle-step">05</span>
+          <strong>{{ lang.isArabic() ? 'تجربة المواطن' : 'Citizen Exp' }}</strong>
+          <p>{{ lang.isArabic() ? 'خدمات متمحورة حول الإنسان وسهولة الوصول' : 'Inclusive, intuitive public service design' }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Row -->
+  <section class="section cap-cta-section">
+    <div class="container text-center">
+      <div class="cta-actions-wrapper">
+        <a routerLink="/sectors" class="btn btn-primary">
+          <span>{{ lang.isArabic() ? 'استكشاف القطاعات والحلول' : 'Explore Sectors & Solutions' }}</span>
+          <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3.333 8h9.334M8 3.333L12.667 8 8 12.667" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a routerLink="/contact" class="btn btn-secondary">
+          <span>{{ lang.t().navContactCTA }}</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>

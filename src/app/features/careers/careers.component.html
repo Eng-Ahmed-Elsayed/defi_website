@@ -1,0 +1,96 @@
+<main id="main-content" class="careers-page">
+  <!-- Page Header Hero -->
+  <section class="page-hero-section" aria-label="Careers Header">
+    <div class="container page-hero-container">
+      <span class="section-tag">{{ lang.isArabic() ? 'فرص العمل والتميز الهندسي' : 'CAREERS & TALENT' }}</span>
+      <h1 class="page-hero-title">{{ lang.t().careersHeroTitle }}</h1>
+      <p class="page-hero-subhead">{{ lang.t().careersHeroSubtitle }}</p>
+    </div>
+  </section>
+
+  <!-- Value Proposition Section -->
+  <section class="section why-defi-section" aria-labelledby="why-heading">
+    <div class="container">
+      <div class="why-defi-box glass-panel">
+        <h2 class="why-defi-title" id="why-heading">{{ lang.isArabic() ? 'لماذا تختار العمل في شركة مصر الرقمية للاستثمار؟' : 'Why Engineer at DEFI?' }}</h2>
+        <p class="why-defi-desc">{{ lang.t().careersWhyDEFI }}</p>
+        <div class="why-defi-stats">
+          <div class="why-stat">
+            <span class="why-stat-num">+200</span>
+            <span class="why-stat-label">{{ lang.isArabic() ? 'مستشار ومهندس خبير' : 'Expert Consultants' }}</span>
+          </div>
+          <div class="why-stat">
+            <span class="why-stat-num">+200</span>
+            <span class="why-stat-label">{{ lang.isArabic() ? 'خدمة عامة تم تحديثها' : 'Modernized Services' }}</span>
+          </div>
+          <div class="why-stat">
+            <span class="why-stat-num">B145</span>
+            <span class="why-stat-label">{{ lang.isArabic() ? 'المقر بالقرية الذكية' : 'Smart Village HQ' }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Engineering Domains Section -->
+  <section class="section domains-section" aria-labelledby="domains-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">{{ lang.isArabic() ? 'المسارات التخصصية' : 'CORE DISCIPLINES' }}</span>
+        <h2 class="section-title" id="domains-heading">{{ lang.t().careersDomainsTitle }}</h2>
+        <p class="section-subhead">{{ lang.isArabic() ? 'نبني فرقاً معمارية متقدمة تقود مشاريع التحول الرقمي القومي في مصر.' : 'We assemble high-caliber engineering and architecture teams driving nationwide public modernization.' }}</p>
+      </div>
+
+      <div class="domains-grid">
+        @for (domain of lang.t().careerDomains; track domain.id) {
+          <div class="domain-card glass-panel">
+            <span class="domain-focus-badge">{{ domain.focusArea }}</span>
+            <h3 class="domain-title">{{ domain.title }}</h3>
+            <p class="domain-desc">{{ domain.description }}</p>
+
+            <div class="domain-tech-strip">
+              <span class="tech-label">{{ lang.isArabic() ? 'التقنيات والأطر المعمارية:' : 'Key Frameworks & Tools:' }}</span>
+              <div class="tech-pills">
+                @for (tech of domain.technologies; track tech) {
+                  <span class="tech-pill">{{ tech }}</span>
+                }
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Recruitment Application Channel Section -->
+  <section class="section apply-section" aria-labelledby="apply-heading">
+    <div class="container">
+      <div class="apply-banner glass-panel">
+        <div class="apply-content">
+          <span class="section-tag">{{ lang.isArabic() ? 'الانضمام إلى فريق العمل' : 'JOIN OUR TEAM' }}</span>
+          <h2 class="apply-title" id="apply-heading">{{ lang.isArabic() ? 'كن شريكاً في هندسة المستقبل الرقمي لمصر' : 'Shape the Future of Egypt\'s Public Technology' }}</h2>
+          <p class="apply-desc">{{ lang.t().careersCtaText }}</p>
+          <div class="apply-meta-details">
+            <div class="apply-meta-item">
+              <span aria-hidden="true">📍</span>
+              <span>{{ lang.isArabic() ? 'مقر العمل: مبنى B145، القرية الذكية، الجيزة' : 'Location: Building B145, Smart Village, Giza' }}</span>
+            </div>
+            <div class="apply-meta-item">
+              <span aria-hidden="true">✉️</span>
+              <span>{{ lang.isArabic() ? 'البريد الإلكتروني للتوظيف: info@defi.com.eg' : 'Recruitment Inbox: info@defi.com.eg' }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="apply-actions">
+          <a [href]="'mailto:' + lang.t().contactOfficialEmail + '?subject=Careers%20Application%20-%20DEFI'" class="btn btn-gold btn-large">
+            <span>{{ lang.isArabic() ? 'إرسال السيرة الذاتية عبر البريد' : 'Submit CV & Portfolio' }}</span>
+            <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3.333 8h9.334M8 3.333L12.667 8 8 12.667" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

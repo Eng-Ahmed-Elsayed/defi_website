@@ -1,0 +1,182 @@
+<main id="main-content" class="contact-page">
+  <!-- Page Header Hero -->
+  <section class="page-hero-section" aria-label="Contact Header">
+    <div class="container page-hero-container">
+      <span class="section-tag">{{ lang.isArabic() ? 'التواصل المؤسسي والمقر' : 'HEADQUARTERS & INQUIRIES' }}</span>
+      <h1 class="page-hero-title">{{ lang.t().contactHeroTitle }}</h1>
+      <p class="page-hero-subhead">{{ lang.t().contactHeroSubtitle }}</p>
+    </div>
+  </section>
+
+  <!-- Contact Grid Section -->
+  <section class="section contact-main-section" aria-labelledby="contact-heading">
+    <div class="container">
+      <div class="contact-layout-grid">
+        <!-- Left: Official Headquarters Card -->
+        <div class="contact-info-col">
+          <div class="hq-card glass-panel">
+            <span class="hq-badge">{{ lang.t().heroBadgePre }}</span>
+            <h2 class="hq-heading" id="contact-heading">{{ lang.t().contactHqTitle }}</h2>
+            <address class="hq-address-block">
+              <div class="address-item">
+                <span class="addr-icon" aria-hidden="true">📍</span>
+                <div>
+                  <strong class="addr-label">{{ lang.isArabic() ? 'العنوان الرسمي:' : 'Official Location:' }}</strong>
+                  <p class="addr-value">{{ lang.t().contactHqAddress }}</p>
+                </div>
+              </div>
+
+              <div class="address-item">
+                <span class="addr-icon" aria-hidden="true">✉️</span>
+                <div>
+                  <strong class="addr-label">{{ lang.t().contactEmailTitle }}</strong>
+                  <p class="addr-value">
+                    <a [href]="'mailto:' + lang.t().contactOfficialEmail" class="email-link">
+                      {{ lang.t().contactOfficialEmail }}
+                    </a>
+                  </p>
+                </div>
+              </div>
+
+              <div class="address-item">
+                <span class="addr-icon" aria-hidden="true">🏛️</span>
+                <div>
+                  <strong class="addr-label">{{ lang.isArabic() ? 'المظلة الإشرافية:' : 'Institutional Auspices:' }}</strong>
+                  <p class="addr-value">{{ lang.isArabic() ? 'وزارة الاتصالات وتكنولوجيا المعلومات (MCIT) وهيئة إيتيدا (ITIDA)' : 'MCIT & ITIDA under Decree No. 132/2020' }}</p>
+                </div>
+              </div>
+            </address>
+
+            <div class="visiting-guidelines-box">
+              <strong class="guideline-title">
+                <span aria-hidden="true">ℹ️</span>
+                {{ lang.isArabic() ? 'إرشادات الزيارات الرسمية:' : 'Official Delegation Guidelines:' }}
+              </strong>
+              <p class="guideline-text">
+                {{ lang.isArabic() ? 'يُرجى التنسيق المسبق للوفود الحكومية وممثلي الوزارات عبر البريد الإلكتروني لتأمين تصاريح دخول مبنى B145 بالقرية الذكية.' : 'Pre-registration via email is recommended for ministerial and public-sector delegations to arrange Smart Village gate clearances.' }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Interactive Consultation Form -->
+        <div class="contact-form-col">
+          <div class="form-card glass-panel">
+            <div class="form-header">
+              <h3 class="form-title">{{ lang.t().contactFormTitle }}</h3>
+              <p class="form-intro">{{ lang.t().contactFormIntro }}</p>
+            </div>
+
+            <!-- Error Banner -->
+            @if (formError(); as err) {
+              <div class="form-alert error-alert" role="alert">
+                <span aria-hidden="true">⚠️</span>
+                <span>{{ err }}</span>
+              </div>
+            }
+
+            <!-- Success Banner -->
+            @if (isSubmitted()) {
+              <div class="form-alert success-alert" role="status" aria-live="polite">
+                <span class="success-icon" aria-hidden="true">✓</span>
+                <div>
+                  <strong>{{ lang.isArabic() ? 'تم استلام الاستفسار بنجاح' : 'Consultation Request Received' }}</strong>
+                  <p>{{ lang.t().formLabels.successMessage }}</p>
+                </div>
+              </div>
+            } @else {
+              <!-- Consultation Form -->
+              <form class="consultation-form" (ngSubmit)="onSubmit()" novalidate>
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label for="fullName" class="form-label">
+                      {{ lang.t().formLabels.fullName }} <span class="req">*</span>
+                    </label>
+                    <input 
+                      type="text" 
+                      id="fullName" 
+                      name="fullName" 
+                      [(ngModel)]="formData.fullName" 
+                      class="form-input" 
+                      required 
+                      placeholder="e.g. Dr. Ahmed Mostafa">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="organization" class="form-label">
+                      {{ lang.t().formLabels.organization }} <span class="req">*</span>
+                    </label>
+                    <input 
+                      type="text" 
+                      id="organization" 
+                      name="organization" 
+                      [(ngModel)]="formData.organization" 
+                      class="form-input" 
+                      required 
+                      placeholder="e.g. Ministry / Authority Name">
+                  </div>
+                </div>
+
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label for="email" class="form-label">
+                      {{ lang.t().formLabels.email }} <span class="req">*</span>
+                    </label>
+                    <input 
+                      type="email" 
+                      id="email" 
+                      name="email" 
+                      [(ngModel)]="formData.email" 
+                      class="form-input" 
+                      required 
+                      placeholder="e.g. user@gov.eg">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="subject" class="form-label">
+                      {{ lang.t().formLabels.subject }}
+                    </label>
+                    <input 
+                      type="text" 
+                      id="subject" 
+                      name="subject" 
+                      [(ngModel)]="formData.subject" 
+                      class="form-input" 
+                      placeholder="e.g. Enterprise Architecture Consultation">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="message" class="form-label">
+                    {{ lang.t().formLabels.message }} <span class="req">*</span>
+                  </label>
+                  <textarea 
+                    id="message" 
+                    name="message" 
+                    [(ngModel)]="formData.message" 
+                    rows="5" 
+                    class="form-textarea" 
+                    required 
+                    placeholder="Describe your transformation scope, system interoperability needs, or enterprise consultation request..."></textarea>
+                </div>
+
+                <p class="form-note">{{ lang.t().formLabels.requiredNote }}</p>
+
+                <button type="submit" class="btn btn-primary submit-btn" [disabled]="isSubmitting()">
+                  @if (isSubmitting()) {
+                    <span>{{ lang.t().formLabels.submitting }}</span>
+                  } @else {
+                    <span>{{ lang.t().formLabels.submit }}</span>
+                    <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                      <path d="M3.333 8h9.334M8 3.333L12.667 8 8 12.667" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  }
+                </button>
+              </form>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

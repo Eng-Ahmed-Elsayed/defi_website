@@ -1,0 +1,87 @@
+<main id="main-content" class="news-page">
+  <!-- Page Header Hero -->
+  <section class="page-hero-section" aria-label="News Header">
+    <div class="container page-hero-container">
+      <span class="section-tag">{{ lang.isArabic() ? 'البيانات والأخبار الرسمية' : 'OFFICIAL ANNOUNCEMENTS' }}</span>
+      <h1 class="page-hero-title">{{ lang.t().newsHeroTitle }}</h1>
+      <p class="page-hero-subhead">{{ lang.t().newsHeroSubtitle }}</p>
+    </div>
+  </section>
+
+  <!-- News List Section -->
+  <section class="section news-list-section" aria-labelledby="news-heading">
+    <div class="container">
+      <!-- Filter Bar -->
+      <div class="news-filter-bar">
+        <button 
+          type="button" 
+          class="filter-pill" 
+          [class.active]="selectedCategory() === 'all'" 
+          (click)="setCategory('all')">
+          {{ lang.isArabic() ? 'كافة البيانات' : 'All Releases' }}
+        </button>
+        <button 
+          type="button" 
+          class="filter-pill" 
+          [class.active]="selectedCategory() === 'institutional'" 
+          (click)="setCategory('institutional')">
+          {{ lang.isArabic() ? 'المهام المؤسسية' : 'Institutional Mandate' }}
+        </button>
+        <button 
+          type="button" 
+          class="filter-pill" 
+          [class.active]="selectedCategory() === 'partnership'" 
+          (click)="setCategory('partnership')">
+          {{ lang.isArabic() ? 'الشراكات الوطنية' : 'Partnerships' }}
+        </button>
+        <button 
+          type="button" 
+          class="filter-pill" 
+          [class.active]="selectedCategory() === 'transformation'" 
+          (click)="setCategory('transformation')">
+          {{ lang.isArabic() ? 'إنجازات التحول' : 'Transformation Impact' }}
+        </button>
+      </div>
+
+      <!-- News Cards Grid -->
+      <div class="news-grid">
+        @for (item of getFilteredNews(); track item.id) {
+          <article class="news-card glass-panel">
+            <div class="news-card-meta">
+              <span class="news-category-badge">{{ item.category }}</span>
+              <div class="news-date-row">
+                <span class="news-date">{{ item.date }}</span>
+                <span class="meta-dot">·</span>
+                <span class="news-read-time">{{ item.readTime }}</span>
+              </div>
+            </div>
+
+            <h2 class="news-card-title">{{ item.title }}</h2>
+            <p class="news-card-summary">{{ item.summary }}</p>
+
+            <div class="news-card-footer">
+              <span class="source-label">
+                <span aria-hidden="true">🏛️</span>
+                {{ lang.isArabic() ? 'المصدر المعتمد:' : 'Verified Source:' }}
+              </span>
+              <strong class="source-name">{{ item.officialSource }}</strong>
+            </div>
+          </article>
+        }
+      </div>
+
+      <!-- Media & Press Notice -->
+      <div class="press-contact-strip glass-panel">
+        <div class="press-text">
+          <h3 class="press-title">{{ lang.isArabic() ? 'المكتب الإعلامي والتواصل المؤسسي' : 'Media & Institutional Communications' }}</h3>
+          <p class="press-desc">
+            {{ lang.isArabic() ? 'لكافة الاستفسارات الصحفية والتغطيات الإعلامية للمشروعات القومية، يرجى التواصل عبر البريد الرسمي:' : 'For verified press inquiries and official public-sector releases, contact our executive communications office:' }}
+          </p>
+        </div>
+        <a [href]="'mailto:' + lang.t().contactOfficialEmail" class="btn btn-outline">
+          <span>{{ lang.t().contactOfficialEmail }}</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
