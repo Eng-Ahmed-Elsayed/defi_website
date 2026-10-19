@@ -31,12 +31,19 @@
         
         <div class="cap-detail-footer">
           <div class="cap-impact-box">
-            <span class="impact-label">{{ lang.isArabic() ? 'الأثر المؤسسي:' : 'Institutional Impact:' }}</span>
-            <span class="impact-value">{{ activePillar().strategicImpact }}</span>
+            <span class="impact-label">{{ lang.isArabic() ? 'الأثر الاستراتيجي المؤسسي:' : 'Strategic Institutional Impact:' }}</span>
+            <p class="impact-value">{{ activePillar().strategicImpact }}</p>
           </div>
           <div class="cap-deliverables-box">
-            <span class="deliverable-label">{{ lang.isArabic() ? 'المخرجات الرئيسية:' : 'Key Deliverables:' }}</span>
-            <span class="deliverable-value">{{ activePillar().keyDeliverables.join(' · ') }}</span>
+            <span class="deliverable-label">{{ lang.isArabic() ? 'المخرجات الهندسية المعتمدة:' : 'Key Verified Deliverables:' }}</span>
+            <div class="deliverables-chips-grid">
+              @for (del of activePillar().keyDeliverables; track del) {
+                <span class="deliverable-chip">
+                  <span class="chip-check" aria-hidden="true">✓</span>
+                  <span>{{ del }}</span>
+                </span>
+              }
+            </div>
           </div>
         </div>
       </div>

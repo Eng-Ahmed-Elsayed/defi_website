@@ -56,48 +56,84 @@
 
       <!-- Layer 1 (Top Left): Citizens & Business Channels -->
       <g class="diagram-node node-interactive" [class.active]="activeNode() === 'citizens'" (click)="selectNode('citizens', true)" (mouseenter)="selectNode('citizens', true)" tabindex="0" role="button" aria-label="Citizens and Businesses Layer">
-        <rect x="50" y="30" width="240" height="70" rx="12" class="node-box" />
-        <circle cx="80" cy="65" r="18" fill="#1E5FD8" fill-opacity="0.2" stroke="#1E5FD8" stroke-width="1.5"/>
-        <path d="M74 72 C74 68 77 65 80 65 C83 65 86 68 86 72 M80 62 A3.5 3.5 0 1 0 80 55 A3.5 3.5 0 1 0 80 62" stroke="#60A5FA" stroke-width="1.8" stroke-linecap="round"/>
-        <text x="110" y="58" class="svg-node-title">{{ lang.isArabic() ? 'قنوات المواطنين وقطاع الأعمال' : 'Citizen & Business Channels' }}</text>
-        <text x="110" y="76" class="svg-node-sub">{{ lang.isArabic() ? 'بوابات · تطبيقات · مراكز خدمة' : 'Portals · Mobile Apps · Service Centers' }}</text>
+        <rect x="35" y="30" width="270" height="74" rx="14" class="node-box" />
+        @if (lang.isArabic()) {
+          <circle cx="268" cy="67" r="18" fill="#1E5FD8" fill-opacity="0.2" stroke="#1E5FD8" stroke-width="1.5"/>
+          <path d="M262 74 C262 70 265 67 268 67 C271 67 274 70 274 74 M268 64 A3.5 3.5 0 1 0 268 57 A3.5 3.5 0 1 0 268 64" stroke="#60A5FA" stroke-width="1.8" stroke-linecap="round"/>
+          <text x="238" y="60" direction="rtl" unicode-bidi="embed" text-anchor="start" class="svg-node-title">{{ lang.t().ecosystemNodes[0].title }}</text>
+          <text x="238" y="78" direction="rtl" unicode-bidi="embed" text-anchor="start" class="svg-node-sub">{{ lang.t().ecosystemNodes[0].subtitle }}</text>
+        } @else {
+          <circle cx="70" cy="67" r="18" fill="#1E5FD8" fill-opacity="0.2" stroke="#1E5FD8" stroke-width="1.5"/>
+          <path d="M64 74 C64 70 67 67 70 67 C73 67 76 70 76 74 M70 64 A3.5 3.5 0 1 0 70 57 A3.5 3.5 0 1 0 70 64" stroke="#60A5FA" stroke-width="1.8" stroke-linecap="round"/>
+          <text x="102" y="60" text-anchor="start" class="svg-node-title">Citizen & Business Channels</text>
+          <text x="102" y="78" text-anchor="start" class="svg-node-sub">Portals · Mobile Apps · Service Centers</text>
+        }
       </g>
 
       <!-- Layer 1 (Top Right): Ministries & Public Entities -->
       <g class="diagram-node node-interactive" [class.active]="activeNode() === 'ministries'" (click)="selectNode('ministries', true)" (mouseenter)="selectNode('ministries', true)" tabindex="0" role="button" aria-label="Government Entities Layer">
-        <rect x="390" y="30" width="240" height="70" rx="12" class="node-box" />
-        <circle cx="420" cy="65" r="18" fill="#6366F1" fill-opacity="0.2" stroke="#6366F1" stroke-width="1.5"/>
-        <path d="M412 71 L428 71 M414 71 L414 62 L420 57 L426 62 L426 71 M420 62 L420 71" stroke="#A78BFA" stroke-width="1.8" stroke-linecap="round"/>
-        <text x="450" y="58" class="svg-node-title">{{ lang.isArabic() ? 'الجهات والمؤسسات الحكومية' : 'Government Entities & Ministries' }}</text>
-        <text x="450" y="76" class="svg-node-sub">{{ lang.isArabic() ? 'التعليم · مركز المعلومات · +25 جهة' : 'MOE · IDSC · 25+ Public Bodies' }}</text>
+        <rect x="375" y="30" width="270" height="74" rx="14" class="node-box" />
+        @if (lang.isArabic()) {
+          <circle cx="608" cy="67" r="18" fill="#6366F1" fill-opacity="0.2" stroke="#6366F1" stroke-width="1.5"/>
+          <path d="M600 73 L616 73 M602 73 L602 64 L608 59 L614 64 L614 73 M608 64 L608 73" stroke="#A78BFA" stroke-width="1.8" stroke-linecap="round"/>
+          <text x="578" y="60" direction="rtl" unicode-bidi="embed" text-anchor="start" class="svg-node-title">{{ lang.t().ecosystemNodes[1].title }}</text>
+          <text x="578" y="78" direction="rtl" unicode-bidi="embed" text-anchor="start" class="svg-node-sub">{{ lang.t().ecosystemNodes[1].subtitle }}</text>
+        } @else {
+          <circle cx="410" cy="67" r="18" fill="#6366F1" fill-opacity="0.2" stroke="#6366F1" stroke-width="1.5"/>
+          <path d="M402 73 L418 73 M404 73 L404 64 L410 59 L416 64 L416 73 M410 64 L410 73" stroke="#A78BFA" stroke-width="1.8" stroke-linecap="round"/>
+          <text x="442" y="60" text-anchor="start" class="svg-node-title">Government Entities & Ministries</text>
+          <text x="442" y="78" text-anchor="start" class="svg-node-sub">MOE · IDSC · 25+ Public Bodies</text>
+        }
       </g>
 
       <!-- Layer 2 (Center Core): DEFI Digital Enablement Backbone -->
       <g class="diagram-core-node" [class.active]="activeNode() === 'defi-core' || activeNode() === 'core'" (click)="selectNode('defi-core', true)" (mouseenter)="selectNode('defi-core', true)" tabindex="0" role="button" aria-label="DEFI Digital Enablement Backbone">
-        <rect x="180" y="160" width="320" height="96" rx="16" class="core-box" />
-        <circle cx="225" cy="208" r="24" fill="#087E8B" fill-opacity="0.3" stroke="#00D2D3" stroke-width="2"/>
-        <path d="M214 216 L225 198 L236 216 Z M225 204 L236 204 L240 200" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <text x="260" y="198" class="svg-core-title">{{ lang.isArabic() ? 'منصة التمكين الرقمي الموحدة (DEFI)' : 'DEFI Digital Enablement Backbone' }}</text>
-        <text x="260" y="218" class="svg-core-sub">{{ lang.isArabic() ? 'الهندسة المؤسسية · الربط والتكامل البيني' : 'Enterprise Architecture · Interoperability' }}</text>
-        <text x="260" y="234" class="svg-core-sub-secondary">{{ lang.isArabic() ? 'ناقل البيانات الوطني · واجهات برمجة آمنة APIs' : 'National Data Bus · Secure Integration APIs' }}</text>
+        <rect x="150" y="160" width="380" height="100" rx="16" class="core-box" />
+        @if (lang.isArabic()) {
+          <circle cx="485" cy="210" r="24" fill="#087E8B" fill-opacity="0.3" stroke="#00D2D3" stroke-width="2"/>
+          <path d="M474 218 L485 200 L496 218 Z M485 206 L496 206 L500 202" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="445" y="196" direction="rtl" unicode-bidi="embed" text-anchor="start" class="svg-core-title">{{ lang.t().ecosystemNodes[2].title }}</text>
+          <text x="445" y="217" direction="rtl" unicode-bidi="embed" text-anchor="start" class="svg-core-sub">{{ lang.t().ecosystemNodes[2].role }}</text>
+          <text x="445" y="234" direction="rtl" unicode-bidi="embed" text-anchor="start" class="svg-core-sub-secondary">{{ lang.t().ecosystemNodes[2].subtitle }}</text>
+        } @else {
+          <circle cx="195" cy="210" r="24" fill="#087E8B" fill-opacity="0.3" stroke="#00D2D3" stroke-width="2"/>
+          <path d="M184 218 L195 200 L206 218 Z M195 206 L206 206 L210 202" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="235" y="196" text-anchor="start" class="svg-core-title">DEFI Digital Enablement Backbone</text>
+          <text x="235" y="217" text-anchor="start" class="svg-core-sub">Enterprise Architecture · Interoperability</text>
+          <text x="235" y="234" text-anchor="start" class="svg-core-sub-secondary">National Data Bus · Secure Integration APIs</text>
+        }
       </g>
 
       <!-- Layer 3 (Bottom Left): National Registries & Data Assets -->
       <g class="diagram-node node-interactive" [class.active]="activeNode() === 'registries'" (click)="selectNode('registries', true)" (mouseenter)="selectNode('registries', true)" tabindex="0" role="button" aria-label="National Registries Layer">
-        <rect x="50" y="340" width="240" height="70" rx="12" class="node-box" />
-        <circle cx="80" cy="375" r="18" fill="#1E5FD8" fill-opacity="0.2" stroke="#1E5FD8" stroke-width="1.5"/>
-        <path d="M72 370 C72 367 88 367 88 370 C88 373 72 373 72 370 M72 375 C72 378 88 378 88 375 M72 380 C72 383 88 383 88 380" stroke="#60A5FA" stroke-width="1.8"/>
-        <text x="110" y="368" class="svg-node-title">{{ lang.isArabic() ? 'السجلات الوطنية وقواعد البيانات' : 'National Registries & Data' }}</text>
-        <text x="110" y="386" class="svg-node-sub">{{ lang.isArabic() ? 'السجلات الأساسية المترابطة والآمنة' : 'Interoperable Base Registers' }}</text>
+        <rect x="35" y="340" width="270" height="74" rx="14" class="node-box" />
+        @if (lang.isArabic()) {
+          <circle cx="268" cy="377" r="18" fill="#1E5FD8" fill-opacity="0.2" stroke="#1E5FD8" stroke-width="1.5"/>
+          <path d="M260 372 C260 369 276 369 276 372 C276 375 260 375 260 372 M260 377 C260 380 276 380 276 377 M260 382 C260 385 276 385 276 382" stroke="#60A5FA" stroke-width="1.8"/>
+          <text x="238" y="370" direction="rtl" unicode-bidi="embed" text-anchor="start" class="svg-node-title">{{ lang.t().ecosystemNodes[3].title }}</text>
+          <text x="238" y="388" direction="rtl" unicode-bidi="embed" text-anchor="start" class="svg-node-sub">{{ lang.t().ecosystemNodes[3].subtitle }}</text>
+        } @else {
+          <circle cx="70" cy="377" r="18" fill="#1E5FD8" fill-opacity="0.2" stroke="#1E5FD8" stroke-width="1.5"/>
+          <path d="M62 372 C62 369 78 369 78 372 C78 375 62 375 62 372 M62 377 C62 380 78 380 78 377 M62 382 C62 385 78 385 78 382" stroke="#60A5FA" stroke-width="1.8"/>
+          <text x="102" y="370" text-anchor="start" class="svg-node-title">National Registries & Data</text>
+          <text x="102" y="388" text-anchor="start" class="svg-node-sub">Interoperable Base Registers</text>
+        }
       </g>
 
       <!-- Layer 3 (Bottom Right): Secure Cloud & Infrastructure -->
       <g class="diagram-node node-interactive" [class.active]="activeNode() === 'infra'" (click)="selectNode('infra', true)" (mouseenter)="selectNode('infra', true)" tabindex="0" role="button" aria-label="Cloud and Infrastructure Layer">
-        <rect x="390" y="340" width="240" height="70" rx="12" class="node-box" />
-        <circle cx="420" cy="375" r="18" fill="#087E8B" fill-opacity="0.2" stroke="#087E8B" stroke-width="1.5"/>
-        <path d="M412 378 C410 378 408 376 408 373 C408 370 411 368 414 368 C415 365 418 363 422 363 C426 363 429 366 430 369 C433 369 435 372 435 375 C435 378 433 380 430 380 L412 380" stroke="#2DD4BF" stroke-width="1.8" stroke-linecap="round"/>
-        <text x="450" y="368" class="svg-node-title">{{ lang.isArabic() ? 'البنية التحتية والسحابة الحكومية' : 'Secure Cloud & Infrastructure' }}</text>
-        <text x="450" y="386" class="svg-node-sub">{{ lang.isArabic() ? 'مراكز بيانات فائقة الجاهزية · تشغيل 24/7' : 'High-Availability Gov Centers · 24/7 Ops' }}</text>
+        <rect x="375" y="340" width="270" height="74" rx="14" class="node-box" />
+        @if (lang.isArabic()) {
+          <circle cx="608" cy="377" r="18" fill="#087E8B" fill-opacity="0.2" stroke="#087E8B" stroke-width="1.5"/>
+          <path d="M600 380 C598 380 596 378 596 375 C596 372 599 370 602 370 C603 367 606 365 610 365 C614 365 617 368 618 371 C621 371 623 374 623 377 C623 380 621 382 618 382 L600 382" stroke="#2DD4BF" stroke-width="1.8" stroke-linecap="round"/>
+          <text x="578" y="370" direction="rtl" unicode-bidi="embed" text-anchor="start" class="svg-node-title">{{ lang.t().ecosystemNodes[4].title }}</text>
+          <text x="578" y="388" direction="rtl" unicode-bidi="embed" text-anchor="start" class="svg-node-sub">{{ lang.t().ecosystemNodes[4].subtitle }}</text>
+        } @else {
+          <circle cx="410" cy="377" r="18" fill="#087E8B" fill-opacity="0.2" stroke="#087E8B" stroke-width="1.5"/>
+          <path d="M402 380 C400 380 398 378 398 375 C398 372 401 370 404 370 C405 367 408 365 412 365 C416 365 419 368 420 371 C423 371 425 374 425 377 C425 380 423 382 420 382 L402 382" stroke="#2DD4BF" stroke-width="1.8" stroke-linecap="round"/>
+          <text x="442" y="370" text-anchor="start" class="svg-node-title">Secure Cloud & Infrastructure</text>
+          <text x="442" y="388" text-anchor="start" class="svg-node-sub">High-Availability Gov Centers · 24/7 Ops</text>
+        }
       </g>
     </svg>
   </div>

@@ -235,10 +235,14 @@ button {
 .btn:hover .btn-arrow {
   transform: translateX(3px);
 }
-html[dir="rtl"] .btn-arrow {
+html[dir="rtl"] .btn-arrow,
+:host-context([dir="rtl"]) .btn-arrow,
+[dir="rtl"] .btn-arrow {
   transform: scaleX(-1);
 }
-html[dir="rtl"] .btn:hover .btn-arrow {
+html[dir="rtl"] .btn:hover .btn-arrow,
+:host-context([dir="rtl"]) .btn:hover .btn-arrow,
+[dir="rtl"] .btn:hover .btn-arrow {
   transform: scaleX(-1) translateX(3px);
 }
 
@@ -476,29 +480,44 @@ html[dir="rtl"] .btn:hover .btn-arrow {
 }
 
 .brand-logo {
-  height: 48px;
+  height: 38px;
   width: auto;
   object-fit: contain;
-  filter: drop-shadow(0 2px 8px rgba(0, 240, 255, 0.2));
+  filter: drop-shadow(0 2px 8px rgba(0, 240, 255, 0.15));
 }
 
 .drawer-logo {
-  height: 42px;
+  height: 34px;
   width: auto;
+  object-fit: contain;
 }
 
 .footer-logo {
-  height: 46px;
+  height: 36px;
   width: auto;
+  object-fit: contain;
 }
 
 .brand-logo-badge {
   display: inline-flex;
   align-items: center;
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  padding: 0 !important;
+  background: rgba(255, 255, 255, 0.96);
+  padding: 6px 14px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all var(--transition-fast);
+}
+
+.brand-logo-badge:hover {
+  background: #FFFFFF;
+  box-shadow: 0 6px 20px rgba(30, 95, 216, 0.35);
+  transform: translateY(-1px);
+}
+
+.crest-badge-visual .brand-logo-badge {
+  padding: 8px 18px;
+  background: rgba(255, 255, 255, 0.98);
 }
 
 .crest-badge {
@@ -511,8 +530,9 @@ html[dir="rtl"] .btn:hover .btn-arrow {
 }
 
 .crest-logo {
-  height: 40px;
+  height: 38px;
   width: auto;
+  object-fit: contain;
 }
 
 .desktop-nav .nav-list {
@@ -2610,9 +2630,20 @@ html[dir="rtl"] .mobile-nav-drawer {
 
 .sectors-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 24px;
   margin-top: 36px;
+}
+
+.sector-card:nth-child(1),
+.sector-card:nth-child(2) {
+  grid-column: span 3;
+}
+
+.sector-card:nth-child(3),
+.sector-card:nth-child(4),
+.sector-card:nth-child(5) {
+  grid-column: span 2;
 }
 
 .sector-card {
@@ -2872,7 +2903,7 @@ html[dir="rtl"] .mobile-nav-drawer {
 
 .blueprint-canvas-container {
   width: 100%;
-  min-height: 200px;
+  min-height: 240px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2885,7 +2916,7 @@ html[dir="rtl"] .mobile-nav-drawer {
 .blueprint-svg {
   width: 100%;
   height: auto;
-  max-height: 220px;
+  max-height: 240px;
 }
 
 .blueprint-meta-bar {

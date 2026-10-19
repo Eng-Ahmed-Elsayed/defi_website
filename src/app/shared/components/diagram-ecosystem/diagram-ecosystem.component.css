@@ -1,57 +1,97 @@
-.diagram-ecosystem-wrapper {
-  background: rgba(11, 25, 44, 0.6);
-  border: 1px solid var(--color-navy-border);
+:host {
+  display: block;
+  width: 100%;
+}
+
+.diagram-wrapper {
+  background: rgba(11, 25, 44, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-xl);
-  padding: 2rem;
+  padding: 1.5rem;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.1);
 }
 
-.diagram-meta-bar {
+.diagram-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  margin-block-end: 1.5rem;
+  margin-bottom: 1rem;
   flex-wrap: wrap;
+  gap: 12px;
+}
+
+.diagram-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.diagram-title-text {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.diagram-header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.diagram-telemetry-strip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(15, 33, 55, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+}
+
+.tele-pill {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--color-text-light);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.tele-pill.live {
+  color: #38BDF8;
+}
+
+.tele-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 8px #10B981;
+  animation: pulseDot 2s infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
 }
 
 .diagram-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 700;
   color: #60A5FA;
   background: rgba(30, 95, 216, 0.15);
   border: 1px solid rgba(59, 130, 246, 0.3);
-  padding: 0.3rem 0.75rem;
+  padding: 3px 8px;
   border-radius: var(--radius-full);
-  text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
-.tag-pulse {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: #60A5FA;
-  box-shadow: 0 0 8px #60A5FA;
-  animation: pulse-dot 2s infinite;
-}
-
-.diagram-instruction {
-  font-size: 0.85rem;
-  color: var(--color-text-light);
-}
-
-.svg-container {
+.diagram-canvas-container {
   width: 100%;
-  max-width: 880px;
-  margin-inline: auto;
   position: relative;
 }
 
@@ -59,169 +99,151 @@
   width: 100%;
   height: auto;
   display: block;
+  overflow: visible;
 }
 
-/* SVG Interactive Nodes */
-.diagram-node-group {
+.node-box {
+  fill: #0B1E36;
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 1.2px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.core-box {
+  fill: #082845;
+  stroke: #00F0FF;
+  stroke-width: 1.8px;
+  filter: drop-shadow(0 0 16px rgba(0, 240, 255, 0.3));
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.diagram-node {
   cursor: pointer;
-  transition: transform var(--transition-fast), filter var(--transition-fast);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.diagram-node-group:focus-visible {
-  outline: none;
-}
-.diagram-node-group:focus-visible rect {
-  stroke: #60A5FA;
-  stroke-width: 2.5px;
-}
-
-.node-bg {
-  stroke-width: 1.5px;
-  transition: all var(--transition-fast);
+.diagram-node:hover .node-box,
+.diagram-node.active .node-box {
+  fill: #0F2A4A;
+  stroke: #38BDF8;
+  stroke-width: 1.8px;
+  filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.35));
 }
 
-.touchpoints-bg {
-  fill: #0F2644;
-  stroke: rgba(59, 130, 246, 0.4);
+.diagram-core-node {
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.ministries-bg {
-  fill: #14283F;
-  stroke: rgba(197, 160, 89, 0.4);
+.diagram-core-node:hover .core-box,
+.diagram-core-node.active .core-box {
+  stroke: #2DD4BF;
+  stroke-width: 2.2px;
+  filter: drop-shadow(0 0 24px rgba(45, 212, 191, 0.5));
 }
 
-.core-bg {
-  fill: url(#defiCoreGrad);
-  stroke: rgba(255, 255, 255, 0.3);
-  filter: drop-shadow(0 4px 12px rgba(30, 95, 216, 0.4));
-}
-
-.registries-bg {
-  fill: #0E2738;
-  stroke: rgba(8, 126, 139, 0.45);
-}
-
-.infra-bg {
-  fill: #151D3B;
-  stroke: rgba(99, 102, 241, 0.4);
-}
-
-.diagram-node-group:hover .node-bg {
-  stroke-width: 2px;
-  filter: brightness(1.15);
-}
-
-.diagram-node-group.active .node-bg {
-  stroke: #E5C583;
-  stroke-width: 2.5px;
-  filter: brightness(1.25) drop-shadow(0 0 12px rgba(197, 160, 89, 0.5));
-}
-
-.node-title {
+.svg-node-title {
   fill: #FFFFFF;
-  font-size: 13px;
-  font-weight: 700;
-  font-family: inherit;
-}
-
-.node-subtitle {
-  fill: #94A3B8;
-  font-size: 11px;
-  font-family: inherit;
-}
-
-.core-title {
-  font-size: 14.5px;
-  fill: #FFFFFF;
-}
-
-.core-subtitle {
-  fill: #E2E8F0;
   font-size: 11.5px;
+  font-weight: 700;
+  font-family: var(--font-en);
 }
 
-.pulse-indicator {
-  animation: pulse-dot 1.8s infinite;
+.svg-node-sub {
+  fill: #94A3B8;
+  font-size: 9.5px;
+  font-weight: 500;
+  font-family: var(--font-en);
 }
 
-/* Inspection Card Below SVG */
-.node-detail-card {
-  margin-block-start: 1.75rem;
-  background: rgba(15, 33, 55, 0.85);
-  border: 1px solid rgba(197, 160, 89, 0.35);
-  border-radius: var(--radius-lg);
-  padding: 1.5rem 1.75rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-  animation: fadeIn 0.25s ease-out;
+.svg-core-title {
+  fill: #FFFFFF;
+  font-size: 13.5px;
+  font-weight: 800;
+  font-family: var(--font-en);
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
+.svg-core-sub {
+  fill: #38BDF8;
+  font-size: 10.5px;
+  font-weight: 600;
+  font-family: var(--font-en);
 }
 
-.detail-header {
+.svg-core-sub-secondary {
+  fill: #94A3B8;
+  font-size: 9px;
+  font-weight: 500;
+  font-family: var(--font-en);
+}
+
+:host-context([dir="rtl"]) .svg-node-title,
+:host-context([dir="rtl"]) .svg-node-sub,
+:host-context([dir="rtl"]) .svg-core-title,
+:host-context([dir="rtl"]) .svg-core-sub,
+:host-context([dir="rtl"]) .svg-core-sub-secondary {
+  font-family: var(--font-ar), 'Cairo', sans-serif !important;
+}
+
+.diagram-info-panel {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  margin-block-end: 0.75rem;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 1rem;
+  padding: 12px 16px;
+  background: rgba(15, 33, 55, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
 }
 
-.detail-category-badge {
-  font-size: 0.7rem;
-  font-weight: 800;
-  color: var(--color-egypt-gold);
-  background: rgba(197, 160, 89, 0.15);
-  padding: 0.2rem 0.55rem;
-  border-radius: var(--radius-full);
-  letter-spacing: 0.05em;
+.info-content-wrap {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  flex: 1;
 }
 
-.detail-title {
-  color: #FFFFFF;
-  font-size: 1.15rem;
-  font-weight: 700;
+.info-icon {
+  font-size: 1.1rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.info-text {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: #CBD5E1;
   margin: 0;
 }
 
-.detail-role-pill {
-  font-size: 0.75rem;
-  color: #60A5FA;
-  background: rgba(59, 130, 246, 0.12);
-  border: 1px solid rgba(59, 130, 246, 0.25);
-  padding: 0.2rem 0.65rem;
-  border-radius: var(--radius-full);
-}
-
-.detail-desc {
-  font-size: 0.95rem;
-  line-height: 1.65;
-  color: #E2E8F0;
-  margin-block-end: 1rem;
-}
-
-.detail-subtitle-strip {
-  font-size: 0.82rem;
-  color: var(--color-text-light);
-  display: flex;
-  gap: 0.5rem;
+.btn-simulate {
+  display: inline-flex;
   align-items: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding-block-start: 0.75rem;
-  flex-wrap: wrap;
+  gap: 8px;
+  white-space: nowrap;
+  font-size: 0.8125rem;
+  padding: 8px 14px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, #1E5FD8, #087E8B);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 16px rgba(30, 95, 216, 0.35);
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.detail-subtitle-strip strong {
-  color: #FFFFFF;
+.btn-simulate:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 24px rgba(30, 95, 216, 0.55);
 }
 
-/* Reduced Motion */
-@media (prefers-reduced-motion: reduce) {
-  .tag-pulse, .pulse-indicator {
-    animation: none;
-  }
-  .node-detail-card {
-    animation: none;
-  }
+.pulse-indicator {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #38BDF8;
+  box-shadow: 0 0 8px #38BDF8;
+  animation: pulseDot 1.5s infinite;
 }
