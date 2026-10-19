@@ -1,61 +1,172 @@
-<div class="operating-model-wrapper" role="region" [attr.aria-label]="lang.t().journeyTitle">
-  <!-- Top Tag -->
-  <div class="journey-header">
-    <span class="journey-tag">{{ lang.t().journeyTag }}</span>
-    <h3 class="journey-title" [innerHTML]="lang.t().journeyTitle"></h3>
-    <p class="journey-subtitle">{{ lang.t().journeySubtitle }}</p>
+<div class="journey-stepper-container" role="region" [attr.aria-label]="lang.t().journeyTitle">
+  <div class="journey-progress-track" aria-hidden="true">
+    <div class="journey-progress-bar" id="journey-progress-fill" [style.width]="progressWidth()"></div>
   </div>
 
-  <!-- 5-Step Pipeline Flow Navigation -->
-  <div class="pipeline-container" role="tablist" [attr.aria-label]="lang.t().journeyTitle">
-    @for (step of lang.t().journeySteps; track step.step; let i = $index) {
-      <button 
-        type="button" 
-        class="pipeline-step-btn" 
-        [class.active]="activeStepIndex() === i"
-        (click)="setActiveStep(i)"
-        role="tab"
-        [attr.aria-selected]="activeStepIndex() === i"
-        [id]="'step-tab-' + i"
-        [attr.aria-controls]="'step-panel-' + i">
-        <div class="step-num-pill">{{ step.step }}</div>
-        <div class="step-meta">
-          <span class="step-name">{{ step.name }}</span>
-          <span class="step-phase-tag">{{ step.phase }}</span>
-        </div>
-        @if (i < lang.t().journeySteps.length - 1) {
-          <div class="step-connector" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M7 4l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-        }
-      </button>
-    }
-  </div>
-
-  <!-- Active Step Detail Card -->
-  @if (getActiveStep(); as activeStep) {
+  <!-- Stepper Track (5 steps) -->
+  <div class="journey-track" role="list">
     <div 
-      class="active-step-card" 
-      role="tabpanel" 
-      [id]="'step-panel-' + activeStepIndex()" 
-      [attr.aria-labelledby]="'step-tab-' + activeStepIndex()">
-      <div class="card-top">
-        <div class="step-badge-large">{{ activeStep.step }}</div>
-        <div>
-          <span class="phase-label">{{ activeStep.phase }}</span>
-          <h4 class="step-card-title">{{ activeStep.name }}</h4>
-        </div>
-      </div>
-      <p class="step-card-desc">{{ activeStep.description }}</p>
-      <div class="step-output-box">
-        <span class="output-label">
-          <span aria-hidden="true">🎯</span>
-          {{ lang.isArabic() ? 'المخرج المؤسسي المعتمد:' : 'Verified Institutional Output:' }}
-        </span>
-        <strong class="output-value">{{ activeStep.output }}</strong>
+      class="journey-step-item" 
+      [class.active]="currentStep() === 1" 
+      (click)="setStep(1, true)" 
+      tabindex="0" 
+      role="listitem">
+      <div class="step-marker"><span class="step-num">01</span></div>
+      <div class="step-content">
+        <span class="step-phase">{{ lang.isArabic() ? 'المرحلة الأولى' : 'PHASE 1' }}</span>
+        <h3 class="step-title">{{ lang.isArabic() ? 'التقييم والمواءمة' : 'Assess & Align' }}</h3>
+        <p class="step-summary">{{ lang.isArabic() ? 'دراسة مسارات العمل الحكومية وإرساء قواعد حوكمة الهندسة المؤسسية.' : 'Evaluate agency workflows, define objectives, and establish enterprise architecture governance.' }}</p>
+        <div class="step-tag">{{ lang.isArabic() ? 'الحوكمة والاستراتيجية' : 'Governance & Strategy' }}</div>
       </div>
     </div>
-  }
+
+    <div class="step-connector" aria-hidden="true"></div>
+
+    <div 
+      class="journey-step-item" 
+      [class.active]="currentStep() === 2" 
+      (click)="setStep(2, true)" 
+      tabindex="0" 
+      role="listitem">
+      <div class="step-marker"><span class="step-num">02</span></div>
+      <div class="step-content">
+        <span class="step-phase">{{ lang.isArabic() ? 'المرحلة الثانية' : 'PHASE 2' }}</span>
+        <h3 class="step-title">{{ lang.isArabic() ? 'التصميم وهندسة الحلول' : 'Architect & Design' }}</h3>
+        <p class="step-summary">{{ lang.isArabic() ? 'وضع المخططات الهندسية لمنصات آمنة تتوافق مع المعايير الوطنية.' : 'Engineer secure, scalable solution blueprints complying with national interoperability standards.' }}</p>
+        <div class="step-tag">{{ lang.isArabic() ? 'هندسة الحلول التقنية' : 'Solution Architecture' }}</div>
+      </div>
+    </div>
+
+    <div class="step-connector" aria-hidden="true"></div>
+
+    <div 
+      class="journey-step-item" 
+      [class.active]="currentStep() === 3" 
+      (click)="setStep(3, true)" 
+      tabindex="0" 
+      role="listitem">
+      <div class="step-marker"><span class="step-num">03</span></div>
+      <div class="step-content">
+        <span class="step-phase">{{ lang.isArabic() ? 'المرحلة الثالثة' : 'PHASE 3' }}</span>
+        <h3 class="step-title">{{ lang.isArabic() ? 'التكامل والتطبيق' : 'Integrate & Deploy' }}</h3>
+        <p class="step-summary">{{ lang.isArabic() ? 'تحديث الأنظمة وربط السجلات وقواعد البيانات عبر واجهات آمنة.' : 'Modernize legacy systems, integrate API registries, and execute phased public deployment.' }}</p>
+        <div class="step-tag">{{ lang.isArabic() ? 'التنفيذ والتكامل' : 'Execution & Integration' }}</div>
+      </div>
+    </div>
+
+    <div class="step-connector" aria-hidden="true"></div>
+
+    <div 
+      class="journey-step-item" 
+      [class.active]="currentStep() === 4" 
+      (click)="setStep(4, true)" 
+      tabindex="0" 
+      role="listitem">
+      <div class="step-marker"><span class="step-num">04</span></div>
+      <div class="step-content">
+        <span class="step-phase">{{ lang.isArabic() ? 'المرحلة الرابعة' : 'PHASE 4' }}</span>
+        <h3 class="step-title">{{ lang.isArabic() ? 'التشغيل والحماية' : 'Operate & Safeguard' }}</h3>
+        <p class="step-summary">{{ lang.isArabic() ? 'إدارة العمليات واستمرارية البنية التحتية وضمان الجاهزية 24/7.' : 'Manage 24/7 continuity, infrastructure reliability, data security, and high-availability operations.' }}</p>
+        <div class="step-tag">{{ lang.isArabic() ? 'العمليات واستمرارية الخدمة' : 'Operations & Continuity' }}</div>
+      </div>
+    </div>
+
+    <div class="step-connector" aria-hidden="true"></div>
+
+    <div 
+      class="journey-step-item" 
+      [class.active]="currentStep() === 5" 
+      (click)="setStep(5, true)" 
+      tabindex="0" 
+      role="listitem">
+      <div class="step-marker"><span class="step-num">05</span></div>
+      <div class="step-content">
+        <span class="step-phase">{{ lang.isArabic() ? 'المرحلة الخامسة' : 'PHASE 5' }}</span>
+        <h3 class="step-title">{{ lang.isArabic() ? 'الارتقاء والتطوير' : 'Elevate & Evolve' }}</h3>
+        <p class="step-summary">{{ lang.isArabic() ? 'تحسين تجربة المواطن وإجراء مراجعات الجودة الشاملة والتوسع القومي.' : 'Refine citizen experience, conduct rigorous quality audits, and scale for national impact.' }}</p>
+        <div class="step-tag">{{ lang.isArabic() ? 'تجربة المواطن والجودة' : 'Citizen Experience CX' }}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Architecture Blueprint Stage Visualizer -->
+  <div class="journey-blueprint-card card-glass" id="journey-stage-display">
+    <div class="blueprint-top-bar">
+      <div class="blueprint-phase-badge" id="blueprint-phase-num">{{ currentBlueprint().phase }}</div>
+      <h4 class="blueprint-title" id="blueprint-phase-title">{{ currentBlueprint().title }}</h4>
+      <div class="blueprint-status-indicator">
+        <span class="tele-dot"></span>
+        <span id="blueprint-status-text">{{ currentBlueprint().status }}</span>
+      </div>
+    </div>
+    
+    <div class="blueprint-canvas-container" id="blueprint-svg-container" aria-label="Interactive Architecture Stage Blueprint">
+      <svg class="blueprint-svg" viewBox="0 0 620 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" width="600" height="140" rx="10" fill="#07101E" stroke="rgba(56, 189, 248, 0.25)" stroke-width="1.5" stroke-dasharray="6 6"/>
+        
+        <g transform="translate(30, 40)">
+          @for (s of [1, 2, 3, 4, 5]; track s; let idx = $index) {
+            <g class="bp-step-node" [attr.opacity]="s === currentStep() ? '1' : (s < currentStep() ? '0.85' : '0.45')">
+              @if (idx < 4) {
+                <line 
+                  [attr.x1]="idx * 115 + 40" 
+                  y1="30" 
+                  [attr.x2]="idx * 115 + 115" 
+                  y2="30" 
+                  [attr.stroke]="s < currentStep() ? '#2DD4BF' : 'rgba(255,255,255,0.1)'" 
+                  stroke-width="2.5" 
+                  [attr.stroke-dasharray]="s < currentStep() ? null : '4 4'"/>
+              }
+              <circle 
+                [attr.cx]="idx * 115 + 20" 
+                cy="30" 
+                r="20" 
+                fill="#0B192C" 
+                [attr.stroke]="s === currentStep() ? '#00F0FF' : (s < currentStep() ? '#2DD4BF' : '#475569')" 
+                [attr.stroke-width]="s === currentStep() ? '3' : '1.5'" 
+                [attr.filter]="s === currentStep() ? 'drop-shadow(0 0 8px #00F0FF)' : null"/>
+              <text 
+                [attr.x]="idx * 115 + 20" 
+                y="35" 
+                [attr.fill]="s === currentStep() ? '#00F0FF' : '#FFFFFF'" 
+                font-size="11" 
+                font-weight="800" 
+                text-anchor="middle">0{{ s }}</text>
+              <text 
+                [attr.x]="idx * 115 + 20" 
+                y="68" 
+                [attr.fill]="s === currentStep() ? '#38BDF8' : '#94A3B8'" 
+                font-size="9.5" 
+                [attr.font-weight]="s === currentStep() ? '700' : '500'" 
+                text-anchor="middle">Phase 0{{ s }}</text>
+            </g>
+          }
+        </g>
+      </svg>
+    </div>
+
+    <div class="blueprint-meta-bar">
+      <div class="blueprint-meta-item">
+        <span class="meta-label">{{ lang.isArabic() ? 'أصحاب المصلحة الرئيسيون:' : 'Primary Stakeholders:' }}</span>
+        <span class="meta-val" id="blueprint-stakeholders">{{ currentBlueprint().stakeholders }}</span>
+      </div>
+      <div class="blueprint-meta-item">
+        <span class="meta-label">{{ lang.isArabic() ? 'المعيار الرقابي:' : 'Verification Standard:' }}</span>
+        <span class="meta-val" id="blueprint-standard">{{ currentBlueprint().standard }}</span>
+      </div>
+      <div class="blueprint-meta-item">
+        <span class="meta-label">{{ lang.isArabic() ? 'المخرج الرئيسي:' : 'Key Deliverable:' }}</span>
+        <span class="meta-val" id="blueprint-deliverable">{{ currentBlueprint().deliverable }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Journey Control Bar -->
+  <div class="journey-controls-bar">
+    <button type="button" class="btn btn-primary btn-sm btn-simulate" (click)="playProgression()" [disabled]="isProgressionPlaying()">
+      <span class="pulse-indicator"></span>
+      <span>{{ isProgressionPlaying() ? (lang.isArabic() ? 'مسار التحول قيد التقدم...' : 'Progression Active...') : lang.t().btnSimulateJourney }}</span>
+    </button>
+    <span class="journey-hint-text">{{ lang.t().journeyHint }}</span>
+  </div>
 </div>

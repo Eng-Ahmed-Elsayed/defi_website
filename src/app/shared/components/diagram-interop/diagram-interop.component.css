@@ -1,0 +1,5 @@
+/* Diagram D: Sovereign Interoperability Simulator styles are globally scoped in styles.css */
+:host {
+  display: block;
+  width: 100%;
+}

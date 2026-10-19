@@ -113,11 +113,24 @@ export interface DefiTranslations {
   heroCtaSecondary: string;
   metrics: MetricItem[];
 
+  // Hero Mandate Credentials Bar
+  heroMandateItems: { icon: string; title: string; subtitle: string }[];
+
   // Diagram A — National Digital Ecosystem
   diagramATitle: string;
   diagramASubtitle: string;
   diagramAInteractiveTag: string;
   diagramAInstruction: string;
+  telemetryThroughput: string;
+  telemetryLatency: string;
+  telemetrySecurity: string;
+  btnSimulateTraffic: string;
+  diagramADefaultInfo: string;
+  nodeInfoCitizens: string;
+  nodeInfoMinistries: string;
+  nodeInfoDefiCore: string;
+  nodeInfoRegistries: string;
+  nodeInfoInfra: string;
   ecosystemNodes: EcosystemNode[];
 
   // Authority & Decree 132/2020 Section
@@ -141,7 +154,61 @@ export interface DefiTranslations {
   journeyTag: string;
   journeyTitle: string;
   journeySubtitle: string;
+  btnSimulateJourney: string;
+  journeyHint: string;
   journeySteps: TransformationStep[];
+
+  // Diagram D — Sovereign Interoperability Engine & Data Bus Simulator
+  interopTag: string;
+  interopTitle: string;
+  interopSub: string;
+  simStatusTitle: string;
+  btnRunSim: string;
+  consoleTitle: string;
+
+  // Section 5B: Sectors in Focus
+  sectorsTag: string;
+  sectorsTitle: string;
+  sectorsSub: string;
+  sectorsInFocus: {
+    icon: string;
+    badge: string;
+    title: string;
+    summary: string;
+    metricNumber: string;
+    metricLabel: string;
+  }[];
+
+  // Section 5C: National Command Center · Sovereign Digital Grid
+  gridTag: string;
+  gridTitle: string;
+  gridSub: string;
+  gridStatusTitle: string;
+  btnPingHub: string;
+  regionalHubs: {
+    id: string;
+    badge: string;
+    title: string;
+    description: string;
+    throughput: string;
+    latency: string;
+    uptime: string;
+    entities: string;
+    security: string;
+  }[];
+
+  // Section 6: Careers Mission CTA on Home
+  homeCareersTag: string;
+  homeCareersTitle: string;
+  homeCareersDesc: string;
+  careerFeatures: string[];
+  careerBtnText: string;
+  careerNoteText: string;
+
+  // Section 7: Home Inquiry Form
+  homeFormTitle: string;
+  homeFormSubtitle: string;
+  homeFormSubmit: string;
 
   // Impact & Partners
   impactTag: string;

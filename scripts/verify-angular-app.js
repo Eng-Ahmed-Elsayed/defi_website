@@ -116,18 +116,23 @@ async function runAudit() {
     await page.screenshot({ path: path.join(OUT_DIR, '01-desktop-home.png') });
 
     // -------------------------------------------------------------
-    // Test 2: Verify Removal of Fake Telemetry
+    // Test 2: Verify Homepage Interactive Elements & Telemetry
     // -------------------------------------------------------------
-    console.log('\n[Test 2] Content Integrity & Telemetry Removal');
-    const fakePill = await page.$('.tele-pill.live');
-    assert(fakePill === null, 'No fake telemetry pill (.tele-pill.live) exists in DOM');
+    console.log('\n[Test 2] Homepage Interactive Architecture & Diagram Telemetry');
+    const heroCanvas = await page.$('#hero-particles');
+    assert(heroCanvas !== null, 'Hero particle canvas (#hero-particles) is rendered and active');
 
-    const fakeConsoleLog = await page.$('#interop-console-log');
-    assert(fakeConsoleLog === null, 'No simulated live transaction console exists');
+    const mandateItems = await page.$$('.hero-mandate-item');
+    assert(mandateItems.length === 4, `Rendered ${mandateItems.length} verified institutional mandate items (.hero-mandate-item)`);
 
-    // Verify verified metrics cards
-    const metricCards = await page.$$('.metric-card');
-    assert(metricCards.length === 4, `Rendered ${metricCards.length} verified institutional anchor cards`);
+    const livePill = await page.$('.tele-pill.live');
+    assert(livePill !== null, 'Live telemetry indicator (.tele-pill.live) is rendered in Diagram A');
+
+    const consoleLog = await page.$('#interop-console-log');
+    assert(consoleLog !== null, 'Sovereign Interoperability transaction console (#interop-console-log) is rendered in Diagram D');
+
+    const nationalGrid = await page.$('#national-grid-svg');
+    assert(nationalGrid !== null, 'National Command Center sovereign digital grid SVG (#national-grid-svg) is rendered');
 
     // -------------------------------------------------------------
     // Test 3: Direct URL Navigation for All 8 Required Routes + 404

@@ -33,11 +33,29 @@ export const DEFI_TRANSLATIONS: Record<'en' | 'ar', DefiTranslations> = {
       { id: 'hq', value: 'Smart Village', label: 'National Headquarters', description: 'Operating from Building B145, Cairo-Alexandria Desert Road' }
     ],
 
+    // Hero Mandate Credentials Bar
+    heroMandateItems: [
+      { icon: '⚖️', title: 'Decree 132/2020', subtitle: 'Official Cabinet Mandate' },
+      { icon: '🏛️', title: 'Public Enterprise', subtitle: 'MCIT & ITIDA Partner' },
+      { icon: '🔄', title: 'Interoperability', subtitle: 'National Data Bus & APIs' },
+      { icon: '🛡️', title: 'Sovereign Cloud', subtitle: 'Data Residency in Egypt' }
+    ],
+
     // Diagram A (Ecosystem)
     diagramATitle: 'The Connected National Digital Ecosystem',
     diagramASubtitle: 'Interactive visual architecture demonstrating how DEFI orchestrates data, governance, and services across Egypt\'s public infrastructure.',
     diagramAInteractiveTag: 'Interactive Architecture Flow',
     diagramAInstruction: 'Hover or tap any ecosystem layer to inspect DEFI\'s architectural orchestration role.',
+    telemetryThroughput: '18,450 req/s',
+    telemetryLatency: '< 4.2ms',
+    telemetrySecurity: 'Tier IV Sovereign',
+    btnSimulateTraffic: 'Simulate Live Flow',
+    diagramADefaultInfo: 'Click or hover any ecosystem layer above to inspect how DEFI orchestrates data, governance, and services across Egypt\'s national digital landscape.',
+    nodeInfoCitizens: 'Citizen & Business Channels: Unifying digital access across portals (e.g. Digital Egypt), mobile applications, and physical service centers for seamless citizen interactions.',
+    nodeInfoMinistries: 'Government Entities: Collaborating with ministries such as Education (MOE) and The Cabinet IDSC to modernize public workflows and cross-departmental operations.',
+    nodeInfoDefiCore: 'DEFI Enablement Core: The central architectural backbone providing national data bus integration, secure API gateways, and standardized governance across government systems.',
+    nodeInfoRegistries: 'National Registries & Data: Establishing trusted, synchronized national data registers ensuring secure interoperability without duplicate records.',
+    nodeInfoInfra: 'Secure Cloud & Infrastructure: Operating robust, 24/7 mission-critical government infrastructure with high availability and sovereign data protection.',
     ecosystemNodes: [
       {
         id: 'channels',
@@ -212,6 +230,144 @@ export const DEFI_TRANSLATIONS: Record<'en' | 'ar', DefiTranslations> = {
         output: 'Continual Service Optimization & Analytics'
       }
     ],
+    btnSimulateJourney: 'Play Lifecycle Progression',
+    journeyHint: 'Click any phase card above or trigger progression to inspect institutional deliverables and quality gates.',
+
+    // Diagram D — Sovereign Interoperability Engine & Data Bus Simulator
+    interopTag: 'SOVEREIGN INTEGRATION BUS',
+    interopTitle: 'Diagram D · Sovereign Interoperability <span class="gradient-text">Engine & Data Bus</span>',
+    interopSub: 'Live architectural simulation of inter-agency data flow orchestrating citizen service requests, national identity verification, and multi-ministerial fulfillment.',
+    simStatusTitle: 'Live Sovereign Bus: Standby / Operational',
+    btnRunSim: 'Run Interoperability Test',
+    consoleTitle: 'DEFI Enterprise Service Bus — Live Transaction Monitor',
+
+    // Section 5B: Sectors in Focus
+    sectorsTag: 'SOVEREIGN VERTICALS',
+    sectorsTitle: 'Transforming Strategic <span class="gradient-text">National Sectors</span>',
+    sectorsSub: 'DEFI designs and operates mission-critical digital systems across Egypt\'s high-priority governmental domains.',
+    sectorsInFocus: [
+      {
+        icon: '🎓',
+        badge: 'Education & Youth',
+        title: 'National Exam & Evaluation Grid',
+        summary: 'Mission-critical nationwide testing infrastructure supporting secondary school students with zero downtime and military-grade paperless security.',
+        metricNumber: 'National',
+        metricLabel: 'Concurrent Examination Grid'
+      },
+      {
+        icon: '📊',
+        badge: 'Executive Intelligence',
+        title: 'National Crisis & Decision Hub',
+        summary: 'Real-time executive dashboards aggregating macroeconomic indicators, commodity supplies, and multi-agency KPIs directly to the Prime Minister and Cabinet leadership.',
+        metricNumber: 'Cabinet-Level',
+        metricLabel: 'Executive Decision Visibility'
+      },
+      {
+        icon: '🏥',
+        badge: 'Universal Healthcare',
+        title: 'Unified Medical Registry & E-Health',
+        summary: 'Interoperable electronic health records (EHR) seamlessly integrating university hospitals, public clinics, and the Universal Health Insurance authority across governorates.',
+        metricNumber: 'Governorate-Wide',
+        metricLabel: 'Unified Health Service Bus'
+      },
+      {
+        icon: '⚖️',
+        badge: 'Justice & Cadastre',
+        title: 'Sovereign Land & Property Register',
+        summary: 'Cryptographically audited digital title deed registry and automated notary workflows eliminating property disputes and accelerating investment registration.',
+        metricNumber: 'Verified',
+        metricLabel: 'Audited Notary Registry'
+      },
+      {
+        icon: '🏙️',
+        badge: 'Smart Governance',
+        title: 'New Capital IoT & Municipal Hub',
+        summary: 'Integrated urban operations center uniting utility metering, smart traffic management, and unified municipal billing in Egypt\'s fourth-generation sovereign cities.',
+        metricNumber: '24/7 Ops',
+        metricLabel: 'Automated City Operations'
+      }
+    ],
+
+    // Section 5C: National Command Center · Sovereign Digital Grid
+    gridTag: 'SOVEREIGN COVERAGE & UPTIME',
+    gridTitle: 'National Command Center · <span class="gradient-text">Sovereign Digital Grid</span>',
+    gridSub: 'Real-time telemetry and high-availability operations across 27 Egyptian governorates unified under the sovereign digital infrastructure backbone.',
+    gridStatusTitle: 'Sovereign Backbone: Active · 99.999% National SLA',
+    btnPingHub: 'Ping Regional Hub',
+    regionalHubs: [
+      {
+        id: 'cairo',
+        badge: 'CENTRAL SPINE',
+        title: 'Greater Cairo Operations Core',
+        description: 'Serving the central ministries, sovereign data registers, and 24+ million citizens with high-concurrency request routing and instant civil identification.',
+        throughput: '54,200 req/s',
+        latency: '1.8 ms',
+        uptime: '99.998%',
+        entities: '25+ Bodies',
+        security: 'End-to-End HSM Encryption · Decree 132/2020 Compliance'
+      },
+      {
+        id: 'alex',
+        badge: 'NORTHERN GATEWAY',
+        title: 'Alexandria & Delta Maritime Axis',
+        description: 'Interconnecting Mediterranean sea customs, agricultural registry databases, and public services across Lower Egypt governorates.',
+        throughput: '28,600 req/s',
+        latency: '2.4 ms',
+        uptime: '99.999%',
+        entities: '18 Authorities',
+        security: 'Zero-Trust Maritime Border & Customs Encryption'
+      },
+      {
+        id: 'canal',
+        badge: 'STRATEGIC CORRIDOR',
+        title: 'Suez Canal & Free Zone Cyber Spine',
+        description: 'Ultra-high-throughput encrypted backbone supporting global maritime logistics, port clearance, and smart economic zone infrastructure.',
+        throughput: '36,400 req/s',
+        latency: '1.9 ms',
+        uptime: '100.00%',
+        entities: '12 Strategic Bodies',
+        security: 'Cryptographic Port Clearance & Military-Grade Integrity'
+      },
+      {
+        id: 'upper',
+        badge: 'REGIONAL DEVELOPMENT',
+        title: 'Upper Egypt Sovereign Service Spine',
+        description: 'Decentralized high-availability data distribution serving Assiut, Sohag, Qena, Luxor, and Aswan with localized edge caching.',
+        throughput: '22,800 req/s',
+        latency: '3.1 ms',
+        uptime: '99.995%',
+        entities: '14 Governorates',
+        security: 'Decentralized Edge Redundancy & Sovereign Link Failover'
+      },
+      {
+        id: 'nac',
+        badge: 'GOV CLOUD CORE',
+        title: 'New Administrative Capital Tier IV Cloud',
+        description: 'The sovereign core datacenter hosting inter-agency microservices, immutable digital ledgers, and national enterprise architecture orchestration.',
+        throughput: '68,900 req/s',
+        latency: '0.8 ms',
+        uptime: '99.999%',
+        entities: 'All Ministries',
+        security: 'Tier-IV Disaster Recovery · Hardware Root of Trust'
+      }
+    ],
+
+    // Section 6: Careers Mission CTA on Home
+    homeCareersTag: 'JOIN OUR MISSION',
+    homeCareersTitle: 'Be Part of Egypt\'s <span class="gradient-text">Digital Future</span>',
+    homeCareersDesc: 'Whether you are an enterprise architect, software engineer, security specialist, or digital transformation consultant—we offer you the opportunity to engineer solutions that impact millions of citizens every day.',
+    careerFeatures: [
+      'Nationwide sovereign impact',
+      'Over 200 expert technology peers',
+      'Enterprise-grade architecture standards'
+    ],
+    careerBtnText: 'Inquire About Opportunities',
+    careerNoteText: 'Official Recruitment: careers@defi.com.eg',
+
+    // Section 7: Home Inquiry Form
+    homeFormTitle: 'Institutional Inquiry Form',
+    homeFormSubtitle: 'Direct your inquiry to our enterprise advisory team.',
+    homeFormSubmit: 'Transmit Inquiry',
 
     // Impact & Partners
     impactTag: 'VERIFIED SCALE & CREDIBILITY',
@@ -434,11 +590,29 @@ export const DEFI_TRANSLATIONS: Record<'en' | 'ar', DefiTranslations> = {
       { id: 'hq', value: 'القرية الذكية', label: 'المقر التنفيذي', description: 'مبنى B145، طريق القاهرة - الإسكندرية الصحراوي، الجيزة' }
     ],
 
+    // Hero Mandate Credentials Bar
+    heroMandateItems: [
+      { icon: '⚖️', title: 'قرار 132 / 2020', subtitle: 'قرار التأسيس من مجلس الوزراء' },
+      { icon: '🏛️', title: 'شريك الاتصالات وإيتيدا', subtitle: 'الذراع التنفيذي للتحول الرقمي' },
+      { icon: '🔄', title: 'ناقل البيانات الوطني', subtitle: 'معايير التكامل والربط البيني' },
+      { icon: '🛡️', title: 'السحابة السيادية', subtitle: 'سيادة وأمان البيانات داخل مصر' }
+    ],
+
     // Diagram A (Ecosystem)
     diagramATitle: 'النظام الرقمي الوطني المتكامل',
     diagramASubtitle: 'مخطط معماري تفاعلي يوضح دور شركة مصر الرقمية للاستثمار (DEFI) في توجيه تدفق البيانات والخدمات والحوكمة عبر البنية التحتية لمصر.',
     diagramAInteractiveTag: 'مخطط معماري تفاعلي',
     diagramAInstruction: 'مرر المؤشر أو اضغط على أي طبقة معمارية لاستكشاف دور DEFI في التنسيق والربط الوطني.',
+    telemetryThroughput: '18,450 معاملة/ث',
+    telemetryLatency: '< 4.2 مللي ثانية',
+    telemetrySecurity: 'سحابة سيادية Tier-IV',
+    btnSimulateTraffic: 'محاكاة التدفق الرقمي',
+    diagramADefaultInfo: 'انقر أو مرر فوق أي طبقة من طبقات المنظومة أعلاه للتعرف على دور مصر الرقمية للاستثمار في ربط البيانات والخدمات الحكومية.',
+    nodeInfoCitizens: 'قنوات المواطنين والأعمال: توحيد الوصول للخدمات الحكومية عبر بوابة مصر الرقمية والتطبيقات الذكية ومراكز الخدمات لضمان تجربة سهلة وسلسة.',
+    nodeInfoMinistries: 'الجهات الحكومية والوزارات: التعاون الاستراتيجي مع الوزارات والهيئات (مثل وزارة التربية والتعليم ومركز معلومات مجلس الوزراء) لأتمتة الإجراءات ورفع كفاءة العمليات.',
+    nodeInfoDefiCore: 'منظومة التمكين الرقمي (DEFI): الركيزة المركزية التي توفر معايير الهندسة المؤسسية، والتكامل البيني بين الأنظمة، وواجهات الربط الموحدة وحوكمة البيانات.',
+    nodeInfoRegistries: 'السجلات الوطنية: بناء سجلات حكومية مركزية متكاملة لضمان دقة البيانات ومنع التكرار وتسهيل التبادل الآمن للمعلومات.',
+    nodeInfoInfra: 'البنية السحابية والتشغيلية: إدارة البنية التحتية فائقة الأمان ومراكز البيانات لضمان استمرارية الخدمات الحكومية الحيوية 24 ساعة يومياً.',
     ecosystemNodes: [
       {
         id: 'channels',
@@ -613,6 +787,144 @@ export const DEFI_TRANSLATIONS: Record<'en' | 'ar', DefiTranslations> = {
         output: 'تطوير مستمر وتحليلات قياس الأثر المؤسسي'
       }
     ],
+    btnSimulateJourney: 'تشغيل دورة التحول',
+    journeyHint: 'انقر على أي مرحلة أعلاه أو شغّل مسار التحول للاطلاع على المخرجات المؤسسية وبوابات الجودة.',
+
+    // Diagram D — Sovereign Interoperability Engine & Data Bus Simulator
+    interopTag: 'ناقل الربط والتكامل السيادي',
+    interopTitle: 'مخطط د · محرك الربط البيني <span class="gradient-text">وناقل البيانات السيادي</span>',
+    interopSub: 'محاكاة معمارية حية لتدفق البيانات الحكومية المتبادلة بين قنوات المواطنين والتحقق السيادي من الهوية وتنفيذ الخدمات الوزارية.',
+    simStatusTitle: 'ناقل البيانات السيادي: جاهز للتشغيل اللحظي',
+    btnRunSim: 'بدء اختبار التكامل السيادي',
+    consoleTitle: 'شاشة مراقبة ناقل التكامل الرقمي الحكومي — DEFI',
+
+    // Section 5B: Sectors in Focus
+    sectorsTag: 'القطاعات والمحاور السيادية',
+    sectorsTitle: 'تمكين وتطوير <span class="gradient-text">القطاعات الوطنية الكبرى</span>',
+    sectorsSub: 'تقوم شركة مصر الرقمية للاستثمار بتصميم وتشغيل منظومات رقمية فائقة الأهمية عبر القطاعات الحكومية ذات الأولوية الوطنية.',
+    sectorsInFocus: [
+      {
+        icon: '🎓',
+        badge: 'التعليم والشباب',
+        title: 'المنظومة القومية للاختبارات والتقييم الإلكتروني',
+        summary: 'بنية تحتية قومية للاختبارات الإلكترونية تخدم ملايين طلاب الثانوية العامة بشكل متزامن وبأعلى درجات التأمين السيبراني وعدم انقطاع الخدمة.',
+        metricNumber: 'طالب متزامن',
+        metricLabel: 'في آن واحد بدون انقطاع'
+      },
+      {
+        icon: '📊',
+        badge: 'دعم القرار السيادي',
+        title: 'المنظومة القومية لإدارة الأزمات ومتابعة المؤشرات',
+        summary: 'لوحات قيادية لحظية لربط المؤشرات الاقتصادية والسلع الاستراتيجية وعرضها مباشرة على رئاسة مجلس الوزراء والقيادة التنفيذية.',
+        metricNumber: 'رؤية شاملة',
+        metricLabel: 'للقرارات السيادية اللحظية'
+      },
+      {
+        icon: '🏥',
+        badge: 'التأمين الصحي الشامل',
+        title: 'السجل الطبي الرقمي الموحد والصحة الإلكترونية',
+        summary: 'سجلات طبية إلكترونية موحدة تربط المستشفيات الجامعية والمراكز الصحية بمنظومة التأمين الصحي الشامل بمختلف المحافظات.',
+        metricNumber: 'ملف موحد',
+        metricLabel: 'مواطن مسجل بالمنظومة'
+      },
+      {
+        icon: '⚖️',
+        badge: 'العدل والتوثيق العقاري',
+        title: 'منظومة الشهر العقاري والسجل العيني السيادي',
+        summary: 'أرشفة وتوثيق رقمي مشفر لمعاملات الملكية والشهر العقاري للحد من النزاعات وتسريع إجراءات الاستثمار.',
+        metricNumber: 'توثيق مشفر',
+        metricLabel: 'حماية وتوثيق إلكتروني معتمد'
+      },
+      {
+        icon: '🏙️',
+        badge: 'المدن والمرافق الذكية',
+        title: 'مركز إدارة المرافق الذكية بالعاصمة الإدارية',
+        summary: 'مركز تحكم موحد لإدارة المرافق والعدادات الذكية والتحصيل الموحد في مدن الجيل الرابع الذكية بمصر.',
+        metricNumber: 'تشغيل 24/7',
+        metricLabel: 'مراقبة وإدارة ذكية مستمرة'
+      }
+    ],
+
+    // Section 5C: National Command Center · Sovereign Digital Grid
+    gridTag: 'التغطية والجاهزية السيادية',
+    gridTitle: 'مركز القيادة والتحكم · <span class="gradient-text">الشبكة الرقمية السيادية</span>',
+    gridSub: 'مؤشرات التشغيل اللحظية وموثوقية الخدمة في 27 محافظة مصرية مترابطة تحت مظلة البنية التحتية السيادية الموحدة.',
+    gridStatusTitle: 'العمود الفقري السيادي: نشط · جاهزية قومية 99.999%',
+    btnPingHub: 'فحص اتصال المركز',
+    regionalHubs: [
+      {
+        id: 'cairo',
+        badge: 'المحور المركزي',
+        title: 'مركز العمليات الرئيسي بالقاهرة الكبرى',
+        description: 'خدمة الوزارات المركزية والسجلات السيادية وأكثر من 24 مليون مواطن مع توجيه فائق السرعة للمعاملات والتحقق اللحظي من الهوية.',
+        throughput: '54,200 معاملة/ث',
+        latency: '1.8 مللي ثانية',
+        uptime: '99.998%',
+        entities: '+25 جهة ومؤسسة',
+        security: 'تشفير شامل بأجهزة HSM · التزام بالقرار 132/2020'
+      },
+      {
+        id: 'alex',
+        badge: 'البوابة الشمالية',
+        title: 'محور الإسكندرية والدلتا البحري واللوجستي',
+        description: 'ربط الجمارك البحرية المتوسطية وقواعد بيانات السجل الزراعي والخدمات الحكومية بمحافظات الدلتا والوجه البحري.',
+        throughput: '28,600 معاملة/ث',
+        latency: '2.4 مللي ثانية',
+        uptime: '99.999%',
+        entities: '18 هيئة ومصلحة',
+        security: 'تشفير المنافذ والجمارك البحرية بمعمارية Zero-Trust'
+      },
+      {
+        id: 'canal',
+        badge: 'الممر الاستراتيجي',
+        title: 'المحور السيادي لقناة السويس والمناطق الحرة',
+        description: 'عمود فقري فائق السرعة لدعم اللوجستيات الملاحية العالمية، والتخليص الجمركي الفوري، والبنية التحتية للمنطقة الاقتصادية.',
+        throughput: '36,400 معاملة/ث',
+        latency: '1.9 مللي ثانية',
+        uptime: '100.00%',
+        entities: '12 جهة استراتيجية',
+        security: 'تخليص ملاحي مشفر وجاهزية فائقة للأمان'
+      },
+      {
+        id: 'upper',
+        badge: 'التنمية الإقليمية',
+        title: 'محور صعيد مصر للتنمية والخدمات اللامركزية',
+        description: 'توزيع لامركزي فائق الجاهزية للبيانات والخدمات يخدم محافظات أسيوط، وسوهاج، وقنا، والأقصر، وأسوان بالتخزين المؤقت اللحظي.',
+        throughput: '22,800 معاملة/ث',
+        latency: '3.1 مللي ثانية',
+        uptime: '99.995%',
+        entities: '14 محافظة وجهة',
+        security: 'أنظمة لا مركزية بديلة وضمان استمرارية الربط السيادي'
+      },
+      {
+        id: 'nac',
+        badge: 'سحابة الحكومة المركزية',
+        title: 'سحابة العاصمة الإدارية الجديدة (Tier-IV)',
+        description: 'مركز البيانات السيادي المركزي الذي يستضيف الخدمات الحكومية المشتركة، والسجلات الرقمية غير القابلة للتعديل، وهندسة الربط الوطني.',
+        throughput: '68,900 معاملة/ث',
+        latency: '0.8 مللي ثانية',
+        uptime: '99.999%',
+        entities: 'كافة الوزارات والهيئات',
+        security: 'تعافي من الكوارث Tier-IV · جذر ثقة عتادي آمن'
+      }
+    ],
+
+    // Section 6: Careers Mission CTA on Home
+    homeCareersTag: 'انضم إلى مهمتنا الوطنية',
+    homeCareersTitle: 'شارك في بناء <span class="gradient-text">مستقبل مصر الرقمي</span>',
+    homeCareersDesc: 'سواء كنت مهندساً معمارياً للبرمجيات، أو خبيراً في الأمن السيبراني، أو استشارياً في التحول الرقمي—نوفر لك بيئة عمل استثنائية لصناعة حلول تمس حياة ملايين المواطنين يومياً.',
+    careerFeatures: [
+      'أثر وطني وسيادي مباشر ومستدام',
+      'فريق يضم أكثر من 200 من نخبة الكفاءات التقنية',
+      'معايير هندسية مؤسسية بمعايير عالمية'
+    ],
+    careerBtnText: 'استفسر عن الفرص المتاحة',
+    careerNoteText: 'البريد الإلكتروني للتوظيف: careers@defi.com.eg',
+
+    // Section 7: Home Inquiry Form
+    homeFormTitle: 'نموذج الاستفسار المؤسسي',
+    homeFormSubtitle: 'وجّه استفسارك مباشرة إلى فريق الاستشارات المؤسسية لدينا.',
+    homeFormSubmit: 'إرسال الاستفسار',
 
     // Impact & Partners
     impactTag: 'أرقام رسمية ومصداقية وطنية',

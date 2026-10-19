@@ -1,160 +1,116 @@
-<div class="diagram-ecosystem-wrapper" role="region" [attr.aria-label]="lang.t().diagramATitle">
-  <div class="diagram-meta-bar">
-    <span class="diagram-tag">
-      <span class="tag-pulse" aria-hidden="true"></span>
-      {{ lang.t().diagramAInteractiveTag }}
-    </span>
-    <p class="diagram-instruction">{{ lang.t().diagramAInstruction }}</p>
+<div class="diagram-wrapper card-glass" role="region" [attr.aria-label]="lang.t().diagramATitle">
+  <div class="diagram-header">
+    <div class="diagram-status">
+      <span class="status-indicator"></span>
+      <span class="diagram-title-text">{{ lang.t().diagramATitle }}</span>
+    </div>
+    <div class="diagram-header-right">
+      <div class="diagram-telemetry-strip" aria-label="Live Telemetry">
+        <span class="tele-pill live"><span class="tele-dot"></span> <span>{{ throughputDisplay() }}</span></span>
+        <span class="tele-pill">{{ latencyDisplay() }}</span>
+        <span class="tele-pill">{{ lang.t().telemetrySecurity }}</span>
+      </div>
+      <span class="diagram-tag">{{ lang.t().diagramAInteractiveTag }}</span>
+    </div>
   </div>
 
-  <div class="svg-container">
-    <svg 
-      class="ecosystem-svg" 
-      viewBox="0 0 920 420" 
-      preserveAspectRatio="xMidYMid meet" 
-      role="img" 
-      [attr.aria-label]="lang.t().diagramATitle">
+  <div class="diagram-canvas-container">
+    <svg class="ecosystem-svg" [class.traffic-burst]="isSimulating()" viewBox="0 0 680 440" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
       <defs>
-        <!-- Gradients -->
-        <linearGradient id="defiCoreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#1E5FD8"/>
-          <stop offset="60%" stop-color="#4F46E5"/>
-          <stop offset="100%" stop-color="#6366F1"/>
+        <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#1E5FD8" />
+          <stop offset="100%" stop-color="#38BDF8" />
         </linearGradient>
-
-        <linearGradient id="nodeBorderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#3B82F6"/>
-          <stop offset="100%" stop-color="#C5A059"/>
+        <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#6366F1" />
+          <stop offset="100%" stop-color="#A855F7" />
         </linearGradient>
-
-        <filter id="glowEffect" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur stdDeviation="8" result="blur" />
-          <feComposite in="SourceGraphic" in2="blur" operator="over" />
-        </filter>
+        <linearGradient id="tealGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#087E8B" />
+          <stop offset="100%" stop-color="#14B8A6" />
+        </linearGradient>
       </defs>
 
-      <!-- Connecting Architecture Data Bus Lines -->
-      <g class="connecting-buses" stroke="rgba(59, 130, 246, 0.25)" stroke-width="2" stroke-dasharray="4 4">
-        <!-- Lines from Touchpoints to Ministries & Core -->
-        <path d="M 460 70 L 460 110" />
-        <path d="M 280 70 L 320 110" />
-        <path d="M 640 70 L 600 110" />
-
-        <!-- Lines from Ministries to DEFI Core -->
-        <path d="M 320 160 L 400 195" />
-        <path d="M 460 160 L 460 195" />
-        <path d="M 600 160 L 520 195" />
-
-        <!-- Lines from DEFI Core to Registries -->
-        <path d="M 400 255 L 340 290" />
-        <path d="M 460 255 L 460 290" />
-        <path d="M 520 255 L 580 290" />
-
-        <!-- Lines from Registries to Sovereign Cloud -->
-        <path d="M 460 340 L 460 370" />
+      <!-- Background Connection Traces with Pulse Animations -->
+      <g class="network-traces" opacity="0.6">
+        <path id="trace-citizens-core" d="M 170 85 L 170 150 L 340 180" stroke="url(#blueGrad)" stroke-width="2" stroke-dasharray="4 4" class="animated-trace"/>
+        <path id="trace-ministries-core" d="M 510 85 L 510 150 L 340 180" stroke="url(#purpleGrad)" stroke-width="2" stroke-dasharray="4 4" class="animated-trace"/>
+        <path id="trace-core-registries" d="M 340 250 L 170 290 L 170 345" stroke="url(#blueGrad)" stroke-width="2" stroke-dasharray="4 4" class="animated-trace"/>
+        <path id="trace-core-infra" d="M 340 250 L 510 290 L 510 345" stroke="url(#purpleGrad)" stroke-width="2" stroke-dasharray="4 4" class="animated-trace"/>
+        <path id="trace-core-center" d="M 340 250 L 340 345" stroke="url(#tealGrad)" stroke-width="2.5" class="solid-trace"/>
       </g>
 
-      <!-- Layer 1: Citizen & Business Channels -->
-      <g 
-        class="diagram-node-group" 
-        [class.active]="selectedNodeId() === 'channels'"
-        (click)="selectNode('channels')"
-        tabindex="0"
-        (keydown.enter)="selectNode('channels')"
-        (keydown.space)="selectNode('channels')"
-        role="button"
-        [attr.aria-pressed]="selectedNodeId() === 'channels'">
-        <rect x="200" y="20" width="520" height="50" rx="10" class="node-bg touchpoints-bg" />
-        <circle cx="230" cy="45" r="14" fill="#3B82F6" fill-opacity="0.2" />
-        <text x="230" y="50" text-anchor="middle" font-size="14" fill="#60A5FA">🌐</text>
-        <text x="260" y="42" class="node-title">{{ lang.t().ecosystemNodes[0].title }}</text>
-        <text x="260" y="58" class="node-subtitle">{{ lang.t().ecosystemNodes[0].subtitle }}</text>
+      <!-- Animated Data Packets Traveling Along Paths -->
+      <circle r="4.5" fill="#38BDF8" class="data-packet" filter="drop-shadow(0 0 6px #38BDF8)">
+        <animateMotion dur="2.4s" repeatCount="indefinite" path="M 170 85 L 170 150 L 340 180" />
+      </circle>
+      <circle r="4.5" fill="#C084FC" class="data-packet" filter="drop-shadow(0 0 6px #C084FC)">
+        <animateMotion dur="2.8s" repeatCount="indefinite" path="M 510 85 L 510 150 L 340 180" />
+      </circle>
+      <circle r="4.5" fill="#38BDF8" class="data-packet" filter="drop-shadow(0 0 6px #38BDF8)">
+        <animateMotion dur="2.6s" repeatCount="indefinite" path="M 340 250 L 170 290 L 170 345" />
+      </circle>
+      <circle r="4.5" fill="#2DD4BF" class="data-packet" filter="drop-shadow(0 0 6px #2DD4BF)">
+        <animateMotion dur="2.2s" repeatCount="indefinite" path="M 340 250 L 510 290 L 510 345" />
+      </circle>
+
+      <!-- Layer 1 (Top Left): Citizens & Business Channels -->
+      <g class="diagram-node node-interactive" [class.active]="activeNode() === 'citizens'" (click)="selectNode('citizens', true)" (mouseenter)="selectNode('citizens', true)" tabindex="0" role="button" aria-label="Citizens and Businesses Layer">
+        <rect x="50" y="30" width="240" height="70" rx="12" class="node-box" />
+        <circle cx="80" cy="65" r="18" fill="#1E5FD8" fill-opacity="0.2" stroke="#1E5FD8" stroke-width="1.5"/>
+        <path d="M74 72 C74 68 77 65 80 65 C83 65 86 68 86 72 M80 62 A3.5 3.5 0 1 0 80 55 A3.5 3.5 0 1 0 80 62" stroke="#60A5FA" stroke-width="1.8" stroke-linecap="round"/>
+        <text x="110" y="58" class="svg-node-title">{{ lang.isArabic() ? 'قنوات المواطنين وقطاع الأعمال' : 'Citizen & Business Channels' }}</text>
+        <text x="110" y="76" class="svg-node-sub">{{ lang.isArabic() ? 'بوابات · تطبيقات · مراكز خدمة' : 'Portals · Mobile Apps · Service Centers' }}</text>
       </g>
 
-      <!-- Layer 2: Government Ministries & Entities -->
-      <g 
-        class="diagram-node-group" 
-        [class.active]="selectedNodeId() === 'ministries'"
-        (click)="selectNode('ministries')"
-        tabindex="0"
-        (keydown.enter)="selectNode('ministries')"
-        (keydown.space)="selectNode('ministries')"
-        role="button"
-        [attr.aria-pressed]="selectedNodeId() === 'ministries'">
-        <rect x="180" y="110" width="560" height="52" rx="10" class="node-bg ministries-bg" />
-        <circle cx="212" cy="136" r="14" fill="#C5A059" fill-opacity="0.2" />
-        <text x="212" y="141" text-anchor="middle" font-size="14" fill="#E5C583">🏛️</text>
-        <text x="242" y="132" class="node-title">{{ lang.t().ecosystemNodes[1].title }}</text>
-        <text x="242" y="150" class="node-subtitle">{{ lang.t().ecosystemNodes[1].subtitle }}</text>
+      <!-- Layer 1 (Top Right): Ministries & Public Entities -->
+      <g class="diagram-node node-interactive" [class.active]="activeNode() === 'ministries'" (click)="selectNode('ministries', true)" (mouseenter)="selectNode('ministries', true)" tabindex="0" role="button" aria-label="Government Entities Layer">
+        <rect x="390" y="30" width="240" height="70" rx="12" class="node-box" />
+        <circle cx="420" cy="65" r="18" fill="#6366F1" fill-opacity="0.2" stroke="#6366F1" stroke-width="1.5"/>
+        <path d="M412 71 L428 71 M414 71 L414 62 L420 57 L426 62 L426 71 M420 62 L420 71" stroke="#A78BFA" stroke-width="1.8" stroke-linecap="round"/>
+        <text x="450" y="58" class="svg-node-title">{{ lang.isArabic() ? 'الجهات والمؤسسات الحكومية' : 'Government Entities & Ministries' }}</text>
+        <text x="450" y="76" class="svg-node-sub">{{ lang.isArabic() ? 'التعليم · مركز المعلومات · +25 جهة' : 'MOE · IDSC · 25+ Public Bodies' }}</text>
       </g>
 
-      <!-- Layer 3: DEFI Core Backbone (Center Prominent) -->
-      <g 
-        class="diagram-node-group core-hub" 
-        [class.active]="selectedNodeId() === 'core'"
-        (click)="selectNode('core')"
-        tabindex="0"
-        (keydown.enter)="selectNode('core')"
-        (keydown.space)="selectNode('core')"
-        role="button"
-        [attr.aria-pressed]="selectedNodeId() === 'core'">
-        <rect x="140" y="195" width="640" height="64" rx="14" class="node-bg core-bg" />
-        <circle cx="180" cy="227" r="18" fill="#FFFFFF" fill-opacity="0.15" />
-        <text x="180" y="233" text-anchor="middle" font-size="16">⚡</text>
-        <text x="215" y="222" class="node-title core-title">{{ lang.t().ecosystemNodes[2].title }}</text>
-        <text x="215" y="242" class="node-subtitle core-subtitle">{{ lang.t().ecosystemNodes[2].subtitle }}</text>
-        <circle cx="740" cy="227" r="6" fill="#C5A059" class="pulse-indicator" />
+      <!-- Layer 2 (Center Core): DEFI Digital Enablement Backbone -->
+      <g class="diagram-core-node" [class.active]="activeNode() === 'defi-core' || activeNode() === 'core'" (click)="selectNode('defi-core', true)" (mouseenter)="selectNode('defi-core', true)" tabindex="0" role="button" aria-label="DEFI Digital Enablement Backbone">
+        <rect x="180" y="160" width="320" height="96" rx="16" class="core-box" />
+        <circle cx="225" cy="208" r="24" fill="#087E8B" fill-opacity="0.3" stroke="#00D2D3" stroke-width="2"/>
+        <path d="M214 216 L225 198 L236 216 Z M225 204 L236 204 L240 200" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="260" y="198" class="svg-core-title">{{ lang.isArabic() ? 'منصة التمكين الرقمي الموحدة (DEFI)' : 'DEFI Digital Enablement Backbone' }}</text>
+        <text x="260" y="218" class="svg-core-sub">{{ lang.isArabic() ? 'الهندسة المؤسسية · الربط والتكامل البيني' : 'Enterprise Architecture · Interoperability' }}</text>
+        <text x="260" y="234" class="svg-core-sub-secondary">{{ lang.isArabic() ? 'ناقل البيانات الوطني · واجهات برمجة آمنة APIs' : 'National Data Bus · Secure Integration APIs' }}</text>
       </g>
 
-      <!-- Layer 4: National Registries & Data Assets -->
-      <g 
-        class="diagram-node-group" 
-        [class.active]="selectedNodeId() === 'registries'"
-        (click)="selectNode('registries')"
-        tabindex="0"
-        (keydown.enter)="selectNode('registries')"
-        (keydown.space)="selectNode('registries')"
-        role="button"
-        [attr.aria-pressed]="selectedNodeId() === 'registries'">
-        <rect x="180" y="290" width="560" height="52" rx="10" class="node-bg registries-bg" />
-        <circle cx="212" cy="316" r="14" fill="#087E8B" fill-opacity="0.25" />
-        <text x="212" y="321" text-anchor="middle" font-size="14" fill="#2DD4BF">🗄️</text>
-        <text x="242" y="312" class="node-title">{{ lang.t().ecosystemNodes[3].title }}</text>
-        <text x="242" y="330" class="node-subtitle">{{ lang.t().ecosystemNodes[3].subtitle }}</text>
+      <!-- Layer 3 (Bottom Left): National Registries & Data Assets -->
+      <g class="diagram-node node-interactive" [class.active]="activeNode() === 'registries'" (click)="selectNode('registries', true)" (mouseenter)="selectNode('registries', true)" tabindex="0" role="button" aria-label="National Registries Layer">
+        <rect x="50" y="340" width="240" height="70" rx="12" class="node-box" />
+        <circle cx="80" cy="375" r="18" fill="#1E5FD8" fill-opacity="0.2" stroke="#1E5FD8" stroke-width="1.5"/>
+        <path d="M72 370 C72 367 88 367 88 370 C88 373 72 373 72 370 M72 375 C72 378 88 378 88 375 M72 380 C72 383 88 383 88 380" stroke="#60A5FA" stroke-width="1.8"/>
+        <text x="110" y="368" class="svg-node-title">{{ lang.isArabic() ? 'السجلات الوطنية وقواعد البيانات' : 'National Registries & Data' }}</text>
+        <text x="110" y="386" class="svg-node-sub">{{ lang.isArabic() ? 'السجلات الأساسية المترابطة والآمنة' : 'Interoperable Base Registers' }}</text>
       </g>
 
-      <!-- Layer 5: Sovereign Cloud & High-Availability Operations -->
-      <g 
-        class="diagram-node-group" 
-        [class.active]="selectedNodeId() === 'infra'"
-        (click)="selectNode('infra')"
-        tabindex="0"
-        (keydown.enter)="selectNode('infra')"
-        (keydown.space)="selectNode('infra')"
-        role="button"
-        [attr.aria-pressed]="selectedNodeId() === 'infra'">
-        <rect x="200" y="370" width="520" height="46" rx="10" class="node-bg infra-bg" />
-        <circle cx="230" cy="393" r="13" fill="#6366F1" fill-opacity="0.25" />
-        <text x="230" y="398" text-anchor="middle" font-size="13" fill="#A5B4FC">☁️</text>
-        <text x="260" y="390" class="node-title">{{ lang.t().ecosystemNodes[4].title }}</text>
-        <text x="260" y="405" class="node-subtitle">{{ lang.t().ecosystemNodes[4].subtitle }}</text>
+      <!-- Layer 3 (Bottom Right): Secure Cloud & Infrastructure -->
+      <g class="diagram-node node-interactive" [class.active]="activeNode() === 'infra'" (click)="selectNode('infra', true)" (mouseenter)="selectNode('infra', true)" tabindex="0" role="button" aria-label="Cloud and Infrastructure Layer">
+        <rect x="390" y="340" width="240" height="70" rx="12" class="node-box" />
+        <circle cx="420" cy="375" r="18" fill="#087E8B" fill-opacity="0.2" stroke="#087E8B" stroke-width="1.5"/>
+        <path d="M412 378 C410 378 408 376 408 373 C408 370 411 368 414 368 C415 365 418 363 422 363 C426 363 429 366 430 369 C433 369 435 372 435 375 C435 378 433 380 430 380 L412 380" stroke="#2DD4BF" stroke-width="1.8" stroke-linecap="round"/>
+        <text x="450" y="368" class="svg-node-title">{{ lang.isArabic() ? 'البنية التحتية والسحابة الحكومية' : 'Secure Cloud & Infrastructure' }}</text>
+        <text x="450" y="386" class="svg-node-sub">{{ lang.isArabic() ? 'مراكز بيانات فائقة الجاهزية · تشغيل 24/7' : 'High-Availability Gov Centers · 24/7 Ops' }}</text>
       </g>
     </svg>
   </div>
 
-  <!-- Interactive Inspector Panel -->
-  @if (getSelectedNode(); as node) {
-    <div class="node-detail-card" role="status" aria-live="polite">
-      <div class="detail-header">
-        <span class="detail-category-badge">{{ node.category | uppercase }}</span>
-        <h4 class="detail-title">{{ node.title }}</h4>
-        <span class="detail-role-pill">{{ node.role }}</span>
-      </div>
-      <p class="detail-desc">{{ node.description }}</p>
-      <div class="detail-subtitle-strip">
-        <strong>{{ lang.isArabic() ? 'الأنظمة والمنصات المشمولة:' : 'Scope & Integrated Systems:' }}</strong>
-        <span>{{ node.subtitle }}</span>
-      </div>
+  <!-- Dynamic Node Info Box -->
+  <div class="diagram-info-panel" id="diagram-a-tooltip">
+    <div class="info-content-wrap">
+      <span class="info-icon" aria-hidden="true">ℹ️</span>
+      <p class="info-text" id="diagram-a-info-text">{{ getInfoText() }}</p>
     </div>
-  }
+    <button type="button" class="btn btn-sm btn-simulate" (click)="simulateTraffic()" [disabled]="isSimulating()" title="Trigger an animated digital traffic burst across Egypt's architecture">
+      <span class="pulse-indicator"></span>
+      <span>{{ isSimulating() ? (lang.isArabic() ? 'جاري تدفق البيانات...' : 'Traffic Pulsing...') : lang.t().btnSimulateTraffic }}</span>
+    </button>
+  </div>
 </div>

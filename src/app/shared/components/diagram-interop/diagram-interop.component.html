@@ -1,0 +1,148 @@
+<section class="section section-interoperability" id="interop" aria-label="Sovereign Interoperability Engine">
+  <div class="container">
+    <div class="section-header text-center">
+      <div class="section-tag">{{ lang.t().interopTag }}</div>
+      <h2 class="section-title" [innerHTML]="lang.t().interopTitle"></h2>
+      <p class="section-desc max-w-2xl">{{ lang.t().interopSub }}</p>
+    </div>
+
+    <div class="interop-simulator-card card-glass">
+      <div class="simulator-top-bar">
+        <div class="sim-status">
+          <span class="status-indicator"></span>
+          <span class="sim-title">{{ lang.t().simStatusTitle }}</span>
+        </div>
+        <div class="sim-controls">
+          <button type="button" class="btn btn-primary btn-sm btn-sim-trigger" (click)="triggerTest()" [disabled]="isRunningTest()">
+            <span class="btn-sim-icon">⚡</span>
+            <span>{{ lang.t().btnRunSim }}</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 5 Stage Pipeline Nodes -->
+      <div class="interop-pipeline-flow" role="region" aria-label="5-Stage Sovereign Flow">
+        <!-- Stage 1 -->
+        <div 
+          class="interop-node" 
+          [class.active]="currentStage() === 1"
+          [class.highlight-success]="activeStages().includes(1)"
+          (click)="selectStage(1, true)"
+          tabindex="0"
+          role="button">
+          <div class="node-icon-wrap">📱</div>
+          <span class="node-step">01</span>
+          <h4 class="node-heading">{{ lang.isArabic() ? 'قنوات المواطن والأعمال' : 'Citizen Touchpoint' }}</h4>
+          <p class="node-detail">{{ lang.isArabic() ? 'منصة مصر الرقمية والتطبيقات الذكية' : 'Digital Egypt Portal / App' }}</p>
+          <div class="node-status-badge" [class.badge-success]="activeStages().includes(1)" [class.badge-pending]="!activeStages().includes(1)">
+            {{ stageBadges()[0] }}
+          </div>
+        </div>
+
+        <!-- Stage 2 -->
+        <div 
+          class="interop-node" 
+          [class.active]="currentStage() === 2"
+          [class.highlight-success]="activeStages().includes(2)"
+          (click)="selectStage(2, true)"
+          tabindex="0"
+          role="button">
+          <div class="node-icon-wrap">🛡️</div>
+          <span class="node-step">02</span>
+          <h4 class="node-heading">{{ lang.isArabic() ? 'بوابة DEFI السيادية' : 'DEFI Sovereign Gateway' }}</h4>
+          <p class="node-detail">{{ lang.isArabic() ? 'التشفير المتبادل mTLS وفحص WAF' : 'Mutual TLS & WAF Inspection' }}</p>
+          <div class="node-status-badge" [class.badge-success]="activeStages().includes(2)" [class.badge-pending]="!activeStages().includes(2)">
+            {{ stageBadges()[1] }}
+          </div>
+        </div>
+
+        <!-- Stage 3 -->
+        <div 
+          class="interop-node" 
+          [class.active]="currentStage() === 3"
+          [class.highlight-success]="activeStages().includes(3)"
+          (click)="selectStage(3, true)"
+          tabindex="0"
+          role="button">
+          <div class="node-icon-wrap">🆔</div>
+          <span class="node-step">03</span>
+          <h4 class="node-heading">{{ lang.isArabic() ? 'السجل المدني وقواعد البيانات' : 'Civil Registry Sync' }}</h4>
+          <p class="node-detail">{{ lang.isArabic() ? 'التحقق اللحظي عبر الرقم القومي' : 'National ID Verification' }}</p>
+          <div class="node-status-badge" [class.badge-success]="activeStages().includes(3)" [class.badge-pending]="!activeStages().includes(3)">
+            {{ stageBadges()[2] }}
+          </div>
+        </div>
+
+        <!-- Stage 4 -->
+        <div 
+          class="interop-node" 
+          [class.active]="currentStage() === 4"
+          [class.highlight-success]="activeStages().includes(4)"
+          (click)="selectStage(4, true)"
+          tabindex="0"
+          role="button">
+          <div class="node-icon-wrap">🏛️</div>
+          <span class="node-step">04</span>
+          <h4 class="node-heading">{{ lang.isArabic() ? 'الأنظمة المركزية للجهات الوزارية' : 'Ministerial Core Backend' }}</h4>
+          <p class="node-detail">{{ lang.isArabic() ? 'التعليم · مركز المعلومات · الصحة' : 'MOE / Cabinet IDSC / Health' }}</p>
+          <div class="node-status-badge" [class.badge-success]="activeStages().includes(4)" [class.badge-pending]="!activeStages().includes(4)">
+            {{ stageBadges()[3] }}
+          </div>
+        </div>
+
+        <!-- Stage 5 -->
+        <div 
+          class="interop-node" 
+          [class.active]="currentStage() === 5"
+          [class.highlight-success]="activeStages().includes(5)"
+          (click)="selectStage(5, true)"
+          tabindex="0"
+          role="button">
+          <div class="node-icon-wrap">☁️</div>
+          <span class="node-step">05</span>
+          <h4 class="node-heading">{{ lang.isArabic() ? 'السحابة الحكومية السيادية Tier-IV' : 'Sovereign Tier IV Cloud' }}</h4>
+          <p class="node-detail">{{ lang.isArabic() ? 'التوثيق الرقمي والاعتماد الفوري' : 'Audit Trail & Signed Output' }}</p>
+          <div class="node-status-badge" [class.badge-success]="activeStages().includes(5)" [class.badge-pending]="!activeStages().includes(5)">
+            {{ stageBadges()[4] }}
+          </div>
+        </div>
+      </div>
+
+      <!-- Real-Time Execution Console & Cryptographic Payload Inspector -->
+      <div class="interop-interactive-workbench">
+        <!-- Cryptographic Payload Inspector Card -->
+        <div class="interop-payload-card card-glass" id="interop-payload-panel">
+          <div class="payload-header">
+            <div class="payload-title-wrap">
+              <span class="payload-badge">{{ activePayload().pill }}</span>
+              <h4 class="payload-heading">{{ lang.isArabic() ? activePayload().titleAr : activePayload().titleEn }}</h4>
+            </div>
+            <span class="payload-security">{{ activePayload().sec }}</span>
+          </div>
+          <div class="payload-code-block">
+            <pre><code>{{ activePayload().json }}</code></pre>
+          </div>
+          <div class="payload-footer">
+            <span class="payload-latency">⏱️ {{ lang.isArabic() ? 'زمن المعالجة:' : 'Processing Latency:' }} <strong>{{ activePayload().latency }}</strong></span>
+            <span class="payload-inspect-hint">{{ lang.isArabic() ? 'انقر فوق أي مرحلة أعلاه لمعاينة حزمة البيانات المشفرة' : 'Click any stage above to inspect live cryptographic payload' }}</span>
+          </div>
+        </div>
+
+        <!-- Real-Time Execution Console -->
+        <div class="interop-console-wrap">
+          <div class="console-header">
+            <span class="console-dot dot-red"></span>
+            <span class="console-dot dot-yellow"></span>
+            <span class="console-dot dot-green"></span>
+            <span class="console-title">{{ lang.t().consoleTitle }}</span>
+          </div>
+          <div class="console-body" id="interop-console-log">
+            @for (log of logs(); track $index) {
+              <p class="console-line" [ngClass]="log.type">{{ log.text }}</p>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

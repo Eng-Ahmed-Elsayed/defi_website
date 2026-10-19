@@ -1,87 +1,85 @@
 <main id="main-content">
-  <!-- 1. Hero Section -->
-  <section class="hero-section" aria-label="Hero Section">
+
+  <!-- =========================================================================
+       SECTION 1: HERO & DIAGRAM A (Connected Digital Ecosystem)
+       ========================================================================= -->
+  <section class="hero-section" id="hero">
+    <canvas id="hero-particles" #heroCanvas class="hero-particles-canvas" aria-hidden="true"></canvas>
+    <div class="hero-bg-glow glow-1" aria-hidden="true"></div>
+    <div class="hero-bg-glow glow-2" aria-hidden="true"></div>
+    <div class="hero-grid-pattern" aria-hidden="true"></div>
+
     <div class="container hero-container">
+      <!-- Hero Text & Context (Left Column) -->
       <div class="hero-content">
-        <!-- Mandate Badge -->
-        <div class="hero-badge">
-          <span class="badge-pre">{{ lang.t().heroBadgePre }}</span>
-          <span class="badge-divider" aria-hidden="true">|</span>
-          <span class="badge-text">{{ lang.t().heroBadgeText }}</span>
+        <div class="hero-pill">
+          <span class="hero-pill-badge">{{ lang.t().heroBadgePre }}</span>
+          <span class="hero-pill-text">{{ lang.t().heroBadgeText }}</span>
         </div>
 
-        <!-- Headline & Subhead -->
-        <h1 class="hero-headline" [innerHTML]="lang.t().heroHeadline"></h1>
+        <h1 class="hero-title" [innerHTML]="lang.t().heroHeadline"></h1>
+
         <p class="hero-subhead">{{ lang.t().heroSubhead }}</p>
 
-        <!-- CTA Action Buttons -->
+        <!-- CTAs -->
         <div class="hero-actions">
-          <button type="button" class="btn btn-primary" (click)="scrollTo('ecosystem-section')">
+          <a routerLink="/capabilities" class="btn btn-primary btn-lg">
             <span>{{ lang.t().heroCtaPrimary }}</span>
-            <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <svg class="btn-arrow" width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M3.333 8h9.334M8 3.333L12.667 8 8 12.667" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-          </button>
-          <button type="button" class="btn btn-secondary" (click)="scrollTo('capabilities-section')">
-            <span>{{ lang.t().heroCtaSecondary }}</span>
-          </button>
+          </a>
+          <a routerLink="/about" class="btn btn-outline btn-lg">
+            {{ lang.t().heroCtaSecondary }}
+          </a>
         </div>
 
-        <!-- 4 Verified Metrics Counter Grid -->
-        <div class="hero-metrics-grid" role="region" aria-label="Verified National Scale Metrics">
-          @for (metric of lang.t().metrics; track metric.id) {
-            <div class="metric-card">
-              <div class="metric-value-row">
-                <span class="metric-number">{{ metric.value }}</span>
+        <!-- Hero Mandate Credentials Bar -->
+        <div class="hero-mandate-bar">
+          @for (item of lang.t().heroMandateItems; track item.title) {
+            <div class="hero-mandate-item">
+              <span class="mandate-item-icon">{{ item.icon }}</span>
+              <div>
+                <div class="mandate-item-label">{{ item.title }}</div>
+                <div class="mandate-item-sub">{{ item.subtitle }}</div>
               </div>
-              <strong class="metric-label">{{ metric.label }}</strong>
-              <span class="metric-sub">{{ metric.description }}</span>
             </div>
           }
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- 2. Diagram A Section: The Connected National Digital Ecosystem -->
-  <section class="section ecosystem-section" id="ecosystem-section" aria-labelledby="ecosystem-heading">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">{{ lang.t().diagramAInteractiveTag }}</span>
-        <h2 class="section-title" id="ecosystem-heading">{{ lang.t().diagramATitle }}</h2>
-        <p class="section-subhead">{{ lang.t().diagramASubtitle }}</p>
+      <!-- Diagram A: Connected Digital Ecosystem (Right Column) -->
+      <div class="hero-visual">
+        <app-diagram-ecosystem></app-diagram-ecosystem>
       </div>
-
-      <app-diagram-ecosystem></app-diagram-ecosystem>
     </div>
   </section>
 
-  <!-- 3. Authority & Decree 132/2020 Section -->
-  <section class="section authority-section" id="authority-section" aria-labelledby="authority-heading">
+  <!-- =========================================================================
+       SECTION 2: ESTABLISHED LEGAL AUTHORITY & DECREE 132/2020
+       ========================================================================= -->
+  <section class="section section-light section-institutional" id="about">
     <div class="container">
-      <div class="authority-grid">
-        <!-- Left: Legal Mandate & Narrative -->
-        <div class="authority-content">
-          <span class="section-tag">{{ lang.t().authorityTag }}</span>
-          <h2 class="section-title" id="authority-heading" [innerHTML]="lang.t().authorityTitle"></h2>
-          <p class="authority-lead">{{ lang.t().authorityDesc1 }}</p>
-          <p class="authority-sub">{{ lang.t().authorityDesc2 }}</p>
+      <div class="institutional-grid">
+        <div class="institutional-left">
+          <div class="section-tag">{{ lang.t().authorityTag }}</div>
+          <h2 class="section-title" [innerHTML]="lang.t().authorityTitle"></h2>
+          <p class="section-lead">{{ lang.t().authorityDesc1 }}</p>
+          <p class="section-desc">{{ lang.t().authorityDesc2 }}</p>
 
-          <div class="authority-pillars-list">
-            @for (pillar of lang.t().mandatePillars; track pillar.title) {
-              <div class="authority-pillar-item">
-                <div class="pillar-check" aria-hidden="true">✓</div>
-                <div>
-                  <strong class="pillar-item-title">{{ pillar.title }}</strong>
-                  <p class="pillar-item-desc">{{ pillar.desc }}</p>
-                </div>
+          <div class="pillars-row">
+            @for (pillar of lang.t().mandatePillars; track pillar.title; let idx = $index) {
+              <div class="pillar-box">
+                <span class="pillar-icon">{{ idx === 0 ? '🏛️' : '🔒' }}</span>
+                <h3 class="pillar-title">{{ pillar.title }}</h3>
+                <p class="pillar-desc">{{ pillar.desc }}</p>
               </div>
             }
           </div>
 
-          <div class="authority-actions">
-            <a routerLink="/about" class="btn btn-outline">
-              <span>{{ lang.isArabic() ? 'اقرأ المزيد عن التكليف الرسمي' : 'Learn More About DEFI Mandate' }}</span>
+          <div style="margin-top: 28px;">
+            <a routerLink="/about" class="btn btn-primary">
+              <span>{{ lang.isArabic() ? 'استكشاف التكليف الرسمي والحوكمة' : 'Explore Full Mandate & Governance' }}</span>
               <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M3.333 8h9.334M8 3.333L12.667 8 8 12.667" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -89,30 +87,31 @@
           </div>
         </div>
 
-        <!-- Right: Mandate Card & Core Values -->
-        <div class="authority-card-col">
-          <div class="mandate-card glass-panel">
-            <div class="mandate-card-header">
-              <span class="seal-icon" aria-hidden="true">⚖️</span>
-              <h3 class="mandate-card-title">{{ lang.t().mandateCardTitle }}</h3>
+        <div class="institutional-right">
+          <!-- Strategic Alignment Highlight Card -->
+          <div class="stat-highlight-card">
+            <div class="card-seal">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="M9 12l2 2 4-4"/>
+              </svg>
             </div>
-            <ul class="mandate-points-list">
+            <h3 class="highlight-title">{{ lang.t().mandateCardTitle }}</h3>
+            <ul class="highlight-list">
               @for (point of lang.t().mandatePoints; track point.title) {
-                <li class="mandate-point-entry">
+                <li>
                   <strong>{{ point.title }}</strong>
                   <span>{{ point.desc }}</span>
                 </li>
               }
             </ul>
 
-            <div class="card-values-strip">
-              <span class="values-title">{{ lang.t().valuesLabel }}</span>
-              <div class="values-chips">
+            <!-- Official Core Values Strip -->
+            <div class="values-bar">
+              <span class="val-label">{{ lang.t().valuesLabel }}</span>
+              <div class="val-tags">
                 @for (val of lang.t().corporateValues; track val.name) {
-                  <span class="value-chip" [title]="val.description">
-                    <span aria-hidden="true">{{ val.icon }}</span>
-                    {{ val.name }}
-                  </span>
+                  <span class="val-tag" [title]="val.description">{{ val.name }}</span>
                 }
               </div>
             </div>
@@ -122,15 +121,17 @@
     </div>
   </section>
 
-  <!-- 4. Diagram C Section: Verified Capability Matrix -->
-  <section class="section capabilities-section" id="capabilities-section" aria-labelledby="capabilities-heading">
+  <!-- =========================================================================
+       SECTION 3: DIAGRAM C (The National Capability Matrix)
+       ========================================================================= -->
+  <section class="section section-white section-capabilities" id="capabilities">
     <div class="container">
       <app-diagram-capabilities></app-diagram-capabilities>
 
-      <div class="capabilities-cta-row">
-        <a routerLink="/capabilities" class="btn btn-primary">
-          <span>{{ lang.isArabic() ? 'استكشاف تفاصيل القدرات والخدمات' : 'Explore Detailed Capabilities & Deliverables' }}</span>
-          <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <div class="text-center" style="margin-top: 40px;">
+        <a routerLink="/capabilities" class="btn btn-primary btn-lg">
+          <span>{{ lang.isArabic() ? 'استكشاف جميع القدرات الهندسية بالتفصيل' : 'Explore Detailed Capability Pillars' }}</span>
+          <svg class="btn-arrow" width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M3.333 8h9.334M8 3.333L12.667 8 8 12.667" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </a>
@@ -138,40 +139,102 @@
     </div>
   </section>
 
-  <!-- 5. Diagram B Section: Institutional Operating Model Flow -->
-  <section class="section journey-section" id="journey-section" aria-labelledby="journey-heading">
+  <!-- =========================================================================
+       SECTION 4: DIAGRAM B (Institutional Operating Model Flow)
+       ========================================================================= -->
+  <section class="section section-light section-journey" id="journey">
     <div class="container">
       <app-diagram-operating-model></app-diagram-operating-model>
     </div>
   </section>
 
-  <!-- 6. Verified Impact & Ministerial Partners Section -->
-  <section class="section impact-section" id="impact-section" aria-labelledby="impact-heading">
+  <!-- =========================================================================
+       SECTION 4B: DIAGRAM D (Sovereign Interoperability Engine & Data Bus Simulator)
+       ========================================================================= -->
+  <section class="section section-interoperability" id="interop" aria-label="Sovereign Interoperability Engine">
     <div class="container">
-      <div class="section-header">
-        <span class="section-tag">{{ lang.t().impactTag }}</span>
-        <h2 class="section-title" id="impact-heading" [innerHTML]="lang.t().impactTitle"></h2>
-        <p class="section-subhead">{{ lang.t().impactSubtitle }}</p>
+      <app-diagram-interop></app-diagram-interop>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       SECTION 5: VERIFIED INSTITUTIONAL IMPACT & PARTNERS
+       ========================================================================= -->
+  <section class="section section-light section-impact" id="impact">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag">{{ lang.t().impactTag }}</div>
+        <h2 class="section-title" [innerHTML]="lang.t().impactTitle"></h2>
+        <p class="section-desc max-w-2xl">{{ lang.t().impactSubtitle }}</p>
       </div>
 
+      <!-- Verified Partners Grid -->
       <div class="partners-grid">
-        @for (partner of lang.t().partnerList; track partner.acronym) {
-          <div class="partner-card glass-panel">
-            <div class="partner-card-top">
-              <span class="partner-badge">{{ partner.verifiedStatus }}</span>
-              <span class="partner-category">{{ partner.category }}</span>
+        <!-- Partner 1: MOE -->
+        <div class="partner-card card-glass">
+          <div class="partner-card-header">
+            <div class="partner-icon-wrap">
+              <span class="partner-icon">🎓</span>
             </div>
-            <h3 class="partner-name">{{ lang.isArabic() ? partner.arabicName : partner.name }}</h3>
-            <span class="partner-acronym">({{ partner.acronym }})</span>
-            <p class="partner-scope">{{ partner.scope }}</p>
+            <div class="partner-badge">{{ lang.isArabic() ? 'شريك وزاري' : 'MINISTERIAL PARTNER' }}</div>
           </div>
-        }
+          <h3 class="partner-name">{{ lang.isArabic() ? 'وزارة التربية والتعليم والتعليم الفني' : 'Ministry of Education & Technical Education' }}</h3>
+          <p class="partner-desc">
+            {{ lang.isArabic() ? 'دعم البنية التحتية لمنظومة الامتحانات الرقمية ومنصات التعليم لخدمة ملايين الطلاب والمعلمين على مستوى الجمهورية.' : 'Supporting large-scale educational systems and digital examinations infrastructure to serve millions of students and educators nationwide.' }}
+          </p>
+          <div class="partner-stat-tag">{{ lang.isArabic() ? 'منصات الامتحانات القومية' : 'National Education Platforms' }}</div>
+        </div>
+
+        <!-- Partner 2: Cabinet IDSC -->
+        <div class="partner-card card-glass">
+          <div class="partner-card-header">
+            <div class="partner-icon-wrap">
+              <span class="partner-icon">🏛️</span>
+            </div>
+            <div class="partner-badge">{{ lang.isArabic() ? 'جهة برئاسة الوزراء' : 'CABINET AUTHORITY' }}</div>
+          </div>
+          <h3 class="partner-name">{{ lang.isArabic() ? 'مركز المعلومات ودعم اتخاذ القرار (IDSC)' : 'Information and Decision Support Center (IDSC)' }}</h3>
+          <p class="partner-desc">
+            {{ lang.isArabic() ? 'مركز الفكر ودعم القرار بمجلس الوزراء، بالتعاون في منصات البيانات ونظم المؤشرات المؤسسية الذكية.' : 'The Egyptian Cabinet\'s premier think tank and decision support hub, collaborating on data platforms and institutional intelligence solutions.' }}
+          </p>
+          <div class="partner-stat-tag">{{ lang.isArabic() ? 'منصات القرار التنفيذي' : 'Executive Decision Platforms' }}</div>
+        </div>
+
+        <!-- Partner 3: ITIDA / MCIT -->
+        <div class="partner-card card-glass">
+          <div class="partner-card-header">
+            <div class="partner-icon-wrap">
+              <span class="partner-icon">🌐</span>
+            </div>
+            <div class="partner-badge">{{ lang.isArabic() ? 'الجهة الراعية والمؤسسة' : 'FOUNDING SPONSOR' }}</div>
+          </div>
+          <h3 class="partner-name">{{ lang.isArabic() ? 'وزارة الاتصالات وهيئة تنمية صناعة تكنولوجيا المعلومات' : 'MCIT & ITIDA' }}</h3>
+          <p class="partner-desc">
+            {{ lang.isArabic() ? 'بالتوافق مع وزارة الاتصالات وتكنولوجيا المعلومات وهيئة إيتيدا لدفع الاقتصاد الرقمي المصري القائم على المعرفة وفق القرار ١٣٢ / ٢٠٢٠.' : 'Aligned with the Ministry of Communications and Information Technology and ITIDA to advance Egypt\'s digital knowledge-based economy under Decree 132/2020.' }}
+          </p>
+          <div class="partner-stat-tag">{{ lang.isArabic() ? 'الاستراتيجية الرقمية القومية' : 'National Digital Strategy' }}</div>
+        </div>
+
+        <!-- Partner 4: Sovereign Delivery Partner -->
+        <div class="partner-card card-glass highlight-stat-box">
+          <div class="partner-card-header">
+            <div class="partner-icon-wrap">
+              <span class="partner-icon">🛡️</span>
+            </div>
+            <div class="partner-badge">{{ lang.isArabic() ? 'تكليف سيادي' : 'SOVEREIGN MANDATE' }}</div>
+          </div>
+          <h3 class="partner-name">{{ lang.isArabic() ? 'الهيئات والوزارات الحكومية' : 'Government Authorities & Ministries' }}</h3>
+          <p class="partner-desc">
+            {{ lang.isArabic() ? 'تقديم حلول البنية المؤسسية عبر القطاعات، والتكامل والربط البيني، ومسارات خدمات المواطنين بمختلف المجالات الحكومية الحيوية.' : 'Delivering cross-sectoral enterprise architecture, interoperability solutions, and citizen service workflows across key governmental domains.' }}
+          </p>
+          <div class="partner-stat-tag">{{ lang.isArabic() ? 'البنية المؤسسية والتكامل البيني' : 'Enterprise Architecture & Interoperability' }}</div>
+        </div>
       </div>
 
-      <div class="impact-cta-row">
-        <a routerLink="/impact" class="btn btn-outline">
-          <span>{{ lang.isArabic() ? 'عرض كافة مؤشرات الأثر والشركاء' : 'View Full Impact Metrics & Partners' }}</span>
-          <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <div class="text-center" style="margin-top: 40px;">
+        <a routerLink="/impact" class="btn btn-primary btn-lg">
+          <span>{{ lang.isArabic() ? 'عرض المعالم والأثر الوطني المعتمد' : 'View Verified National Milestones & Impact' }}</span>
+          <svg class="btn-arrow" width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M3.333 8h9.334M8 3.333L12.667 8 8 12.667" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </a>
@@ -179,28 +242,251 @@
     </div>
   </section>
 
-  <!-- 7. Strategic Consultation / Executive CTA Strip -->
-  <section class="section cta-strip-section" aria-label="Executive Consultation">
+  <!-- =========================================================================
+       SECTION 5B: SECTORS IN FOCUS
+       ========================================================================= -->
+  <section class="section section-white section-sectors" id="sectors" aria-label="Sovereign Sectors in Focus">
     <div class="container">
-      <div class="cta-banner">
-        <div class="cta-content">
-          <span class="cta-pre">{{ lang.isArabic() ? 'القرية الذكية · مبنى B145' : 'Smart Village · Building B145' }}</span>
-          <h2 class="cta-title">
-            {{ lang.isArabic() ? 'هل تبحث عن شريك معتمد للبنية المؤسسية لمؤسستك؟' : 'Partner with Egypt\'s Dedicated Enterprise Transformation Team' }}
-          </h2>
-          <p class="cta-desc">
-            {{ lang.isArabic() ? 'تواصل مع مستشاري ومهندسي DEFI لبحث تحديث الأنظمة، وميكنة الإجراءات، والربط الحكومي الموحد.' : 'Engage with our enterprise architects to explore platform modernization, cross-agency integration, and sovereign public services.' }}
-          </p>
+      <div class="section-header text-center">
+        <div class="section-tag">{{ lang.t().sectorsTag }}</div>
+        <h2 class="section-title" [innerHTML]="lang.t().sectorsTitle"></h2>
+        <p class="section-desc max-w-2xl">{{ lang.t().sectorsSub }}</p>
+      </div>
+
+      <div class="sectors-grid">
+        @for (sector of lang.t().sectorsInFocus; track sector.title) {
+          <div class="sector-card card-glass">
+            <div class="sector-icon-header">
+              <span class="sector-icon">{{ sector.icon }}</span>
+              <span class="sector-badge">{{ sector.badge }}</span>
+            </div>
+            <h3 class="sector-name">{{ sector.title }}</h3>
+            <p class="sector-summary">{{ sector.summary }}</p>
+            <div class="sector-metric-pill">
+              <span class="pill-number">{{ sector.metricNumber }}</span>
+              <span class="pill-text">{{ sector.metricLabel }}</span>
+            </div>
+          </div>
+        }
+      </div>
+
+      <div class="text-center" style="margin-top: 40px;">
+        <a routerLink="/sectors" class="btn btn-primary btn-lg">
+          <span>{{ lang.isArabic() ? 'استكشاف جميع القطاعات السيادية ودراسات الحالة' : 'Explore All Sovereign Sectors & Case Studies' }}</span>
+          <svg class="btn-arrow" width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3.333 8h9.334M8 3.333L12.667 8 8 12.667" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       SECTION 5C: NATIONAL COMMAND CENTER · SOVEREIGN DIGITAL GRID
+       ========================================================================= -->
+  <section class="section section-national-grid" id="national-grid" aria-label="National Sovereign Digital Grid">
+    <div class="container">
+      <app-national-grid></app-national-grid>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       SECTION 6: CAREERS & NATIONAL MISSION CTA
+       ========================================================================= -->
+  <section class="section section-light section-careers" id="careers">
+    <div class="container">
+      <div class="careers-card card-glass">
+        <div class="careers-content">
+          <div class="section-tag">{{ lang.t().homeCareersTag }}</div>
+          <h2 class="careers-title" [innerHTML]="lang.t().homeCareersTitle"></h2>
+          <p class="careers-desc">{{ lang.t().homeCareersDesc }}</p>
+
+          <div class="careers-features">
+            @for (feat of lang.t().careerFeatures; track feat) {
+              <div class="feature-item">
+                <span class="feature-check">✓</span>
+                <span>{{ feat }}</span>
+              </div>
+            }
+          </div>
+
+          <div class="careers-actions">
+            <a routerLink="/careers" class="btn btn-primary btn-lg">
+              <span>{{ lang.t().careerBtnText }}</span>
+              <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3.333 8h9.334M8 3.333L12.667 8 8 12.667" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <span class="careers-email-note">{{ lang.t().careerNoteText }}</span>
+          </div>
         </div>
-        <div class="cta-actions">
-          <a routerLink="/contact" class="btn btn-gold btn-large">
-            <span>{{ lang.t().navContactCTA }}</span>
-            <svg class="btn-arrow" width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M3.333 8h9.334M8 3.333L12.667 8 8 12.667" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
+
+        <div class="careers-badge-visual">
+          <div class="crest-container">
+            <div class="brand-logo-badge">
+              <img src="/defi-logo.svg" alt="DEFI Symbol" class="crest-logo" width="180" height="54">
+            </div>
+            <div class="crest-mandate-box">
+              <span class="crest-decree">{{ lang.isArabic() ? 'قرار ١٣٢ / ٢٠٢٠' : 'DECREE 132/2020' }}</span>
+              <span class="crest-label">{{ lang.isArabic() ? 'التنفيذ الرقمي الوطني' : 'National Digital Delivery' }}</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- =========================================================================
+       SECTION 7: CONTACT & INSTITUTIONAL HEADQUARTERS
+       ========================================================================= -->
+  <section class="section section-white section-contact" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Contact Details -->
+        <div class="contact-info">
+          <div class="section-tag">{{ lang.isArabic() ? 'تواصل معنا' : 'GET IN TOUCH' }}</div>
+          <h2 class="section-title">
+            @if (lang.isArabic()) {
+              <span>تواصل مع <span class="gradient-text">فريق القيادة والاستشارات</span></span>
+            } @else {
+              <span>Connect with Our <span class="gradient-text">Leadership Team</span></span>
+            }
+          </h2>
+          <p class="section-desc">
+            {{ lang.isArabic() ? 'لبحث شراكات القطاع العام، أو تقييمات البنية المؤسسية، أو سبل التعاون الفني والمؤسسي، يسعد فريقنا في القرية الذكية بتقديم الدعم الكامل.' : 'For public-sector partnership inquiries, enterprise architecture evaluations, or institutional collaboration, our teams at Smart Village are ready to assist.' }}
+          </p>
+
+          <div class="contact-cards-list">
+            <!-- Location Card -->
+            <div class="contact-info-card">
+              <div class="contact-card-icon">📍</div>
+              <div class="contact-card-content">
+                <h3 class="contact-card-title">{{ lang.t().contactHqTitle }}</h3>
+                <p class="contact-card-text">{{ lang.t().contactHqAddress }}</p>
+              </div>
+            </div>
+
+            <!-- Email Card -->
+            <div class="contact-info-card">
+              <div class="contact-card-icon">✉️</div>
+              <div class="contact-card-content">
+                <h3 class="contact-card-title">{{ lang.t().contactEmailTitle }}</h3>
+                <a [href]="'mailto:' + lang.t().contactOfficialEmail" class="contact-card-link">{{ lang.t().contactOfficialEmail }}</a>
+              </div>
+            </div>
+
+            <!-- Legal Registration Card -->
+            <div class="contact-info-card">
+              <div class="contact-card-icon">📜</div>
+              <div class="contact-card-content">
+                <h3 class="contact-card-title">{{ lang.isArabic() ? 'الوضع القانوني والمؤسسي' : 'Corporate Status' }}</h3>
+                <p class="contact-card-text">
+                  {{ lang.isArabic() ? 'شركة مساهمة مصرية منشأة بموجب قرار السيد رئيس مجلس الوزراء رقم ١٣٢ لسنة ٢٠٢٠ تحت مظلة وزارة الاتصالات وإيتيدا.' : 'Egyptian Joint Stock Company established by Prime Minister Decree No. 132/2020 under MCIT & ITIDA.' }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Direct Institutional Inquiry Form -->
+        <div class="contact-form-wrap card-glass">
+          <h3 class="form-title">{{ lang.t().homeFormTitle }}</h3>
+          <p class="form-subtitle">{{ lang.t().homeFormSubtitle }}</p>
+
+          <form (ngSubmit)="onInquirySubmit()" class="inquiry-form" novalidate>
+            <div class="form-group">
+              <label for="form-name">{{ lang.t().formLabels.fullName }}</label>
+              <input
+                type="text"
+                id="form-name"
+                name="name"
+                [(ngModel)]="formModel.name"
+                class="form-input"
+                required
+                [placeholder]="lang.isArabic() ? 'مثال: د. أحمد حسن' : 'e.g. Dr. Ahmed Hassan'">
+            </div>
+
+            <div class="form-group">
+              <label for="form-entity">{{ lang.t().formLabels.organization }}</label>
+              <input
+                type="text"
+                id="form-entity"
+                name="entity"
+                [(ngModel)]="formModel.entity"
+                class="form-input"
+                required
+                [placeholder]="lang.isArabic() ? 'مثال: وزارة / هيئة عامة' : 'e.g. Ministry / Public Authority'">
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-half">
+                <label for="form-email">{{ lang.t().formLabels.email }}</label>
+                <input
+                  type="email"
+                  id="form-email"
+                  name="email"
+                  [(ngModel)]="formModel.email"
+                  class="form-input"
+                  required
+                  placeholder="name@entity.gov.eg">
+              </div>
+              <div class="form-group col-half">
+                <label for="form-topic">{{ lang.t().formLabels.subject }}</label>
+                <select id="form-topic" name="topic" [(ngModel)]="formModel.topic" class="form-select">
+                  <option value="business-architecture">{{ lang.isArabic() ? 'البنية المؤسسية للأعمال' : 'Business Architecture' }}</option>
+                  <option value="solution-architecture">{{ lang.isArabic() ? 'بنية الحلول البرمجية والربط' : 'Solution Architecture' }}</option>
+                  <option value="it-operations">{{ lang.isArabic() ? 'تشغيل واستمرارية النظم' : 'IT Operations & Continuity' }}</option>
+                  <option value="citizen-experience">{{ lang.isArabic() ? 'تجربة المواطن الرقمية' : 'Citizen Experience (CX)' }}</option>
+                  <option value="project-management">{{ lang.isArabic() ? 'إدارة المشاريع والحوكمة' : 'Project Management & Governance' }}</option>
+                  <option value="careers">{{ lang.isArabic() ? 'التوظيف واستقطاب الكفاءات' : 'Careers & Talent' }}</option>
+                  <option value="general">{{ lang.isArabic() ? 'استفسار مؤسسي عام' : 'General Institutional Inquiry' }}</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="form-message">{{ lang.t().formLabels.message }}</label>
+              <textarea
+                id="form-message"
+                name="message"
+                [(ngModel)]="formModel.message"
+                class="form-textarea"
+                rows="4"
+                required
+                [placeholder]="lang.isArabic() ? 'يرجى كتابة ملخص الاستفسار أو نطاق العمل المطلوب...' : 'Please outline your entity\'s requirements or inquiry...'"></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="btn btn-primary btn-block form-submit-btn"
+              [disabled]="isSubmitting()">
+              @if (isSubmitting()) {
+                <span class="spinner" aria-hidden="true"></span>
+                <span>{{ lang.t().formLabels.submitting }}</span>
+              } @else {
+                <span>{{ lang.t().homeFormSubmit }}</span>
+                <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3.333 8h9.334M8 3.333L12.667 8 8 12.667" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              }
+            </button>
+
+            @if (formStatus(); as status) {
+              <div
+                class="form-feedback"
+                [class.success]="status.success"
+                [class.error]="!status.success"
+                role="alert"
+                aria-live="polite">
+                {{ status.message }}
+              </div>
+            }
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
 </main>
