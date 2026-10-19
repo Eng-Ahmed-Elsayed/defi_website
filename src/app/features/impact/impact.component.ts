@@ -18,7 +18,7 @@ export class ImpactComponent implements OnInit {
   ngOnInit(): void {
     this.seo.updateTags({
       title: 'Measurable Impact & Verified Partners | DEFI Public Credibility',
-      description: 'Review DEFI’s verified public-sector scale: 50+ clients, 200+ consultants, 25+ government entities, 200+ modernized services, with verified ministerial partners MOE and IDSC.'
+      description: 'Review DEFI’s verified public-sector mandate and collaboration with ministerial partners including the Ministry of Education (MOE) and Cabinet IDSC.'
     });
   }
 }

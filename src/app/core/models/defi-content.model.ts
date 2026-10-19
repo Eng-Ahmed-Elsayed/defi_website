@@ -15,8 +15,8 @@ export interface NavItem {
 export interface MetricItem {
   id: string;
   value: string;
-  number: number;
-  suffix: string;
+  number?: number;
+  suffix?: string;
   label: string;
   description?: string;
 }

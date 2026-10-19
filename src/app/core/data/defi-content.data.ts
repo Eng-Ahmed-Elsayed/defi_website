@@ -27,10 +27,10 @@ export const DEFI_TRANSLATIONS: Record<'en' | 'ar', DefiTranslations> = {
     heroCtaPrimary: 'Explore National Ecosystem',
     heroCtaSecondary: 'Institutional Capabilities',
     metrics: [
-      { id: 'clients', value: '50+', number: 50, suffix: '+', label: 'Enterprise Clients', description: 'Public authorities and governmental entities' },
-      { id: 'consultants', value: '200+', number: 200, suffix: '+', label: 'Expert Consultants', description: 'Enterprise architects and technical specialists' },
-      { id: 'gov-entities', value: '25+', number: 25, suffix: '+', label: 'Government Entities', description: 'Ministries and national executive authorities' },
-      { id: 'services', value: '200+', number: 200, suffix: '+', label: 'Digital Services', description: 'Governmental workflows modernized and automated' }
+      { id: 'decree', value: '132 / 2020', label: 'Prime Minister Decree', description: 'Established legal mandate for public-sector digital transformation' },
+      { id: 'auspices', value: 'MCIT & ITIDA', label: 'Strategic Auspices', description: 'Under the auspices of national communications & IT authorities' },
+      { id: 'pillars', value: '6 Core Pillars', label: 'Enterprise Architecture', description: 'Integrated institutional modernization and governance framework' },
+      { id: 'hq', value: 'Smart Village', label: 'National Headquarters', description: 'Operating from Building B145, Cairo-Alexandria Desert Road' }
     ],
 
     // Diagram A (Ecosystem)
@@ -74,10 +74,10 @@ export const DEFI_TRANSLATIONS: Record<'en' | 'ar', DefiTranslations> = {
       {
         id: 'infra',
         category: 'infrastructure',
-        title: 'Sovereign Cloud & High-Availability Ops',
-        subtitle: 'Tier IV Data Centers · 24/7 Continuity · Cyber Resilience',
+        title: 'Sovereign Infrastructure & Operational Governance',
+        subtitle: 'Sovereign Cloud · High Availability · Cyber Resilience',
         role: 'Resilient Foundation',
-        description: 'Sovereign cloud infrastructure and continuous monitoring ensuring 99.99% service uptime and state-grade data encryption.'
+        description: 'Sovereign infrastructure frameworks and continuous operational oversight supporting state-grade reliability, security, and institutional continuity.'
       }
     ],
 
@@ -320,12 +320,12 @@ export const DEFI_TRANSLATIONS: Record<'en' | 'ar', DefiTranslations> = {
       },
       {
         id: 'news-3',
-        title: 'Milestone: Over 200 Digital Public Services Modernized Across 25+ Entities',
-        category: 'Transformation Impact',
+        title: 'Enterprise Architecture Framework for National Interoperability',
+        category: 'Technical Governance',
         date: '2026',
-        summary: 'Official operational figures confirm DEFI has successfully engineered and modernized more than 200 citizen-facing and administrative government services.',
+        summary: 'DEFI outlines core architectural principles and integration standards guiding inter-agency interoperability and secure citizen service delivery.',
         readTime: '3 min read',
-        officialSource: 'DEFI Operational Charter'
+        officialSource: 'DEFI Enterprise Architecture Directorate'
       }
     ],
 
@@ -428,10 +428,10 @@ export const DEFI_TRANSLATIONS: Record<'en' | 'ar', DefiTranslations> = {
     heroCtaPrimary: 'استكشاف النظام الرقمي الوطني',
     heroCtaSecondary: 'القدرات المؤسسية',
     metrics: [
-      { id: 'clients', value: '+50', number: 50, suffix: '+', label: 'عميل مؤسسي', description: 'جهات وهيئات عامة وحكومية' },
-      { id: 'consultants', value: '+200', number: 200, suffix: '+', label: 'مستشار وخبير', description: 'مهندسو بنية مؤسسية ومتخصصون تقنيون' },
-      { id: 'gov-entities', value: '+25', number: 25, suffix: '+', label: 'جهة وهيئة حكومية', description: 'وزارات وهيئات وطنية تنفيذية' },
-      { id: 'services', value: '+200', number: 200, suffix: '+', label: 'خدمة حكومية مرقمنة', description: 'إجراء حكومي تم تحديثه وأتمتته بالكامل' }
+      { id: 'decree', value: '132 / 2020', label: 'قرار رئيس الوزراء', description: 'المرجعية القانونية الرسمية لتأسيس الذراع التنفيذي للتحول الرقمي الحكومي' },
+      { id: 'auspices', value: 'MCIT و ITIDA', label: 'الرعاية الاستراتيجية', description: 'تحت مظلة وزارة الاتصالات وهيئة تنمية صناعة تكنولوجيا المعلومات' },
+      { id: 'pillars', value: '6 ركائز', label: 'بنية مؤسسية متكاملة', description: 'إطار عمل مؤسسي شامل لتحديث وحوكمة المنظومات العامة' },
+      { id: 'hq', value: 'القرية الذكية', label: 'المقر التنفيذي', description: 'مبنى B145، طريق القاهرة - الإسكندرية الصحراوي، الجيزة' }
     ],
 
     // Diagram A (Ecosystem)
@@ -475,10 +475,10 @@ export const DEFI_TRANSLATIONS: Record<'en' | 'ar', DefiTranslations> = {
       {
         id: 'infra',
         category: 'infrastructure',
-        title: 'السحابة السيادية ومراكز البيانات الحيوية',
-        subtitle: 'مراكز بيانات الفئة الرابعة · استمرارية على مدار الساعة · أمن سيبراني',
-        role: 'البنية التحتية المؤمنة',
-        description: 'بنية تحتية سحابية سيادية داخل الدولة تضمن استمرارية الأعمال بنسبة 99.99% مع تشفير كامل للبيانات الوطنية الحساسة.'
+        title: 'البنية التحتية السيادية وحوكمة العمليات',
+        subtitle: 'السحابة السيادية · الجاهزية العالية · المرونة السيبرانية',
+        role: 'الأساس المؤسسي المؤمن',
+        description: 'أطر البنية التحتية السيادية والإشراف التشغيلي المستمر لضمان أعلى معايير الاعتمادية والأمان والاستمرارية للمنصات الحكومية.'
       }
     ],
 
@@ -721,12 +721,12 @@ export const DEFI_TRANSLATIONS: Record<'en' | 'ar', DefiTranslations> = {
       },
       {
         id: 'news-3',
-        title: 'إنجاز رسمي: تحديث وميكنة أكثر من 200 خدمة حكومية لخدمة أكثر من 25 جهة',
-        category: 'إنجازات التحول',
+        title: 'إطلاق معايير البنية المؤسسية للربط والتكامل البيني الحكومي',
+        category: 'الحوكمة التقنية',
         date: '2026',
-        summary: 'تؤكد البيانات التشغيلية الرسمية نجاح DEFI في هندسة وتحديث أكثر من 200 خدمة حكومية موجهة للمواطنين والإدارات العامة.',
+        summary: 'تستعرض شركة مصر الرقمية للاستثمار المبادئ المعمارية الحاكمة ومواصفات الربط البيني الآمن لتكامل الخدمات الرقمية بين الجهات العامة.',
         readTime: '3 دقائق للقراءة',
-        officialSource: 'ميثاق العمليات التشغيلية لـ DEFI'
+        officialSource: 'إدارة البنية المؤسسية - DEFI'
       }
     ],
 
