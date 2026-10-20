@@ -84,6 +84,10 @@
         <div class="grid-map-container" aria-label="Egypt National Digital Grid Architecture">
           <svg class="national-grid-svg" id="national-grid-svg" viewBox="0 0 600 420" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
             <defs>
+              <pattern id="gisGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(30, 58, 95, 0.35)" stroke-width="0.75"/>
+                <circle cx="40" cy="40" r="1" fill="rgba(56, 189, 248, 0.25)"/>
+              </pattern>
               <radialGradient id="hubGlow" cx="50%" cy="50%" r="50%">
                 <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.8"/>
                 <stop offset="100%" stop-color="#38BDF8" stop-opacity="0"/>
@@ -105,6 +109,28 @@
                 <stop offset="100%" stop-color="#14B8A6" />
               </linearGradient>
             </defs>
+
+            <!-- Background GIS Cartographic Grid -->
+            <rect width="600" height="420" fill="url(#gisGrid)" opacity="0.6"/>
+
+            <!-- GIS Latitude & Longitude Reference Ticks & Tactical HUD Markers -->
+            <g class="gis-coordinates" font-family="monospace" font-size="8.5" fill="#475569" letter-spacing="0.5">
+              <text x="16" y="24">31°12'N · 29°55'E [MEDITERRANEAN SECTOR]</text>
+              <text x="584" y="24" text-anchor="end">30°01'N · 32°33'E [CANAL CORRIDOR]</text>
+              <text x="584" y="404" text-anchor="end">24°05'N · 32°53'E [SOUTHERN SPINE]</text>
+              <text x="16" y="404">SECURE SOVEREIGN GRID · ENCRYPTED OPTICAL BACKBONE</text>
+
+              <path d="M 12 30 L 12 12 L 30 12" stroke="#1E3A5F" stroke-width="1.2" fill="none"/>
+              <path d="M 588 30 L 588 12 L 570 12" stroke="#1E3A5F" stroke-width="1.2" fill="none"/>
+              <path d="M 12 390 L 12 408 L 30 408" stroke="#1E3A5F" stroke-width="1.2" fill="none"/>
+              <path d="M 588 390 L 588 408 L 570 408" stroke="#1E3A5F" stroke-width="1.2" fill="none"/>
+            </g>
+
+            <!-- Cartographic Nile Valley Geographic Axis -->
+            <path d="M 370 380 Q 350 330 330 290 Q 315 230 300 170 Q 285 130 260 90 Q 240 75 230 70" 
+                  fill="none" stroke="rgba(14, 116, 144, 0.22)" stroke-width="3" stroke-linecap="round"/>
+            <path d="M 300 170 Q 350 140 410 160" 
+                  fill="none" stroke="rgba(14, 116, 144, 0.22)" stroke-width="2" stroke-linecap="round"/>
 
             <!-- High-Speed Sovereign Fiber Traces -->
             <g class="grid-fiber-rings" stroke="#1E3A5F" stroke-width="1.8">
@@ -129,7 +155,8 @@
 
             <!-- Regional Hub 1: Alexandria & Mediterranean Axis -->
             <g class="grid-hub-node" [class.active]="selectedRegion() === 'alex'" (click)="selectRegion('alex', true)" tabindex="0" role="button" aria-label="Alexandria Hub">
-              <circle cx="230" cy="70" r="28" fill="url(#hubGlow)" opacity="0.4"/>
+              <circle cx="230" cy="70" r="38" fill="transparent" class="hub-hit-area"/>
+              <circle cx="230" cy="70" r="28" fill="url(#hubGlow)" opacity="0.4" class="hub-glow"/>
               <circle cx="230" cy="70" r="14" fill="#0B192C" stroke="#38BDF8" stroke-width="2.5" class="hub-ring"/>
               <circle cx="230" cy="70" r="5" fill="#38BDF8"/>
               <text x="230" y="42" text-anchor="middle" class="hub-label">{{ lang.isArabic() ? 'الإسكندرية' : 'Alexandria' }}</text>
@@ -138,7 +165,8 @@
 
             <!-- Regional Hub 2: Suez Canal & Port Said Axis -->
             <g class="grid-hub-node" [class.active]="selectedRegion() === 'canal'" (click)="selectRegion('canal', true)" tabindex="0" role="button" aria-label="Suez Canal Hub">
-              <circle cx="410" cy="160" r="28" fill="url(#hubGlow)" opacity="0.4"/>
+              <circle cx="410" cy="160" r="38" fill="transparent" class="hub-hit-area"/>
+              <circle cx="410" cy="160" r="28" fill="url(#hubGlow)" opacity="0.4" class="hub-glow"/>
               <circle cx="410" cy="160" r="14" fill="#0B192C" stroke="#38BDF8" stroke-width="2.5" class="hub-ring"/>
               <circle cx="410" cy="160" r="5" fill="#38BDF8"/>
               <text x="410" y="132" text-anchor="middle" class="hub-label">{{ lang.isArabic() ? 'قناة السويس' : 'Suez Canal' }}</text>
@@ -147,16 +175,30 @@
 
             <!-- Regional Hub 3: Greater Cairo Core (Central Spine) -->
             <g class="grid-hub-node" [class.active]="selectedRegion() === 'cairo'" (click)="selectRegion('cairo', true)" tabindex="0" role="button" aria-label="Greater Cairo Core Hub">
-              <circle cx="300" cy="170" r="40" fill="url(#coreGlow)" opacity="0.5" class="hub-pulse-beacon"/>
+              <circle cx="300" cy="170" r="48" fill="transparent" class="hub-hit-area"/>
+              <circle cx="300" cy="170" r="44" fill="url(#coreGlow)" opacity="0.5" class="hub-pulse-beacon"/>
+              <!-- Cairo Core Tactical Orbital Concentric Rings -->
+              <circle cx="300" cy="170" r="28" fill="none" stroke="#00F0FF" stroke-width="1" stroke-dasharray="3 4" opacity="0.6">
+                <animateTransform attributeName="transform" type="rotate" from="0 300 170" to="360 300 170" dur="25s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="300" cy="170" r="48" fill="none" stroke="#1E5FD8" stroke-width="0.8" stroke-dasharray="6 8" opacity="0.4">
+                <animateTransform attributeName="transform" type="rotate" from="360 300 170" to="0 300 170" dur="35s" repeatCount="indefinite"/>
+              </circle>
+              <!-- Crosshair reticle ticks -->
+              <line x1="300" y1="135" x2="300" y2="145" stroke="#00F0FF" stroke-width="1" opacity="0.5"/>
+              <line x1="300" y1="195" x2="300" y2="205" stroke="#00F0FF" stroke-width="1" opacity="0.5"/>
+              <line x1="265" y1="170" x2="275" y2="170" stroke="#00F0FF" stroke-width="1" opacity="0.5"/>
+              <line x1="325" y1="170" x2="335" y2="170" stroke="#00F0FF" stroke-width="1" opacity="0.5"/>
               <circle cx="300" cy="170" r="18" fill="#0B192C" stroke="#00F0FF" stroke-width="3" class="hub-ring active-ring"/>
               <circle cx="300" cy="170" r="7" fill="#00F0FF"/>
-              <text x="300" y="138" text-anchor="middle" class="hub-label core-label">{{ lang.isArabic() ? 'القاهرة الكبرى' : 'Greater Cairo' }}</text>
-              <text x="300" y="206" text-anchor="middle" class="hub-sublabel core-sublabel">{{ lang.isArabic() ? 'مركز العمليات الوطني' : 'National Operations Core' }}</text>
+              <text x="300" y="132" text-anchor="middle" class="hub-label core-label">{{ lang.isArabic() ? 'القاهرة الكبرى' : 'Greater Cairo' }}</text>
+              <text x="300" y="214" text-anchor="middle" class="hub-sublabel core-sublabel">{{ lang.isArabic() ? 'مركز العمليات الوطني' : 'National Operations Core' }}</text>
             </g>
 
             <!-- Regional Hub 4: New Administrative Capital (Tier IV Sovereign Cloud) -->
             <g class="grid-hub-node" [class.active]="selectedRegion() === 'nac'" (click)="selectRegion('nac', true)" tabindex="0" role="button" aria-label="New Administrative Capital Hub">
-              <circle cx="360" cy="210" r="30" fill="url(#hubGlow)" opacity="0.4"/>
+              <circle cx="360" cy="210" r="38" fill="transparent" class="hub-hit-area"/>
+              <circle cx="360" cy="210" r="30" fill="url(#hubGlow)" opacity="0.4" class="hub-glow"/>
               <circle cx="360" cy="210" r="15" fill="#0B192C" stroke="#2DD4BF" stroke-width="2.5" class="hub-ring"/>
               <circle cx="360" cy="210" r="6" fill="#2DD4BF"/>
               <text x="360" y="242" text-anchor="middle" class="hub-label">{{ lang.isArabic() ? 'العاصمة الإدارية' : 'New Capital' }}</text>
@@ -165,7 +207,8 @@
 
             <!-- Regional Hub 5: Upper Egypt Spine (Assiut, Sohag, Luxor, Aswan) -->
             <g class="grid-hub-node" [class.active]="selectedRegion() === 'upper'" (click)="selectRegion('upper', true)" tabindex="0" role="button" aria-label="Upper Egypt Hub">
-              <circle cx="370" cy="370" r="30" fill="url(#hubGlow)" opacity="0.4"/>
+              <circle cx="370" cy="370" r="38" fill="transparent" class="hub-hit-area"/>
+              <circle cx="370" cy="370" r="30" fill="url(#hubGlow)" opacity="0.4" class="hub-glow"/>
               <circle cx="370" cy="370" r="14" fill="#0B192C" stroke="#A855F7" stroke-width="2.5" class="hub-ring"/>
               <circle cx="370" cy="370" r="5" fill="#A855F7"/>
               <text x="370" y="342" text-anchor="middle" class="hub-label">{{ lang.isArabic() ? 'صعيد مصر' : 'Upper Egypt' }}</text>
@@ -182,35 +225,38 @@
             <p class="region-display-desc">{{ lang.isArabic() ? currentRegionData().descAr : currentRegionData().descEn }}</p>
           </div>
 
-          <!-- Live KPI Gauges for Selected Region -->
+          <!-- Factual Institutional Architectural Scope -->
           <div class="region-kpi-grid">
             <div class="region-kpi-item">
-              <span class="kpi-num">{{ currentRegionData().throughput }}</span>
-              <span class="kpi-label">{{ lang.isArabic() ? 'أقصى معدل تدفق' : 'Peak Throughput' }}</span>
+              <span class="kpi-num">{{ lang.isArabic() ? currentRegionData().scopeAr : currentRegionData().scopeEn }}</span>
+              <span class="kpi-label">{{ lang.isArabic() ? 'نطاق الاختصاص السيادي' : 'Institutional Scope' }}</span>
             </div>
             <div class="region-kpi-item">
-              <span class="kpi-num">{{ currentRegionData().latency }}</span>
-              <span class="kpi-label">{{ lang.isArabic() ? 'زمن استجابة الناقل' : 'Internal Bus Latency' }}</span>
+              <span class="kpi-num">{{ lang.isArabic() ? currentRegionData().frameworkAr : currentRegionData().frameworkEn }}</span>
+              <span class="kpi-label">{{ lang.isArabic() ? 'الإطار التشريعي والمعياري' : 'Standard & Mandate' }}</span>
             </div>
             <div class="region-kpi-item">
-              <span class="kpi-num">{{ currentRegionData().uptime }}</span>
-              <span class="kpi-label">{{ lang.isArabic() ? 'نسبة الجاهزية المعتمدة' : 'Validated SLA' }}</span>
+              <span class="kpi-num">{{ lang.isArabic() ? currentRegionData().readinessAr : currentRegionData().readinessEn }}</span>
+              <span class="kpi-label">{{ lang.isArabic() ? 'نمط الجاهزية والاستمرارية' : 'Operational Readiness' }}</span>
             </div>
             <div class="region-kpi-item">
               <span class="kpi-num">{{ lang.isArabic() ? currentRegionData().entitiesAr : currentRegionData().entitiesEn }}</span>
-              <span class="kpi-label">{{ lang.isArabic() ? 'جهات وهيئات مترابطة' : 'Interconnected Entities' }}</span>
+              <span class="kpi-label">{{ lang.isArabic() ? 'الجهات والمؤسسات المستفيدة' : 'Interconnected Bodies' }}</span>
             </div>
           </div>
 
           <!-- Security & Sovereign Compliance Bar -->
           <div class="region-compliance-bar">
             <div class="compliance-item">
-              <span class="compliance-icon">🔒</span>
+              <svg class="compliance-svg-icon" viewBox="0 0 20 20" fill="none" width="16" height="16" aria-hidden="true">
+                <path d="M10 2L3 5v5c0 4.5 3 8 7 9 4-1 7-4.5 7-9V5l-7-3z" stroke="#38BDF8" stroke-width="1.6" stroke-linejoin="round"/>
+                <path d="M7.5 10l2 2 3.5-4" stroke="#38BDF8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
               <span class="compliance-text">{{ lang.isArabic() ? currentRegionData().secAr : currentRegionData().secEn }}</span>
             </div>
-            <button type="button" class="btn btn-outline btn-sm btn-ping-hub" (click)="pingHub()" [disabled]="isPinging()">
+            <button type="button" class="btn btn-outline btn-sm btn-ping-hub" (click)="inspectHub()" [disabled]="isInspecting()" id="btn-inspect-regional-hub">
               <span class="ping-wave"></span>
-              <span>{{ pingResult() || (isPinging() ? (lang.isArabic() ? 'جاري القياس...' : 'Pinging Hub...') : lang.t().btnPingHub) }}</span>
+              <span>{{ inspectionResult() || (isInspecting() ? (lang.isArabic() ? 'جاري التحقق...' : 'Verifying Hub...') : (lang.isArabic() ? 'فحص المعمارية الإقليمية' : 'Inspect Regional Architecture')) }}</span>
             </button>
           </div>
         </div>

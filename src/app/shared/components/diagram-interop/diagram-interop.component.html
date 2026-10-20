@@ -1,4 +1,4 @@
-<section class="section section-interoperability" id="interop" aria-label="Sovereign Interoperability Engine">
+<section class="section section-interoperability" id="interop" aria-label="Sovereign Interoperability Architecture">
   <div class="container">
     <div class="section-header text-center">
       <div class="section-tag">{{ lang.t().interopTag }}</div>
@@ -14,13 +14,15 @@
         </div>
         <div class="sim-controls">
           <button type="button" class="btn btn-primary btn-sm btn-sim-trigger" (click)="triggerTest()" [disabled]="isRunningTest()">
-            <span class="btn-sim-icon">⚡</span>
-            <span>{{ lang.t().btnRunSim }}</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polygon points="5 3 19 12 5 21 5 3"/>
+            </svg>
+            <span>{{ isRunningTest() ? (lang.isArabic() ? 'جاري التحقق من البروتوكول...' : 'Verifying Protocol...') : (lang.isArabic() ? 'محاكاة مسار الربط البيني' : 'Simulate Interoperability Flow') }}</span>
           </button>
         </div>
       </div>
 
-      <!-- 5 Stage Pipeline Nodes -->
+      <!-- 5 Stage Pipeline Nodes with Vector Icons -->
       <div class="interop-pipeline-flow" role="region" aria-label="5-Stage Sovereign Flow">
         <!-- Stage 1 -->
         <div 
@@ -30,10 +32,15 @@
           (click)="selectStage(1, true)"
           tabindex="0"
           role="button">
-          <div class="node-icon-wrap">📱</div>
+          <div class="node-icon-wrap">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+              <line x1="12" y1="18" x2="12.01" y2="18"/>
+            </svg>
+          </div>
           <span class="node-step">01</span>
-          <h4 class="node-heading">{{ lang.isArabic() ? 'قنوات المواطن والأعمال' : 'Citizen Touchpoint' }}</h4>
-          <p class="node-detail">{{ lang.isArabic() ? 'منصة مصر الرقمية والتطبيقات الذكية' : 'Digital Egypt Portal / App' }}</p>
+          <h4 class="node-heading">{{ lang.isArabic() ? 'قنوات المواطن والأعمال' : 'Citizen Touchpoints' }}</h4>
+          <p class="node-detail">{{ lang.isArabic() ? 'منصة مصر الرقمية والتطبيقات الذكية' : 'Digital Egypt Portal & Unified Channels' }}</p>
           <div class="node-status-badge" [class.badge-success]="activeStages().includes(1)" [class.badge-pending]="!activeStages().includes(1)">
             {{ stageBadges()[0] }}
           </div>
@@ -47,10 +54,14 @@
           (click)="selectStage(2, true)"
           tabindex="0"
           role="button">
-          <div class="node-icon-wrap">🛡️</div>
+          <div class="node-icon-wrap">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
           <span class="node-step">02</span>
           <h4 class="node-heading">{{ lang.isArabic() ? 'بوابة DEFI السيادية' : 'DEFI Sovereign Gateway' }}</h4>
-          <p class="node-detail">{{ lang.isArabic() ? 'التشفير المتبادل mTLS وفحص WAF' : 'Mutual TLS & WAF Inspection' }}</p>
+          <p class="node-detail">{{ lang.isArabic() ? 'التشفير المتبادل mTLS وإدارة السياسات' : 'Mutual TLS & Standardized Routing' }}</p>
           <div class="node-status-badge" [class.badge-success]="activeStages().includes(2)" [class.badge-pending]="!activeStages().includes(2)">
             {{ stageBadges()[1] }}
           </div>
@@ -64,10 +75,18 @@
           (click)="selectStage(3, true)"
           tabindex="0"
           role="button">
-          <div class="node-icon-wrap">🆔</div>
+          <div class="node-icon-wrap">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C5A059" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="16" rx="3"/>
+              <circle cx="9" cy="10" r="2"/>
+              <line x1="15" y1="8" x2="17" y2="8"/>
+              <line x1="15" y1="12" x2="17" y2="12"/>
+              <line x1="7" y1="16" x2="17" y2="16"/>
+            </svg>
+          </div>
           <span class="node-step">03</span>
           <h4 class="node-heading">{{ lang.isArabic() ? 'السجل المدني وقواعد البيانات' : 'Civil Registry Sync' }}</h4>
-          <p class="node-detail">{{ lang.isArabic() ? 'التحقق اللحظي عبر الرقم القومي' : 'National ID Verification' }}</p>
+          <p class="node-detail">{{ lang.isArabic() ? 'التحقق عبر الرقم القومي والسجلات الموحدة' : 'National ID & Base Registers Verification' }}</p>
           <div class="node-status-badge" [class.badge-success]="activeStages().includes(3)" [class.badge-pending]="!activeStages().includes(3)">
             {{ stageBadges()[2] }}
           </div>
@@ -81,10 +100,14 @@
           (click)="selectStage(4, true)"
           tabindex="0"
           role="button">
-          <div class="node-icon-wrap">🏛️</div>
+          <div class="node-icon-wrap">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 21h18M3 10h18M5 10v11M19 10v11M9 10v11M15 10v11M12 3l9 7H3l9-7z"/>
+            </svg>
+          </div>
           <span class="node-step">04</span>
-          <h4 class="node-heading">{{ lang.isArabic() ? 'الأنظمة المركزية للجهات الوزارية' : 'Ministerial Core Backend' }}</h4>
-          <p class="node-detail">{{ lang.isArabic() ? 'التعليم · مركز المعلومات · الصحة' : 'MOE / Cabinet IDSC / Health' }}</p>
+          <h4 class="node-heading">{{ lang.isArabic() ? 'الأنظمة المركزية للجهات الوزارية' : 'Ministerial Core Systems' }}</h4>
+          <p class="node-detail">{{ lang.isArabic() ? 'التعليم (MOE) · مركز معلومات الوزراء (IDSC)' : 'MOE / Cabinet IDSC / Executive Agencies' }}</p>
           <div class="node-status-badge" [class.badge-success]="activeStages().includes(4)" [class.badge-pending]="!activeStages().includes(4)">
             {{ stageBadges()[3] }}
           </div>
@@ -98,48 +121,96 @@
           (click)="selectStage(5, true)"
           tabindex="0"
           role="button">
-          <div class="node-icon-wrap">☁️</div>
+          <div class="node-icon-wrap">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2DD4BF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
+            </svg>
+          </div>
           <span class="node-step">05</span>
-          <h4 class="node-heading">{{ lang.isArabic() ? 'السحابة الحكومية السيادية Tier-IV' : 'Sovereign Tier IV Cloud' }}</h4>
-          <p class="node-detail">{{ lang.isArabic() ? 'التوثيق الرقمي والاعتماد الفوري' : 'Audit Trail & Signed Output' }}</p>
+          <h4 class="node-heading">{{ lang.isArabic() ? 'السحابة الحكومية والتوثيق' : 'Sovereign Cloud & Audit' }}</h4>
+          <p class="node-detail">{{ lang.isArabic() ? 'سجل العمليات المشفر واستمرارية الخدمة' : 'Encrypted Audit Trail & Service Continuity' }}</p>
           <div class="node-status-badge" [class.badge-success]="activeStages().includes(5)" [class.badge-pending]="!activeStages().includes(5)">
             {{ stageBadges()[4] }}
           </div>
         </div>
       </div>
 
-      <!-- Real-Time Execution Console & Cryptographic Payload Inspector -->
+      <!-- Institutional Interoperability Specification & Governance Panel -->
       <div class="interop-interactive-workbench">
-        <!-- Cryptographic Payload Inspector Card -->
-        <div class="interop-payload-card card-glass" id="interop-payload-panel">
-          <div class="payload-header">
-            <div class="payload-title-wrap">
-              <span class="payload-badge">{{ activePayload().pill }}</span>
-              <h4 class="payload-heading">{{ lang.isArabic() ? activePayload().titleAr : activePayload().titleEn }}</h4>
+        <!-- Stage Architecture Specification Card -->
+        <div class="interop-spec-card card-glass" id="interop-spec-panel">
+          <div class="spec-card-header">
+            <div class="spec-title-wrap">
+              <span class="spec-badge">{{ activeStageData().stageBadge }}</span>
+              <h4 class="spec-heading">{{ lang.isArabic() ? activeStageData().titleAr : activeStageData().titleEn }}</h4>
             </div>
-            <span class="payload-security">{{ activePayload().sec }}</span>
+            <span class="spec-standard-tag">{{ activeStageData().securityStandard }}</span>
           </div>
-          <div class="payload-code-block">
-            <pre><code>{{ activePayload().json }}</code></pre>
+
+          <div class="spec-card-body">
+            <p class="spec-desc-text">{{ lang.isArabic() ? activeStageData().descriptionAr : activeStageData().descriptionEn }}</p>
+
+            <div class="spec-meta-grid">
+              <div class="spec-meta-item">
+                <span class="meta-item-label">{{ lang.isArabic() ? 'بروتوكول الربط الحكومي:' : 'Inter-Agency Protocol:' }}</span>
+                <span class="meta-item-value">{{ activeStageData().protocol }}</span>
+              </div>
+              <div class="spec-meta-item">
+                <span class="meta-item-label">{{ lang.isArabic() ? 'معيار الحوكمة والأمان:' : 'Security & Governance Standard:' }}</span>
+                <span class="meta-item-value">{{ activeStageData().governanceStandard }}</span>
+              </div>
+              <div class="spec-meta-item">
+                <span class="meta-item-label">{{ lang.isArabic() ? 'الجهة المسؤولة:' : 'Institutional Authority:' }}</span>
+                <span class="meta-item-value">{{ lang.isArabic() ? activeStageData().authorityAr : activeStageData().authorityEn }}</span>
+              </div>
+              <div class="spec-meta-item">
+                <span class="meta-item-label">{{ lang.isArabic() ? 'سيادة وحفظ البيانات:' : 'Data Residency:' }}</span>
+                <span class="meta-item-value">{{ lang.isArabic() ? 'داخل جمهورية مصر العربية (١٠٠٪ سيادي)' : '100% In-Country Sovereign Data Center' }}</span>
+              </div>
+            </div>
           </div>
-          <div class="payload-footer">
-            <span class="payload-latency">⏱️ {{ lang.isArabic() ? 'زمن المعالجة:' : 'Processing Latency:' }} <strong>{{ activePayload().latency }}</strong></span>
-            <span class="payload-inspect-hint">{{ lang.isArabic() ? 'انقر فوق أي مرحلة أعلاه لمعاينة حزمة البيانات المشفرة' : 'Click any stage above to inspect live cryptographic payload' }}</span>
+
+          <div class="spec-card-footer">
+            <span class="spec-compliance-note">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C5A059" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              <span>{{ lang.isArabic() ? 'متوافق مع قرار رئيس مجلس الوزراء رقم ١٣٢ لسنة ٢٠٢٠' : 'Compliant with Prime Minister Decree No. 132/2020' }}</span>
+            </span>
+            <span class="spec-inspect-hint">{{ lang.isArabic() ? 'انقر فوق أي مرحلة أعلاه لمراجعة معايير الحوكمة والربط' : 'Click any stage above to inspect institutional specifications' }}</span>
           </div>
         </div>
 
-        <!-- Real-Time Execution Console -->
-        <div class="interop-console-wrap">
-          <div class="console-header">
-            <span class="console-dot dot-red"></span>
-            <span class="console-dot dot-yellow"></span>
-            <span class="console-dot dot-green"></span>
-            <span class="console-title">{{ lang.t().consoleTitle }}</span>
+        <!-- Verification & Quality Assurance Checklist Panel -->
+        <div class="interop-assurance-card card-glass">
+          <div class="assurance-header">
+            <div class="assurance-title-wrap">
+              <span class="assurance-dot" aria-hidden="true"></span>
+              <h4 class="assurance-title">{{ lang.isArabic() ? 'معايير التحقق والجاهزية الوطنية' : 'National Verification Standards' }}</h4>
+            </div>
+            <span class="assurance-status-pill">{{ lang.isArabic() ? 'معتمد رسمياً' : 'Verified Standard' }}</span>
           </div>
-          <div class="console-body" id="interop-console-log">
-            @for (log of logs(); track $index) {
-              <p class="console-line" [ngClass]="log.type">{{ log.text }}</p>
-            }
+
+          <div class="assurance-body">
+            <div class="assurance-checklist">
+              @for (item of activeStageData().checklist; track item.labelEn) {
+                <div class="checklist-item">
+                  <div class="checklist-icon-wrap" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2DD4BF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="checklist-label">{{ lang.isArabic() ? item.labelAr : item.labelEn }}</div>
+                    <div class="checklist-detail">{{ lang.isArabic() ? item.detailAr : item.detailEn }}</div>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+
+          <div class="assurance-footer">
+            <span class="assurance-legal-note">{{ lang.isArabic() ? 'حوكمة رقمية بإشراف وزارة الاتصالات وتكنولوجيا المعلومات' : 'Digital Governance Under Auspices of MCIT & ITIDA' }}</span>
           </div>
         </div>
       </div>

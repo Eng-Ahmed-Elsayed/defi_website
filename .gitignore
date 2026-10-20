@@ -37,7 +37,10 @@ yarn-error.log
 /libpeerconnection.log
 testem.log
 /typings
+# Test and Verification Artifacts
 __screenshots__/
+verification-screenshots/
+docs/ui-audit/
 
 # System files
 .DS_Store

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, OnDestroy, signal } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LanguageService } from '../../../core/services/language.service';
 
@@ -13,12 +13,11 @@ export class DiagramEcosystemComponent implements OnInit, OnDestroy {
   readonly lang = inject(LanguageService);
 
   readonly activeNode = signal<string>('core');
-  readonly throughputDisplay = signal<string>('18,450 req/s');
-  readonly latencyDisplay = signal<string>('< 4.2ms');
+  readonly throughputDisplay = computed<string>(() => this.lang.t().telemetryThroughput);
+  readonly latencyDisplay = computed<string>(() => this.lang.t().telemetryLatency);
   readonly isSimulating = signal<boolean>(false);
   readonly customInfoText = signal<string | null>(null);
 
-  private telemetryTimer: any;
   private autoCycleTimer: any;
   private userInteracted = false;
   private resetInteractionTimeout: any;
@@ -29,30 +28,19 @@ export class DiagramEcosystemComponent implements OnInit, OnDestroy {
     if (typeof window !== 'undefined') {
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (!prefersReducedMotion) {
-        // Live telemetry numeric jitter
-        this.telemetryTimer = setInterval(() => {
-          const jitter = Math.floor(Math.random() * 90) - 45;
-          const base = 18450 + jitter;
-          this.throughputDisplay.set(`${base.toLocaleString()} req/s`);
-
-          const latencyVal = (3.8 + Math.random() * 0.4).toFixed(1);
-          this.latencyDisplay.set(`< ${latencyVal}ms`);
-        }, 2400);
-
-        // Autonomous layer cycling every 4.5s when not interacted
+        // Autonomous layer cycling every 5.5s when not interacted
         let cycleIdx = 0;
         this.autoCycleTimer = setInterval(() => {
           if (!this.userInteracted) {
             cycleIdx = (cycleIdx + 1) % this.nodeSequence.length;
             this.activeNode.set(this.nodeSequence[cycleIdx]);
           }
-        }, 4500);
+        }, 5500);
       }
     }
   }
 
   ngOnDestroy(): void {
-    if (this.telemetryTimer) clearInterval(this.telemetryTimer);
     if (this.autoCycleTimer) clearInterval(this.autoCycleTimer);
     if (this.resetInteractionTimeout) clearTimeout(this.resetInteractionTimeout);
   }

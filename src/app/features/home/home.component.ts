@@ -69,6 +69,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private mouseLeaveListener?: () => void;
   private cardSpotlightCleanup?: () => void;
   private intersectionObserver?: IntersectionObserver;
+  private scrollRevealObserver?: IntersectionObserver;
+  private sectionObserver?: IntersectionObserver;
 
   ngOnInit(): void {
     this.seo.updateTags({
@@ -82,6 +84,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.initHeroParticles();
     this.initCardSpotlights();
+    this.initScrollAnimations();
   }
 
   ngOnDestroy(): void {
@@ -104,6 +107,12 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
     if (this.intersectionObserver) {
       this.intersectionObserver.disconnect();
+    }
+    if (this.scrollRevealObserver) {
+      this.scrollRevealObserver.disconnect();
+    }
+    if (this.sectionObserver) {
+      this.sectionObserver.disconnect();
     }
   }
 
@@ -299,5 +308,50 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.cardSpotlightCleanup = () => {
       handlers.forEach(({ el, move }) => el.removeEventListener('mousemove', move));
     };
+  }
+
+  /**
+   * IntersectionObserver for scroll-triggered reveal animations and section transitions
+   */
+  private initScrollAnimations(): void {
+    if (!('IntersectionObserver' in window)) return;
+
+    // 1. Observe sections to trigger autonomous animations and active state when scrolled into view
+    const sectionIds = ['hero', 'about', 'capabilities', 'journey', 'interop', 'metrics', 'national-grid', 'inquiry'];
+    const sections = sectionIds
+      .map(id => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    this.sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('section-in-view');
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    sections.forEach(sec => this.sectionObserver?.observe(sec));
+
+    // 2. Observe reveal elements for smooth scroll entry
+    const revealTargets = document.querySelectorAll<HTMLElement>(
+      '.scroll-reveal, .section-header, .stat-highlight-card, .pillar-box, .interop-node, .cap-card, .metric-card, .sector-card, .timeline-card, .hero-mandate-bar'
+    );
+
+    this.scrollRevealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          this.scrollRevealObserver?.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.08,
+      rootMargin: '0px 0px -20px 0px'
+    });
+
+    revealTargets.forEach(el => this.scrollRevealObserver?.observe(el));
   }
 }

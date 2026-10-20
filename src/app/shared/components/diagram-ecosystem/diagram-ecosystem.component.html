@@ -5,10 +5,10 @@
       <span class="diagram-title-text">{{ lang.t().diagramATitle }}</span>
     </div>
     <div class="diagram-header-right">
-      <div class="diagram-telemetry-strip" aria-label="Live Telemetry">
+      <div class="diagram-telemetry-strip" aria-label="Architecture Scope">
         <span class="tele-pill live"><span class="tele-dot"></span> <span>{{ throughputDisplay() }}</span></span>
-        <span class="tele-pill">{{ latencyDisplay() }}</span>
-        <span class="tele-pill">{{ lang.t().telemetrySecurity }}</span>
+        <span class="tele-pill"><span class="tele-icon" aria-hidden="true">⚖️</span> <span>{{ latencyDisplay() }}</span></span>
+        <span class="tele-pill"><span class="tele-icon" aria-hidden="true">🛡️</span> <span>{{ lang.t().telemetrySecurity }}</span></span>
       </div>
       <span class="diagram-tag">{{ lang.t().diagramAInteractiveTag }}</span>
     </div>

@@ -20,9 +20,7 @@
   <div class="container header-container">
     <!-- Brand Logo -->
     <a routerLink="/" class="brand-link" aria-label="DEFI Home">
-      <span class="brand-logo-badge">
-        <img src="/defi-logo-gradient.png" alt="Digital Egypt For Investment Logo" class="brand-logo" width="200" height="58">
-      </span>
+      <img src="/defi-logo.svg" alt="Digital Egypt For Investment Logo" class="brand-logo" width="220" height="58">
     </a>
 
     <!-- Desktop Navigation Links -->
@@ -88,11 +86,10 @@
   [class.open]="isMobileMenuOpen()" 
   aria-label="Mobile Navigation" 
   [attr.aria-hidden]="!isMobileMenuOpen()">
-  
   <div class="drawer-header">
-    <span class="brand-logo-badge">
-      <img src="/defi-logo-gradient.png" alt="DEFI Logo" class="drawer-logo" width="160" height="46">
-    </span>
+    <a routerLink="/" (click)="closeMobileMenu()" class="drawer-logo-link">
+      <img src="/defi-logo.svg" alt="DEFI Logo" class="drawer-logo" width="160" height="46">
+    </a>
     <button type="button" class="drawer-close-btn" (click)="closeMobileMenu()" aria-label="Close menu">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M18 6L6 18M6 6l12 12"/>

@@ -63,7 +63,7 @@ export class DiagramOperatingModelComponent implements OnInit, OnDestroy {
         title: isAr ? 'التشغيل وحماية الأنظمة واستمرارية الخدمة' : 'Mission-Critical 24/7 Operations & Security',
         status: isAr ? 'بوابة الجودة: الجاهزية التشغيلية القصوى' : 'Quality Gate: Active 24/7 SRE Uptime',
         stakeholders: isAr ? 'مركز إدارة العمليات (NOC) · مركز الدفاع السيبراني (SOC)' : 'Network Operations Center · Security Operations Center',
-        standard: isAr ? 'معيار الجاهزية 99.999% ومراكز البيانات Tier IV' : 'Tier-IV High Availability & Disaster Recovery Protocol',
+        standard: isAr ? 'معايير الاستمرارية والتعافي ومراكز البيانات Tier IV' : 'Tier-IV High Availability & Disaster Recovery Protocol',
         deliverable: isAr ? 'رصد مستمر وتقارير الأداء اللحظية' : '24/7 Monitoring Dashboard & Rapid Incident Runbooks'
       },
       5: {

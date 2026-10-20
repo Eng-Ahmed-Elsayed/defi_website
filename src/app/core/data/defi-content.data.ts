@@ -46,10 +46,10 @@ export const DEFI_TRANSLATIONS: Record<'en' | 'ar', DefiTranslations> = {
     diagramASubtitle: 'Interactive visual architecture demonstrating how DEFI orchestrates data, governance, and services across Egypt\'s public infrastructure.',
     diagramAInteractiveTag: 'Interactive Architecture Flow',
     diagramAInstruction: 'Hover or tap any ecosystem layer to inspect DEFI\'s architectural orchestration role.',
-    telemetryThroughput: '18,450 req/s',
-    telemetryLatency: '< 4.2ms',
-    telemetrySecurity: 'Tier IV Sovereign',
-    btnSimulateTraffic: 'Simulate Live Flow',
+    telemetryThroughput: 'National Inter-Agency Backbone',
+    telemetryLatency: 'Decree 132/2020 Mandate',
+    telemetrySecurity: 'Sovereign Cloud & Core',
+    btnSimulateTraffic: 'Inspect Architecture Layer',
     diagramADefaultInfo: 'Click or hover any ecosystem layer above to inspect how DEFI orchestrates data, governance, and services across Egypt\'s national digital landscape.',
     nodeInfoCitizens: 'Citizen & Business Channels: Unifying digital access across portals (e.g. Digital Egypt), mobile applications, and physical service centers for seamless citizen interactions.',
     nodeInfoMinistries: 'Government Entities: Collaborating with ministries such as Education (MOE) and The Cabinet IDSC to modernize public workflows and cross-departmental operations.',
@@ -289,11 +289,11 @@ export const DEFI_TRANSLATIONS: Record<'en' | 'ar', DefiTranslations> = {
     ],
 
     // Section 5C: National Command Center · Sovereign Digital Grid
-    gridTag: 'SOVEREIGN COVERAGE & UPTIME',
+    gridTag: 'SOVEREIGN INTER-AGENCY ARCHITECTURE',
     gridTitle: 'National Command Center · <span class="gradient-text">Sovereign Digital Grid</span>',
-    gridSub: 'Real-time telemetry and high-availability operations across 27 Egyptian governorates unified under the sovereign digital infrastructure backbone.',
-    gridStatusTitle: 'Sovereign Backbone: Active · 99.999% National SLA',
-    btnPingHub: 'Ping Regional Hub',
+    gridSub: 'Sovereign inter-agency coordination and continuous high-availability operations across all Egyptian governorates unified under the national digital infrastructure backbone.',
+    gridStatusTitle: 'Sovereign Backbone: Active · Multi-Governorate Grid',
+    btnPingHub: 'Inspect Regional Architecture',
     regionalHubs: [
       {
         id: 'cairo',
@@ -603,10 +603,10 @@ export const DEFI_TRANSLATIONS: Record<'en' | 'ar', DefiTranslations> = {
     diagramASubtitle: 'مخطط معماري تفاعلي يوضح دور شركة مصر الرقمية للاستثمار (DEFI) في توجيه تدفق البيانات والخدمات والحوكمة عبر البنية التحتية لمصر.',
     diagramAInteractiveTag: 'مخطط معماري تفاعلي',
     diagramAInstruction: 'مرر المؤشر أو اضغط على أي طبقة معمارية لاستكشاف دور DEFI في التنسيق والربط الوطني.',
-    telemetryThroughput: '18,450 معاملة/ث',
-    telemetryLatency: '< 4.2 مللي ثانية',
-    telemetrySecurity: 'سحابة سيادية Tier-IV',
-    btnSimulateTraffic: 'محاكاة التدفق الرقمي',
+    telemetryThroughput: 'الربط البيني الوطني الموحد',
+    telemetryLatency: 'تكليف رسمي بقرار ١٣٢ / ٢٠٢٠',
+    telemetrySecurity: 'سحابة سيادية معتمدة',
+    btnSimulateTraffic: 'استعراض الطبقة المعمارية',
     diagramADefaultInfo: 'انقر أو مرر فوق أي طبقة من طبقات المنظومة أعلاه للتعرف على دور مصر الرقمية للاستثمار في ربط البيانات والخدمات الحكومية.',
     nodeInfoCitizens: 'قنوات المواطنين والأعمال: توحيد الوصول للخدمات الحكومية عبر بوابة مصر الرقمية والتطبيقات الذكية ومراكز الخدمات لضمان تجربة سهلة وسلسة.',
     nodeInfoMinistries: 'الجهات الحكومية والوزارات: التعاون الاستراتيجي مع الوزارات والهيئات (مثل وزارة التربية والتعليم ومركز معلومات مجلس الوزراء) لأتمتة الإجراءات ورفع كفاءة العمليات.',
@@ -846,11 +846,11 @@ export const DEFI_TRANSLATIONS: Record<'en' | 'ar', DefiTranslations> = {
     ],
 
     // Section 5C: National Command Center · Sovereign Digital Grid
-    gridTag: 'التغطية والجاهزية السيادية',
+    gridTag: 'التكامل البيني والسيادة الرقمية',
     gridTitle: 'مركز القيادة والتحكم · <span class="gradient-text">الشبكة الرقمية السيادية</span>',
-    gridSub: 'مؤشرات التشغيل اللحظية وموثوقية الخدمة في 27 محافظة مصرية مترابطة تحت مظلة البنية التحتية السيادية الموحدة.',
-    gridStatusTitle: 'العمود الفقري السيادي: نشط · جاهزية قومية 99.999%',
-    btnPingHub: 'فحص اتصال المركز',
+    gridSub: 'منظومة التنسيق المؤسسي والربط الفني السيادي عالي الجاهزية عبر كافة محافظات الجمهورية تحت مظلة البنية الرقمية القومية.',
+    gridStatusTitle: 'العمود الفقري السيادي: نشط · الربط القومي الشامل',
+    btnPingHub: 'فحص المعمارية الإقليمية',
     regionalHubs: [
       {
         id: 'cairo',

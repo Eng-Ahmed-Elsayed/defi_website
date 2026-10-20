@@ -39,30 +39,50 @@
 .diagram-header-right {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .diagram-telemetry-strip {
   display: flex;
   align-items: center;
-  gap: 8px;
-  background: rgba(15, 33, 55, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
+  gap: 6px;
+  flex-wrap: wrap;
+  background: transparent;
+  border: none;
+  padding: 0;
 }
 
 .tele-pill {
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 600;
-  color: var(--color-text-light);
+  color: #CBD5E1;
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
+  background: rgba(15, 33, 55, 0.75);
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  padding: 5px 10px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  transition: all 0.2s ease;
+}
+
+.tele-pill:hover {
+  border-color: rgba(56, 189, 248, 0.45);
+  background: rgba(23, 49, 82, 0.85);
 }
 
 .tele-pill.live {
   color: #38BDF8;
+  border-color: rgba(56, 189, 248, 0.4);
+  background: rgba(14, 116, 144, 0.2);
+}
+
+.tele-icon {
+  font-size: 0.85rem;
+  line-height: 1;
 }
 
 .tele-dot {
