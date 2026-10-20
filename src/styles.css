@@ -1115,24 +1115,6 @@ html[dir="rtl"] .mobile-nav-drawer {
   }
 }
 
-.diagram-info-panel {
-  margin-top: 16px;
-  padding: 12px 16px;
-  background: rgba(11, 25, 44, 0.85);
-  border: 1px solid var(--color-border-dark);
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  font-size: 0.875rem;
-  color: #CBD5E1;
-  line-height: 1.5;
-}
-
-.info-icon {
-  flex-shrink: 0;
-  font-size: 1rem;
-}
 
 /* --------------------------------------------------------------------------
    9. Institutional Authority Section
@@ -2390,29 +2372,32 @@ html[dir="rtl"] .mobile-nav-drawer {
 }
 
 .diagram-telemetry-strip {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 6px;
-  flex-wrap: wrap;
+  margin-bottom: 0.85rem;
   background: transparent;
   border: none;
   padding: 0;
 }
 
 .tele-pill {
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 600;
   color: #CBD5E1;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  gap: 5px;
   background: rgba(15, 33, 55, 0.75);
   border: 1px solid rgba(56, 189, 248, 0.22);
-  padding: 5px 10px;
+  padding: 5px 6px;
   border-radius: var(--radius-sm);
   white-space: nowrap;
   letter-spacing: 0.02em;
   transition: all 0.2s ease;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .tele-pill:hover {
@@ -2447,16 +2432,77 @@ html[dir="rtl"] .mobile-nav-drawer {
 
 .diagram-info-panel {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 1rem;
+  padding: 14px 18px;
+  background: rgba(10, 22, 38, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .info-content-wrap {
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  flex: 1;
+  width: 100%;
+}
+
+.info-icon-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.info-text-col {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.info-layer-badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #38BDF8;
+  margin-bottom: 4px;
+}
+
+.info-text {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: #E2E8F0;
+  margin: 0;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.info-actions-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.info-hint-note {
+  font-size: 0.74rem;
+  color: #94A3B8;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .btn-simulate {
@@ -2464,19 +2510,26 @@ html[dir="rtl"] .mobile-nav-drawer {
   align-items: center;
   gap: 8px;
   white-space: nowrap;
-  font-size: 0.8125rem;
-  padding: 8px 14px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 8px 16px;
   border-radius: var(--radius-full);
   background: linear-gradient(135deg, #1E5FD8, #087E8B);
   color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 0 16px rgba(30, 95, 216, 0.35);
-  transition: all var(--transition-fast);
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.btn-simulate:hover {
+.btn-simulate:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 0 24px rgba(30, 95, 216, 0.55);
+}
+
+.btn-simulate:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
 }
 
 .pulse-indicator {
@@ -2815,7 +2868,15 @@ html[dir="rtl"] .mobile-nav-drawer {
 /* Responsive Overrides for New Sections */
 @media (max-width: 992px) {
   .interop-pipeline-flow {
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+  }
+  .interop-node {
+    flex: 1 1 calc(33.333% - 14px);
+    min-width: 170px;
+    max-width: 280px;
   }
   .sectors-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -2824,7 +2885,13 @@ html[dir="rtl"] .mobile-nav-drawer {
 
 @media (max-width: 640px) {
   .interop-pipeline-flow {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .interop-node {
+    width: 100%;
+    max-width: 100%;
   }
   .sectors-grid {
     grid-template-columns: 1fr;

@@ -45,3 +45,4 @@ docs/ui-audit/
 # System files
 .DS_Store
 Thumbs.db
+.codex/
