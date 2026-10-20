@@ -754,6 +754,16 @@ html[dir="rtl"] .mobile-nav-drawer {
   overflow: hidden;
 }
 
+.hero-particles-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
 /* Subtle Architectural Ambient Lights */
 .hero-bg-glow {
   position: absolute;
@@ -2152,12 +2162,23 @@ html[dir="rtl"] .mobile-nav-drawer {
    -------------------------------------------------------------------------- */
 @media (max-width: 1024px) {
   .hero-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr) !important;
     gap: 40px;
+    width: 100%;
+    box-sizing: border-box;
   }
   
   .hero-content {
-    max-width: 680px;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .hero-visual {
+    min-width: 0 !important;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .institutional-grid {
@@ -2430,79 +2451,93 @@ html[dir="rtl"] .mobile-nav-drawer {
   50% { opacity: 0.4; transform: scale(0.8); }
 }
 
-.diagram-info-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 1rem;
-  padding: 14px 18px;
-  background: rgba(10, 22, 38, 0.85);
-  border: 1px solid rgba(56, 189, 248, 0.22);
-  border-radius: var(--radius-md);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-
-.info-content-wrap {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  width: 100%;
-}
-
-.info-icon-badge {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
-  background: rgba(56, 189, 248, 0.12);
-  border: 1px solid rgba(56, 189, 248, 0.25);
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.info-text-col {
-  flex: 1 1 auto;
-  min-width: 0;
-}
-
-.info-layer-badge {
-  font-size: 0.68rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #38BDF8;
-  margin-bottom: 4px;
-}
-
-.info-text {
-  font-size: 0.85rem;
-  line-height: 1.55;
-  color: #E2E8F0;
-  margin: 0;
-  word-break: normal;
-  overflow-wrap: break-word;
-}
-
-.info-actions-bar {
+/* Zero-Shift Fixed-Height Layer HUD Capsule */
+.diagram-layer-hud {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 10px;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
   gap: 12px;
-  flex-wrap: wrap;
+  height: 48px;
+  min-height: 48px;
+  max-height: 48px;
+  margin-top: 0.85rem;
+  padding: 0 16px;
+  background: rgba(10, 22, 38, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
-.info-hint-note {
-  font-size: 0.74rem;
-  color: #94A3B8;
+.hud-layer-info {
   display: flex;
   align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.hud-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #38BDF8;
+  box-shadow: 0 0 8px #38BDF8;
+  flex-shrink: 0;
+  animation: pulseDot 2s infinite;
+}
+
+.hud-layer-title {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #38BDF8;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+
+.hud-divider {
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.hud-layer-summary {
+  font-size: 0.78rem;
+  color: #CBD5E1;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hud-specs-btn {
+  display: inline-flex;
+  align-items: center;
   gap: 6px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  background: rgba(30, 95, 216, 0.25);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.hud-specs-btn:hover {
+  background: rgba(30, 95, 216, 0.5);
+  border-color: #38BDF8;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
+  transform: translateY(-1px);
 }
 
 .btn-simulate {
@@ -2845,27 +2880,51 @@ html[dir="rtl"] .mobile-nav-drawer {
   flex: 1;
 }
 
-.sector-metric-pill {
+.sector-metric-capsule {
   display: flex;
-  align-items: baseline;
-  gap: 8px;
-  padding-top: 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+  padding: 10px 16px;
+  background: rgba(14, 165, 233, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  border-radius: var(--radius-md);
+  box-sizing: border-box;
+  width: 100%;
+  transition: all 0.2s ease;
 }
 
-.sector-metric-pill .pill-number {
-  font-size: 1.4rem;
+.sector-card:hover .sector-metric-capsule {
+  background: rgba(14, 165, 233, 0.14);
+  border-color: rgba(56, 189, 248, 0.4);
+}
+
+.metric-scope-badge {
+  font-size: 0.88rem;
   font-weight: 800;
   color: #38BDF8;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
 }
 
-.sector-metric-pill .pill-text {
-  font-size: 0.75rem;
+.metric-scope-label {
+  font-size: 0.8rem;
   font-weight: 600;
-  color: var(--color-text-light);
+  color: #CBD5E1;
+  text-align: end;
+  line-height: 1.35;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* Responsive Overrides for New Sections */
+[dir="rtl"] .metric-scope-label {
+  text-align: start;
+}
+
+/* Responsive Overrides: Modern Mobile App Experience */
 @media (max-width: 992px) {
   .interop-pipeline-flow {
     display: flex;
@@ -2883,23 +2942,138 @@ html[dir="rtl"] .mobile-nav-drawer {
   }
 }
 
+@media (max-width: 768px) {
+  /* Sectors in Focus: Smooth Horizontal Snap Carousel */
+  .sectors-grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch;
+    gap: 16px !important;
+    padding-inline: 1rem 1.5rem !important;
+    padding-block-end: 1rem !important;
+    scrollbar-width: none;
+    margin-inline: -1rem;
+  }
+  .sectors-grid::-webkit-scrollbar {
+    display: none;
+  }
+  .sector-card {
+    flex: 0 0 84vw !important;
+    max-width: 320px !important;
+    scroll-snap-align: center;
+    margin-bottom: 0 !important;
+  }
+
+  /* Operating Model Stepper: Horizontal Snap Flow */
+  .journey-track {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch;
+    gap: 12px !important;
+    padding-inline: 1rem 1.5rem !important;
+    padding-block-end: 0.75rem !important;
+    scrollbar-width: none;
+    margin-inline: -1rem;
+  }
+  .journey-track::-webkit-scrollbar {
+    display: none;
+  }
+  .journey-step-item {
+    flex: 0 0 82vw !important;
+    max-width: 290px !important;
+    scroll-snap-align: center;
+  }
+  .step-connector {
+    display: none !important;
+  }
+
+  /* Hero Mandate Credentials Bar: Compact 2x2 Grid without overflow */
+  .hero-mandate-bar {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+    margin-top: 24px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .hero-mandate-item {
+    padding: 10px 12px !important;
+    gap: 8px !important;
+    min-width: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+  .mandate-item-text {
+    min-width: 0;
+    flex: 1;
+    overflow: hidden;
+  }
+  .mandate-item-label {
+    font-size: 0.8rem !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .mandate-item-sub {
+    font-size: 0.68rem !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Hero Actions: Full-width responsive touch targets without text clipping */
+  .hero-actions {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+    width: 100% !important;
+    margin-bottom: 32px;
+  }
+
+  .hero-actions .btn {
+    width: 100% !important;
+    padding: 13px 20px !important;
+    font-size: 0.95rem !important;
+    min-height: 48px !important;
+    justify-content: center !important;
+    white-space: normal !important;
+    text-align: center !important;
+    line-height: 1.35 !important;
+    box-sizing: border-box !important;
+  }
+}
+
 @media (max-width: 640px) {
+  /* Interoperability Pipeline: Horizontal Snap Flow */
   .interop-pipeline-flow {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch;
+    gap: 12px !important;
+    padding-inline: 1rem 1.5rem !important;
+    padding-block-end: 0.75rem !important;
+    scrollbar-width: none;
+    margin-inline: -1rem;
+  }
+  .interop-pipeline-flow::-webkit-scrollbar {
+    display: none;
   }
   .interop-node {
-    width: 100%;
-    max-width: 100%;
+    flex: 0 0 78vw !important;
+    max-width: 270px !important;
+    scroll-snap-align: center;
   }
-  .sectors-grid {
-    grid-template-columns: 1fr;
-  }
+
   .simulator-top-bar {
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
+    gap: 14px;
   }
   .journey-controls-bar {
     flex-direction: column;
@@ -3073,6 +3247,12 @@ html[dir="rtl"] .mobile-nav-drawer {
   border: 1px dashed rgba(56, 189, 248, 0.2);
 }
 
+.journey-blueprint-card {
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+}
+
 .blueprint-svg {
   width: 100%;
   height: auto;
@@ -3083,9 +3263,10 @@ html[dir="rtl"] .mobile-nav-drawer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  margin-top: 24px;
+  margin-top: auto;
   padding-top: 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
+  min-height: 84px;
 }
 
 .blueprint-meta-item .meta-label {
@@ -3125,6 +3306,7 @@ html[dir="rtl"] .mobile-nav-drawer {
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35), inset 0 0 24px rgba(56, 189, 248, 0.04);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  min-height: 420px;
 }
 
 .spec-card-header,
@@ -3525,6 +3707,7 @@ html[dir="rtl"] .mobile-nav-drawer {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  min-height: 440px;
 }
 
 .region-badge-pill {
@@ -3552,6 +3735,7 @@ html[dir="rtl"] .mobile-nav-drawer {
   font-size: 0.92rem;
   line-height: 1.6;
   color: var(--color-text-light);
+  min-height: 3.6rem;
 }
 
 .region-kpi-grid {

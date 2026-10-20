@@ -4,7 +4,10 @@
       <span class="status-indicator"></span>
       <span class="diagram-title-text">{{ lang.t().diagramATitle }}</span>
     </div>
-    <span class="diagram-tag">{{ lang.t().diagramAInteractiveTag }}</span>
+    <button type="button" class="btn btn-simulate" (click)="simulateTraffic()" [disabled]="isSimulating()" title="Trigger an animated digital traffic burst across Egypt's architecture">
+      <span class="pulse-indicator"></span>
+      <span>{{ isSimulating() ? (lang.isArabic() ? 'جاري التدفق...' : 'Traffic Active') : (lang.isArabic() ? 'محاكاة التدفق' : 'Simulate Flow') }}</span>
+    </button>
   </div>
 
   <!-- Telemetry HUD Bar: Clean, unified single-line row below header -->
@@ -138,27 +141,19 @@
     </svg>
   </div>
 
-  <!-- Dynamic Node Info Box -->
-  <div class="diagram-info-panel" id="diagram-a-tooltip">
-    <div class="info-content-wrap">
-      <div class="info-icon-badge" aria-hidden="true">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"/>
-          <line x1="12" y1="16" x2="12" y2="12"/>
-          <line x1="12" y1="8" x2="12.01" y2="8"/>
-        </svg>
-      </div>
-      <div class="info-text-col">
-        <div class="info-layer-badge">{{ lang.isArabic() ? 'طبقة المعمارية المحددة' : 'Active Architecture Layer' }}</div>
-        <p class="info-text" id="diagram-a-info-text">{{ getInfoText() }}</p>
-      </div>
+  <!-- Zero-Shift Fixed-Height Architecture Layer HUD -->
+  <div class="diagram-layer-hud" id="diagram-a-hud">
+    <div class="hud-layer-info">
+      <span class="hud-status-dot"></span>
+      <span class="hud-layer-title">{{ getActiveLayerTitle() }}</span>
+      <span class="hud-divider" aria-hidden="true">·</span>
+      <span class="hud-layer-summary">{{ getActiveLayerSummary() }}</span>
     </div>
-    <div class="info-actions-bar">
-      <span class="info-hint-note">{{ lang.isArabic() ? 'انقر فوق أي طبقة أعلاه لمعاينة تفاصيل المعمارية' : 'Hover or tap any layer above to inspect role' }}</span>
-      <button type="button" class="btn btn-sm btn-simulate" (click)="simulateTraffic()" [disabled]="isSimulating()" title="Trigger an animated digital traffic burst across Egypt's architecture">
-        <span class="pulse-indicator"></span>
-        <span>{{ isSimulating() ? (lang.isArabic() ? 'جاري تدفق البيانات...' : 'Traffic Pulsing...') : lang.t().btnSimulateTraffic }}</span>
-      </button>
-    </div>
+    <a routerLink="/capabilities" class="hud-specs-btn" title="View technical specifications on Capabilities page">
+      <span>{{ lang.isArabic() ? 'المواصفات الكاملة' : 'Full Specs' }}</span>
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M3.3 8h9.4M8 3.3L12.7 8 8 12.7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
   </div>
 </div>

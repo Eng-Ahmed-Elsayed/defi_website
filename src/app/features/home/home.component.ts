@@ -119,7 +119,13 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   scrollTo(elementId: string): void {
     const el = document.getElementById(elementId);
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+      const headerOffset = 84;
+      const elementPosition = el.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
   }
 

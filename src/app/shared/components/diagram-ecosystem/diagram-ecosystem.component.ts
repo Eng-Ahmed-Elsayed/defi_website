@@ -58,6 +58,44 @@ export class DiagramEcosystemComponent implements OnInit, OnDestroy {
     }
   }
 
+  getActiveLayerTitle(): string {
+    const isAr = this.lang.isArabic();
+    switch (this.activeNode()) {
+      case 'citizens':
+        return isAr ? 'قنوات المواطنين والأعمال' : 'Citizen & Business Channels';
+      case 'ministries':
+        return isAr ? 'الجهات الحكومية والوزارات' : 'Government Entities & Ministries';
+      case 'defi-core':
+      case 'core':
+        return isAr ? 'منظومة DEFI للتمكين الرقمي' : 'DEFI Enablement Core';
+      case 'registries':
+        return isAr ? 'السجلات والبيانات الوطنية' : 'National Registries & Base Data';
+      case 'infra':
+        return isAr ? 'البنية السحابية السيادية' : 'Sovereign Cloud & Infra';
+      default:
+        return isAr ? 'منظومة DEFI للتمكين الرقمي' : 'DEFI Enablement Core';
+    }
+  }
+
+  getActiveLayerSummary(): string {
+    const isAr = this.lang.isArabic();
+    switch (this.activeNode()) {
+      case 'citizens':
+        return isAr ? 'بوابة مصر الرقمية والتطبيقات الموحدة' : 'Unified Portals, Mobile Apps & Service Centers';
+      case 'ministries':
+        return isAr ? 'أتمتة الإجراءات والربط مع 25+ جهة' : 'Workflow Modernization & 25+ Ministries';
+      case 'defi-core':
+      case 'core':
+        return isAr ? 'ناقل البيانات الوطني وبوابات الربط الموحدة' : 'National Data Bus, Secure API Gateway & GSB';
+      case 'registries':
+        return isAr ? 'سجلات حكومية مركزية متزامنة وموثوقة' : 'Synchronized National Base Registers';
+      case 'infra':
+        return isAr ? 'مراكز بيانات فائقة الأمان 24/7' : 'Tier-IV Sovereign Data Centers & 24/7 Ops';
+      default:
+        return isAr ? 'ناقل البيانات الوطني وبوابات الربط الموحدة' : 'National Data Bus, Secure API Gateway & GSB';
+    }
+  }
+
   getInfoText(): string {
     if (this.customInfoText()) {
       return this.customInfoText()!;
