@@ -231,3 +231,74 @@ html[dir="rtl"] .step-connector svg {
   color: #93C5FD;
   font-size: 0.95rem;
 }
+
+/* Consolidated Blueprint Detail Grid (Non-redundant, clean architectural spec board) */
+.blueprint-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+@media (max-width: 900px) {
+  .blueprint-detail-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+.bp-spec-card {
+  background: rgba(15, 33, 55, 0.7);
+  border: 1px solid rgba(56, 189, 248, 0.18);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  transition: border-color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
+}
+
+.bp-spec-card:hover {
+  background: rgba(15, 33, 55, 0.9);
+  border-color: rgba(56, 189, 248, 0.38);
+  transform: translateY(-2px);
+}
+
+.bp-spec-icon-wrap {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-md);
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.bp-spec-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.bp-spec-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94A3B8;
+  line-height: 1.3;
+}
+
+html[dir="rtl"] .bp-spec-label {
+  letter-spacing: 0 !important;
+}
+
+.bp-spec-value {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #F1F5F9;
+  line-height: 1.5;
+}

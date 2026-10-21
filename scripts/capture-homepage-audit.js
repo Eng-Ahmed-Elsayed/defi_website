@@ -9,13 +9,22 @@ const CHROME_PATH = fs.existsSync('C:\\Program Files\\Google\\Chrome\\Applicatio
 
 const DIST_DIR = path.resolve('dist/defi-angular/browser');
 
-const targetLoop = process.argv[2] || 'latest';
-const OUT_DIR = path.resolve(`verification-screenshots/${targetLoop}`);
+const targetLoop = process.argv[2] || 'cycle-1';
+let OUT_DIR;
+if (targetLoop.startsWith('artifacts/') || targetLoop.startsWith('artifacts\\')) {
+  OUT_DIR = path.resolve(targetLoop);
+} else if (targetLoop.startsWith('cycle-')) {
+  OUT_DIR = path.resolve(`artifacts/homepage-audit/${targetLoop}`);
+} else if (targetLoop === 'latest') {
+  OUT_DIR = path.resolve('verification-screenshots/latest');
+} else {
+  OUT_DIR = path.resolve(`artifacts/homepage-audit/${targetLoop}`);
+}
 
 if (!fs.existsSync(OUT_DIR)) {
   fs.mkdirSync(OUT_DIR, { recursive: true });
-} else if (targetLoop === 'latest') {
-  // Clear previous run files to keep repository light
+} else {
+  // Clear previous run files for this cycle to avoid stale screenshots
   for (const f of fs.readdirSync(OUT_DIR)) {
     if (f.endsWith('.png') || f.endsWith('.json')) {
       try { fs.unlinkSync(path.join(OUT_DIR, f)); } catch (e) {}
@@ -109,8 +118,8 @@ async function capture() {
     }
   }
 
-  // Arabic RTL captures (Desktop + Mobile 390)
-  console.log('Capturing Arabic RTL mode...');
+  // Arabic RTL captures across all 5 viewports
+  console.log('Capturing Arabic RTL mode across viewports...');
   await page.setViewport({ width: 1440, height: 900 });
   await page.goto(BASE_URL, { waitUntil: 'networkidle0' });
   const langToggle = await page.$('.lang-switch-btn, #lang-toggle-btn');
@@ -119,25 +128,31 @@ async function capture() {
     await new Promise(r => setTimeout(r, 800));
   }
 
-  await page.screenshot({
-    path: path.join(OUT_DIR, '06-arabic-rtl-desktop-1440x900-viewport.png'),
-    fullPage: false
-  });
-  await page.screenshot({
-    path: path.join(OUT_DIR, '06-arabic-rtl-desktop-1440x900-full.png'),
-    fullPage: true
-  });
+  const arabicViewports = [
+    { name: '06-arabic-rtl-desktop-1440x900', width: 1440, height: 900, fullPage: true },
+    { name: '07-arabic-rtl-tablet-landscape-1024x768', width: 1024, height: 768, fullPage: true },
+    { name: '08-arabic-rtl-tablet-portrait-768x1024', width: 768, height: 1024, fullPage: true },
+    { name: '09-arabic-rtl-mobile-390x844', width: 390, height: 844, fullPage: true },
+    { name: '10-arabic-rtl-compact-mobile-360x800', width: 360, height: 800, fullPage: true }
+  ];
 
-  await page.setViewport({ width: 390, height: 844 });
-  await new Promise(r => setTimeout(r, 500));
-  await page.screenshot({
-    path: path.join(OUT_DIR, '07-arabic-rtl-mobile-390x844-viewport.png'),
-    fullPage: false
-  });
-  await page.screenshot({
-    path: path.join(OUT_DIR, '07-arabic-rtl-mobile-390x844-full.png'),
-    fullPage: true
-  });
+  for (const avp of arabicViewports) {
+    console.log(`Capturing Arabic viewport: ${avp.name}...`);
+    await page.setViewport({ width: avp.width, height: avp.height });
+    await new Promise(r => setTimeout(r, 500));
+
+    await page.screenshot({
+      path: path.join(OUT_DIR, `${avp.name}-viewport.png`),
+      fullPage: false
+    });
+
+    if (avp.fullPage) {
+      await page.screenshot({
+        path: path.join(OUT_DIR, `${avp.name}-full.png`),
+        fullPage: true
+      });
+    }
+  }
 
   // Switch back to English for section close-ups
   await page.setViewport({ width: 1440, height: 900 });

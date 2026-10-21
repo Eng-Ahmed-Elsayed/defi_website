@@ -288,12 +288,12 @@ export const DEFI_TRANSLATIONS: Record<'en' | 'ar', DefiTranslations> = {
       }
     ],
 
-    // Section 5C: National Command Center · Sovereign Digital Grid
+    // Section 5C: Sovereign Infrastructure & National Digital Grid
     gridTag: 'SOVEREIGN INTER-AGENCY ARCHITECTURE',
-    gridTitle: 'National Command Center · <span class="gradient-text">Sovereign Digital Grid</span>',
+    gridTitle: 'Sovereign Digital Backbone · <span class="gradient-text">National Infrastructure Grid</span>',
     gridSub: 'Sovereign inter-agency coordination and continuous high-availability operations across all Egyptian governorates unified under the national digital infrastructure backbone.',
-    gridStatusTitle: 'Sovereign Backbone: Active · Multi-Governorate Grid',
-    btnPingHub: 'Inspect Regional Architecture',
+    gridStatusTitle: 'National Infrastructure Backbone · Multi-Governorate Grid',
+    btnPingHub: 'Explore Regional Architecture',
     regionalHubs: [
       {
         id: 'cairo',
@@ -845,12 +845,12 @@ export const DEFI_TRANSLATIONS: Record<'en' | 'ar', DefiTranslations> = {
       }
     ],
 
-    // Section 5C: National Command Center · Sovereign Digital Grid
+    // Section 5C: Sovereign Infrastructure & National Digital Grid
     gridTag: 'التكامل البيني والسيادة الرقمية',
-    gridTitle: 'مركز القيادة والتحكم · <span class="gradient-text">الشبكة الرقمية السيادية</span>',
+    gridTitle: 'العمود الفقري الرقمي السيادي · <span class="gradient-text">شبكة البنية التحتية القومية</span>',
     gridSub: 'منظومة التنسيق المؤسسي والربط الفني السيادي عالي الجاهزية عبر كافة محافظات الجمهورية تحت مظلة البنية الرقمية القومية.',
-    gridStatusTitle: 'العمود الفقري السيادي: نشط · الربط القومي الشامل',
-    btnPingHub: 'فحص المعمارية الإقليمية',
+    gridStatusTitle: 'العمود الفقري القومي: شبكة الربط بين المحافظات',
+    btnPingHub: 'استكشاف المعمارية الإقليمية',
     regionalHubs: [
       {
         id: 'cairo',

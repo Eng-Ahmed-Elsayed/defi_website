@@ -113,17 +113,12 @@
             <!-- Background GIS Cartographic Grid -->
             <rect width="600" height="420" fill="url(#gisGrid)" opacity="0.6"/>
 
-            <!-- GIS Latitude & Longitude Reference Ticks & Tactical HUD Markers -->
-            <g class="gis-coordinates" font-family="monospace" font-size="8.5" fill="#475569" letter-spacing="0.5">
-              <text x="16" y="24">31°12'N · 29°55'E [MEDITERRANEAN SECTOR]</text>
-              <text x="584" y="24" text-anchor="end">30°01'N · 32°33'E [CANAL CORRIDOR]</text>
-              <text x="584" y="404" text-anchor="end">24°05'N · 32°53'E [SOUTHERN SPINE]</text>
-              <text x="16" y="404">SECURE SOVEREIGN GRID · ENCRYPTED OPTICAL BACKBONE</text>
-
-              <path d="M 12 30 L 12 12 L 30 12" stroke="#1E3A5F" stroke-width="1.2" fill="none"/>
-              <path d="M 588 30 L 588 12 L 570 12" stroke="#1E3A5F" stroke-width="1.2" fill="none"/>
-              <path d="M 12 390 L 12 408 L 30 408" stroke="#1E3A5F" stroke-width="1.2" fill="none"/>
-              <path d="M 588 390 L 588 408 L 570 408" stroke="#1E3A5F" stroke-width="1.2" fill="none"/>
+            <!-- Regional Infrastructure Axis Labels -->
+            <g class="gis-coordinates" font-size="9" fill="#94A3B8">
+              <text x="24" y="28">{{ lang.isArabic() ? 'المحور الشمالي الساحلي' : 'Northern Maritime Axis' }}</text>
+              <text x="576" y="28" text-anchor="end">{{ lang.isArabic() ? 'محور قناة السويس اللوجستي' : 'Suez Canal Digital Corridor' }}</text>
+              <text x="576" y="400" text-anchor="end">{{ lang.isArabic() ? 'محور صعيد مصر وجنوب الوادي' : 'Upper Egypt Regional Spine' }}</text>
+              <text x="24" y="400">{{ lang.isArabic() ? 'البنية التحتية الرقمية الموحدة' : 'Unified National Infrastructure Backbone' }}</text>
             </g>
 
             <!-- Cartographic Nile Valley Geographic Axis -->
