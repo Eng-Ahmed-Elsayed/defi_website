@@ -82,7 +82,7 @@
       <div class="grid-interactive-layout">
         <!-- Left: Egypt Sovereign Constellation Map SVG -->
         <div class="grid-map-container" aria-label="Egypt National Digital Grid Architecture">
-          <svg class="national-grid-svg" id="national-grid-svg" viewBox="0 0 600 420" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
+          <svg class="national-grid-svg" id="national-grid-svg" direction="ltr" viewBox="0 0 600 420" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
             <defs>
               <pattern id="gisGrid" width="40" height="40" patternUnits="userSpaceOnUse">
                 <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(30, 58, 95, 0.35)" stroke-width="0.75"/>
@@ -115,10 +115,10 @@
 
             <!-- Regional Infrastructure Axis Labels -->
             <g class="gis-coordinates" font-size="9" fill="#94A3B8">
-              <text x="24" y="28">{{ lang.isArabic() ? 'المحور الشمالي الساحلي' : 'Northern Maritime Axis' }}</text>
+              <text x="24" y="28" text-anchor="start">{{ lang.isArabic() ? 'المحور الشمالي الساحلي' : 'Northern Maritime Axis' }}</text>
               <text x="576" y="28" text-anchor="end">{{ lang.isArabic() ? 'محور قناة السويس اللوجستي' : 'Suez Canal Digital Corridor' }}</text>
               <text x="576" y="400" text-anchor="end">{{ lang.isArabic() ? 'محور صعيد مصر وجنوب الوادي' : 'Upper Egypt Regional Spine' }}</text>
-              <text x="24" y="400">{{ lang.isArabic() ? 'البنية التحتية الرقمية الموحدة' : 'Unified National Infrastructure Backbone' }}</text>
+              <text x="24" y="400" text-anchor="start">{{ lang.isArabic() ? 'البنية التحتية الرقمية الموحدة' : 'Unified National Infrastructure Backbone' }}</text>
             </g>
 
             <!-- Cartographic Nile Valley Geographic Axis -->

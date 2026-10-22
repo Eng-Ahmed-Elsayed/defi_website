@@ -191,7 +191,7 @@ export const DEFI_TRANSLATIONS: Record<'en' | 'ar', DefiTranslations> = {
 
     // Diagram B (Operating Model)
     journeyTag: 'SYSTEMIC TRANSFORMATION JOURNEY',
-    journeyTitle: 'Diagram B · Institutional <span class="gradient-text">Operating Model</span>',
+    journeyTitle: 'Institutional <span class="gradient-text">Operating Model & Delivery Lifecycle</span>',
     journeySubtitle: 'A structured, 5-phase delivery lifecycle that converts complex ministerial mandates into resilient, scalable digital public infrastructure.',
     journeySteps: [
       {
@@ -230,15 +230,15 @@ export const DEFI_TRANSLATIONS: Record<'en' | 'ar', DefiTranslations> = {
         output: 'Continual Service Optimization & Analytics'
       }
     ],
-    btnSimulateJourney: 'Play Lifecycle Progression',
+    btnSimulateJourney: 'Step Through Lifecycle',
     journeyHint: 'Click any phase card above or trigger progression to inspect institutional deliverables and quality gates.',
 
     // Diagram D — Sovereign Interoperability Engine & Data Bus Simulator
     interopTag: 'SOVEREIGN INTEGRATION BUS',
-    interopTitle: 'Diagram D · Sovereign Interoperability <span class="gradient-text">Engine & Data Bus</span>',
-    interopSub: 'Live architectural simulation of inter-agency data flow orchestrating citizen service requests, national identity verification, and multi-ministerial fulfillment.',
-    simStatusTitle: 'Live Sovereign Bus: Standby / Operational',
-    btnRunSim: 'Run Interoperability Test',
+    interopTitle: 'Sovereign Interoperability <span class="gradient-text">& National Data Bus</span>',
+    interopSub: 'Architectural model of inter-agency data exchange orchestrating citizen service requests, national identity verification, and multi-ministerial fulfillment.',
+    simStatusTitle: 'National Interoperability Architecture · 5-Stage Reference Flow',
+    btnRunSim: 'Step Through Reference Flow',
     consoleTitle: 'DEFI Enterprise Service Bus — Live Transaction Monitor',
 
     // Section 5B: Sectors in Focus
@@ -748,7 +748,7 @@ export const DEFI_TRANSLATIONS: Record<'en' | 'ar', DefiTranslations> = {
 
     // Diagram B (Operating Model)
     journeyTag: 'دورة التحول المنهجية المتكاملة',
-    journeyTitle: 'النموذج التشغيلي المؤسسي للتحول الرقمي',
+    journeyTitle: 'النموذج التشغيلي المؤسسي <span class="gradient-text">ودورة حياة التحول الرقمي</span>',
     journeySubtitle: 'دورة تسليم منهجية من 5 مراحل تحول التكليفات الوزارية المعقدة إلى بنية تحتية رقمية عامة تتسم بالمرونة والتوسع.',
     journeySteps: [
       {
@@ -787,15 +787,15 @@ export const DEFI_TRANSLATIONS: Record<'en' | 'ar', DefiTranslations> = {
         output: 'تطوير مستمر وتحليلات قياس الأثر المؤسسي'
       }
     ],
-    btnSimulateJourney: 'تشغيل دورة التحول',
+    btnSimulateJourney: 'استعراض مراحل التحول',
     journeyHint: 'انقر على أي مرحلة أعلاه أو شغّل مسار التحول للاطلاع على المخرجات المؤسسية وبوابات الجودة.',
 
     // Diagram D — Sovereign Interoperability Engine & Data Bus Simulator
     interopTag: 'ناقل الربط والتكامل السيادي',
-    interopTitle: 'مخطط د · محرك الربط البيني <span class="gradient-text">وناقل البيانات السيادي</span>',
-    interopSub: 'محاكاة معمارية حية لتدفق البيانات الحكومية المتبادلة بين قنوات المواطنين والتحقق السيادي من الهوية وتنفيذ الخدمات الوزارية.',
-    simStatusTitle: 'ناقل البيانات السيادي: جاهز للتشغيل اللحظي',
-    btnRunSim: 'بدء اختبار التكامل السيادي',
+    interopTitle: 'منظومة الربط البيني السيادي <span class="gradient-text">وناقل البيانات الوطني</span>',
+    interopSub: 'نموذج معماري للربط البيني وتبادل البيانات الحكومية لتنسيق طلبات المواطنين، والتحقق من الهوية الرقمية، وتكامل الخدمات الوزارية.',
+    simStatusTitle: 'معمارية الربط البيني القومي · مسار التدفق المرجعي المكون من 5 مراحل',
+    btnRunSim: 'استعراض مسار الربط المرجعي',
     consoleTitle: 'شاشة مراقبة ناقل التكامل الرقمي الحكومي — DEFI',
 
     // Section 5B: Sectors in Focus

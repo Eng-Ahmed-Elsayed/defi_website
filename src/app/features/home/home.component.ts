@@ -323,7 +323,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     if (!('IntersectionObserver' in window)) return;
 
     // 1. Observe sections to trigger autonomous animations and active state when scrolled into view
-    const sectionIds = ['hero', 'about', 'capabilities', 'journey', 'interop', 'metrics', 'national-grid', 'inquiry'];
+    const sectionIds = ['hero', 'about', 'capabilities', 'journey', 'interop', 'impact', 'sectors', 'national-grid', 'careers', 'contact'];
     const sections = sectionIds
       .map(id => document.getElementById(id))
       .filter((el): el is HTMLElement => el !== null);

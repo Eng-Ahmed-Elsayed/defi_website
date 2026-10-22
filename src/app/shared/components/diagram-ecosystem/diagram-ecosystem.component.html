@@ -4,9 +4,9 @@
       <span class="status-indicator"></span>
       <span class="diagram-title-text">{{ lang.t().diagramATitle }}</span>
     </div>
-    <button type="button" class="btn btn-simulate" (click)="simulateTraffic()" [disabled]="isSimulating()" title="Trigger an animated digital traffic burst across Egypt's architecture">
+    <button type="button" class="btn btn-simulate" (click)="simulateTraffic()" [disabled]="isSimulating()" title="Explore Egypt's interconnected digital architecture">
       <span class="pulse-indicator"></span>
-      <span>{{ isSimulating() ? (lang.isArabic() ? 'جاري التدفق...' : 'Traffic Active') : (lang.isArabic() ? 'محاكاة التدفق' : 'Simulate Flow') }}</span>
+      <span>{{ isSimulating() ? (lang.isArabic() ? 'جاري الفحص...' : 'Inspecting Flow') : (lang.isArabic() ? 'استكشاف المنظومة' : 'Explore Ecosystem') }}</span>
     </button>
   </div>
 
@@ -151,9 +151,7 @@
     </div>
     <a routerLink="/capabilities" class="hud-specs-btn" title="View technical specifications on Capabilities page">
       <span>{{ lang.isArabic() ? 'المواصفات الكاملة' : 'Full Specs' }}</span>
-      <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-        <path d="M3.3 8h9.4M8 3.3L12.7 8 8 12.7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+      <span class="btn-arrow" aria-hidden="true">→</span>
     </a>
   </div>
 </div>

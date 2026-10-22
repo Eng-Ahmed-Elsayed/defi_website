@@ -53,6 +53,7 @@
             }
           }
         </div>
+        <span class="cap-card-num">0{{ idx + 1 }}</span>
         <h3 class="cap-card-title">{{ pillar.title }}</h3>
         <p class="cap-card-snippet">{{ pillar.subtitle }}</p>
       </button>
@@ -100,50 +101,50 @@
           @switch (activeIndex()) {
             @case (1) {
               <!-- Pillar 1: TOGAF Strategy & Operating Alignment -->
-              <svg class="cap-schematic-svg" viewBox="0 0 460 210" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg class="cap-schematic-svg" direction="ltr" viewBox="0 0 460 210" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="20" y="20" width="120" height="45" rx="8" fill="#132A47" stroke="#38BDF8" stroke-width="1.5" />
-                <text x="80" y="48" fill="#FFFFFF" font-size="11" font-weight="700" text-anchor="middle">{{ lang.isArabic() ? 'الرؤية والسياسة الوطنية' : 'National Strategy' }}</text>
+                <text x="80" y="47" fill="#FFFFFF" font-size="10.5" font-weight="700" text-anchor="middle">{{ lang.isArabic() ? 'الوزارات المستفيدة' : 'National Strategy' }}</text>
                 <path d="M 140 42 L 175 42" stroke="#38BDF8" stroke-width="2" stroke-dasharray="3 3"/>
-                <rect x="175" y="15" width="125" height="55" rx="8" fill="#0B192C" stroke="#00F0FF" stroke-width="2" />
-                <text x="237" y="42" fill="#00F0FF" font-size="11" font-weight="800" text-anchor="middle">DEFI TOGAF / NAF</text>
-                <text x="237" y="58" fill="#94A3B8" font-size="8.5" text-anchor="middle">{{ lang.isArabic() ? 'إطار الهندسة المؤسسية' : 'Enterprise Framework' }}</text>
-                <path d="M 300 42 L 335 42" stroke="#38BDF8" stroke-width="2" stroke-dasharray="3 3"/>
-                <rect x="335" y="20" width="110" height="45" rx="8" fill="#132A47" stroke="#38BDF8" stroke-width="1.5" />
-                <text x="390" y="48" fill="#FFFFFF" font-size="11" font-weight="700" text-anchor="middle">{{ lang.isArabic() ? 'الوزارات المستفيدة' : 'Target Ministries' }}</text>
-                <path d="M 237 70 L 237 110" stroke="#00F0FF" stroke-width="2"/>
+                <rect x="175" y="15" width="120" height="55" rx="8" fill="#0B192C" stroke="#00F0FF" stroke-width="2" />
+                <text x="235" y="40" fill="#00F0FF" font-size="10.5" font-weight="800" text-anchor="middle">{{ lang.isArabic() ? 'إطار DEFI / TOGAF' : 'DEFI TOGAF / NAF' }}</text>
+                <text x="235" y="56" fill="#94A3B8" font-size="8.5" text-anchor="middle">{{ lang.isArabic() ? 'إطار الهندسة المؤسسية' : 'Enterprise Framework' }}</text>
+                <path d="M 295 42 L 330 42" stroke="#38BDF8" stroke-width="2" stroke-dasharray="3 3"/>
+                <rect x="330" y="20" width="110" height="45" rx="8" fill="#132A47" stroke="#38BDF8" stroke-width="1.5" />
+                <text x="385" y="47" fill="#FFFFFF" font-size="10.5" font-weight="700" text-anchor="middle">{{ lang.isArabic() ? 'الرؤية والسياسة الوطنية' : 'Target Ministries' }}</text>
+                <path d="M 235 70 L 235 110" stroke="#00F0FF" stroke-width="2"/>
                 <rect x="40" y="110" width="380" height="40" rx="8" fill="rgba(30, 95, 216, 0.2)" stroke="#1E5FD8" stroke-width="1.5"/>
-                <text x="230" y="135" fill="#38BDF8" font-size="11" font-weight="700" text-anchor="middle">{{ lang.isArabic() ? 'ناقل الإجراءات البينية المشتركة · Service SLA Registry' : 'Inter-Agency Service SLA & Business Process Bus' }}</text>
-                <circle cx="100" cy="180" r="14" fill="#0B192C" stroke="#2DD4BF" stroke-width="1.5"/>
-                <text x="100" y="184" fill="#2DD4BF" font-size="9" font-weight="700" text-anchor="middle">SLA</text>
-                <text x="135" y="184" fill="#E2E8F0" font-size="10">{{ lang.isArabic() ? 'إلغاء الجزر المنعزلة' : 'Zero Silos' }}</text>
-                <circle cx="270" cy="180" r="14" fill="#0B192C" stroke="#F59E0B" stroke-width="1.5"/>
-                <text x="270" y="184" fill="#F59E0B" font-size="9" font-weight="700" text-anchor="middle">KPI</text>
-                <text x="305" y="184" fill="#E2E8F0" font-size="10">{{ lang.isArabic() ? 'مؤشرات قياس معتمدة' : 'Standardized KPIs' }}</text>
+                <text x="230" y="135" fill="#38BDF8" font-size="10.5" font-weight="700" text-anchor="middle">{{ lang.isArabic() ? 'ناقل الإجراءات البينية المشتركة · اتفاقيات مستوى الخدمة' : 'Inter-Agency Service SLA & Business Process Bus' }}</text>
+                <circle cx="85" cy="180" r="14" fill="#0B192C" stroke="#2DD4BF" stroke-width="1.5"/>
+                <text x="85" y="184" fill="#2DD4BF" font-size="9" font-weight="700" text-anchor="middle">SLA</text>
+                <text x="110" y="184" fill="#E2E8F0" font-size="10" text-anchor="start">{{ lang.isArabic() ? 'إلغاء الجزر المنعزلة' : 'Zero Silos' }}</text>
+                <circle cx="265" cy="180" r="14" fill="#0B192C" stroke="#F59E0B" stroke-width="1.5"/>
+                <text x="265" y="184" fill="#F59E0B" font-size="9" font-weight="700" text-anchor="middle">KPI</text>
+                <text x="290" y="184" fill="#E2E8F0" font-size="10" text-anchor="start">{{ lang.isArabic() ? 'مؤشرات قياس معتمدة' : 'Standardized KPIs' }}</text>
               </svg>
             }
             @case (2) {
               <!-- Pillar 2: Microservices & Event Spine -->
-              <svg class="cap-schematic-svg" viewBox="0 0 460 210" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="25" y="30" width="110" height="60" rx="8" fill="#132A47" stroke="#60A5FA" stroke-width="1.5"/>
-                <text x="80" y="58" fill="#FFFFFF" font-size="11" font-weight="700" text-anchor="middle">API Gateway</text>
-                <text x="80" y="74" fill="#94A3B8" font-size="8.5" text-anchor="middle">mTLS · Access Control</text>
-                <path d="M 135 60 L 175 60" stroke="#38BDF8" stroke-width="2"/>
-                <rect x="175" y="25" width="120" height="70" rx="10" fill="#0B192C" stroke="#00F0FF" stroke-width="2"/>
-                <text x="235" y="55" fill="#00F0FF" font-size="11" font-weight="800" text-anchor="middle">Data Backbone</text>
-                <text x="235" y="72" fill="#2DD4BF" font-size="8.5" text-anchor="middle">Inter-Agency Exchange</text>
-                <path d="M 295 60 L 335 60" stroke="#38BDF8" stroke-width="2"/>
-                <rect x="335" y="30" width="110" height="60" rx="8" fill="#132A47" stroke="#A78BFA" stroke-width="1.5"/>
-                <text x="390" y="58" fill="#FFFFFF" font-size="11" font-weight="700" text-anchor="middle">Gov Microservices</text>
-                <text x="390" y="74" fill="#94A3B8" font-size="8.5" text-anchor="middle">Modernized Modules</text>
-                <path d="M 235 95 L 235 135" stroke="#00F0FF" stroke-width="2"/>
+              <svg class="cap-schematic-svg" direction="ltr" viewBox="0 0 460 210" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="20" y="30" width="115" height="60" rx="8" fill="#132A47" stroke="#60A5FA" stroke-width="1.5"/>
+                <text x="77" y="56" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">{{ lang.isArabic() ? 'الخدمات المصغرة الحكومية' : 'API Gateway' }}</text>
+                <text x="77" y="73" fill="#94A3B8" font-size="8.5" text-anchor="middle">{{ lang.isArabic() ? 'وحدات رقمية مطورة' : 'mTLS · Access Control' }}</text>
+                <path d="M 135 60 L 172 60" stroke="#38BDF8" stroke-width="2"/>
+                <rect x="172" y="25" width="116" height="70" rx="10" fill="#0B192C" stroke="#00F0FF" stroke-width="2"/>
+                <text x="230" y="54" fill="#00F0FF" font-size="10.5" font-weight="800" text-anchor="middle">{{ lang.isArabic() ? 'العمود الفقري للبيانات' : 'Data Backbone' }}</text>
+                <text x="230" y="72" fill="#2DD4BF" font-size="8.5" text-anchor="middle">{{ lang.isArabic() ? 'التبادل البيني الحكومي' : 'Inter-Agency Exchange' }}</text>
+                <path d="M 288 60 L 325 60" stroke="#38BDF8" stroke-width="2"/>
+                <rect x="325" y="30" width="115" height="60" rx="8" fill="#132A47" stroke="#A78BFA" stroke-width="1.5"/>
+                <text x="382" y="56" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">{{ lang.isArabic() ? 'بوابة واجهات الربط' : 'Gov Microservices' }}</text>
+                <text x="382" y="73" fill="#94A3B8" font-size="8.5" text-anchor="middle">{{ lang.isArabic() ? 'تشفير متبادل · تحكم وصول' : 'Modernized Modules' }}</text>
+                <path d="M 230 95 L 230 135" stroke="#00F0FF" stroke-width="2"/>
                 <rect x="40" y="135" width="380" height="48" rx="8" fill="rgba(8, 126, 139, 0.2)" stroke="#2DD4BF" stroke-width="1.5"/>
-                <text x="230" y="160" fill="#2DD4BF" font-size="11" font-weight="700" text-anchor="middle">{{ lang.isArabic() ? 'قواعد البيانات الوطنية الموحدة (ربط متزامن)' : 'Unified National Base Registers (Synchronized Integration)' }}</text>
+                <text x="230" y="159" fill="#2DD4BF" font-size="10.5" font-weight="700" text-anchor="middle">{{ lang.isArabic() ? 'قواعد البيانات الوطنية الموحدة (ربط متزامن)' : 'Unified National Base Registers (Synchronized Integration)' }}</text>
                 <text x="230" y="174" fill="#94A3B8" font-size="8.5" text-anchor="middle">{{ lang.isArabic() ? 'سجلات السجل المدني والأراضي والشركات · معايير الحوكمة الوطنية' : 'Civil, Commercial & Real Estate Registries · National Governance Standards' }}</text>
               </svg>
             }
             @case (3) {
               <!-- Pillar 3: IT Operations & 24/7 Monitoring -->
-              <svg class="cap-schematic-svg" viewBox="0 0 460 210" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg class="cap-schematic-svg" direction="ltr" viewBox="0 0 460 210" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="130" cy="105" r="65" stroke="rgba(56, 189, 248, 0.2)" stroke-width="1.5"/>
                 <circle cx="130" cy="105" r="42" stroke="rgba(56, 189, 248, 0.35)" stroke-width="1.5"/>
                 <circle cx="130" cy="105" r="18" stroke="rgba(0, 240, 255, 0.6)" stroke-width="2"/>
@@ -152,60 +153,79 @@
                 <line x1="130" y1="40" x2="130" y2="170" stroke="rgba(56, 189, 248, 0.25)"/>
                 <line x1="130" y1="105" x2="175" y2="60" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round"/>
                 <rect x="230" y="25" width="205" height="45" rx="8" fill="#0B192C" stroke="#2DD4BF" stroke-width="1.5"/>
-                <text x="245" y="47" fill="#2DD4BF" font-size="10.5" font-weight="700">{{ lang.isArabic() ? 'جاهزية مستمرة ٢٤/٧' : '24/7 Resilience' }}</text>
-                <text x="245" y="61" fill="#94A3B8" font-size="8.5">{{ lang.isArabic() ? 'جاهزية تشغيلية مستمرة' : 'Zero Unplanned Downtime' }}</text>
+                <text x="332" y="45" fill="#2DD4BF" font-size="10.5" font-weight="700" text-anchor="middle">{{ lang.isArabic() ? 'جاهزية مستمرة ٢٤/٧' : '24/7 Resilience' }}</text>
+                <text x="332" y="61" fill="#94A3B8" font-size="8.5" text-anchor="middle">{{ lang.isArabic() ? 'جاهزية تشغيلية مستمرة' : 'Zero Unplanned Downtime' }}</text>
                 <rect x="230" y="80" width="205" height="45" rx="8" fill="#0B192C" stroke="#38BDF8" stroke-width="1.5"/>
-                <text x="245" y="102" fill="#38BDF8" font-size="10.5" font-weight="700">&lt; 15 min RTO</text>
-                <text x="245" y="116" fill="#94A3B8" font-size="8.5">{{ lang.isArabic() ? 'التعافي السريع من الكوارث' : 'Rapid Disaster Recovery' }}</text>
+                <text x="332" y="100" fill="#38BDF8" font-size="10.5" font-weight="700" text-anchor="middle">{{ lang.isArabic() ? 'أقل من ١٥ دقيقة تعافٍ' : '< 15 min RTO' }}</text>
+                <text x="332" y="116" fill="#94A3B8" font-size="8.5" text-anchor="middle">{{ lang.isArabic() ? 'التعافي السريع من الكوارث' : 'Rapid Disaster Recovery' }}</text>
                 <rect x="230" y="135" width="205" height="45" rx="8" fill="#0B192C" stroke="#F59E0B" stroke-width="1.5"/>
-                <text x="245" y="157" fill="#F59E0B" font-size="10.5" font-weight="700">24/7/365 NOC/SOC</text>
-                <text x="245" y="171" fill="#94A3B8" font-size="8.5">{{ lang.isArabic() ? 'رصد أمني وفني مستمر' : 'Active Threat Intelligence' }}</text>
+                <text x="332" y="155" fill="#F59E0B" font-size="10.5" font-weight="700" text-anchor="middle">{{ lang.isArabic() ? 'مركز عمليات وأمن ٢٤/٧' : '24/7/365 NOC/SOC' }}</text>
+                <text x="332" y="171" fill="#94A3B8" font-size="8.5" text-anchor="middle">{{ lang.isArabic() ? 'رصد أمني وفني مستمر' : 'Active Threat Intelligence' }}</text>
               </svg>
             }
             @case (4) {
               <!-- Pillar 4: Citizen Experience -->
-              <svg class="cap-schematic-svg" viewBox="0 0 460 210" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="20" y="25" width="115" height="42" rx="8" fill="#132A47" stroke="#38BDF8" stroke-width="1.5"/>
-                <text x="77" y="50" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">📱 Mobile App</text>
-                <rect x="20" y="80" width="115" height="42" rx="8" fill="#132A47" stroke="#38BDF8" stroke-width="1.5"/>
-                <text x="77" y="105" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">💻 Web Portal</text>
-                <rect x="20" y="135" width="115" height="42" rx="8" fill="#132A47" stroke="#38BDF8" stroke-width="1.5"/>
-                <text x="77" y="160" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">🏛️ Service Center</text>
-                <path d="M 135 46 L 180 101 M 135 101 L 180 101 M 135 156 L 180 101" stroke="#38BDF8" stroke-width="2"/>
-                <rect x="180" y="70" width="125" height="62" rx="10" fill="#0B192C" stroke="#00F0FF" stroke-width="2"/>
-                <text x="242" y="98" fill="#00F0FF" font-size="11" font-weight="800" text-anchor="middle">Unified CX Engine</text>
-                <text x="242" y="117" fill="#2DD4BF" font-size="9" text-anchor="middle">{{ lang.isArabic() ? 'تحقق وهوية موحدة' : 'Single Sign-On IAM' }}</text>
-                <path d="M 305 101 L 340 101" stroke="#2DD4BF" stroke-width="2"/>
-                <rect x="340" y="60" width="105" height="82" rx="10" fill="#132A47" stroke="#2DD4BF" stroke-width="1.5"/>
-                <circle cx="392" cy="90" r="14" fill="#2DD4BF" fill-opacity="0.2"/>
-                <text x="392" y="95" fill="#2DD4BF" font-size="14" font-weight="800" text-anchor="middle">✓</text>
-                <text x="392" y="120" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">{{ lang.isArabic() ? 'خدمة فورية' : 'Instant Delivery' }}</text>
-                <text x="392" y="133" fill="#94A3B8" font-size="8" text-anchor="middle">&lt; 30 seconds</text>
+              <svg class="cap-schematic-svg" direction="ltr" viewBox="0 0 460 210" fill="none" xmlns="http://www.w3.org/2000/svg">
+                @if (lang.isArabic()) {
+                  <rect x="325" y="25" width="115" height="42" rx="8" fill="#132A47" stroke="#38BDF8" stroke-width="1.5"/>
+                  <text x="382" y="50" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">📱 تطبيق الهاتف</text>
+                  <rect x="325" y="80" width="115" height="42" rx="8" fill="#132A47" stroke="#38BDF8" stroke-width="1.5"/>
+                  <text x="382" y="105" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">💻 البوابة الرقمية</text>
+                  <rect x="325" y="135" width="115" height="42" rx="8" fill="#132A47" stroke="#38BDF8" stroke-width="1.5"/>
+                  <text x="382" y="160" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">🏛️ مراكز الخدمة</text>
+                  <path d="M 325 46 L 280 101 M 325 101 L 280 101 M 325 156 L 280 101" stroke="#38BDF8" stroke-width="2"/>
+                  <rect x="155" y="70" width="125" height="62" rx="10" fill="#0B192C" stroke="#00F0FF" stroke-width="2"/>
+                  <text x="217" y="98" fill="#00F0FF" font-size="10.5" font-weight="800" text-anchor="middle">محرك تجربة المواطن</text>
+                  <text x="217" y="117" fill="#2DD4BF" font-size="9" text-anchor="middle">تحقق وهوية موحدة</text>
+                  <path d="M 155 101 L 120 101" stroke="#2DD4BF" stroke-width="2"/>
+                  <rect x="15" y="60" width="105" height="82" rx="10" fill="#132A47" stroke="#2DD4BF" stroke-width="1.5"/>
+                  <circle cx="67" cy="88" r="13" fill="#2DD4BF" fill-opacity="0.2"/>
+                  <text x="67" y="93" fill="#2DD4BF" font-size="13" font-weight="800" text-anchor="middle">✓</text>
+                  <text x="67" y="118" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">خدمة فورية</text>
+                  <text x="67" y="133" fill="#94A3B8" font-size="8.5" text-anchor="middle">أقل من ٣٠ ثانية</text>
+                } @else {
+                  <rect x="20" y="25" width="115" height="42" rx="8" fill="#132A47" stroke="#38BDF8" stroke-width="1.5"/>
+                  <text x="77" y="50" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">📱 Mobile App</text>
+                  <rect x="20" y="80" width="115" height="42" rx="8" fill="#132A47" stroke="#38BDF8" stroke-width="1.5"/>
+                  <text x="77" y="105" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">💻 Web Portal</text>
+                  <rect x="20" y="135" width="115" height="42" rx="8" fill="#132A47" stroke="#38BDF8" stroke-width="1.5"/>
+                  <text x="77" y="160" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">🏛️ Service Center</text>
+                  <path d="M 135 46 L 180 101 M 135 101 L 180 101 M 135 156 L 180 101" stroke="#38BDF8" stroke-width="2"/>
+                  <rect x="180" y="70" width="125" height="62" rx="10" fill="#0B192C" stroke="#00F0FF" stroke-width="2"/>
+                  <text x="242" y="98" fill="#00F0FF" font-size="11" font-weight="800" text-anchor="middle">Unified CX Engine</text>
+                  <text x="242" y="117" fill="#2DD4BF" font-size="9" text-anchor="middle">Single Sign-On IAM</text>
+                  <path d="M 305 101 L 340 101" stroke="#2DD4BF" stroke-width="2"/>
+                  <rect x="340" y="60" width="105" height="82" rx="10" fill="#132A47" stroke="#2DD4BF" stroke-width="1.5"/>
+                  <circle cx="392" cy="88" r="13" fill="#2DD4BF" fill-opacity="0.2"/>
+                  <text x="392" y="93" fill="#2DD4BF" font-size="13" font-weight="800" text-anchor="middle">✓</text>
+                  <text x="392" y="118" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">Instant Delivery</text>
+                  <text x="392" y="133" fill="#94A3B8" font-size="8" text-anchor="middle">&lt; 30 seconds</text>
+                }
               </svg>
             }
             @case (5) {
               <!-- Pillar 5: Project Management Stage-Gate -->
-              <svg class="cap-schematic-svg" viewBox="0 0 460 210" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg class="cap-schematic-svg" direction="ltr" viewBox="0 0 460 210" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g transform="translate(10, 40)">
-                  <rect x="0" y="0" width="95" height="70" rx="8" fill="#132A47" stroke="#38BDF8" stroke-width="1.5"/>
-                  <text x="47" y="24" fill="#38BDF8" font-size="9" font-weight="800" text-anchor="middle">GATE 01</text>
-                  <text x="47" y="44" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">{{ lang.isArabic() ? 'التفويض والمواءمة' : 'Mandate Review' }}</text>
-                  <text x="47" y="58" fill="#2DD4BF" font-size="8" text-anchor="middle">Approved ✓</text>
+                  <rect [attr.x]="lang.isArabic() ? 345 : 0" y="0" width="95" height="70" rx="8" fill="#132A47" stroke="#38BDF8" stroke-width="1.5"/>
+                  <text [attr.x]="lang.isArabic() ? 392 : 47" y="24" fill="#38BDF8" font-size="9" font-weight="800" text-anchor="middle">{{ lang.isArabic() ? 'البوابة ٠١' : 'GATE 01' }}</text>
+                  <text [attr.x]="lang.isArabic() ? 392 : 47" y="44" fill="#FFFFFF" font-size="9.5" font-weight="700" text-anchor="middle">{{ lang.isArabic() ? 'التفويض والمواءمة' : 'Mandate Review' }}</text>
+                  <text [attr.x]="lang.isArabic() ? 392 : 47" y="58" fill="#2DD4BF" font-size="8" text-anchor="middle">{{ lang.isArabic() ? 'معتمد ✓' : 'Approved ✓' }}</text>
                   <path d="M 95 35 L 115 35" stroke="#38BDF8" stroke-width="2"/>
-                  <rect x="115" y="0" width="95" height="70" rx="8" fill="#132A47" stroke="#00F0FF" stroke-width="1.5"/>
-                  <text x="162" y="24" fill="#00F0FF" font-size="9" font-weight="800" text-anchor="middle">GATE 02</text>
-                  <text x="162" y="44" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">{{ lang.isArabic() ? 'اعتماد المعمارية' : 'Arch Signoff' }}</text>
-                  <text x="162" y="58" fill="#2DD4BF" font-size="8" text-anchor="middle">Validated ✓</text>
+                  <rect [attr.x]="lang.isArabic() ? 230 : 115" y="0" width="95" height="70" rx="8" fill="#132A47" stroke="#00F0FF" stroke-width="1.5"/>
+                  <text [attr.x]="lang.isArabic() ? 277 : 162" y="24" fill="#00F0FF" font-size="9" font-weight="800" text-anchor="middle">{{ lang.isArabic() ? 'البوابة ٠٢' : 'GATE 02' }}</text>
+                  <text [attr.x]="lang.isArabic() ? 277 : 162" y="44" fill="#FFFFFF" font-size="9.5" font-weight="700" text-anchor="middle">{{ lang.isArabic() ? 'اعتماد المعمارية' : 'Arch Signoff' }}</text>
+                  <text [attr.x]="lang.isArabic() ? 277 : 162" y="58" fill="#2DD4BF" font-size="8" text-anchor="middle">{{ lang.isArabic() ? 'موثق ✓' : 'Validated ✓' }}</text>
                   <path d="M 210 35 L 230 35" stroke="#38BDF8" stroke-width="2"/>
-                  <rect x="230" y="0" width="95" height="70" rx="8" fill="#132A47" stroke="#C084FC" stroke-width="1.5"/>
-                  <text x="277" y="24" fill="#C084FC" font-size="9" font-weight="800" text-anchor="middle">GATE 03</text>
-                  <text x="277" y="44" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">{{ lang.isArabic() ? 'التشغيل التجريبي' : 'Pilot Sprint' }}</text>
-                  <text x="277" y="58" fill="#2DD4BF" font-size="8" text-anchor="middle">Tested ✓</text>
+                  <rect [attr.x]="lang.isArabic() ? 115 : 230" y="0" width="95" height="70" rx="8" fill="#132A47" stroke="#C084FC" stroke-width="1.5"/>
+                  <text [attr.x]="lang.isArabic() ? 162 : 277" y="24" fill="#C084FC" font-size="9" font-weight="800" text-anchor="middle">{{ lang.isArabic() ? 'البوابة ٠٣' : 'GATE 03' }}</text>
+                  <text [attr.x]="lang.isArabic() ? 162 : 277" y="44" fill="#FFFFFF" font-size="9.5" font-weight="700" text-anchor="middle">{{ lang.isArabic() ? 'التشغيل التجريبي' : 'Pilot Sprint' }}</text>
+                  <text [attr.x]="lang.isArabic() ? 162 : 277" y="58" fill="#2DD4BF" font-size="8" text-anchor="middle">{{ lang.isArabic() ? 'مختبر ✓' : 'Tested ✓' }}</text>
                   <path d="M 325 35 L 345 35" stroke="#38BDF8" stroke-width="2"/>
-                  <rect x="345" y="0" width="95" height="70" rx="8" fill="#0B192C" stroke="#2DD4BF" stroke-width="2"/>
-                  <text x="392" y="24" fill="#2DD4BF" font-size="9" font-weight="800" text-anchor="middle">GATE 04</text>
-                  <text x="392" y="44" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">{{ lang.isArabic() ? 'الإطلاق القومي' : 'National Live' }}</text>
-                  <text x="392" y="58" fill="#2DD4BF" font-size="8" text-anchor="middle">Live 24/7 ✓</text>
+                  <rect [attr.x]="lang.isArabic() ? 0 : 345" y="0" width="95" height="70" rx="8" fill="#0B192C" stroke="#2DD4BF" stroke-width="2"/>
+                  <text [attr.x]="lang.isArabic() ? 47 : 392" y="24" fill="#2DD4BF" font-size="9" font-weight="800" text-anchor="middle">{{ lang.isArabic() ? 'البوابة ٠٤' : 'GATE 04' }}</text>
+                  <text [attr.x]="lang.isArabic() ? 47 : 392" y="44" fill="#FFFFFF" font-size="9.5" font-weight="700" text-anchor="middle">{{ lang.isArabic() ? 'الإطلاق القومي' : 'National Live' }}</text>
+                  <text [attr.x]="lang.isArabic() ? 47 : 392" y="58" fill="#2DD4BF" font-size="8" text-anchor="middle">{{ lang.isArabic() ? 'تشغيل ٢٤/٧ ✓' : 'Live 24/7 ✓' }}</text>
                 </g>
                 <rect x="25" y="135" width="410" height="38" rx="6" fill="rgba(30, 95, 216, 0.15)" stroke="#1E5FD8" stroke-width="1"/>
                 <text x="230" y="158" fill="#38BDF8" font-size="10" font-weight="700" text-anchor="middle">{{ lang.isArabic() ? 'حوكمة مكتب إدارة المشاريع القومية (PMO) · الشفافية والمساءلة المالية' : 'National PMO Oversight · Budget Accountability & Transparency' }}</text>
@@ -213,28 +233,28 @@
             }
             @case (6) {
               <!-- Pillar 6: Cybersecurity & Compliance -->
-              <svg class="cap-schematic-svg" viewBox="0 0 460 210" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg class="cap-schematic-svg" direction="ltr" viewBox="0 0 460 210" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g transform="translate(20, 20)">
                   <rect x="0" y="0" width="195" height="68" rx="8" fill="#0B192C" stroke="#2DD4BF" stroke-width="1.5"/>
                   <circle cx="28" cy="34" r="14" fill="#2DD4BF" fill-opacity="0.2"/>
                   <text x="28" y="39" fill="#2DD4BF" font-size="13" font-weight="800" text-anchor="middle">🛡️</text>
-                  <text x="52" y="30" fill="#FFFFFF" font-size="10.5" font-weight="700">{{ lang.isArabic() ? 'فحص الأمان السيبراني' : 'Zero-Trust & Pentest' }}</text>
-                  <text x="52" y="48" fill="#2DD4BF" font-size="9">100% Passed · Cleared</text>
+                  <text x="120" y="30" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">{{ lang.isArabic() ? 'فحص الأمان السيبراني' : 'Zero-Trust & Pentest' }}</text>
+                  <text x="120" y="48" fill="#2DD4BF" font-size="8.5" text-anchor="middle">{{ lang.isArabic() ? 'اجتياز فحص ١٠٠٪ · معتمد' : '100% Passed · Cleared' }}</text>
                   <rect x="215" y="0" width="195" height="68" rx="8" fill="#0B192C" stroke="#38BDF8" stroke-width="1.5"/>
                   <circle cx="243" cy="34" r="14" fill="#38BDF8" fill-opacity="0.2"/>
                   <text x="243" y="39" fill="#38BDF8" font-size="13" font-weight="800" text-anchor="middle">⚖️</text>
-                  <text x="267" y="30" fill="#FFFFFF" font-size="10.5" font-weight="700">{{ lang.isArabic() ? 'سيادة البيانات واللوائح' : 'State Data Sovereignty' }}</text>
-                  <text x="267" y="48" fill="#38BDF8" font-size="9">Decree 132/2020 Compliant</text>
+                  <text x="335" y="30" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">{{ lang.isArabic() ? 'سيادة البيانات واللوائح' : 'State Data Sovereignty' }}</text>
+                  <text x="335" y="48" fill="#38BDF8" font-size="8.5" text-anchor="middle">{{ lang.isArabic() ? 'متوافق مع قرار ١٣٢/٢٠٢٠' : 'Decree 132/2020 Compliant' }}</text>
                   <rect x="0" y="85" width="195" height="68" rx="8" fill="#0B192C" stroke="#F59E0B" stroke-width="1.5"/>
                   <circle cx="28" cy="119" r="14" fill="#F59E0B" fill-opacity="0.2"/>
                   <text x="28" y="124" fill="#F59E0B" font-size="13" font-weight="800" text-anchor="middle">⚡</text>
-                  <text x="52" y="115" fill="#FFFFFF" font-size="10.5" font-weight="700">{{ lang.isArabic() ? 'اختبارات الأحمال القصوى' : 'Stress & Concurrency' }}</text>
-                  <text x="52" y="133" fill="#F59E0B" font-size="9">2M+ Concurrent Users</text>
+                  <text x="120" y="115" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">{{ lang.isArabic() ? 'اختبارات الأحمال القصوى' : 'Stress & Concurrency' }}</text>
+                  <text x="120" y="133" fill="#F59E0B" font-size="8.5" text-anchor="middle">{{ lang.isArabic() ? '+٢ مليون مستخدم متزامن' : '2M+ Concurrent Users' }}</text>
                   <rect x="215" y="85" width="195" height="68" rx="8" fill="#0B192C" stroke="#C084FC" stroke-width="1.5"/>
                   <circle cx="243" cy="119" r="14" fill="#C084FC" fill-opacity="0.2"/>
                   <text x="243" y="124" fill="#C084FC" font-size="13" font-weight="800" text-anchor="middle">📜</text>
-                  <text x="267" y="115" fill="#FFFFFF" font-size="10.5" font-weight="700">{{ lang.isArabic() ? 'معايير ISO والجودة' : 'ISO 27001 Certified' }}</text>
-                  <text x="267" y="133" fill="#C084FC" font-size="9">Global Gov Benchmark</text>
+                  <text x="335" y="115" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">{{ lang.isArabic() ? 'معايير ISO والجودة' : 'ISO 27001 Certified' }}</text>
+                  <text x="335" y="133" fill="#C084FC" font-size="8.5" text-anchor="middle">{{ lang.isArabic() ? 'معيار حكومي عالمي' : 'Global Gov Benchmark' }}</text>
                 </g>
               </svg>
             }

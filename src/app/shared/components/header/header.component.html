@@ -51,9 +51,7 @@
       <!-- Direct Contact CTA -->
       <a routerLink="/contact" routerLinkActive="active" class="btn btn-primary header-cta">
         <span>{{ lang.t().navContactCTA }}</span>
-        <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path d="M3.333 8h9.334M8 3.333L12.667 8 8 12.667" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+        <span class="btn-arrow" aria-hidden="true">→</span>
       </a>
 
       <!-- Mobile Hamburger Button -->
@@ -120,7 +118,7 @@
       <span>{{ lang.t().langSwitchLabel }}</span>
     </button>
     <div class="drawer-decree-pill">
-      <span>⚖️ Decree No. 132/2020</span>
+      <span>⚖️ {{ lang.t().footerDecreeBadge }}</span>
     </div>
   </div>
 </aside>

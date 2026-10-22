@@ -33,50 +33,50 @@
             {{ lang.t().heroCtaSecondary }}
           </button>
         </div>
-
-        <!-- Hero Mandate Credentials Bar -->
-        <div class="hero-mandate-bar">
-          @for (item of lang.t().heroMandateItems; track item.title; let idx = $index) {
-            <div class="hero-mandate-item">
-              <span class="mandate-item-icon" aria-hidden="true">
-                @switch (idx) {
-                  @case (0) {
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C5A059" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M12 3v18M6 8l6-3 6 3M3 13l3-5 3 5a3 3 0 0 1-6 0zM15 13l3-5 3 5a3 3 0 0 1-6 0z"/>
-                    </svg>
-                  }
-                  @case (1) {
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M3 21h18M3 10h18M5 10v11M19 10v11M9 10v11M15 10v11M12 3l9 7H3l9-7z"/>
-                    </svg>
-                  }
-                  @case (2) {
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2DD4BF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
-                      <path d="M3 3v5h5M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/>
-                      <path d="M16 21h5v-5"/>
-                    </svg>
-                  }
-                  @case (3) {
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                      <path d="M9 12l2 2 4-4"/>
-                    </svg>
-                  }
-                }
-              </span>
-              <div class="mandate-item-text">
-                <div class="mandate-item-label">{{ item.title }}</div>
-                <div class="mandate-item-sub">{{ item.subtitle }}</div>
-              </div>
-            </div>
-          }
-        </div>
       </div>
 
       <!-- Diagram A: Connected Digital Ecosystem (Right Column) -->
       <div class="hero-visual">
         <app-diagram-ecosystem></app-diagram-ecosystem>
+      </div>
+
+      <!-- Hero Mandate Credentials Bar: Spans Full Width Across 12 Columns Below Content & Visual -->
+      <div class="hero-mandate-bar">
+        @for (item of lang.t().heroMandateItems; track item.title; let idx = $index) {
+          <div class="hero-mandate-item">
+            <span class="mandate-item-icon" aria-hidden="true">
+              @switch (idx) {
+                @case (0) {
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C5A059" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 3v18M6 8l6-3 6 3M3 13l3-5 3 5a3 3 0 0 1-6 0zM15 13l3-5 3 5a3 3 0 0 1-6 0z"/>
+                  </svg>
+                }
+                @case (1) {
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 21h18M3 10h18M5 10v11M19 10v11M9 10v11M15 10v11M12 3l9 7H3l9-7z"/>
+                  </svg>
+                }
+                @case (2) {
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2DD4BF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                    <path d="M3 3v5h5M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/>
+                    <path d="M16 21h5v-5"/>
+                  </svg>
+                }
+                @case (3) {
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    <path d="M9 12l2 2 4-4"/>
+                  </svg>
+                }
+              }
+            </span>
+            <div class="mandate-item-text">
+              <div class="mandate-item-label">{{ item.title }}</div>
+              <div class="mandate-item-sub">{{ item.subtitle }}</div>
+            </div>
+          </div>
+        }
       </div>
     </div>
   </section>
@@ -163,6 +163,12 @@
        ========================================================================= -->
   <section class="section section-white section-capabilities" id="capabilities">
     <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag">{{ lang.t().capabilityTag }}</div>
+        <h2 class="section-title" [innerHTML]="lang.t().capabilityTitle"></h2>
+        <p class="section-desc max-w-2xl">{{ lang.t().capabilitySubtitle }}</p>
+      </div>
+
       <app-diagram-capabilities></app-diagram-capabilities>
 
       <div class="text-center" style="margin-top: 40px;">
@@ -179,8 +185,14 @@
   <!-- =========================================================================
        SECTION 4: DIAGRAM B (Institutional Operating Model Flow)
        ========================================================================= -->
-  <section class="section section-light section-journey" id="journey">
+  <section class="section section-journey" id="journey">
     <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag">{{ lang.t().journeyTag }}</div>
+        <h2 class="section-title" [innerHTML]="lang.t().journeyTitle"></h2>
+        <p class="section-desc max-w-2xl">{{ lang.t().journeySubtitle }}</p>
+      </div>
+
       <app-diagram-operating-model></app-diagram-operating-model>
     </div>
   </section>

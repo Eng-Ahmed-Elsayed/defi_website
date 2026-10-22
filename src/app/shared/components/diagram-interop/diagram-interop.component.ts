@@ -11,13 +11,17 @@ interface ChecklistItem {
 
 interface InteropStageSpec {
   stageBadge: string;
+  stageBadgeAr: string;
   titleEn: string;
   titleAr: string;
   securityStandard: string;
+  securityStandardAr: string;
   descriptionEn: string;
   descriptionAr: string;
   protocol: string;
+  protocolAr: string;
   governanceStandard: string;
+  governanceStandardAr: string;
   authorityEn: string;
   authorityAr: string;
   checklist: ChecklistItem[];
@@ -35,7 +39,9 @@ export class DiagramInteropComponent implements OnInit, OnDestroy {
 
   readonly currentStage = signal<number>(1);
   readonly activeStages = signal<number[]>([1]);
-  readonly stageBadges = signal<string[]>(['Active', 'Ready', 'Ready', 'Ready', 'Ready']);
+  readonly stageBadges = computed(() => this.lang.isArabic() 
+    ? ['المرحلة 01', 'المرحلة 02', 'المرحلة 03', 'المرحلة 04', 'المرحلة 05'] 
+    : ['STAGE 01', 'STAGE 02', 'STAGE 03', 'STAGE 04', 'STAGE 05']);
   readonly isRunningTest = signal<boolean>(false);
 
   private autoCycleTimer: any;
@@ -45,13 +51,17 @@ export class DiagramInteropComponent implements OnInit, OnDestroy {
   readonly stageSpecs: Record<number, InteropStageSpec> = {
     1: {
       stageBadge: 'STAGE 01 · CITIZEN INBOUND',
+      stageBadgeAr: 'المرحلة ٠١ · قنوات المواطن',
       titleEn: 'Citizen Touchpoint & Inbound Authentication',
       titleAr: 'قنوات المواطن والتحقق الأولي',
       securityStandard: 'Mutual TLS 1.3 · Zero-Trust',
+      securityStandardAr: 'تشفير متبادل TLS 1.3 · انعدام الثقة',
       descriptionEn: 'Unified citizen access through the Digital Egypt portal and authorized mobile applications, authenticating requests via national security frameworks before transmission to government integration buses.',
       descriptionAr: 'منظومة وصول المواطنين الموحدة عبر بوابة مصر الرقمية والتطبيقات الذكية، مع التحقق الأمني المتبادل قبل التوجيه إلى ناقل الخدمات الحكومية.',
       protocol: 'RESTful HTTPS/3 · OpenID Connect Government Profile',
+      protocolAr: 'بروتوكول HTTPS/3 المؤمن · الهوية الحكومية الموحدة',
       governanceStandard: 'National Cybersecurity Authority Standards & Decree 132/2020',
+      governanceStandardAr: 'معايير المجلس الأعلى للأمن السيبراني وقرار ١٣٢/٢٠٢٠',
       authorityEn: 'Digital Egypt Initiative & Authorized Public Channels',
       authorityAr: 'منظومة مصر الرقمية والقنوات المعتمدة',
       checklist: [
@@ -77,13 +87,17 @@ export class DiagramInteropComponent implements OnInit, OnDestroy {
     },
     2: {
       stageBadge: 'STAGE 02 · GATEWAY ORCHESTRATION',
+      stageBadgeAr: 'المرحلة ٠٢ · بوابة التنسيق السيادية',
       titleEn: 'DEFI Sovereign Gateway & Policy Orchestration',
       titleAr: 'بوابة DEFI السيادية وإدارة السياسات',
       securityStandard: 'Enterprise API Gateway & WAF Inspection',
+      securityStandardAr: 'بوابة ربط مؤسسية وفحص جدار الحماية WAF',
       descriptionEn: 'The central DEFI interoperability gateway acts as Egypt\'s national architectural proxy, inspecting incoming requests, verifying cryptographic digital signatures, and routing data along authorized ministerial corridors.',
       descriptionAr: 'بوابة الربط السيادي التابعة لشركة DEFI كمنصة وسيطة تفحص الطلبات وتتحقق من التوقيع الرقمي وتوجه المعاملات عبر المسارات الوزارية المصرح بها.',
       protocol: 'Enterprise Service Bus (ESB) · Standardized API Mediation',
+      protocolAr: 'ناقل الخدمات المؤسسي (ESB) · وساطة واجهات الربط القياسية',
       governanceStandard: 'National Interoperability Framework (Egyptian GSB)',
+      governanceStandardAr: 'الإطار الوطني للتكامل البيني الحكومي (GSB)',
       authorityEn: 'Digital Egypt For Investment (DEFI Executive Backbone)',
       authorityAr: 'شركة مصر الرقمية للاستثمار (الذراع المعماري والتنفيذي)',
       checklist: [
@@ -109,13 +123,17 @@ export class DiagramInteropComponent implements OnInit, OnDestroy {
     },
     3: {
       stageBadge: 'STAGE 03 · REGISTRY SYNCHRONIZATION',
+      stageBadgeAr: 'المرحلة ٠٣ · مزامنة السجلات القومية',
       titleEn: 'National Base Registers Synchronization',
       titleAr: 'الربط اللحظي مع السجلات الوطنية الموحدة',
       securityStandard: 'Strict Database Attestation & Secure Interconnect',
+      securityStandardAr: 'توثيق قواعد البيانات والربط البيني المشفر',
       descriptionEn: 'Real-time query verification against Egypt\'s sovereign base registries—including civil registration, national identification, commercial registers, and land ownership—preventing data duplication.',
       descriptionAr: 'التحقق اللحظي مع السجلات الأساسية للدولة (الأحوال المدنية، السجل التجاري، التوثيق والأراضي) لمنع ازدواجية البيانات وضمان التكامل.',
       protocol: 'Event-Driven Synchronization · Secure Query Messaging',
+      protocolAr: 'مزامنة لحظية موجهة بالأحداث · استعلامات مشفرة',
       governanceStandard: 'Supreme Council for Digital Society Interoperability Mandate',
+      governanceStandardAr: 'ضوابط التكامل الصادرة عن المجلس الأعلى للمجتمع الرقمي',
       authorityEn: 'Civil Registration Authority & Ministry of Justice Registries',
       authorityAr: 'مصلحة الأحوال المدنية والسجلات القومية المعتمدة',
       checklist: [
@@ -141,13 +159,17 @@ export class DiagramInteropComponent implements OnInit, OnDestroy {
     },
     4: {
       stageBadge: 'STAGE 04 · MINISTERIAL EXECUTION',
+      stageBadgeAr: 'المرحلة ٠٤ · التنفيذ بالأنظمة الوزارية',
       titleEn: 'Ministerial Core System Workflow Execution',
       titleAr: 'تنفيذ الإجراءات بأنظمة الوزارة المعنية',
       securityStandard: 'Enterprise Workflow Automation & Service Bus',
+      securityStandardAr: 'أتمتة مسارات العمل المؤسسية وناقل الخدمات',
       descriptionEn: 'Target ministerial platforms—such as the Ministry of Education (MOE) examination engines or The Cabinet IDSC intelligence portals—process the transaction and commit administrative actions.',
       descriptionAr: 'منظومات الوزارات المستفيدة (مثل منظومة الامتحانات بوزارة التربية والتعليم أو منصات مركز معلومات الوزراء) لمعالجة المعاملة واعتمادها.',
       protocol: 'Asynchronous Workflow Orchestration · Service SLA Enforcement',
+      protocolAr: 'تنسيق مسارات العمل غير المتزامنة · تطبيق اتفاقيات مستوى الخدمة',
       governanceStandard: 'Ministerial Service Level Agreements & Public Modernization',
+      governanceStandardAr: 'اتفاقيات مستوى الخدمة الوزارية ومعايير التحديث الحكومي',
       authorityEn: 'Target Ministries (MOE, Cabinet IDSC, Public Authorities)',
       authorityAr: 'الوزارات والهيئات العامة المعنية بالخدمة',
       checklist: [
@@ -173,13 +195,17 @@ export class DiagramInteropComponent implements OnInit, OnDestroy {
     },
     5: {
       stageBadge: 'STAGE 05 · SOVEREIGN AUDIT & ARCHIVE',
+      stageBadgeAr: 'المرحلة ٠٥ · التوثيق والأرشفة السيادية',
       titleEn: 'Sovereign Infrastructure Commit & Immutable Audit',
       titleAr: 'التوثيق الرقمي النهائي في السحابة السيادية',
       securityStandard: 'Tamper-Evident Sovereign Archival & Tier-IV Resilience',
+      securityStandardAr: 'أرشفة سيادية محصنة ضد التلاعب وجاهزية المستوى الرابع',
       descriptionEn: 'The completed inter-agency transaction is sealed into Egypt\'s sovereign government cloud infrastructure with a tamper-evident audit record, ensuring total legal transparency and 24/7 service continuity.',
       descriptionAr: 'توثيق المعاملة الحكومية المكتملة وحفظها بالسحابة الحكومية السيادية بسجل تدقيق محصن وموثق رسمياً لضمان الشفافية واستمرارية العمل.',
       protocol: 'Cryptographic Ledger Archival · Secure Redundant Storage',
+      protocolAr: 'أرشفة السجلات المشفرة · تخزين سيادي متكرر عالي الأمان',
       governanceStandard: 'Prime Minister Decree No. 132/2020 Compliance & ISO 27001',
+      governanceStandardAr: 'التوافق مع قرار رئيس الوزراء ١٣٢/٢٠٢٠ ومعيار ISO 27001',
       authorityEn: 'National Data Centers & DEFI Operations Command',
       authorityAr: 'مراكز البيانات القومية وإدارة العمليات بشركة DEFI',
       checklist: [

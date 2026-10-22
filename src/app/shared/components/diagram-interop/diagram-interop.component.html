@@ -14,10 +14,10 @@
         </div>
         <div class="sim-controls">
           <button type="button" class="btn btn-primary btn-sm btn-sim-trigger" (click)="triggerTest()" [disabled]="isRunningTest()">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <span>{{ isRunningTest() ? (lang.isArabic() ? 'جاري استعراض مسار التدفق المرجعي...' : 'Stepping Through Reference Flow...') : lang.t().btnRunSim }}</span>
+            <svg class="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polygon points="5 3 19 12 5 21 5 3"/>
             </svg>
-            <span>{{ isRunningTest() ? (lang.isArabic() ? 'جاري التحقق من البروتوكول...' : 'Verifying Protocol...') : (lang.isArabic() ? 'محاكاة مسار الربط البيني' : 'Simulate Interoperability Flow') }}</span>
           </button>
         </div>
       </div>
@@ -141,10 +141,10 @@
         <div class="interop-spec-card card-glass" id="interop-spec-panel">
           <div class="spec-card-header">
             <div class="spec-title-wrap">
-              <span class="spec-badge">{{ activeStageData().stageBadge }}</span>
+              <span class="spec-badge">{{ lang.isArabic() ? activeStageData().stageBadgeAr : activeStageData().stageBadge }}</span>
               <h4 class="spec-heading">{{ lang.isArabic() ? activeStageData().titleAr : activeStageData().titleEn }}</h4>
             </div>
-            <span class="spec-standard-tag">{{ activeStageData().securityStandard }}</span>
+            <span class="spec-standard-tag">{{ lang.isArabic() ? activeStageData().securityStandardAr : activeStageData().securityStandard }}</span>
           </div>
 
           <div class="spec-card-body">
@@ -153,11 +153,11 @@
             <div class="spec-meta-grid">
               <div class="spec-meta-item">
                 <span class="meta-item-label">{{ lang.isArabic() ? 'بروتوكول الربط الحكومي:' : 'Inter-Agency Protocol:' }}</span>
-                <span class="meta-item-value">{{ activeStageData().protocol }}</span>
+                <span class="meta-item-value">{{ lang.isArabic() ? activeStageData().protocolAr : activeStageData().protocol }}</span>
               </div>
               <div class="spec-meta-item">
                 <span class="meta-item-label">{{ lang.isArabic() ? 'معيار الحوكمة والأمان:' : 'Security & Governance Standard:' }}</span>
-                <span class="meta-item-value">{{ activeStageData().governanceStandard }}</span>
+                <span class="meta-item-value">{{ lang.isArabic() ? activeStageData().governanceStandardAr : activeStageData().governanceStandard }}</span>
               </div>
               <div class="spec-meta-item">
                 <span class="meta-item-label">{{ lang.isArabic() ? 'الجهة المسؤولة:' : 'Institutional Authority:' }}</span>

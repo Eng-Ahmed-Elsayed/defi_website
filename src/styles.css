@@ -326,39 +326,43 @@ html[dir="rtl"] .btn:hover .btn-arrow,
 }
 
 /* --------------------------------------------------------------------------
-   Section Rhythm: Calibrated 4-Tier Enterprise Dark Surfaces
+   Section Rhythm: Calibrated Institutional Surfaces
    -------------------------------------------------------------------------- */
-.section-light {
-  background-color: var(--color-navy-surface); /* #0E1E33 */
-  color: var(--color-text-white);
-  border-top: 1px solid var(--color-border-dark);
-  border-bottom: 1px solid var(--color-border-dark);
-}
-
+.section-light,
 .section-white {
-  background-color: var(--color-primary-navy); /* #0A1626 */
-  color: var(--color-text-white);
-  border-top: 1px solid var(--color-border-dark);
-  border-bottom: 1px solid var(--color-border-dark);
+  background-color: #EEF2F6;
+  color: #0A1628;
+  border-top: 1px solid #CBD5E1;
+  border-bottom: 1px solid #CBD5E1;
 }
 
 .section-light .section-tag,
 .section-white .section-tag {
-  color: #38BDF8;
-  background: rgba(56, 189, 248, 0.08);
-  border: 1px solid rgba(56, 189, 248, 0.2);
+  color: #1E5FD8 !important;
+  background: rgba(30, 95, 216, 0.08) !important;
+  border: 1px solid rgba(30, 95, 216, 0.25) !important;
   padding: 4px 14px;
   border-radius: var(--radius-full);
 }
 
 .section-light .section-title,
 .section-white .section-title {
-  color: var(--color-text-white);
+  color: #0A1628 !important;
+}
+
+.section-light .section-title .gradient-text,
+.section-white .section-title .gradient-text,
+.section-light .section-title .text-highlight,
+.section-white .section-title .text-highlight {
+  background: linear-gradient(135deg, #1D4ED8 0%, #0F766E 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
 }
 
 .section-light .section-desc,
 .section-white .section-desc {
-  color: var(--color-text-muted);
+  color: #334155 !important;
 }
 
 .section-light .card-editorial,
@@ -914,18 +918,22 @@ html[dir="rtl"] .mobile-nav-drawer {
   flex-wrap: wrap;
 }
 
-/* Institutional Mandate Credentials Bar */
+/* Institutional Mandate Credentials Bar: Spans Full 12-Column Grid Below Hero Content & Visual */
 .hero-mandate-bar {
+  grid-column: 1 / -1;
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
   background: rgba(10, 22, 38, 0.75);
   border: 1px solid rgba(56, 189, 248, 0.18);
-  padding: 12px;
+  padding: 16px 20px;
   border-radius: var(--radius-lg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 0 20px rgba(56, 189, 248, 0.03);
+  margin-top: 36px;
+  box-sizing: border-box;
 }
 
 .hero-mandate-item {
@@ -1306,177 +1314,344 @@ html[dir="rtl"] .mobile-nav-drawer {
   border-radius: var(--radius-full);
 }
 
-/* High-Trust Editorial Styling for Impact & Sectors (Light Editorial Surface) */
-.section-impact.section-light,
-.section-sectors.section-white,
-.section-sectors.section-light {
-  background: var(--surface-light-primary, #F8FAFC);
-  border-top: 1px solid var(--surface-light-border, #E2E8F0);
-  border-bottom: 1px solid var(--surface-light-border, #E2E8F0);
-  color: var(--color-text-dark, #0F172A);
+/* ==========================================================================
+   SOVEREIGN ARCHITECTURAL TONAL SYSTEM (Cycle 4 Harmonization)
+   Architectural Slate-Stone Canvas (#EEF2F6) with Blueprint Grid
+   ========================================================================== */
+
+/* Universal Stone Canvas with Subtle Blueprint Grid Continuity */
+.section-institutional,
+.section-capabilities,
+.section-impact,
+.section-sectors,
+.section-contact {
+  background-color: #EEF2F6 !important;
+  background-image: radial-gradient(circle at 50% 0%, rgba(30, 95, 216, 0.05), transparent 70%),
+                    linear-gradient(to right, rgba(15, 23, 42, 0.035) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(15, 23, 42, 0.035) 1px, transparent 1px) !important;
+  background-size: auto, 48px 48px, 48px 48px !important;
+  border-top: 1px solid #CBD5E1 !important;
+  border-bottom: 1px solid #CBD5E1 !important;
+  color: #0A1628 !important;
 }
 
-.section-impact.section-light .section-tag,
-.section-sectors.section-white .section-tag {
-  background: rgba(30, 95, 216, 0.08);
-  border: 1px solid rgba(30, 95, 216, 0.2);
-  color: var(--color-digital-blue, #1E5FD8);
-}
-
-.section-impact.section-light .section-title,
-.section-sectors.section-white .section-title {
-  color: var(--color-text-dark, #0F172A);
-}
-
-.section-impact.section-light .section-title .text-highlight,
-.section-sectors.section-white .section-title .text-highlight {
-  color: var(--color-digital-blue, #1E5FD8);
-}
-
-.section-impact.section-light .section-desc,
-.section-sectors.section-white .section-desc {
-  color: var(--color-text-dark-muted, #475569);
-}
-
-.section-impact.section-light .partner-card,
-.section-sectors.section-white .sector-card {
-  background: #FFFFFF;
-  border: 1px solid var(--surface-light-border, #E2E8F0);
-  border-radius: var(--radius-lg);
-  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
-  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
-}
-
-.section-impact.section-light .partner-card:hover,
-.section-sectors.section-white .sector-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
-  border-color: #CBD5E1;
-}
-
-.section-impact.section-light .partner-name,
-.section-sectors.section-white .sector-name {
-  color: var(--color-text-dark, #0F172A);
+/* High-Contrast Section Header Typography on Stone Canvas */
+.section-institutional .section-tag,
+.section-capabilities .section-tag,
+.section-impact .section-tag,
+.section-sectors .section-tag,
+.section-contact .section-tag {
+  color: #1E5FD8 !important;
+  background: rgba(30, 95, 216, 0.08) !important;
+  border: 1px solid rgba(30, 95, 216, 0.25) !important;
+  padding: 4px 14px;
+  border-radius: var(--radius-full);
   font-weight: 700;
+  letter-spacing: 0.06em;
+  display: inline-block;
+  margin-bottom: 12px;
 }
 
-.section-impact.section-light .partner-desc,
-.section-sectors.section-white .sector-summary {
-  color: var(--color-text-dark-muted, #475569);
-}
-
-.section-impact.section-light .partner-stat-tag,
-.section-sectors.section-white .sector-metric-pill {
-  background: #F1F5F9;
-  border: 1px solid var(--surface-light-border, #E2E8F0);
-  color: var(--color-digital-blue, #1E5FD8);
-}
-
-.section-sectors.section-white .pill-number {
-  color: var(--color-digital-blue, #1E5FD8);
+.section-institutional .section-title,
+.section-capabilities .section-title,
+.section-impact .section-title,
+.section-sectors .section-title,
+.section-contact .section-title {
+  color: #0A1628 !important;
   font-weight: 800;
 }
 
-.section-sectors.section-white .pill-text {
-  color: var(--color-text-dark-muted, #475569);
+.section-institutional .section-title .gradient-text,
+.section-capabilities .section-title .gradient-text,
+.section-impact .section-title .gradient-text,
+.section-sectors .section-title .gradient-text,
+.section-contact .section-title .gradient-text,
+.section-institutional .section-title .text-highlight,
+.section-capabilities .section-title .text-highlight,
+.section-impact .section-title .text-highlight,
+.section-sectors .section-title .text-highlight,
+.section-contact .section-title .text-highlight {
+  background: linear-gradient(135deg, #1D4ED8 0%, #0F766E 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+.section-institutional .section-desc,
+.section-capabilities .section-desc,
+.section-impact .section-desc,
+.section-sectors .section-desc,
+.section-contact .section-desc,
+.section-institutional .section-lead {
+  color: #334155 !important;
+  font-size: clamp(0.95rem, 1vw + 0.45rem, 1.05rem);
+  line-height: 1.7;
+}
+
+/* Elevated Cards on Stone Canvas */
+.section-institutional .pillar-box,
+.section-institutional .stat-highlight-card,
+.section-impact .partner-card,
+.section-sectors .sector-card {
+  background: #FFFFFF !important;
+  border: 1px solid #CBD5E1 !important;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 30px -10px rgba(10, 22, 40, 0.08), 0 2px 6px -1px rgba(10, 22, 40, 0.04) !important;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+}
+
+.section-institutional .pillar-box:hover,
+.section-institutional .stat-highlight-card:hover,
+.section-impact .partner-card:hover,
+.section-sectors .sector-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px -8px rgba(10, 22, 40, 0.12), 0 4px 10px -2px rgba(10, 22, 40, 0.06) !important;
+  border-color: #94A3B8 !important;
+}
+
+.section-impact .partner-name,
+.section-sectors .sector-name {
+  color: #0A1628 !important;
+  font-weight: 700;
+}
+
+.section-impact .partner-desc,
+.section-sectors .sector-summary {
+  color: #334155 !important;
+}
+
+.section-impact .partner-icon-wrap,
+.section-sectors .sector-icon-wrap {
+  background: #0A1628 !important;
+  border: 1px solid rgba(56, 189, 248, 0.25) !important;
+  box-shadow: 0 4px 12px rgba(10, 22, 40, 0.12);
+}
+
+.section-impact .partner-stat-tag,
+.section-sectors .sector-metric-capsule {
+  background: #F1F5F9 !important;
+  border: 1px solid #CBD5E1 !important;
+  color: #1E5FD8 !important;
+}
+
+.section-sectors .metric-scope-badge {
+  color: #1E5FD8 !important;
+  font-weight: 800;
+}
+
+.section-sectors .metric-scope-label {
+  color: #475569 !important;
 }
 
 /* ==========================================================================
-   ALTERNATING INSTITUTIONAL SURFACE RHYTHM: CYCLES 1-2
-   Capabilities (Pure White #FFFFFF) -> Journey (Warm Stone #F1F5F9) -> Direct Inquiry (Crisp White #FFFFFF)
+   SECTION 04: OPERATING MODEL (Option A: Tonal Navy-Slate Bridge)
+   Rich Mid-Sovereign Slate/Navy surface (#0D1B2E) with Blueprint Grid
    ========================================================================== */
-
-/* High-Trust Editorial Styling for Capabilities (Pure White Surface #FFFFFF) */
-.section-capabilities.section-white,
-.section-capabilities {
-  background: var(--surface-light-secondary, #FFFFFF) !important;
-  border-top: 1px solid var(--surface-light-border, #E2E8F0);
-  border-bottom: 1px solid var(--surface-light-border, #E2E8F0);
-  color: var(--color-text-dark, #0F172A);
-}
-
-.section-capabilities .section-tag {
-  background: rgba(30, 95, 216, 0.08);
-  border: 1px solid rgba(30, 95, 216, 0.2);
-  color: var(--color-digital-blue, #1E5FD8);
-}
-
-.section-capabilities .section-title {
-  color: var(--color-text-dark, #0F172A);
-}
-
-.section-capabilities .section-desc {
-  color: var(--color-text-dark-muted, #475569);
-}
-
-/* Warm Stone Styling for Operating Model / Journey (#F1F5F9) */
 .section-journey.section-light,
 .section-journey {
-  background: var(--surface-light-muted, #F1F5F9) !important;
-  border-top: 1px solid var(--surface-light-border, #E2E8F0);
-  border-bottom: 1px solid var(--surface-light-border, #E2E8F0);
-  color: var(--color-text-dark, #0F172A);
+  background-color: #0D1B2E !important;
+  background-image: radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.08), transparent 70%),
+                    linear-gradient(to right, rgba(56, 189, 248, 0.04) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(56, 189, 248, 0.04) 1px, transparent 1px) !important;
+  background-size: auto, 48px 48px, 48px 48px !important;
+  border-top: 1px solid rgba(56, 189, 248, 0.25) !important;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.25) !important;
+  color: #FFFFFF !important;
 }
 
+.section-journey .section-tag,
 .section-journey .journey-tag {
-  background: rgba(30, 95, 216, 0.08);
-  border: 1px solid rgba(30, 95, 216, 0.2);
-  color: var(--color-digital-blue, #1E5FD8);
+  color: #38BDF8 !important;
+  background: rgba(56, 189, 248, 0.1) !important;
+  border: 1px solid rgba(56, 189, 248, 0.3) !important;
+  padding: 4px 14px;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  display: inline-block;
+  margin-bottom: 12px;
 }
 
+.section-journey .section-title,
 .section-journey .journey-title {
-  color: var(--color-text-dark, #0F172A);
+  color: #FFFFFF !important;
+  font-weight: 800;
 }
 
+.section-journey .section-title .gradient-text,
+.section-journey .journey-title .gradient-text {
+  background: linear-gradient(135deg, #38BDF8 0%, #2DD4BF 50%, #E5C583 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+.section-journey .section-desc,
 .section-journey .journey-subtitle {
-  color: var(--color-text-dark-muted, #475569);
+  color: #CBD5E1 !important;
+  line-height: 1.7;
 }
 
-/* High-Trust Crisp White Direct Inquiry Form (#FFFFFF) with Deep Navy Careers Banner */
+.section-journey .journey-step-item {
+  background: #132642 !important;
+  border: 1px solid rgba(56, 189, 248, 0.2) !important;
+  box-shadow: 0 4px 16px rgba(7, 17, 32, 0.4) !important;
+}
+
+.section-journey .journey-step-item:hover {
+  background: #182F52 !important;
+  border-color: rgba(56, 189, 248, 0.4) !important;
+  transform: translateY(-3px);
+}
+
+.section-journey .journey-step-item.active {
+  background: #1E3A66 !important;
+  border-color: #38BDF8 !important;
+  box-shadow: 0 8px 24px rgba(7, 17, 32, 0.5), inset 0 3px 0 #38BDF8 !important;
+}
+
+.section-journey .step-marker {
+  background: #0D1B2E !important;
+  border: 1px solid rgba(56, 189, 248, 0.3) !important;
+  color: #38BDF8 !important;
+}
+
+.section-journey .journey-step-item.active .step-marker {
+  background: #1E5FD8 !important;
+  border-color: #38BDF8 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.4) !important;
+}
+
+.section-journey .step-phase {
+  color: #38BDF8 !important;
+}
+
+.section-journey .step-title {
+  color: #FFFFFF !important;
+}
+
+.section-journey .step-summary {
+  color: #CBD5E1 !important;
+}
+
+.section-journey .step-tag {
+  color: #38BDF8 !important;
+  background: rgba(56, 189, 248, 0.12) !important;
+  border: 1px solid rgba(56, 189, 248, 0.25) !important;
+}
+
+.section-journey .journey-blueprint-card {
+  background: #102038 !important;
+  border: 1px solid rgba(56, 189, 248, 0.25) !important;
+  border-radius: var(--radius-xl);
+  box-shadow: 0 12px 32px rgba(7, 17, 32, 0.45) !important;
+}
+
+.section-journey .blueprint-title {
+  color: #FFFFFF !important;
+}
+
+.section-journey .bp-spec-card {
+  background: #132642 !important;
+  border: 1px solid rgba(56, 189, 248, 0.2) !important;
+}
+
+.section-journey .bp-spec-card:hover {
+  background: #182F52 !important;
+  border-color: rgba(56, 189, 248, 0.4) !important;
+}
+
+.section-journey .bp-spec-label {
+  color: #94A3B8 !important;
+}
+
+.section-journey .bp-spec-value {
+  color: #FFFFFF !important;
+}
+
+.section-journey .journey-controls-bar {
+  background: #102038 !important;
+  border: 1px solid rgba(56, 189, 248, 0.2) !important;
+  border-radius: var(--radius-lg);
+}
+
+.section-journey .journey-hint-text {
+  color: #94A3B8 !important;
+}
+
+/* ==========================================================================
+   SECTION 07: CONTACT & LEADERSHIP TEAM (Stone Canvas + Navy HQ Cards)
+   ========================================================================== */
 .section-contact {
-  background: var(--surface-light-secondary, #FFFFFF) !important;
-  border-top: 1px solid var(--surface-light-border, #E2E8F0);
-  border-bottom: 1px solid var(--surface-light-border, #E2E8F0);
-  color: var(--color-text-dark, #0F172A);
+  background-color: #EEF2F6 !important;
+  background-image: radial-gradient(circle at 50% 0%, rgba(30, 95, 216, 0.05), transparent 70%),
+                    linear-gradient(to right, rgba(15, 23, 42, 0.035) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(15, 23, 42, 0.035) 1px, transparent 1px) !important;
+  background-size: auto, 48px 48px, 48px 48px !important;
+  border-top: 1px solid #CBD5E1 !important;
+  border-bottom: 1px solid #CBD5E1 !important;
+  color: #0A1628 !important;
 }
 
-.section-contact .section-tag {
-  background: rgba(30, 95, 216, 0.08);
-  border: 1px solid rgba(30, 95, 216, 0.2);
-  color: var(--color-digital-blue, #1E5FD8);
-}
-
-.section-contact .section-title {
-  color: var(--color-text-dark, #0F172A);
-}
-
-.section-contact .section-desc {
-  color: var(--color-text-dark-muted, #475569);
-}
-
+/* Left-hand Executive Headquarters / Contact cards in Deep Sovereign Navy */
 .section-contact .contact-info-card {
-  background: #FFFFFF;
-  border: 1px solid var(--surface-light-border, #E2E8F0);
-  border-radius: var(--radius-md);
-  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+  background: #0A1628 !important;
+  border: 1px solid rgba(56, 189, 248, 0.25) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: 0 8px 24px rgba(10, 22, 40, 0.12) !important;
+  padding: 20px !important;
 }
 
 .section-contact .contact-card-title {
-  color: var(--color-text-dark, #0F172A);
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
 }
 
 .section-contact .contact-card-text {
-  color: var(--color-text-dark-muted, #475569);
+  color: #CBD5E1 !important;
 }
 
+.section-contact .contact-card-link {
+  color: #38BDF8 !important;
+}
+
+/* Right-hand Institutional Inquiry Form in Crisp Elevated White */
 .section-contact .contact-form-wrap {
-  background: #FFFFFF;
-  border: 1px solid var(--surface-light-border, #E2E8F0);
-  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.08);
+  background: #FFFFFF !important;
+  border: 1px solid #CBD5E1 !important;
+  border-radius: var(--radius-xl) !important;
+  box-shadow: 0 12px 36px rgba(10, 22, 40, 0.08) !important;
+  padding: 36px !important;
 }
 
 .section-contact .form-title {
-  color: var(--color-text-dark, #0F172A);
+  color: #0A1628 !important;
+  font-weight: 800 !important;
+}
+
+.section-contact .form-subtitle {
+  color: #475569 !important;
+}
+
+.section-contact .form-group label {
+  color: #1E293B !important;
+  font-weight: 600 !important;
+}
+
+.section-contact .form-input,
+.section-contact .form-select,
+.section-contact .form-textarea {
+  background: #F8FAFC !important;
+  border: 1px solid #CBD5E1 !important;
+  color: #0F172A !important;
+}
+
+.section-contact .form-input:focus,
+.section-contact .form-select:focus,
+.section-contact .form-textarea:focus {
+  background: #FFFFFF !important;
+  border-color: #1E5FD8 !important;
+  box-shadow: 0 0 0 3px rgba(30, 95, 216, 0.15) !important;
 }
 
 .section-contact .form-subtitle {
@@ -1837,6 +2012,14 @@ html[dir="rtl"] .mobile-nav-drawer {
   animation: beaconPulse 1.8s ease-in-out infinite;
 }
 
+.section-interoperability .section-desc,
+#interop .section-desc,
+.section-national-grid .section-desc,
+#national-grid .section-desc,
+app-national-grid .section-desc {
+  color: #CBD5E1 !important;
+}
+
 @keyframes beaconPulse {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.35; transform: scale(0.8); }
@@ -1844,8 +2027,8 @@ html[dir="rtl"] .mobile-nav-drawer {
 
 .journey-step-item {
   flex: 1;
-  background: var(--color-navy-surface);
-  border: 1px solid var(--color-border-dark);
+  background: #FFFFFF;
+  border: 1px solid var(--surface-light-border, #E2E8F0);
   border-radius: var(--radius-lg);
   padding: 24px 18px;
   display: flex;
@@ -1856,62 +2039,69 @@ html[dir="rtl"] .mobile-nav-drawer {
               box-shadow 220ms cubic-bezier(0.23, 1, 0.32, 1);
   cursor: pointer;
   outline: none;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
 }
 
 .journey-step-item:hover {
-  background: #173357;
-  border-color: rgba(96, 165, 250, 0.4);
+  background: #F8FAFC;
+  border-color: #CBD5E1;
   transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
 }
 
 .journey-step-item.active {
-  background: linear-gradient(180deg, #173A66 0%, var(--color-navy-surface) 100%);
-  border-color: var(--color-blue-light);
-  box-shadow: 0 8px 24px rgba(30, 95, 216, 0.25);
+  background: #FFFFFF;
+  border-color: var(--color-digital-blue, #1E5FD8);
+  box-shadow: 0 8px 24px rgba(30, 95, 216, 0.16), inset 0 3px 0 var(--color-digital-blue, #1E5FD8);
 }
 
 .step-marker {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #F1F5F9;
+  border: 1px solid var(--surface-light-border, #E2E8F0);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 800;
   font-size: 0.875rem;
-  color: var(--color-text-white);
+  color: var(--color-digital-blue, #1E5FD8);
   margin-bottom: 16px;
   transition: all var(--transition-normal);
 }
 
 .journey-step-item.active .step-marker {
-  background: var(--color-digital-blue);
-  border-color: #60A5FA;
-  box-shadow: 0 0 14px rgba(59, 130, 246, 0.5);
+  background: var(--color-digital-blue, #1E5FD8);
+  border-color: var(--color-digital-blue, #1E5FD8);
+  color: #FFFFFF;
+  box-shadow: 0 0 14px rgba(30, 95, 216, 0.35);
 }
 
 .step-phase {
   font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.06em;
-  color: var(--color-egypt-gold);
+  color: var(--color-digital-blue, #1E5FD8);
   display: block;
   margin-bottom: 6px;
+}
+
+html[dir="rtl"] .step-phase {
+  letter-spacing: 0 !important;
 }
 
 .step-title {
   font-size: 1.15rem;
   font-weight: 800;
-  color: #fff;
+  color: var(--color-text-dark, #0F172A);
   line-height: 1.3;
   margin-bottom: 10px;
 }
 
 .step-summary {
   font-size: 0.875rem;
-  color: var(--color-text-light);
+  color: var(--color-text-dark-muted, #475569);
   line-height: 1.55;
   margin-bottom: 16px;
   flex: 1;
@@ -1920,8 +2110,9 @@ html[dir="rtl"] .mobile-nav-drawer {
 .step-tag {
   font-size: 0.6875rem;
   font-weight: 700;
-  color: #93C5FD;
-  background: rgba(30, 95, 216, 0.18);
+  color: var(--color-digital-blue, #1E5FD8);
+  background: rgba(30, 95, 216, 0.08);
+  border: 1px solid rgba(30, 95, 216, 0.2);
   padding: 4px 8px;
   border-radius: var(--radius-sm);
   display: inline-block;
@@ -2034,8 +2225,15 @@ html[dir="rtl"] .mobile-nav-drawer {
   gap: 48px;
   align-items: center;
   border-radius: var(--radius-xl);
-  background: radial-gradient(circle at 100% 50%, rgba(30, 95, 216, 0.15) 0%, rgba(15, 33, 55, 0.95) 100%);
+  background-color: #0F2137 !important;
+  background: #0F2137 radial-gradient(circle at 100% 50%, rgba(30, 95, 216, 0.15) 0%, rgba(15, 33, 55, 0.95) 100%) !important;
   border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.careers-card .section-tag {
+  color: #38BDF8 !important;
+  background: rgba(56, 189, 248, 0.12) !important;
+  border-color: rgba(56, 189, 248, 0.3) !important;
 }
 
 .careers-title {
@@ -2846,9 +3044,10 @@ html[dir="rtl"] .mobile-nav-drawer {
 .journey-controls-bar {
   margin-top: 24px;
   padding: 16px 24px;
-  background: rgba(15, 33, 55, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #FFFFFF;
+  border: 1px solid var(--surface-light-border, #E2E8F0);
   border-radius: var(--radius-md);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -2857,8 +3056,9 @@ html[dir="rtl"] .mobile-nav-drawer {
 
 .journey-hint-text {
   font-size: 0.875rem;
-  color: var(--color-text-light);
+  color: #475569;
   line-height: 1.5;
+  font-weight: 500;
 }
 
 /* 4. Section: Diagram D Sovereign Interoperability Simulator */
@@ -3209,49 +3409,38 @@ html[dir="rtl"] .mobile-nav-drawer {
 }
 
 @media (max-width: 768px) {
-  /* Sectors in Focus: Smooth Horizontal Snap Carousel */
+  /* Sectors in Focus: Responsive Full-Width Vertical Stack on Mobile */
   .sectors-grid {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    overflow-x: auto !important;
-    scroll-snap-type: x mandatory !important;
-    -webkit-overflow-scrolling: touch;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    overflow-x: visible !important;
     gap: 16px !important;
-    padding-inline: 1rem 1.5rem !important;
-    padding-block-end: 1rem !important;
-    scrollbar-width: none;
-    margin-inline: -1rem;
-  }
-  .sectors-grid::-webkit-scrollbar {
-    display: none;
+    padding-inline: 0 !important;
+    padding-block-end: 0 !important;
+    margin-inline: 0 !important;
   }
   .sector-card {
-    flex: 0 0 84vw !important;
-    max-width: 320px !important;
-    scroll-snap-align: center;
+    flex: 1 1 auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
     margin-bottom: 0 !important;
   }
 
-  /* Operating Model Stepper: Horizontal Snap Flow */
+  /* Operating Model Stepper: Clean Full-Width Vertical Stack (fixes flex-direction:column + flex:0 0 82vw height bug) */
   .journey-track {
     display: flex !important;
+    flex-direction: column !important;
     flex-wrap: nowrap !important;
-    overflow-x: auto !important;
-    scroll-snap-type: x mandatory !important;
-    -webkit-overflow-scrolling: touch;
+    overflow-x: visible !important;
     gap: 12px !important;
-    padding-inline: 1rem 1.5rem !important;
-    padding-block-end: 0.75rem !important;
-    scrollbar-width: none;
-    margin-inline: -1rem;
-  }
-  .journey-track::-webkit-scrollbar {
-    display: none;
+    padding-inline: 0 !important;
+    padding-block-end: 0 !important;
+    margin-inline: 0 !important;
   }
   .journey-step-item {
-    flex: 0 0 82vw !important;
-    max-width: 290px !important;
-    scroll-snap-align: center;
+    flex: 1 1 auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
   .step-connector {
     display: none !important;
@@ -3315,30 +3504,44 @@ html[dir="rtl"] .mobile-nav-drawer {
     line-height: 1.35 !important;
     box-sizing: border-box !important;
   }
+
+  /* Universal Mobile Button Safety: Prevent any button from clipping off right margin */
+  .btn,
+  .btn-lg,
+  .btn-primary,
+  .btn-outline {
+    max-width: 100% !important;
+    white-space: normal !important;
+    word-break: normal !important;
+    text-align: center !important;
+    line-height: 1.35 !important;
+    box-sizing: border-box !important;
+    padding-inline: 18px !important;
+  }
+
+  /* Mobile section vertical rhythm: tighten padding to 3.25rem to eliminate huge empty voids */
+  .section {
+    padding-top: 3.25rem !important;
+    padding-bottom: 3.25rem !important;
+  }
 }
 
 @media (max-width: 640px) {
-  /* Interoperability Pipeline: Horizontal Snap Flow */
+  /* Interoperability Pipeline: Clean Full-Width Vertical Stack on Mobile */
   .interop-pipeline-flow {
     display: flex !important;
+    flex-direction: column !important;
     flex-wrap: nowrap !important;
-    overflow-x: auto !important;
-    scroll-snap-type: x mandatory !important;
-    -webkit-overflow-scrolling: touch;
-    gap: 14px !important;
-    padding-inline: 1.25rem !important;
-    padding-block-end: 1rem !important;
-    scroll-padding-inline: 1.25rem !important;
-    scrollbar-width: none;
-    margin-inline: -1rem;
-  }
-  .interop-pipeline-flow::-webkit-scrollbar {
-    display: none;
+    overflow-x: visible !important;
+    gap: 12px !important;
+    padding-inline: 0 !important;
+    padding-block-end: 0 !important;
+    margin-inline: 0 !important;
   }
   .interop-node {
-    flex: 0 0 76vw !important;
-    max-width: 270px !important;
-    scroll-snap-align: start;
+    flex: 1 1 auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
     box-sizing: border-box;
   }
 
@@ -3455,11 +3658,13 @@ html[dir="rtl"] .mobile-nav-drawer {
    ========================================================================== */
 .journey-blueprint-card {
   margin-top: 32px;
-  background: linear-gradient(135deg, rgba(15, 33, 55, 0.85) 0%, rgba(7, 16, 30, 0.95) 100%);
-  border: 1px solid rgba(56, 189, 248, 0.25);
+  background: #FFFFFF;
+  border: 1px solid var(--surface-light-border, #E2E8F0);
   border-radius: var(--radius-xl);
   padding: 28px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), inset 0 0 30px rgba(30, 95, 216, 0.15);
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.06);
+  min-height: auto !important;
+  height: auto !important;
 }
 
 .blueprint-top-bar {
@@ -3470,7 +3675,7 @@ html[dir="rtl"] .mobile-nav-drawer {
   gap: 16px;
   margin-bottom: 24px;
   padding-bottom: 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--surface-light-border, #E2E8F0);
 }
 
 .blueprint-phase-badge {
@@ -3479,16 +3684,16 @@ html[dir="rtl"] .mobile-nav-drawer {
   font-weight: 800;
   letter-spacing: 0.1em;
   padding: 6px 14px;
-  background: rgba(30, 95, 216, 0.25);
-  border: 1px solid rgba(56, 189, 248, 0.4);
-  color: #38BDF8;
+  background: rgba(30, 95, 216, 0.08);
+  border: 1px solid rgba(30, 95, 216, 0.22);
+  color: var(--color-digital-blue, #1E5FD8);
   border-radius: var(--radius-full);
 }
 
 .blueprint-title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: var(--color-text-dark, #0F172A);
   margin: 0;
   flex: 1;
   min-width: 250px;
@@ -3500,29 +3705,11 @@ html[dir="rtl"] .mobile-nav-drawer {
   gap: 8px;
   font-size: 0.82rem;
   font-weight: 600;
-  color: #2DD4BF;
-  background: rgba(45, 212, 191, 0.12);
+  color: #059669;
+  background: rgba(16, 185, 129, 0.1);
   padding: 6px 14px;
   border-radius: var(--radius-full);
-  border: 1px solid rgba(45, 212, 191, 0.25);
-}
-
-.blueprint-canvas-container {
-  width: 100%;
-  min-height: 240px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(4, 10, 20, 0.5);
-  border-radius: var(--radius-lg);
-  padding: 16px;
-  border: 1px dashed rgba(56, 189, 248, 0.2);
-}
-
-.journey-blueprint-card {
-  min-height: 380px;
-  display: flex;
-  flex-direction: column;
+  border: 1px solid rgba(16, 185, 129, 0.25);
 }
 
 .blueprint-svg {
@@ -4187,7 +4374,7 @@ html[dir="rtl"] .hero-title .text-highlight {
 }
 
 .cap-card-icon svg {
-  color: #94A3B8;
+  color: #1E5FD8;
   stroke: currentColor;
   transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -4197,6 +4384,16 @@ html[dir="rtl"] .hero-title .text-highlight {
   color: #38BDF8;
   filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.45));
   transform: translateY(-1px);
+}
+
+/* Dark Careers Card Gradient Text Calibration (High-Contrast Cyan/Teal on #0F2137) */
+.careers-title .gradient-text,
+.careers-banner-card .gradient-text {
+  background: linear-gradient(135deg, #38BDF8 0%, #2DD4BF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #38BDF8;
 }
 
 /* 3. Mobile Hero Pill Badge Width & Text Fit (<= 420px) */
@@ -4246,18 +4443,15 @@ html {
   z-index: 1;
 }
 
-/* Section scroll-triggered activation */
-.section .section-header {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
-}
-
-.section.section-in-view .section-header,
-.section-header.is-revealed {
+/* Section Header Base Visibility: Clean default visibility without !important overrides that break animations */
+.section .section-header,
+.section-header,
+.section-title,
+.section-desc,
+.section-tag,
+.section-badge {
   opacity: 1;
-  transform: translateY(0);
+  visibility: visible;
 }
 
 .section.section-in-view .section-tag {
@@ -4277,7 +4471,7 @@ html {
   transform: translateY(0);
 }
 
-/* Smooth reveal staggers for card items */
+/* Card items base visibility: Clean default visibility preserving interactive :hover and .active transform elevations */
 .pillar-box,
 .cap-card,
 .interop-node,
@@ -4285,27 +4479,8 @@ html {
 .stat-highlight-card,
 .sector-card,
 .timeline-card {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-}
-
-.section.section-in-view .pillar-box,
-.section.section-in-view .cap-card,
-.section.section-in-view .interop-node,
-.section.section-in-view .metric-card,
-.section.section-in-view .stat-highlight-card,
-.section.section-in-view .sector-card,
-.section.section-in-view .timeline-card,
-.pillar-box.is-revealed,
-.cap-card.is-revealed,
-.interop-node.is-revealed,
-.metric-card.is-revealed,
-.stat-highlight-card.is-revealed,
-.sector-card.is-revealed,
-.timeline-card.is-revealed {
   opacity: 1;
-  transform: translateY(0);
+  visibility: visible;
 }
 
 /* Stagger delays across children */
