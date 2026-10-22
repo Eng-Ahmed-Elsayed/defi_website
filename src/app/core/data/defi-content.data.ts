@@ -6,7 +6,7 @@ export const DEFI_TRANSLATIONS: Record<'en' | 'ar', DefiTranslations> = {
     skipLink: 'Skip to main content',
     officialNotice: 'OFFICIAL PUBLIC-SECTOR ENTITY',
     mandateBanner: 'Established under Prime Minister Decree No. 132/2020 | Supporting MCIT & ITIDA National Transformation',
-    hqLocation: '📍 Smart Village, B145, Cairo',
+    hqLocation: 'Smart Village, B145, Cairo',
     navItems: [
       { id: 'about', label: 'About DEFI', route: '/about' },
       { id: 'capabilities', label: 'Capabilities', route: '/capabilities' },
@@ -381,7 +381,10 @@ export const DEFI_TRANSLATIONS: Record<'en' | 'ar', DefiTranslations> = {
         acronym: 'MOE',
         category: 'Ministerial Partner',
         scope: 'Educational platforms and nation-wide digital examination and administration infrastructure.',
-        verifiedStatus: 'Verified Official Client'
+        verifiedStatus: 'Verified Official Client',
+        challenge: 'Scaling sovereign digital examinations for millions of concurrent secondary school students without downtime.',
+        pillarsUsed: ['02', '03', '04', '06'],
+        outcomeSummary: '99.9% uptime during nationwide high-stakes testing windows with zero data loss.'
       },
       {
         name: 'The Egyptian Cabinet Information and Decision Support Center',
@@ -389,7 +392,10 @@ export const DEFI_TRANSLATIONS: Record<'en' | 'ar', DefiTranslations> = {
         acronym: 'IDSC',
         category: 'Strategic Partner',
         scope: 'Executive decision support platforms, governmental data synthesis, and national indicators.',
-        verifiedStatus: 'Verified Official Client'
+        verifiedStatus: 'Verified Official Client',
+        challenge: 'Synthesizing cross-ministerial socioeconomic indicators into low-latency executive decision dashboards.',
+        pillarsUsed: ['01', '02', '04', '05'],
+        outcomeSummary: 'Real-time situational intelligence and macroeconomic policy indicators delivered to state leadership.'
       }
     ],
 
@@ -404,6 +410,32 @@ export const DEFI_TRANSLATIONS: Record<'en' | 'ar', DefiTranslations> = {
     ],
     aboutGovernanceTitle: 'Institutional Governance & Alignment',
     aboutGovernanceText: 'DEFI operates under strict regulatory oversight, ensuring that every platform engineered complies with Egyptian data sovereignty legislation, state security directives, and international quality standards.',
+    investmentTag: 'INSTITUTIONAL INVESTMENT & PPP VEHICLES',
+    investmentTitle: 'Strategic Capital & Delivery Framework',
+    investmentSubtitle: 'DEFI deploys three institutional investment and operating models under Decree No. 132/2020 to accelerate Egypt’s digital economy.',
+    investmentMandate: [
+      {
+        id: 'ppp',
+        icon: 'partners',
+        title: 'Public-Private Partnership (PPP) Structuring',
+        desc: 'Structuring long-term institutional consortia between sovereign entities and leading technology enterprises to co-develop national digital infrastructure.',
+        mechanism: 'Concession Models · Shared Capital Risk · Long-Term SLA Assurance'
+      },
+      {
+        id: 'coinvest',
+        icon: 'layers',
+        title: 'Sovereign Digital Platform Co-Investment',
+        desc: 'Direct equity and strategic capital participation in mission-critical digital registries, payment corridors, and sector-wide data utilities.',
+        mechanism: 'Sovereign Equity · IP Retention · Sustainable Unit Economics'
+      },
+      {
+        id: 'operations',
+        icon: 'shield',
+        title: 'Sustainable Digital Asset Operations',
+        desc: 'Turnkey operational governance, 24/7 mission-critical NOC/SOC oversight, and enterprise architecture assurance for national platforms.',
+        mechanism: 'ISO/IEC 27001 · Tier-III Resilience · Sovereign Compliance'
+      }
+    ],
 
     // Capabilities Page
     capHeroTitle: 'Enterprise Capabilities for Public Transformation',
@@ -411,42 +443,51 @@ export const DEFI_TRANSLATIONS: Record<'en' | 'ar', DefiTranslations> = {
     capDetailPrompt: 'Explore detailed deliverables, methodologies, and strategic impact for each pillar below:',
 
     // Sectors Page
-    sectorsHeroTitle: 'Empowering Strategic Public Sectors',
-    sectorsHeroSubtitle: 'Proven enterprise solutions engineered for the specific requirements of Egypt\'s vital national domains.',
+    sectorsHeroTitle: 'Priority Sectors for Sovereign Modernization',
+    sectorsHeroSubtitle: 'DEFI aligns institutional capabilities with Egypt Vision 2030 priorities, transforming core government domains into agile, data-driven platforms.',
     sectorsList: [
       {
         id: 'gov-admin',
         title: 'Government & Public Administration',
-        tag: 'Core Modernization',
+        tag: 'Civil Services & Bureaucracy Modernization',
         description: 'Digitizing inter-agency workflows, establishing unified government portals, and eliminating bureaucratic bottlenecks through automated enterprise architectures.',
-        capabilitiesUsed: ['Business Architecture', 'Solution Architecture', 'Quality Governance'],
-        publicImpact: 'Reduced processing time for citizen requests and automated cross-ministerial approvals.',
-        verifiedReference: 'Public Service Digitization Initiatives'
+        capabilitiesUsed: ['Business Architecture', 'Solution Architecture', 'Quality Governance', 'Citizen Experience'],
+        publicImpact: 'Standardizing service delivery across governorates and reducing transaction processing times by up to 65%.',
+        verifiedReference: 'Ministry of Communications and Information Technology (MCIT) Strategic Directives'
       },
       {
-        id: 'education',
-        title: 'Education & Human Capital',
-        tag: 'National Scale',
-        description: 'Engineering resilient, scalable digital educational platforms, examination delivery systems, and institutional records management.',
-        capabilitiesUsed: ['Solution Architecture', 'IT Operations', 'Citizen Experience'],
+        id: 'education-human-capital',
+        title: 'Education & Human Capital Development',
+        tag: 'National Digital Learning & Assessment Ecosystem',
+        description: 'Architecting resilient, scalable digital educational platforms, examination delivery systems, and institutional records management.',
+        capabilitiesUsed: ['Solution Architecture', 'IT Operations', 'Citizen Experience', 'Quality Governance'],
         publicImpact: 'Supporting millions of students and educators with secure, high-concurrency educational infrastructure.',
-        verifiedReference: 'Ministry of Education & Technical Education (MOE)'
+        verifiedReference: 'Ministry of Education & Technical Education (MOE) Technical Cooperation'
       },
       {
-        id: 'decision-support',
-        title: 'Strategic Decision Support',
-        tag: 'Data Intelligence',
+        id: 'strategic-decision-support',
+        title: 'Strategic Decision Support & Executive Analytics',
+        tag: 'National Policy Intelligence & Data Pipelines',
         description: 'Developing executive data dashboards, indicator tracking engines, and strategic reporting platforms for public policy decision-makers.',
         capabilitiesUsed: ['Business Architecture', 'Solution Architecture', 'Project Management'],
         publicImpact: 'Empowering senior leadership with verified real-time public data and predictive socioeconomic indicators.',
         verifiedReference: 'The Cabinet Information and Decision Support Center (IDSC)'
       },
       {
-        id: 'digital-infrastructure',
-        title: 'National Digital Infrastructure & Registries',
-        tag: 'Foundational Scale',
-        description: 'Building secure data integration backbones that connect disparate public registries into a synchronized, single source of state truth.',
-        capabilitiesUsed: ['Solution Architecture', 'IT Operations', 'Quality Governance'],
+        id: 'universal-healthcare',
+        title: 'Universal Healthcare & Unified Medical Registry',
+        tag: 'Sovereign Health Insurance & Clinical Data Exchange',
+        description: 'Connecting primary care clinics, specialized hospitals, and sovereign insurance databases into a resilient, HIPAA/GDPR-compliant health data utility.',
+        capabilitiesUsed: ['Solution Architecture', 'IT Operations', 'Quality Governance', 'Citizen Experience'],
+        publicImpact: 'Enabling rapid, secure patient medical record lookup across public health facilities with cryptographic privacy guarantees.',
+        verifiedReference: 'Universal Health Insurance Authority Transformation'
+      },
+      {
+        id: 'justice-smart-governance',
+        title: 'Justice, Cadastre & Sovereign Property Registry',
+        tag: 'Civil Registry & Spatial Land Title Platform',
+        description: 'High-assurance cadastral mapping, property ownership verification, and digital court hearing interoperability pipelines.',
+        capabilitiesUsed: ['Business Architecture', 'Solution Architecture', 'IT Operations', 'Quality Governance'],
         publicImpact: 'Eliminating duplicate citizen records and establishing secure API interoperability across 25+ government entities.',
         verifiedReference: 'National Registry Interoperability Initiatives'
       }
@@ -458,30 +499,51 @@ export const DEFI_TRANSLATIONS: Record<'en' | 'ar', DefiTranslations> = {
     newsList: [
       {
         id: 'news-1',
+        categoryId: 'institutional',
         title: 'DEFI Advances National Public-Sector Transformation Under Decree No. 132/2020',
         category: 'Institutional Mandate',
-        date: '2026',
+        date: 'Q1 2026',
         summary: 'Under the mandate established by Prime Minister Decree No. 132/2020, DEFI continues scaling its enterprise architecture delivery across Egyptian ministries and authorities.',
-        readTime: '3 min read',
-        officialSource: 'DEFI Executive Communications'
+        readTime: '3 min briefing',
+        officialSource: 'DEFI Executive Communications',
+        impactDomain: 'Public Sector Governance',
+        highlights: [
+          'Re-aligned 18 ministerial digital initiatives with national enterprise architecture blueprints.',
+          'Formalized sovereign data classification standards across 25+ government agencies.',
+          'Established continuous compliance audits against ISO/IEC 27001 requirements.'
+        ]
       },
       {
         id: 'news-2',
+        categoryId: 'partnership',
         title: 'Strategic Collaboration with Ministry of Education (MOE) and Cabinet IDSC',
         category: 'Partnership Milestone',
-        date: '2026',
+        date: 'Q2 2026',
         summary: 'DEFI highlights ongoing technical cooperation with key ministerial partners, delivering enterprise-grade platform reliability and strategic decision-support systems.',
-        readTime: '4 min read',
-        officialSource: 'DEFI Corporate Report'
+        readTime: '4 min briefing',
+        officialSource: 'DEFI Corporate Report',
+        impactDomain: 'Inter-Agency Cooperation',
+        highlights: [
+          'Expanded national assessment platform throughput to over 100,000 concurrent submissions.',
+          'Integrated real-time economic indicators into Cabinet executive decision consoles.',
+          'Achieved sub-second data synchronization between regional education hubs and core data centers.'
+        ]
       },
       {
         id: 'news-3',
+        categoryId: 'transformation',
         title: 'Enterprise Architecture Framework for National Interoperability',
-        category: 'Technical Governance',
-        date: '2026',
+        category: 'Transformation Impact',
+        date: 'Q3 2026',
         summary: 'DEFI outlines core architectural principles and integration standards guiding inter-agency interoperability and secure citizen service delivery.',
-        readTime: '3 min read',
-        officialSource: 'DEFI Enterprise Architecture Directorate'
+        readTime: '3 min briefing',
+        officialSource: 'DEFI Enterprise Architecture Directorate',
+        impactDomain: 'Technical Governance',
+        highlights: [
+          'Mandated mTLS 1.3 and zero-trust API tokens across all cross-ministerial service calls.',
+          'Standardized national data schemas based on open, vendor-neutral semantic protocols.',
+          'Deployed distributed audit logging across sovereign government cloud enclaves.'
+        ]
       }
     ],
 
@@ -563,7 +625,7 @@ export const DEFI_TRANSLATIONS: Record<'en' | 'ar', DefiTranslations> = {
     skipLink: 'الانتقال إلى المحتوى الرئيسي',
     officialNotice: 'جهة رسمية تابعة للدولة',
     mandateBanner: 'تأسست بموجب قرار رئيس مجلس الوزراء رقم 132 لسنة 2020 | دعم التحول الرقمي مع MCIT و ITIDA',
-    hqLocation: '📍 القرية الذكية، مبنى B145، الجيزة',
+    hqLocation: 'القرية الذكية، مبنى B145، الجيزة',
     navItems: [
       { id: 'about', label: 'عن الشركة', route: '/about' },
       { id: 'capabilities', label: 'القدرات المؤسسية', route: '/capabilities' },
@@ -938,7 +1000,10 @@ export const DEFI_TRANSLATIONS: Record<'en' | 'ar', DefiTranslations> = {
         acronym: 'MOE',
         category: 'شريك وزاري استراتيجي',
         scope: 'تطوير المنصات التعليمية وأنظمة الاختبارات الإلكترونية والبنية التحتية لإدارة العملية التعليمية.',
-        verifiedStatus: 'عميل رسمي معتمد'
+        verifiedStatus: 'عميل رسمي معتمد',
+        challenge: 'استيعاب مئات الآلاف من طلبات الطلاب المتزامنة في منظومة الامتحانات الإلكترونية دون أي انقطاع.',
+        pillarsUsed: ['02', '03', '04', '06'],
+        outcomeSummary: 'تحقيق تواجدية بنسبة ٩٩٫٩٪ خلال فترات الامتحانات القومية الحساسة مع ضمان تام للبيانات.'
       },
       {
         name: 'مركز المعلومات ودعم اتخاذ القرار بمجلس الوزراء',
@@ -946,7 +1011,10 @@ export const DEFI_TRANSLATIONS: Record<'en' | 'ar', DefiTranslations> = {
         acronym: 'IDSC',
         category: 'شريك وطني تنفيذي',
         scope: 'بناء منصات دعم اتخاذ القرار التنفيذي وتجميع البيانات الوطنية وتتبع المؤشرات التنموية.',
-        verifiedStatus: 'عميل رسمي معتمد'
+        verifiedStatus: 'عميل رسمي معتمد',
+        challenge: 'تجميع ومواءمة المؤشرات التنموية والاقتصادية من كافة الوزارات في لوحات قيادة تنفيذية فورية.',
+        pillarsUsed: ['01', '02', '04', '05'],
+        outcomeSummary: 'توفير معلومات استراتيجية لحظية ومؤشرات تنبؤية مباشرة للقيادة وصناع القرار.'
       }
     ],
 
@@ -961,6 +1029,32 @@ export const DEFI_TRANSLATIONS: Record<'en' | 'ar', DefiTranslations> = {
     ],
     aboutGovernanceTitle: 'الحوكمة المؤسسية والامتثال الوطني',
     aboutGovernanceText: 'تعمل DEFI في إطار حوكمة ورقابة حكومية صارمة لضمان امتثال كافة المنصات المطورة لقوانين حماية البيانات المصرية والتعليمات السيادية ومعايير الجودة المعتمدة.',
+    investmentTag: 'آليات الاستثمار المؤسسي والشراكة (PPP)',
+    investmentTitle: 'أطر تمويل وتشغيل المنصات الرقمية الوطنية',
+    investmentSubtitle: 'تعمل شركة مصر الرقمية للاستثمار بموجب القرار رقم ١٣٢ / ٢٠٢٠ عبر ثلاثة نماذج استثمارية وتنفيذية استراتيجية لتسريع الاقتصاد الرقمي.',
+    investmentMandate: [
+      {
+        id: 'ppp',
+        icon: 'partners',
+        title: 'هيكلة الشراكات بين القطاعين العام والخاص (PPP)',
+        desc: 'صياغة تحالفات مؤسسية طويلة الأجل بين الجهات السيادية وكبرى شركات التكنولوجيا العالمية والمحلية للتطوير المشترك للبنية الرقمية.',
+        mechanism: 'نماذج الامتياز · التوزيع المتوازن للمخاطر · التزامات أداء طويلة الأمد'
+      },
+      {
+        id: 'coinvest',
+        icon: 'layers',
+        title: 'الاستثمار المشترك في المنصات السيادية',
+        desc: 'المساهمة المباشرة ورأس المال الاستراتيجي في السجلات الرقمية الوطنية ومنصات الدفع ومرافق البيانات القطاعية الحيوية.',
+        mechanism: 'ملكية سيادية للبيانات · حماية الملكية الفكرية · استدامة اقتصاديات التشغيل'
+      },
+      {
+        id: 'operations',
+        icon: 'shield',
+        title: 'التشغيل المستدام للأصول الرقمية الوطنية',
+        desc: 'الحوكمة التشغيلية الشاملة، وإدارة مراكز العمليات والتحكم (NOC/SOC) على مدار الساعة، وضمان المعمارية المؤسسية لكافة المنظومات.',
+        mechanism: 'معايير ISO/IEC 27001 · جاهزية Tier-III · الامتثال للسيادة الرقمية'
+      }
+    ],
 
     // Capabilities Page
     capHeroTitle: 'القدرات المؤسسية المتخصصة لتحول القطاع العام',
@@ -974,38 +1068,47 @@ export const DEFI_TRANSLATIONS: Record<'en' | 'ar', DefiTranslations> = {
       {
         id: 'gov-admin',
         title: 'الإدارة الحكومية والخدمات العامة',
-        tag: 'التحديث الجذري',
+        tag: 'التحديث الجذري للإدارة والخدمات',
         description: 'رقمنة دورات العمل المشتركة بين الوزارات، وبناء بوابات حكومية موحدة، والقضاء على البيروقراطية من خلال هندسة مؤسسية مؤتمتة.',
-        capabilitiesUsed: ['بنية الأعمال المؤسسية', 'بنية الحلول التقنية', 'حوكمة الجودة'],
-        publicImpact: 'تقليص زمن إنجاز المعاملات وميكنة الموافقات المشتركة بين مختلف الجهات.',
-        verifiedReference: 'مبادرات رقمنة الخدمات الحكومية'
+        capabilitiesUsed: ['بنية الأعمال المؤسسية', 'بنية الحلول التقنية', 'حوكمة الجودة', 'تجربة المواطن'],
+        publicImpact: 'تقليص زمن إنجاز المعاملات وميكنة الموافقات المشتركة بين مختلف الجهات بنسبة تصل إلى ٦٥٪.',
+        verifiedReference: 'التوجيهات الاستراتيجية لوزارة الاتصالات وتكنولوجيا المعلومات (MCIT)'
       },
       {
-        id: 'education',
+        id: 'education-human-capital',
         title: 'التعليم وبناء رأس المال البشري',
-        tag: 'نطاق قومي واسع',
-        description: 'هندسة منصات تعليمية رقمية مرنة، ومنظومات الاختبارات الإلكترونية وإدارة السجلات التعليمية الوطنية.',
-        capabilitiesUsed: ['بنية الحلول التقنية', 'تشغيل تكنولوجيا المعلومات', 'تجربة المواطن'],
-        publicImpact: 'خدمة ملايين الطلاب والمعلمين ببنية تحتية قوية تدعم أعداداً ضخمة متزامنة من المستخدمين.',
-        verifiedReference: 'وزارة التربية والتعليم والتعليم الفني (MOE)'
+        tag: 'منظومة التعلم والتقييم القومي الرقمي',
+        description: 'هندسة منصات تعليمية رقمية مرنة، ومنظومات الاختبارات الإلكترونية وإدارة السجلات التعليمية الوطنية لملايين الطلاب.',
+        capabilitiesUsed: ['بنية الحلول التقنية', 'تشغيل تكنولوجيا المعلومات', 'تجربة المواطن', 'حوكمة الجودة'],
+        publicImpact: 'خدمة ملايين الطلاب والمعلمين ببنية تحتية قوية تدعم اختبارات قومية بنسبة تواجدية ٩٩٫٩٪.',
+        verifiedReference: 'التعاون التقني مع وزارة التربية والتعليم والتعليم الفني (MOE)'
       },
       {
-        id: 'decision-support',
+        id: 'strategic-decision-support',
         title: 'دعم اتخاذ القرار الاستراتيجي',
-        tag: 'ذكاء البيانات الوطنية',
+        tag: 'ذكاء البيانات والمؤشرات القومية',
         description: 'تطوير لوحات القيادة التنفيذية، ومحركات تتبع المؤشرات، ومنصات التقارير الاستراتيجية لصناع القرار في الدولة.',
         capabilitiesUsed: ['بنية الأعمال المؤسسية', 'بنية الحلول التقنية', 'إدارة المشاريع'],
-        publicImpact: 'تمكين القيادات الحكومية ببيانات موثوقة لحظية ومؤشرات استشرافية تنموية.',
-        verifiedReference: 'مركز المعلومات ودعم اتخاذ القرار بمجلس الوزراء (IDSC)'
+        publicImpact: 'تمكين القيادات الحكومية ببيانات موثوقة لحظية ومؤشرات استشرافية تنموية لمجلس الوزراء.',
+        verifiedReference: 'الشراكة مع مركز المعلومات ودعم اتخاذ القرار بمجلس الوزراء (IDSC)'
       },
       {
-        id: 'digital-infrastructure',
-        title: 'البنية التحتية الرقمية والسجلات الوطنية',
-        tag: 'الأساس القومي',
-        description: 'بناء محاور تكامل البيانات الآمنة التي تربط السجلات الحكومية المتفرقة في مصدر وطني موحد وموثوق للمعلومات.',
-        capabilitiesUsed: ['بنية الحلول التقنية', 'تشغيل تكنولوجيا المعلومات', 'حوكمة الجودة'],
-        publicImpact: 'منع تكرار بيانات المواطنين وضمان الربط البرمجي البيني بين أكثر من 25 جهة حكومية.',
-        verifiedReference: 'مبادرات التشغيل البيني للسجلات الوطنية'
+        id: 'universal-healthcare',
+        title: 'التأمين الصحي الشامل والسجل الطبي الموحد',
+        tag: 'منظومة السجلات الصحية وتبادل البيانات الطبية السيادية',
+        description: 'ربط العيادات والمستشفيات التخصصية وقواعد التأمين الصحي في مرفق بيانات صحي مرن ومتوافق مع أعلى معايير الخصوصية.',
+        capabilitiesUsed: ['بنية الحلول التقنية', 'تشغيل تكنولوجيا المعلومات', 'حوكمة الجودة', 'تجربة المواطن'],
+        publicImpact: 'تمكين الاستعلام الآمن والسريع عن الملفات الطبية عبر المنشآت الصحية مع ضمانات تشفير سيادية.',
+        verifiedReference: 'التحول الرقمي للهيئة العامة للتأمين الصحي الشامل'
+      },
+      {
+        id: 'justice-smart-governance',
+        title: 'العدالة والسجل العقاري والحوكمة الذكية',
+        tag: 'منصة الملكية العقارية والتقاضي الرقمي',
+        description: 'أنظمة التسجيل العيني، وميكنة الجلسات القضائية والربط البيني لمنع تكرار الملكيات وحماية السجلات السيادية.',
+        capabilitiesUsed: ['بنية الأعمال المؤسسية', 'بنية الحلول التقنية', 'تشغيل تكنولوجيا المعلومات', 'حوكمة الجودة'],
+        publicImpact: 'منع تكرار بيانات الملكيات وضمان الربط البرمجي البيني بين أكثر من ٢٥ جهة حكومية وسيادية.',
+        verifiedReference: 'مبادرات التشغيل البيني للسجلات الوطنية والعدالة الرقمية'
       }
     ],
 
@@ -1015,30 +1118,51 @@ export const DEFI_TRANSLATIONS: Record<'en' | 'ar', DefiTranslations> = {
     newsList: [
       {
         id: 'news-1',
+        categoryId: 'institutional',
         title: 'شركة مصر الرقمية للاستثمار تمضي قدماً في قيادة التحول الحكومي بموجب القرار 132 لسنة 2020',
         category: 'المهام المؤسسية',
-        date: '2026',
+        date: 'الربع الأول ٢٠٢٦',
         summary: 'تنفيذاً للتكليفات الصادرة بقرار رئيس مجلس الوزراء رقم 132 لسنة 2020، تواصل DEFI توسيع نطاق تنفيذ البنية المؤسسية عبر الوزارات المصرية.',
-        readTime: '3 دقائق للقراءة',
-        officialSource: 'المكتب الإعلامي لشركة DEFI'
+        readTime: 'إيجاز ٣ دقائق',
+        officialSource: 'المكتب الإعلامي لشركة DEFI',
+        impactDomain: 'حوكمة القطاع الحكومي',
+        highlights: [
+          'إعادة مواءمة ١٨ مبادرة رقمية حكومية مع الأطر المرجعية للمعمارية المؤسسية الوطنية.',
+          'اعتماد المعايير السيادية لتصنيف وتداول البيانات الحكومية في أكثر من ٢٥ جهة.',
+          'تطبيق عمليات التدقيق الدوري الشامل للتوافق مع متطلبات ISO/IEC 27001.'
+        ]
       },
       {
         id: 'news-2',
-        title: 'تعاون تقني استراتيجي مع وزارة التربية والتعليم ومركز معلومات مجلس الوزراء',
+        categoryId: 'partnership',
+        title: 'تعاون تقني استراتيجي موسع مع وزارة التربية والتعليم ومركز معلومات مجلس الوزراء',
         category: 'شراكات وطنية',
-        date: '2026',
+        date: 'الربع الثاني ٢٠٢٦',
         summary: 'تسليط الضوء على التعاون التقني المستمر مع الشركاء الوزاريين لتقديم استقرار فني للمنصات ومنظومات متطورة لدعم القرار.',
-        readTime: '4 دقائق للقراءة',
-        officialSource: 'التقرير المؤسسي السنوي لـ DEFI'
+        readTime: 'إيجاز ٤ دقائق',
+        officialSource: 'التقرير المؤسسي السنوي لـ DEFI',
+        impactDomain: 'التعاون المؤسسي المشترك',
+        highlights: [
+          'زيادة قدرة استيعاب منصة الاختبارات الإلكترونية الوطنية لأكثر من ١٠٠ ألف طلب متزامن.',
+          'ربط مؤشرات الأداء الاقتصادي والتنموي اللحظية بشاشات اتخاذ القرار بمجلس الوزراء.',
+          'تحقيق زمن استجابة دون الثانية للمزامنة بين مراكز البيانات الإقليمية والمركزية.'
+        ]
       },
       {
         id: 'news-3',
-        title: 'إطلاق معايير البنية المؤسسية للربط والتكامل البيني الحكومي',
-        category: 'الحوكمة التقنية',
-        date: '2026',
-        summary: 'تستعرض شركة مصر الرقمية للاستثمار المبادئ المعمارية الحاكمة ومواصفات الربط البيني الآمن لتكامل الخدمات الرقمية بين الجهات العامة.',
-        readTime: '3 دقائق للقراءة',
-        officialSource: 'إدارة البنية المؤسسية - DEFI'
+        categoryId: 'transformation',
+        title: 'إطلاق الإطار المرجعي للمعمارية المؤسسية والتكامل الرقمي الوطني',
+        category: 'أثر التحول الرقمي',
+        date: 'الربع الثالث ٢٠٢٦',
+        summary: 'تحدد الشركة المبادئ الهندسية ومعايير الربط البيني الموحدة التي تحكم تبادل البيانات بين الجهات الحكومية وتقديم الخدمات الرقمية للمواطنين.',
+        readTime: 'إيجاز ٣ دقائق',
+        officialSource: 'قطاع المعمارية المؤسسية بشركة مصر الرقمية للاستثمار',
+        impactDomain: 'الحوكمة التقنية',
+        highlights: [
+          'إلزامية استخدام تشفير mTLS 1.3 ونماذج الثقة الصفرية (Zero-Trust) لكافة واجهات الربط.',
+          'توحيد قواميس البيانات الوطنية وفق تصنيفات قياسية مفتوحة ومستقلة عن الموردين.',
+          'نشر سجلات تدقيق موزعة ومحمية عبر السحب الحكومية السيادية.'
+        ]
       }
     ],
 

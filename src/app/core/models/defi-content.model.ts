@@ -73,16 +73,30 @@ export interface PartnerReference {
   category: string;
   scope: string;
   verifiedStatus: string;
+  challenge?: string;
+  pillarsUsed?: string[];
+  outcomeSummary?: string;
+}
+
+export interface InvestmentMandateItem {
+  id: string;
+  icon: string;
+  title: string;
+  desc: string;
+  mechanism: string;
 }
 
 export interface NewsItem {
   id: string;
+  categoryId: 'institutional' | 'partnership' | 'transformation';
   title: string;
   category: string;
   date: string;
   summary: string;
   readTime: string;
   officialSource: string;
+  highlights?: string[];
+  impactDomain?: string;
 }
 
 export interface CareerDomain {
@@ -224,6 +238,10 @@ export interface DefiTranslations {
   aboutMandateText: string[];
   aboutGovernanceTitle: string;
   aboutGovernanceText: string;
+  investmentTag: string;
+  investmentTitle: string;
+  investmentSubtitle: string;
+  investmentMandate: InvestmentMandateItem[];
 
   // Capabilities Page
   capHeroTitle: string;

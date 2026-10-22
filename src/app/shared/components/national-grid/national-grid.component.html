@@ -149,7 +149,7 @@
             </circle>
 
             <!-- Regional Hub 1: Alexandria & Mediterranean Axis -->
-            <g class="grid-hub-node" [class.active]="selectedRegion() === 'alex'" (click)="selectRegion('alex', true)" tabindex="0" role="button" aria-label="Alexandria Hub">
+            <g class="grid-hub-node" [class.active]="selectedRegion() === 'alex'" (click)="selectRegion('alex', true)" (keydown.enter)="selectRegion('alex', true)" (keydown.space)="$event.preventDefault(); selectRegion('alex', true)" tabindex="0" role="button" aria-label="Alexandria Hub">
               <circle cx="230" cy="70" r="38" fill="transparent" class="hub-hit-area"/>
               <circle cx="230" cy="70" r="28" fill="url(#hubGlow)" opacity="0.4" class="hub-glow"/>
               <circle cx="230" cy="70" r="14" fill="#0B192C" stroke="#38BDF8" stroke-width="2.5" class="hub-ring"/>
@@ -159,7 +159,7 @@
             </g>
 
             <!-- Regional Hub 2: Suez Canal & Port Said Axis -->
-            <g class="grid-hub-node" [class.active]="selectedRegion() === 'canal'" (click)="selectRegion('canal', true)" tabindex="0" role="button" aria-label="Suez Canal Hub">
+            <g class="grid-hub-node" [class.active]="selectedRegion() === 'canal'" (click)="selectRegion('canal', true)" (keydown.enter)="selectRegion('canal', true)" (keydown.space)="$event.preventDefault(); selectRegion('canal', true)" tabindex="0" role="button" aria-label="Suez Canal Hub">
               <circle cx="410" cy="160" r="38" fill="transparent" class="hub-hit-area"/>
               <circle cx="410" cy="160" r="28" fill="url(#hubGlow)" opacity="0.4" class="hub-glow"/>
               <circle cx="410" cy="160" r="14" fill="#0B192C" stroke="#38BDF8" stroke-width="2.5" class="hub-ring"/>
@@ -169,7 +169,7 @@
             </g>
 
             <!-- Regional Hub 3: Greater Cairo Core (Central Spine) -->
-            <g class="grid-hub-node" [class.active]="selectedRegion() === 'cairo'" (click)="selectRegion('cairo', true)" tabindex="0" role="button" aria-label="Greater Cairo Core Hub">
+            <g class="grid-hub-node" [class.active]="selectedRegion() === 'cairo'" (click)="selectRegion('cairo', true)" (keydown.enter)="selectRegion('cairo', true)" (keydown.space)="$event.preventDefault(); selectRegion('cairo', true)" tabindex="0" role="button" aria-label="Greater Cairo Core Hub">
               <circle cx="300" cy="170" r="48" fill="transparent" class="hub-hit-area"/>
               <circle cx="300" cy="170" r="44" fill="url(#coreGlow)" opacity="0.5" class="hub-pulse-beacon"/>
               <!-- Cairo Core Tactical Orbital Concentric Rings -->
@@ -191,7 +191,7 @@
             </g>
 
             <!-- Regional Hub 4: New Administrative Capital (Tier IV Sovereign Cloud) -->
-            <g class="grid-hub-node" [class.active]="selectedRegion() === 'nac'" (click)="selectRegion('nac', true)" tabindex="0" role="button" aria-label="New Administrative Capital Hub">
+            <g class="grid-hub-node" [class.active]="selectedRegion() === 'nac'" (click)="selectRegion('nac', true)" (keydown.enter)="selectRegion('nac', true)" (keydown.space)="$event.preventDefault(); selectRegion('nac', true)" tabindex="0" role="button" aria-label="New Administrative Capital Hub">
               <circle cx="360" cy="210" r="38" fill="transparent" class="hub-hit-area"/>
               <circle cx="360" cy="210" r="30" fill="url(#hubGlow)" opacity="0.4" class="hub-glow"/>
               <circle cx="360" cy="210" r="15" fill="#0B192C" stroke="#2DD4BF" stroke-width="2.5" class="hub-ring"/>
@@ -201,7 +201,7 @@
             </g>
 
             <!-- Regional Hub 5: Upper Egypt Spine (Assiut, Sohag, Luxor, Aswan) -->
-            <g class="grid-hub-node" [class.active]="selectedRegion() === 'upper'" (click)="selectRegion('upper', true)" tabindex="0" role="button" aria-label="Upper Egypt Hub">
+            <g class="grid-hub-node" [class.active]="selectedRegion() === 'upper'" (click)="selectRegion('upper', true)" (keydown.enter)="selectRegion('upper', true)" (keydown.space)="$event.preventDefault(); selectRegion('upper', true)" tabindex="0" role="button" aria-label="Upper Egypt Hub">
               <circle cx="370" cy="370" r="38" fill="transparent" class="hub-hit-area"/>
               <circle cx="370" cy="370" r="30" fill="url(#hubGlow)" opacity="0.4" class="hub-glow"/>
               <circle cx="370" cy="370" r="14" fill="#0B192C" stroke="#A855F7" stroke-width="2.5" class="hub-ring"/>

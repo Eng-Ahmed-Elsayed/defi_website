@@ -64,3 +64,20 @@
   gap: 1rem;
   flex-wrap: wrap;
 }
+
+.btn-arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+[dir="rtl"] .btn-arrow {
+  transform: scaleX(-1);
+}
+
+.btn:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+[dir="rtl"] .btn:hover .btn-arrow {
+  transform: scaleX(-1) translateX(-4px);
+}

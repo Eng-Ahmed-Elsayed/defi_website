@@ -1,0 +1,150 @@
+{
+  "timestamp": "2026-10-22T09:32:17.390Z",
+  "totalIssues": 0,
+  "auditReport": [
+    {
+      "route": "Homepage",
+      "path": "/",
+      "lang": "en",
+      "screenshot": "01-home-en.png",
+      "issues": [],
+      "pass": true
+    },
+    {
+      "route": "About & Governance",
+      "path": "/about",
+      "lang": "en",
+      "screenshot": "02-about-en.png",
+      "issues": [],
+      "pass": true
+    },
+    {
+      "route": "Institutional Capabilities",
+      "path": "/capabilities",
+      "lang": "en",
+      "screenshot": "03-capabilities-en.png",
+      "issues": [],
+      "pass": true
+    },
+    {
+      "route": "Sovereign Sectors",
+      "path": "/sectors",
+      "lang": "en",
+      "screenshot": "04-sectors-en.png",
+      "issues": [],
+      "pass": true
+    },
+    {
+      "route": "Verified National Impact",
+      "path": "/impact",
+      "lang": "en",
+      "screenshot": "05-impact-en.png",
+      "issues": [],
+      "pass": true
+    },
+    {
+      "route": "News & Institutional Briefings",
+      "path": "/news",
+      "lang": "en",
+      "screenshot": "06-news-en.png",
+      "issues": [],
+      "pass": true
+    },
+    {
+      "route": "Executive Careers",
+      "path": "/careers",
+      "lang": "en",
+      "screenshot": "07-careers-en.png",
+      "issues": [],
+      "pass": true
+    },
+    {
+      "route": "Institutional Contact",
+      "path": "/contact",
+      "lang": "en",
+      "screenshot": "08-contact-en.png",
+      "issues": [],
+      "pass": true
+    },
+    {
+      "route": "Not Found (404)",
+      "path": "/not-found-test-page",
+      "lang": "en",
+      "screenshot": "09-404-en.png",
+      "issues": [],
+      "pass": true
+    },
+    {
+      "route": "Homepage",
+      "path": "/",
+      "lang": "ar",
+      "screenshot": "01-home-ar.png",
+      "issues": [],
+      "pass": true
+    },
+    {
+      "route": "About & Governance",
+      "path": "/about",
+      "lang": "ar",
+      "screenshot": "02-about-ar.png",
+      "issues": [],
+      "pass": true
+    },
+    {
+      "route": "Institutional Capabilities",
+      "path": "/capabilities",
+      "lang": "ar",
+      "screenshot": "03-capabilities-ar.png",
+      "issues": [],
+      "pass": true
+    },
+    {
+      "route": "Sovereign Sectors",
+      "path": "/sectors",
+      "lang": "ar",
+      "screenshot": "04-sectors-ar.png",
+      "issues": [],
+      "pass": true
+    },
+    {
+      "route": "Verified National Impact",
+      "path": "/impact",
+      "lang": "ar",
+      "screenshot": "05-impact-ar.png",
+      "issues": [],
+      "pass": true
+    },
+    {
+      "route": "News & Institutional Briefings",
+      "path": "/news",
+      "lang": "ar",
+      "screenshot": "06-news-ar.png",
+      "issues": [],
+      "pass": true
+    },
+    {
+      "route": "Executive Careers",
+      "path": "/careers",
+      "lang": "ar",
+      "screenshot": "07-careers-ar.png",
+      "issues": [],
+      "pass": true
+    },
+    {
+      "route": "Institutional Contact",
+      "path": "/contact",
+      "lang": "ar",
+      "screenshot": "08-contact-ar.png",
+      "issues": [],
+      "pass": true
+    },
+    {
+      "route": "Not Found (404)",
+      "path": "/not-found-test-page",
+      "lang": "ar",
+      "screenshot": "09-404-ar.png",
+      "issues": [],
+      "pass": true
+    }
+  ]
+}

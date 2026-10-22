@@ -1,35 +1,43 @@
-/* Page Hero */
+/* Page Hero (Deep Sovereign Navy) */
 .page-hero-section {
-  padding-block: 4.5rem 3rem;
-  background: radial-gradient(circle at 50% 0%, rgba(30, 95, 216, 0.15), transparent 70%),
-              var(--color-primary-navy);
-  border-bottom: 1px solid var(--color-navy-border);
+  padding-block: 4.5rem 3.5rem;
+  background: radial-gradient(circle at 50% 0%, rgba(30, 95, 216, 0.18), transparent 70%),
+              #071120;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   text-align: center;
 }
 
 .page-hero-container {
-  max-width: 840px;
+  max-width: 860px;
+  margin-inline: auto;
 }
 
 .page-hero-title {
   font-size: clamp(2.2rem, 4.5vw, 3.4rem);
   font-weight: 800;
-  color: #FFFFFF;
+  color: #F8FAFC;
   line-height: 1.2;
-  margin-block-end: 1rem;
-  letter-spacing: -0.02em;
+  margin-block: 1rem 1rem;
+  letter-spacing: -0.025em;
 }
 
 .page-hero-subhead {
   font-size: 1.15rem;
   color: #CBD5E1;
-  line-height: 1.65;
+  line-height: 1.7;
+  max-width: 65ch;
+  margin-inline: auto;
 }
 
-/* Editorial Mandate Section */
+/* Mandate Detail Section (Warm Stone Canvas) */
+.mandate-detail-section.section-light {
+  background: #EEF2F6;
+  padding-block: 4.5rem 3.5rem;
+}
+
 .mandate-editorial-grid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
+  grid-template-columns: 1fr 340px;
   gap: 3.5rem;
   align-items: start;
 }
@@ -42,56 +50,58 @@
 }
 
 .editorial-heading {
-  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
   font-weight: 800;
-  color: #FFFFFF;
-  margin-block-end: 1.5rem;
+  color: #0A1628;
   line-height: 1.3;
+  margin-block-end: 1.75rem;
 }
 
 .editorial-p {
   font-size: 1.05rem;
   line-height: 1.8;
-  color: #E2E8F0;
+  color: #334155;
   margin-block-end: 1.25rem;
 }
 
 .stat-callout {
-  background: linear-gradient(135deg, rgba(15, 33, 55, 0.9), rgba(19, 42, 71, 0.9));
-  border: 1px solid rgba(197, 160, 89, 0.4);
-  padding: 2.25rem;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  border-radius: 16px;
+  padding: 2.25rem 2rem;
+  box-shadow: 0 4px 20px -2px rgba(10, 22, 40, 0.05);
 }
 
 .callout-pill {
   display: inline-block;
   font-size: 0.72rem;
   font-weight: 800;
-  color: var(--color-egypt-gold);
-  background: rgba(197, 160, 89, 0.15);
-  border: 1px solid rgba(197, 160, 89, 0.3);
-  padding: 0.25rem 0.65rem;
-  border-radius: var(--radius-full);
+  color: #1E40AF;
+  background: rgba(30, 95, 216, 0.08);
+  border: 1px solid rgba(30, 95, 216, 0.22);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
   margin-block-end: 0.85rem;
 }
 
 .callout-title {
-  color: #FFFFFF;
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin-block-end: 0.3rem;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0A1628;
+  margin-block-end: 0.35rem;
 }
 
 .callout-decree {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 800;
-  color: #60A5FA;
-  margin-block-end: 1.25rem;
+  color: #1E5FD8;
+  font-variant-numeric: tabular-nums;
+  margin: 0;
 }
 
 .callout-divider {
   border: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid #E2E8F0;
   margin-block: 1.25rem;
 }
 
@@ -99,204 +109,218 @@
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
-  margin-block-end: 0.85rem;
+  margin-block-end: 1rem;
 }
 
 .callout-entity-label {
   font-size: 0.78rem;
-  color: var(--color-text-light);
+  font-weight: 700;
+  color: #64748B;
 }
 
 .callout-entity-value {
   font-size: 0.95rem;
-  color: #FFFFFF;
-}
-
-/* Governance Diagram */
-.governance-diagram-container {
-  max-width: 880px;
-  margin-inline: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.25rem;
-}
-
-.gov-tier {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.tier-badge {
-  font-size: 0.72rem;
-  font-weight: 800;
-  color: var(--color-egypt-gold);
-  background: rgba(197, 160, 89, 0.12);
-  border: 1px solid rgba(197, 160, 89, 0.25);
-  padding: 0.2rem 0.65rem;
-  border-radius: var(--radius-full);
-  margin-block-end: 0.65rem;
-  text-transform: uppercase;
-}
-
-.tier-card {
-  width: 100%;
-  background: rgba(15, 33, 55, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-lg);
-  padding: 1.25rem 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-}
-
-.tier-card strong {
-  color: #FFFFFF;
-  font-size: 1.05rem;
-  display: block;
-  margin-block-end: 0.2rem;
-}
-
-.tier-card p {
-  color: var(--color-text-light);
-  font-size: 0.85rem;
+  color: #0A1628;
   line-height: 1.45;
-  margin: 0;
 }
 
-.tier-icon {
-  font-size: 1.6rem;
+/* Investment & PPP Mandate Section */
+.investment-mandate-section.section-light {
+  background: #EEF2F6;
+  padding-block: 3.5rem 5rem;
+  border-top: 1px solid #CBD5E1;
+}
+
+.section-header {
+  margin-block-end: 3.5rem;
+}
+
+.section-header.text-center {
+  text-align: center;
+  max-width: 800px;
+  margin-inline: auto;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 800;
+  color: #0A1628;
+  line-height: 1.25;
+  margin-block: 0.85rem 0.85rem;
+}
+
+.section-subhead {
+  font-size: 1.05rem;
+  color: #475569;
+  line-height: 1.7;
+}
+
+.investment-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 992px) {
+  .investment-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.investment-card {
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  border-radius: 16px;
+  padding: 2.25rem 2rem;
+  box-shadow: 0 4px 20px -2px rgba(10, 22, 40, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.investment-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px -4px rgba(10, 22, 40, 0.12);
+  border-color: #94A3B8;
+}
+
+.investment-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(30, 95, 216, 0.1);
+  color: #1E5FD8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-block-end: 1.5rem;
   flex-shrink: 0;
 }
 
-.gov-arrow-down {
-  font-size: 1.4rem;
-  color: #60A5FA;
+.investment-card-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0A1628;
+  line-height: 1.35;
+  margin-block-end: 0.85rem;
 }
 
-.tier-grid-2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  width: 100%;
+.investment-card-desc {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #334155;
+  margin-block-end: 1.75rem;
+  flex-grow: 1;
 }
 
-@media (max-width: 640px) {
-  .tier-grid-2 {
-    grid-template-columns: 1fr;
-  }
-}
-
-.defi-badge {
-  background: rgba(30, 95, 216, 0.2);
-  border-color: rgba(59, 130, 246, 0.4);
-  color: #60A5FA;
-}
-
-.defi-card {
-  background: linear-gradient(135deg, rgba(30, 95, 216, 0.25), rgba(99, 102, 241, 0.2));
-  border: 1.5px solid rgba(197, 160, 89, 0.5);
-  box-shadow: 0 0 25px rgba(30, 95, 216, 0.25);
-}
-
-.defi-title {
-  color: #FFFFFF;
-  font-size: 1.15rem;
-}
-
-.tier-grid-3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  width: 100%;
-}
-
-@media (max-width: 768px) {
-  .tier-grid-3 {
-    grid-template-columns: 1fr;
-  }
-}
-
-.tier-card-small {
-  background: rgba(11, 25, 44, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-md);
-  padding: 1rem;
-  text-align: center;
+.investment-mechanism-box {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 0.85rem 1.15rem;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
 }
 
-.tier-card-small strong {
-  color: #FFFFFF;
-  font-size: 0.92rem;
+.mechanism-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #64748B;
 }
 
-.tier-card-small span {
-  color: #60A5FA;
-  font-size: 0.78rem;
+.mechanism-val {
+  font-size: 0.85rem;
+  color: #1E40AF;
+  line-height: 1.4;
 }
 
-/* Values Grid */
+/* Governance Ecosystem Section (Elevated Sovereign Navy) */
+.governance-section {
+  background: #071120;
+  border-block: 1px solid rgba(255, 255, 255, 0.12);
+  padding-block: 5rem 6rem;
+}
+
+.governance-section .section-title {
+  color: #F8FAFC;
+}
+
+.governance-section .section-subhead {
+  color: #CBD5E1;
+}
+
+.ecosystem-embed-wrap {
+  margin-block-start: 2rem;
+}
+
+/* Values Section (Warm Stone Canvas) */
+.values-section.section-light {
+  background: #EEF2F6;
+  padding-block: 5rem 6rem;
+}
+
 .values-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-  margin-block-end: 3.5rem;
+  gap: 1.75rem;
+  margin-block-end: 4rem;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
   .values-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 640px) {
   .values-grid {
     grid-template-columns: 1fr;
   }
 }
 
 .value-card {
-  padding: 1.75rem;
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  border-radius: 16px;
+  padding: 2.25rem 1.75rem;
+  box-shadow: 0 4px 20px -2px rgba(10, 22, 40, 0.05);
   display: flex;
   flex-direction: column;
 }
 
 .value-icon-box {
-  font-size: 2rem;
-  background: rgba(255, 255, 255, 0.05);
-  width: 52px;
-  height: 52px;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(13, 148, 136, 0.1);
+  color: #0D9488;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-md);
   margin-block-end: 1.25rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .value-name {
-  color: #FFFFFF;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 800;
-  margin-block-end: 0.25rem;
+  color: #0A1628;
+  margin-block-end: 0.35rem;
 }
 
 .value-tagline {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  color: var(--color-egypt-gold);
+  color: #1E5FD8;
   margin-block-end: 0.85rem;
+  display: block;
 }
 
 .value-description {
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   line-height: 1.6;
-  color: var(--color-text-light);
+  color: #334155;
+  margin: 0;
 }
 
 .about-cta-row {
@@ -305,4 +329,21 @@
   justify-content: center;
   gap: 1.25rem;
   flex-wrap: wrap;
+}
+
+.btn-arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+[dir="rtl"] .btn-arrow {
+  transform: scaleX(-1);
+}
+
+.btn:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+[dir="rtl"] .btn:hover .btn-arrow {
+  transform: scaleX(-1) translateX(-4px);
 }

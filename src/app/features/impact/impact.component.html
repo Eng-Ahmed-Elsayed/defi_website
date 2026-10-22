@@ -1,5 +1,5 @@
 <main id="main-content" class="impact-page">
-  <!-- Page Header Hero -->
+  <!-- Page Header Hero (Deep Sovereign Navy) -->
   <section class="page-hero-section" aria-label="Impact Header">
     <div class="container page-hero-container">
       <span class="section-tag">{{ lang.t().impactTag }}</span>
@@ -8,17 +8,17 @@
     </div>
   </section>
 
-  <!-- 4 Verified Metrics Counter Grid -->
-  <section class="section metrics-section" aria-labelledby="metrics-heading">
+  <!-- 4 Verified Metrics Counter Grid (Warm Stone Canvas) -->
+  <section class="section section-light metrics-section" aria-labelledby="metrics-heading">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header text-center">
         <h2 class="section-title" id="metrics-heading">{{ lang.isArabic() ? 'المؤشرات الرقمية المعتمدة لحجم الإنجاز' : 'Verified Indicators of Institutional Delivery' }}</h2>
         <p class="section-subhead">{{ lang.isArabic() ? 'أرقام رسمية موثقة تعكس حجم الثقة الحكومية في قدرات DEFI المعمارية والهندسية.' : 'Documented official figures reflecting governmental trust in DEFI’s architectural and engineering execution.' }}</p>
       </div>
 
       <div class="impact-metrics-grid">
         @for (metric of lang.t().metrics; track metric.id) {
-          <div class="impact-metric-card glass-panel">
+          <div class="impact-metric-card">
             <span class="metric-number-large">{{ metric.value }}</span>
             <strong class="metric-title">{{ metric.label }}</strong>
             <p class="metric-desc">{{ metric.description }}</p>
@@ -28,10 +28,10 @@
     </div>
   </section>
 
-  <!-- Verified Institutional Partners -->
-  <section class="section partners-section" aria-labelledby="partners-heading">
+  <!-- Verified Institutional Partners (Warm Stone Canvas) -->
+  <section class="section section-light partners-section" aria-labelledby="partners-heading">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header text-center">
         <span class="section-tag">{{ lang.isArabic() ? 'الشركاء والعملاء الرسميون' : 'VERIFIED PUBLIC PARTNERS' }}</span>
         <h2 class="section-title" id="partners-heading">{{ lang.t().partnersTitle }}</h2>
         <p class="section-subhead">{{ lang.isArabic() ? 'نتعاون مع كبرى الوزارات والهيئات الوطنية لبناء وتشغيل منظومات رقمية سيادية عالية الاعتمادية.' : 'Collaborating with leading ministries and national authorities to architect and operate mission-critical public platforms.' }}</p>
@@ -39,17 +39,50 @@
 
       <div class="partners-grid-detailed">
         @for (partner of lang.t().partnerList; track partner.acronym) {
-          <div class="partner-detailed-card glass-panel">
+          <div class="partner-detailed-card">
             <div class="card-header-row">
-              <span class="verified-pill">✓ {{ partner.verifiedStatus }}</span>
+              <span class="verified-pill">
+                <app-icon name="check" [size]="12"></app-icon>
+                <span>{{ partner.verifiedStatus }}</span>
+              </span>
               <span class="category-pill">{{ partner.category }}</span>
             </div>
-            <h3 class="partner-full-name">{{ lang.isArabic() ? partner.arabicName : partner.name }}</h3>
-            <span class="partner-code">{{ partner.acronym }}</span>
+            
+            <div class="partner-title-row">
+              <div class="partner-icon-box">
+                <app-icon [name]="partner.acronym === 'MOE' ? 'education' : 'analytics'" [size]="24"></app-icon>
+              </div>
+              <div>
+                <h3 class="partner-full-name">{{ lang.isArabic() ? partner.arabicName : partner.name }}</h3>
+                <span class="partner-code">{{ partner.acronym }}</span>
+              </div>
+            </div>
+
             <hr class="card-sep">
-            <div class="partner-scope-box">
-              <strong class="scope-label">{{ lang.isArabic() ? 'نطاق التعاون والمنظومات:' : 'Cooperation Scope & Systems:' }}</strong>
-              <p class="scope-detail">{{ partner.scope }}</p>
+
+            <!-- 3-Stage Transformation Proof -->
+            <div class="partner-proof-stages">
+              @if (partner.challenge) {
+                <div class="proof-stage stage-challenge">
+                  <strong class="stage-label">{{ lang.isArabic() ? 'التحدي المؤسسي القومي:' : 'Institutional Challenge:' }}</strong>
+                  <p class="stage-text">{{ partner.challenge }}</p>
+                </div>
+              }
+
+              <div class="proof-stage stage-scope">
+                <strong class="stage-label">{{ lang.isArabic() ? 'نطاق المنظومات الهندسية المنجزة:' : 'Engineered Systems Scope:' }}</strong>
+                <p class="stage-text">{{ partner.scope }}</p>
+              </div>
+
+              @if (partner.outcomeSummary) {
+                <div class="proof-stage stage-outcome">
+                  <strong class="stage-label outcome-label">
+                    <app-icon name="award" [size]="14"></app-icon>
+                    <span>{{ lang.isArabic() ? 'الأثر والنتيجة المعتمدة:' : 'Verified National Outcome:' }}</span>
+                  </strong>
+                  <p class="stage-text outcome-text">{{ partner.outcomeSummary }}</p>
+                </div>
+              }
             </div>
           </div>
         }
@@ -57,10 +90,10 @@
     </div>
   </section>
 
-  <!-- Institutional Integrity & Governance Commitment -->
-  <section class="section standards-section" aria-labelledby="standards-heading">
+  <!-- Institutional Integrity & Governance Commitment (Warm Stone Canvas) -->
+  <section class="section section-light standards-section" aria-labelledby="standards-heading">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header text-center">
         <span class="section-tag">{{ lang.isArabic() ? 'معايير الأداء والسيادة' : 'OPERATIONAL STANDARDS' }}</span>
         <h2 class="section-title" id="standards-heading">{{ lang.isArabic() ? 'التزام معلن بالمعايير والسيادة الرقمية' : 'Committed to State-Grade Reliability & Sovereignty' }}</h2>
         <p class="section-subhead">{{ lang.isArabic() ? 'نلتزم بأقصى درجات المصداقية: لا ادعاءات غير موثقة، ولا مبالغات تسويقية، بل أرقام حقيقية وخدمة وطنية مخلصة.' : 'We uphold strict institutional credibility: zero fabricated testimonials, zero unverified claims, and uncompromising commitment to Egypt\'s public interest.' }}</p>
@@ -68,17 +101,23 @@
 
       <div class="standards-grid">
         <div class="standard-card">
-          <span class="standard-icon" aria-hidden="true">🛡️</span>
+          <div class="standard-icon-box">
+            <app-icon name="shield" [size]="24"></app-icon>
+          </div>
           <strong>{{ lang.isArabic() ? 'سيادة وحماية البيانات' : 'Sovereign Data Protection' }}</strong>
           <p>{{ lang.isArabic() ? 'استضافة البيانات الحكومية داخل حدود جمهورية مصر العربية وفقاً لأعلى اشتراطات الأمن السيبراني.' : 'All governmental data resides strictly within Egypt in full compliance with state security legislation.' }}</p>
         </div>
         <div class="standard-card">
-          <span class="standard-icon" aria-hidden="true">⚡</span>
+          <div class="standard-icon-box">
+            <app-icon name="bolt" [size]="24"></app-icon>
+          </div>
           <strong>{{ lang.isArabic() ? 'استمرارية بنسبة 99.99%' : '99.99% Operational SLA' }}</strong>
           <p>{{ lang.isArabic() ? 'مراقبة دائمة على مدار 24 ساعة لضمان استقرار المنصات العامة للمواطنين دون انقطاع.' : 'Proactive 24/7 incident response and automated failovers guaranteeing non-stop public service availability.' }}</p>
         </div>
         <div class="standard-card">
-          <span class="standard-icon" aria-hidden="true">👥</span>
+          <div class="standard-icon-box">
+            <app-icon name="users" [size]="24"></app-icon>
+          </div>
           <strong>{{ lang.isArabic() ? 'تصميم شامل وسهل للجميع' : 'Universal Accessibility' }}</strong>
           <p>{{ lang.isArabic() ? 'التوافق التام مع معايير إتاحة الويب العالمية (WCAG AA) لتمكين كافة فئات المجتمع.' : 'Full compliance with WCAG 2.1 AA standards ensuring inclusive access across all citizen demographics.' }}</p>
         </div>
@@ -87,9 +126,7 @@
       <div class="impact-cta-row text-center">
         <a routerLink="/contact" class="btn btn-primary">
           <span>{{ lang.t().navContactCTA }}</span>
-          <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M3.333 8h9.334M8 3.333L12.667 8 8 12.667" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+          <span class="btn-arrow" aria-hidden="true">→</span>
         </a>
       </div>
     </div>

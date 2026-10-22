@@ -1,5 +1,5 @@
 <main id="main-content" class="capabilities-page">
-  <!-- Page Header Hero -->
+  <!-- Page Header Hero (Deep Sovereign Navy) -->
   <section class="page-hero-section" aria-label="Capabilities Header">
     <div class="container page-hero-container">
       <span class="section-tag">{{ lang.t().capabilityTag }}</span>
@@ -8,10 +8,10 @@
     </div>
   </section>
 
-  <!-- Capabilities Deep-Dive Section -->
-  <section class="section cap-detail-section" aria-labelledby="cap-detail-heading">
+  <!-- Capabilities Deep-Dive Section (Warm Architectural Stone Canvas) -->
+  <section class="section section-light cap-detail-section" aria-labelledby="cap-detail-heading">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header text-center">
         <h2 class="section-title" id="cap-detail-heading">{{ lang.isArabic() ? 'المصفوفة التفاعلية للركائز المؤسسية' : 'Interactive Architectural Pillar Navigator' }}</h2>
         <p class="section-subhead">{{ lang.t().capDetailPrompt }}</p>
       </div>
@@ -28,7 +28,9 @@
             [attr.aria-selected]="activePillarId() === pillar.id"
             [id]="'cap-tab-' + pillar.id"
             [attr.aria-controls]="'cap-panel-' + pillar.id">
-            <span class="tab-icon" aria-hidden="true">{{ pillar.icon }}</span>
+            <span class="tab-icon-box" aria-hidden="true">
+              <app-icon [name]="pillar.icon" [size]="20"></app-icon>
+            </span>
             <span class="tab-title">{{ pillar.title }}</span>
           </button>
         }
@@ -37,13 +39,15 @@
       <!-- Active Pillar Detailed View -->
       @if (getActivePillar(); as pillar) {
         <div 
-          class="cap-active-card glass-panel" 
+          class="cap-active-card" 
           role="tabpanel" 
           [id]="'cap-panel-' + pillar.id" 
           [attr.aria-labelledby]="'cap-tab-' + pillar.id">
           
           <div class="cap-card-header">
-            <div class="cap-icon-box" aria-hidden="true">{{ pillar.icon }}</div>
+            <div class="cap-icon-box" aria-hidden="true">
+              <app-icon [name]="pillar.icon" [size]="28"></app-icon>
+            </div>
             <div>
               <span class="cap-badge">{{ lang.isArabic() ? 'ركيزة معمارية معتمدة' : 'Verified Enterprise Pillar' }}</span>
               <h3 class="cap-heading">{{ pillar.heading }}</h3>
@@ -59,8 +63,8 @@
               <!-- Strategic Impact -->
               <div class="detail-box impact-highlight">
                 <h5 class="box-heading">
-                  <span aria-hidden="true">⚡</span>
-                  {{ lang.isArabic() ? 'الأثر الاستراتيجي في المنظومة الحكومية:' : 'Strategic Public-Sector Impact:' }}
+                  <app-icon name="bolt" [size]="18"></app-icon>
+                  <span>{{ lang.isArabic() ? 'الأثر الاستراتيجي في المنظومة الحكومية:' : 'Strategic Public-Sector Impact:' }}</span>
                 </h5>
                 <p class="box-desc">{{ pillar.strategicImpact }}</p>
               </div>
@@ -68,13 +72,15 @@
               <!-- Key Deliverables -->
               <div class="detail-box deliverables-highlight">
                 <h5 class="box-heading">
-                  <span aria-hidden="true">📦</span>
-                  {{ lang.isArabic() ? 'المخرجات والوثائق المعمارية المعتمدة:' : 'Approved Architectural Deliverables:' }}
+                  <app-icon name="shield" [size]="18"></app-icon>
+                  <span>{{ lang.isArabic() ? 'المخرجات والوثائق المعمارية المعتمدة:' : 'Approved Architectural Deliverables:' }}</span>
                 </h5>
                 <ul class="deliverables-list">
                   @for (deliv of pillar.keyDeliverables; track deliv) {
                     <li class="deliverable-item">
-                      <span class="item-bullet" aria-hidden="true">✓</span>
+                      <span class="item-bullet" aria-hidden="true">
+                        <app-icon name="check" [size]="14"></app-icon>
+                      </span>
                       <span>{{ deliv }}</span>
                     </li>
                   }
@@ -87,10 +93,10 @@
     </div>
   </section>
 
-  <!-- Enterprise Architecture Integration Lifecycle Diagram -->
-  <section class="section cap-lifecycle-section" aria-labelledby="lifecycle-heading">
+  <!-- Continuous Lifecycle Diagram (Warm Stone Canvas) -->
+  <section class="section section-light cap-lifecycle-section" aria-labelledby="lifecycle-heading">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header text-center">
         <span class="section-tag">{{ lang.isArabic() ? 'التكامل المعماري' : 'CONTINUOUS LIFECYCLE' }}</span>
         <h2 class="section-title" id="lifecycle-heading">{{ lang.isArabic() ? 'دورة التكامل بين ركائز القدرات' : 'How the 6 Capability Pillars Connect' }}</h2>
         <p class="section-subhead">{{ lang.isArabic() ? 'تتكامل الركائز الست لتشكل إطاراً عمرانياً متصلاً يضمن الانتقال السلس من استراتيجية الأعمال إلى التشغيل المستقر للأنظمة العامة.' : 'The 6 pillars operate as an interconnected framework ensuring smooth translation from business strategy to reliable 24/7 public service operations.' }}</p>
@@ -100,13 +106,13 @@
         <div class="lifecycle-card">
           <span class="cycle-step">01</span>
           <strong>{{ lang.isArabic() ? 'بنية الأعمال' : 'Business Arch' }}</strong>
-          <p>{{ lang.isArabic() ? 'مواءمة الاستراتيجيات وتبسيط الإجراءات الحكومية' : 'Strategy alignment & workflow optimization' }}</p>
+          <p>{{ lang.isArabic() ? 'مواءمة الاستراتيجيات وتبسيط الإجراءات' : 'Strategy alignment & workflow optimization' }}</p>
         </div>
         <div class="cycle-arrow" aria-hidden="true">→</div>
         <div class="lifecycle-card">
           <span class="cycle-step">02</span>
           <strong>{{ lang.isArabic() ? 'بنية الحلول' : 'Solution Arch' }}</strong>
-          <p>{{ lang.isArabic() ? 'المخططات الهندسية ومنصات الربط البيني' : 'Platform blueprints & API interoperability' }}</p>
+          <p>{{ lang.isArabic() ? 'المخططات الهندسية ومنصات الربط' : 'Platform blueprints & API interoperability' }}</p>
         </div>
         <div class="cycle-arrow" aria-hidden="true">→</div>
         <div class="lifecycle-card">
@@ -117,12 +123,18 @@
         <div class="cycle-arrow" aria-hidden="true">→</div>
         <div class="lifecycle-card">
           <span class="cycle-step">04</span>
-          <strong>{{ lang.isArabic() ? 'تشغيل تكنولوجيا المعلومات' : 'IT Operations' }}</strong>
+          <strong>{{ lang.isArabic() ? 'تشغيل النظم' : 'IT Operations' }}</strong>
           <p>{{ lang.isArabic() ? 'مراقبة دائمة 24/7 وجاهزية قصوى' : '24/7 monitoring & high availability' }}</p>
         </div>
         <div class="cycle-arrow" aria-hidden="true">→</div>
         <div class="lifecycle-card">
           <span class="cycle-step">05</span>
+          <strong>{{ lang.isArabic() ? 'إدارة المشروعات' : 'Project Mgmt' }}</strong>
+          <p>{{ lang.isArabic() ? 'التسليم الرشيق وإدارة المخاطر والالتزام' : 'Agile delivery, risk & timeline governance' }}</p>
+        </div>
+        <div class="cycle-arrow" aria-hidden="true">→</div>
+        <div class="lifecycle-card">
+          <span class="cycle-step">06</span>
           <strong>{{ lang.isArabic() ? 'تجربة المواطن' : 'Citizen Exp' }}</strong>
           <p>{{ lang.isArabic() ? 'خدمات متمحورة حول الإنسان وسهولة الوصول' : 'Inclusive, intuitive public service design' }}</p>
         </div>
@@ -130,18 +142,24 @@
     </div>
   </section>
 
-  <!-- CTA Row -->
-  <section class="section cap-cta-section">
+  <!-- Sovereign Interoperability Architecture (Relocated & Embedded Diagram D Component) -->
+  <section class="section interop-embed-section" aria-label="Sovereign Interoperability Architecture">
+    <div class="container">
+      <app-diagram-interop></app-diagram-interop>
+    </div>
+  </section>
+
+  <!-- CTA Row (Warm Stone Canvas) -->
+  <section class="section section-light cap-cta-section">
     <div class="container text-center">
       <div class="cta-actions-wrapper">
         <a routerLink="/sectors" class="btn btn-primary">
           <span>{{ lang.isArabic() ? 'استكشاف القطاعات والحلول' : 'Explore Sectors & Solutions' }}</span>
-          <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M3.333 8h9.334M8 3.333L12.667 8 8 12.667" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+          <span class="btn-arrow" aria-hidden="true">→</span>
         </a>
         <a routerLink="/contact" class="btn btn-secondary">
           <span>{{ lang.t().navContactCTA }}</span>
+          <span class="btn-arrow" aria-hidden="true">→</span>
         </a>
       </div>
     </div>

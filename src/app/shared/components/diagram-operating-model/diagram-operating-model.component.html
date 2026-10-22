@@ -9,8 +9,11 @@
       class="journey-step-item" 
       [class.active]="currentStep() === 1" 
       (click)="setStep(1, true)" 
+      (keydown.enter)="setStep(1, true)"
+      (keydown.space)="$event.preventDefault(); setStep(1, true)"
       tabindex="0" 
-      role="listitem">
+      role="button"
+      [attr.aria-label]="(lang.isArabic() ? 'المرحلة الأولى: ' : 'Phase 1: ') + (lang.isArabic() ? 'التقييم والمواءمة' : 'Assess & Align')">
       <div class="step-marker"><span class="step-num">01</span></div>
       <div class="step-content">
         <span class="step-phase">{{ lang.isArabic() ? 'المرحلة الأولى' : 'PHASE 1' }}</span>
@@ -26,8 +29,11 @@
       class="journey-step-item" 
       [class.active]="currentStep() === 2" 
       (click)="setStep(2, true)" 
+      (keydown.enter)="setStep(2, true)"
+      (keydown.space)="$event.preventDefault(); setStep(2, true)"
       tabindex="0" 
-      role="listitem">
+      role="button"
+      [attr.aria-label]="(lang.isArabic() ? 'المرحلة الثانية: ' : 'Phase 2: ') + (lang.isArabic() ? 'التصميم وهندسة الحلول' : 'Architect & Design')">
       <div class="step-marker"><span class="step-num">02</span></div>
       <div class="step-content">
         <span class="step-phase">{{ lang.isArabic() ? 'المرحلة الثانية' : 'PHASE 2' }}</span>
@@ -43,8 +49,11 @@
       class="journey-step-item" 
       [class.active]="currentStep() === 3" 
       (click)="setStep(3, true)" 
+      (keydown.enter)="setStep(3, true)"
+      (keydown.space)="$event.preventDefault(); setStep(3, true)"
       tabindex="0" 
-      role="listitem">
+      role="button"
+      [attr.aria-label]="(lang.isArabic() ? 'المرحلة الثالثة: ' : 'Phase 3: ') + (lang.isArabic() ? 'التكامل والتطبيق' : 'Integrate & Deploy')">
       <div class="step-marker"><span class="step-num">03</span></div>
       <div class="step-content">
         <span class="step-phase">{{ lang.isArabic() ? 'المرحلة الثالثة' : 'PHASE 3' }}</span>
@@ -60,8 +69,11 @@
       class="journey-step-item" 
       [class.active]="currentStep() === 4" 
       (click)="setStep(4, true)" 
+      (keydown.enter)="setStep(4, true)"
+      (keydown.space)="$event.preventDefault(); setStep(4, true)"
       tabindex="0" 
-      role="listitem">
+      role="button"
+      [attr.aria-label]="(lang.isArabic() ? 'المرحلة الرابعة: ' : 'Phase 4: ') + (lang.isArabic() ? 'التشغيل والحماية' : 'Operate & Safeguard')">
       <div class="step-marker"><span class="step-num">04</span></div>
       <div class="step-content">
         <span class="step-phase">{{ lang.isArabic() ? 'المرحلة الرابعة' : 'PHASE 4' }}</span>
@@ -77,8 +89,11 @@
       class="journey-step-item" 
       [class.active]="currentStep() === 5" 
       (click)="setStep(5, true)" 
+      (keydown.enter)="setStep(5, true)"
+      (keydown.space)="$event.preventDefault(); setStep(5, true)"
       tabindex="0" 
-      role="listitem">
+      role="button"
+      [attr.aria-label]="(lang.isArabic() ? 'المرحلة الخامسة: ' : 'Phase 5: ') + (lang.isArabic() ? 'الارتقاء والتطوير' : 'Elevate & Evolve')">
       <div class="step-marker"><span class="step-num">05</span></div>
       <div class="step-content">
         <span class="step-phase">{{ lang.isArabic() ? 'المرحلة الخامسة' : 'PHASE 5' }}</span>

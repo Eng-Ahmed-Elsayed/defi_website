@@ -1,5 +1,5 @@
 <main id="main-content" class="sectors-page">
-  <!-- Page Header Hero -->
+  <!-- Page Header Hero (Deep Sovereign Navy) -->
   <section class="page-hero-section" aria-label="Sectors Header">
     <div class="container page-hero-container">
       <span class="section-tag">{{ lang.isArabic() ? 'القطاعات والحلول الاستراتيجية' : 'STRATEGIC PUBLIC DOMAINS' }}</span>
@@ -8,25 +8,34 @@
     </div>
   </section>
 
-  <!-- 4 Sectors Grid -->
-  <section class="section sectors-grid-section" aria-labelledby="sectors-grid-heading">
+  <!-- 5 Sectors Grid (Warm Architectural Stone Canvas) -->
+  <section class="section section-light sectors-grid-section" aria-labelledby="sectors-grid-heading">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header text-center">
         <h2 class="section-title" id="sectors-grid-heading">{{ lang.isArabic() ? 'القطاعات الحيوية المدعومة بالبنية المؤسسية' : 'Vital Public Sectors Powered by DEFI Architecture' }}</h2>
         <p class="section-subhead">{{ lang.isArabic() ? 'حلول معمارية وهندسية تخصصية تلبي المتطلبات المعقدة لكل قطاع على حدة مع ضمان التكامل القومي.' : 'Customized architectural frameworks meeting the specific legal and operational demands of each public domain.' }}</p>
       </div>
 
       <div class="sectors-grid">
         @for (sector of lang.t().sectorsList; track sector.id) {
-          <div class="sector-card glass-panel">
+          <div class="sector-card">
             <div class="sector-card-top">
               <span class="sector-tag-pill">{{ sector.tag }}</span>
               @if (sector.verifiedReference) {
-                <span class="verified-ref-pill">✓ {{ sector.verifiedReference }}</span>
+                <span class="verified-ref-pill">
+                  <app-icon name="check" [size]="12"></app-icon>
+                  <span>{{ sector.verifiedReference }}</span>
+                </span>
               }
             </div>
 
-            <h3 class="sector-title">{{ sector.title }}</h3>
+            <div class="sector-title-row">
+              <div class="sector-icon-box">
+                <app-icon [name]="getSectorIcon(sector.id)" [size]="24"></app-icon>
+              </div>
+              <h3 class="sector-title">{{ sector.title }}</h3>
+            </div>
+            
             <p class="sector-desc">{{ sector.description }}</p>
 
             <!-- Capabilities used -->
@@ -42,8 +51,8 @@
             <!-- Public impact -->
             <div class="sector-impact-box">
               <strong class="impact-title">
-                <span aria-hidden="true">📈</span>
-                {{ lang.isArabic() ? 'الأثر القومي المباشر:' : 'Measurable National Impact:' }}
+                <app-icon name="analytics" [size]="16"></app-icon>
+                <span>{{ lang.isArabic() ? 'الأثر القومي المباشر:' : 'Measurable National Impact:' }}</span>
               </strong>
               <p class="impact-text">{{ sector.publicImpact }}</p>
             </div>
@@ -53,10 +62,17 @@
     </div>
   </section>
 
-  <!-- Sector Integration Architecture Diagram -->
-  <section class="section sector-arch-section" aria-labelledby="arch-heading">
+  <!-- National Digital Grid & Command Center (Relocated & Embedded Section 5C) -->
+  <section class="section national-grid-embed-section" aria-label="National Digital Infrastructure Command Center">
     <div class="container">
-      <div class="section-header">
+      <app-national-grid></app-national-grid>
+    </div>
+  </section>
+
+  <!-- Sector Integration Architecture Diagram (Warm Stone Canvas) -->
+  <section class="section section-light sector-arch-section" aria-labelledby="arch-heading">
+    <div class="container">
+      <div class="section-header text-center">
         <span class="section-tag">{{ lang.isArabic() ? 'الربط والتكامل البيني' : 'SYSTEM INTEROPERABILITY' }}</span>
         <h2 class="section-title" id="arch-heading">{{ lang.isArabic() ? 'معمارية الربط والتكامل القطاعي الموحد' : 'Unified Cross-Sector Integration Architecture' }}</h2>
         <p class="section-subhead">{{ lang.isArabic() ? 'كيف تربط منظومة DEFI بين القطاعات المختلفة عبر ناقل البيانات الوطني الآمن دون تكرار للبيانات.' : 'How DEFI bridges sectoral domains through a secure national data bus, ensuring zero data duplication and instant inter-agency verification.' }}</p>
@@ -65,20 +81,24 @@
       <div class="arch-flow-diagram" role="img" [attr.aria-label]="lang.isArabic() ? 'مخطط الربط القطاعي' : 'Cross-Sector Integration Flow'">
         <div class="arch-tier-sectors">
           <div class="arch-node">
-            <span class="node-icon">🏛️</span>
+            <span class="node-icon-box"><app-icon name="government" [size]="20"></app-icon></span>
             <strong>{{ lang.isArabic() ? 'الإدارة الحكومية' : 'Public Admin' }}</strong>
           </div>
           <div class="arch-node">
-            <span class="node-icon">🎓</span>
+            <span class="node-icon-box"><app-icon name="education" [size]="20"></app-icon></span>
             <strong>{{ lang.isArabic() ? 'منظومة التعليم' : 'Education (MOE)' }}</strong>
           </div>
           <div class="arch-node">
-            <span class="node-icon">📊</span>
+            <span class="node-icon-box"><app-icon name="analytics" [size]="20"></app-icon></span>
             <strong>{{ lang.isArabic() ? 'دعم القرار' : 'Decision Support (IDSC)' }}</strong>
           </div>
           <div class="arch-node">
-            <span class="node-icon">🏢</span>
-            <strong>{{ lang.isArabic() ? 'الهيئات والخدمات' : 'Public Authorities' }}</strong>
+            <span class="node-icon-box"><app-icon name="healthcare" [size]="20"></app-icon></span>
+            <strong>{{ lang.isArabic() ? 'التأمين الصحي' : 'Healthcare' }}</strong>
+          </div>
+          <div class="arch-node">
+            <span class="node-icon-box"><app-icon name="justice" [size]="20"></app-icon></span>
+            <strong>{{ lang.isArabic() ? 'العدالة والسجل' : 'Justice & Cadastre' }}</strong>
           </div>
         </div>
 
@@ -91,32 +111,27 @@
 
         <div class="arch-tier-foundations">
           <div class="foundation-box">
-            <span class="found-icon">🗄️</span>
+            <span class="found-icon-box"><app-icon name="server" [size]="20"></app-icon></span>
             <strong>{{ lang.isArabic() ? 'السجلات الوطنية الموحدة' : 'Unified Base Registries' }}</strong>
-            <p>{{ lang.isArabic() ? 'المواطنون · الأراضي · الشركات' : 'Civil · Commercial · Property Records' }}</p>
+            <p>{{ lang.isArabic() ? 'المواطنون · الأراضي · المنشآت الطبية' : 'Civil · Property · Commercial Corridors' }}</p>
           </div>
           <div class="foundation-box">
-            <span class="found-icon">🛡️</span>
+            <span class="found-icon-box"><app-icon name="shield" [size]="20"></app-icon></span>
             <strong>{{ lang.isArabic() ? 'السحابة السيادية والأمان' : 'Sovereign Cloud & Security' }}</strong>
             <p>{{ lang.isArabic() ? 'تشفير وطني · جاهزية 99.99%' : 'Sovereign Encryption · 99.99% Uptime' }}</p>
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- CTA Row -->
-  <section class="section sector-cta-section">
-    <div class="container text-center">
-      <div class="cta-actions-wrapper">
+      <!-- CTA Row -->
+      <div class="sector-cta-row text-center">
         <a routerLink="/impact" class="btn btn-primary">
           <span>{{ lang.isArabic() ? 'الاطلاع على الشركاء والأثر' : 'View Impact & Verified Partners' }}</span>
-          <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M3.333 8h9.334M8 3.333L12.667 8 8 12.667" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+          <span class="btn-arrow" aria-hidden="true">→</span>
         </a>
         <a routerLink="/contact" class="btn btn-secondary">
           <span>{{ lang.t().navContactCTA }}</span>
+          <span class="btn-arrow" aria-hidden="true">→</span>
         </a>
       </div>
     </div>

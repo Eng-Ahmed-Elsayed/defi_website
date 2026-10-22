@@ -16,9 +16,11 @@ export class NotFoundComponent implements OnInit {
   private readonly seo = inject(SeoService);
 
   ngOnInit(): void {
-    this.seo.updateTags({
-      title: 'Page Not Found (404) | DEFI Corporate Portal',
-      description: 'The requested page could not be located on the DEFI corporate portal.'
+    this.seo.updateBilingualTags({
+      titleEn: 'Page Not Found (404) | DEFI Corporate Portal',
+      titleAr: 'الصفحة غير موجودة (٤٠٤) | بوابة مصر الرقمية للاستثمار',
+      descriptionEn: 'The requested page could not be located on the DEFI corporate portal.',
+      descriptionAr: 'المسار المطلوب غير موجود على بوابة شركة مصر الرقمية للاستثمار.'
     });
   }
 }

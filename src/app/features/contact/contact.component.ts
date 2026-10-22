@@ -1,14 +1,15 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { LanguageService } from '../../core/services/language.service';
 import { SeoService } from '../../core/services/seo.service';
+import { IconComponent } from '../../shared/components/icon/icon.component';
+import { InstitutionalInquiryFormComponent } from '../../shared/components/institutional-inquiry-form/institutional-inquiry-form.component';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [CommonModule, RouterModule, IconComponent, InstitutionalInquiryFormComponent],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css'
 })
@@ -16,50 +17,12 @@ export class ContactComponent implements OnInit {
   readonly lang = inject(LanguageService);
   private readonly seo = inject(SeoService);
 
-  formData = {
-    fullName: '',
-    organization: '',
-    email: '',
-    subject: '',
-    message: ''
-  };
-
-  readonly isSubmitting = signal<boolean>(false);
-  readonly isSubmitted = signal<boolean>(false);
-  readonly formError = signal<string | null>(null);
-
   ngOnInit(): void {
-    this.seo.updateTags({
-      title: 'Contact DEFI Leadership | Smart Village Headquarters B145',
-      description: 'Official enterprise inquiries and consultation requests for Digital Egypt For Investment Co. (DEFI), located at Building B145, Smart Village, Giza, Egypt.'
+    this.seo.updateBilingualTags({
+      titleEn: 'Contact DEFI Leadership | Smart Village Headquarters B145',
+      titleAr: 'تواصل مع قيادة مصر الرقمية للاستثمار | القرية الذكية مبنى B145',
+      descriptionEn: 'Official enterprise inquiries and consultation requests for Digital Egypt For Investment Co. (DEFI), located at Building B145, Smart Village, Giza, Egypt.',
+      descriptionAr: 'الاستفسارات المؤسسية الرسمية وطلبات الاستشارة لشركة مصر الرقمية للاستثمار، مبنى B145، القرية الذكية، الجيزة، جمهورية مصر العربية.'
     });
-  }
-
-  onSubmit(): void {
-    this.formError.set(null);
-
-    if (!this.formData.fullName || !this.formData.organization || !this.formData.email || !this.formData.message) {
-      this.formError.set(this.lang.isArabic() ? 'يرجى استيفاء كافة الحقول الإلزامية قبل الإرسال.' : 'Please fill in all required fields marked with * before submitting.');
-      return;
-    }
-
-    if (!this.formData.email.includes('@') || !this.formData.email.includes('.')) {
-      this.formError.set(this.lang.isArabic() ? 'يرجى إدخال بريد إلكتروني صحيح.' : 'Please enter a valid official work email address.');
-      return;
-    }
-
-    this.isSubmitting.set(true);
-
-    setTimeout(() => {
-      this.isSubmitting.set(false);
-      this.isSubmitted.set(true);
-      this.formData = {
-        fullName: '',
-        organization: '',
-        email: '',
-        subject: '',
-        message: ''
-      };
-    }, 1000);
   }
 }

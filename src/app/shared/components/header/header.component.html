@@ -10,7 +10,10 @@
     </div>
     <p class="announcement-text">{{ lang.t().mandateBanner }}</p>
     <div class="announcement-links">
-      <span class="headquarters-pill">{{ lang.t().hqLocation }}</span>
+      <span class="headquarters-pill">
+        <app-icon name="map-pin" [size]="13"></app-icon>
+        <span>{{ lang.t().hqLocation }}</span>
+      </span>
     </div>
   </div>
 </aside>
@@ -44,7 +47,7 @@
         class="lang-switch-btn" 
         (click)="lang.toggleLanguage()" 
         [attr.aria-label]="lang.isArabic() ? 'Switch to English' : 'التحويل إلى اللغة العربية'">
-        <span class="lang-icon" aria-hidden="true">🌐</span>
+        <span class="lang-icon" aria-hidden="true"><app-icon name="globe" [size]="16"></app-icon></span>
         <span class="lang-current">{{ lang.t().langSwitchLabel }}</span>
       </button>
 
@@ -114,11 +117,12 @@
 
   <div class="drawer-footer">
     <button type="button" class="btn btn-outline drawer-lang-btn" (click)="lang.toggleLanguage()">
-      <span aria-hidden="true">🌐</span>
+      <span aria-hidden="true"><app-icon name="globe" [size]="16"></app-icon></span>
       <span>{{ lang.t().langSwitchLabel }}</span>
     </button>
     <div class="drawer-decree-pill">
-      <span>⚖️ {{ lang.t().footerDecreeBadge }}</span>
+      <span class="decree-icon"><app-icon name="decree" [size]="15"></app-icon></span>
+      <span>{{ lang.t().footerDecreeBadge }}</span>
     </div>
   </div>
 </aside>

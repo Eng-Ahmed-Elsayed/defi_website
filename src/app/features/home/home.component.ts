@@ -6,27 +6,17 @@ import {
   OnDestroy,
   ElementRef,
   ViewChild,
-  signal,
   PLATFORM_ID
 } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
 import { LanguageService } from '../../core/services/language.service';
 import { SeoService } from '../../core/services/seo.service';
+import { IconComponent } from '../../shared/components/icon/icon.component';
+import { InstitutionalInquiryFormComponent } from '../../shared/components/institutional-inquiry-form/institutional-inquiry-form.component';
 import { DiagramEcosystemComponent } from '../../shared/components/diagram-ecosystem/diagram-ecosystem.component';
 import { DiagramOperatingModelComponent } from '../../shared/components/diagram-operating-model/diagram-operating-model.component';
 import { DiagramCapabilitiesComponent } from '../../shared/components/diagram-capabilities/diagram-capabilities.component';
-import { DiagramInteropComponent } from '../../shared/components/diagram-interop/diagram-interop.component';
-import { NationalGridComponent } from '../../shared/components/national-grid/national-grid.component';
-
-interface InquiryFormState {
-  name: string;
-  entity: string;
-  email: string;
-  topic: string;
-  message: string;
-}
 
 @Component({
   selector: 'app-home',
@@ -34,12 +24,11 @@ interface InquiryFormState {
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule,
+    IconComponent,
+    InstitutionalInquiryFormComponent,
     DiagramEcosystemComponent,
     DiagramOperatingModelComponent,
-    DiagramCapabilitiesComponent,
-    DiagramInteropComponent,
-    NationalGridComponent
+    DiagramCapabilitiesComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
@@ -50,17 +39,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly platformId = inject(PLATFORM_ID);
 
   @ViewChild('heroCanvas') private heroCanvasRef?: ElementRef<HTMLCanvasElement>;
-
-  // Form State
-  formModel: InquiryFormState = {
-    name: '',
-    entity: '',
-    email: '',
-    topic: 'business-architecture',
-    message: ''
-  };
-  readonly isSubmitting = signal<boolean>(false);
-  readonly formStatus = signal<{ success: boolean; message: string } | null>(null);
 
   // Animation & Canvas Handles
   private animFrameId: number | null = null;
@@ -73,9 +51,11 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private sectionObserver?: IntersectionObserver;
 
   ngOnInit(): void {
-    this.seo.updateTags({
-      title: 'Digital Egypt For Investment (DEFI) | Enterprise Digital Transformation Partner',
-      description: 'Established under Prime Minister Decree No. 132/2020. Egypt\'s executive enterprise architecture, sovereign cloud, and public sector modernization partner.'
+    this.seo.updateBilingualTags({
+      titleEn: 'Digital Egypt For Investment (DEFI) | Enterprise Digital Transformation Partner',
+      titleAr: 'مصر الرقمية للاستثمار (DEFI) | الشريك الاستراتيجي للتحول الرقمي السيادي',
+      descriptionEn: 'Established under Prime Minister Decree No. 132/2020. Egypt\'s executive enterprise architecture, sovereign cloud, and public sector modernization partner.',
+      descriptionAr: 'شركة مساهمة مصرية منشأة بموجب قرار رئيس مجلس الوزراء رقم ١٣٢ / ٢٠٢٠. الذراع الهندسي والتنفيذي للتحول الرقمي السيادي وتحديث البنية المؤسسية لمؤسسات الدولة.'
     });
   }
 
@@ -127,41 +107,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         behavior: 'smooth'
       });
     }
-  }
-
-  onInquirySubmit(): void {
-    if (!this.formModel.name.trim() || !this.formModel.email.trim() || !this.formModel.message.trim()) {
-      this.formStatus.set({
-        success: false,
-        message: this.lang.isArabic()
-          ? 'يرجى استكمال جميع الحقول الإلزامية قبل الإرسال.'
-          : 'Please complete all required fields before submitting.'
-      });
-      return;
-    }
-
-    this.isSubmitting.set(true);
-    this.formStatus.set(null);
-
-    // Simulated secure transmission to DEFI Institutional Gateway
-    setTimeout(() => {
-      this.isSubmitting.set(false);
-      this.formStatus.set({
-        success: true,
-        message: this.lang.isArabic()
-          ? 'تم استلام استفساركم بنجاح. سيقوم فريق الاستشارات الهندسية والمؤسسية بالتواصل معكم عبر البريد الرسمي.'
-          : 'Your inquiry has been transmitted successfully. Our enterprise advisory team will respond to your official email shortly.'
-      });
-
-      // Reset form
-      this.formModel = {
-        name: '',
-        entity: '',
-        email: '',
-        topic: 'business-architecture',
-        message: ''
-      };
-    }, 900);
   }
 
   /**
@@ -323,7 +268,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     if (!('IntersectionObserver' in window)) return;
 
     // 1. Observe sections to trigger autonomous animations and active state when scrolled into view
-    const sectionIds = ['hero', 'about', 'capabilities', 'journey', 'interop', 'impact', 'sectors', 'national-grid', 'careers', 'contact'];
+    const sectionIds = ['hero', 'about', 'capabilities', 'journey', 'impact', 'sectors', 'careers', 'contact'];
     const sections = sectionIds
       .map(id => document.getElementById(id))
       .filter((el): el is HTMLElement => el !== null);

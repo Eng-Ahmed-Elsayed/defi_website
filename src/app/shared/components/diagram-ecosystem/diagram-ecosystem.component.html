@@ -13,8 +13,22 @@
   <!-- Telemetry HUD Bar: Clean, unified single-line row below header -->
   <div class="diagram-telemetry-strip" aria-label="Architecture Scope">
     <span class="tele-pill live"><span class="tele-dot"></span> <span>{{ throughputDisplay() }}</span></span>
-    <span class="tele-pill"><span class="tele-icon" aria-hidden="true">⚖️</span> <span>{{ latencyDisplay() }}</span></span>
-    <span class="tele-pill"><span class="tele-icon" aria-hidden="true">🛡️</span> <span>{{ lang.t().telemetrySecurity }}</span></span>
+    <span class="tele-pill">
+      <span class="tele-icon" aria-hidden="true">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3v18M6 8l6-3 6 3M3 13l3-5 3 5a3 3 0 0 1-6 0zM15 13l3-5 3 5a3 3 0 0 1-6 0z"/>
+        </svg>
+      </span>
+      <span>{{ latencyDisplay() }}</span>
+    </span>
+    <span class="tele-pill">
+      <span class="tele-icon" aria-hidden="true">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+      </span>
+      <span>{{ lang.t().telemetrySecurity }}</span>
+    </span>
   </div>
 
   <div class="diagram-canvas-container">
@@ -58,7 +72,7 @@
       </circle>
 
       <!-- Layer 1 (Top Left): Citizens & Business Channels -->
-      <g class="diagram-node node-interactive" [class.active]="activeNode() === 'citizens'" (click)="selectNode('citizens', true)" (mouseenter)="selectNode('citizens', true)" tabindex="0" role="button" aria-label="Citizens and Businesses Layer">
+      <g class="diagram-node node-interactive" [class.active]="activeNode() === 'citizens'" (click)="selectNode('citizens', true)" (mouseenter)="selectNode('citizens', true)" (keydown.enter)="selectNode('citizens', true)" (keydown.space)="$event.preventDefault(); selectNode('citizens', true)" tabindex="0" role="button" aria-label="Citizens and Businesses Layer">
         <rect x="35" y="30" width="270" height="74" rx="14" class="node-box" />
         @if (lang.isArabic()) {
           <circle cx="268" cy="67" r="18" fill="#1E5FD8" fill-opacity="0.2" stroke="#1E5FD8" stroke-width="1.5"/>
@@ -74,7 +88,7 @@
       </g>
 
       <!-- Layer 1 (Top Right): Ministries & Public Entities -->
-      <g class="diagram-node node-interactive" [class.active]="activeNode() === 'ministries'" (click)="selectNode('ministries', true)" (mouseenter)="selectNode('ministries', true)" tabindex="0" role="button" aria-label="Government Entities Layer">
+      <g class="diagram-node node-interactive" [class.active]="activeNode() === 'ministries'" (click)="selectNode('ministries', true)" (mouseenter)="selectNode('ministries', true)" (keydown.enter)="selectNode('ministries', true)" (keydown.space)="$event.preventDefault(); selectNode('ministries', true)" tabindex="0" role="button" aria-label="Government Entities Layer">
         <rect x="375" y="30" width="270" height="74" rx="14" class="node-box" />
         @if (lang.isArabic()) {
           <circle cx="608" cy="67" r="18" fill="#6366F1" fill-opacity="0.2" stroke="#6366F1" stroke-width="1.5"/>
@@ -90,7 +104,7 @@
       </g>
 
       <!-- Layer 2 (Center Core): DEFI Digital Enablement Backbone -->
-      <g class="diagram-core-node" [class.active]="activeNode() === 'defi-core' || activeNode() === 'core'" (click)="selectNode('defi-core', true)" (mouseenter)="selectNode('defi-core', true)" tabindex="0" role="button" aria-label="DEFI Digital Enablement Backbone">
+      <g class="diagram-core-node" [class.active]="activeNode() === 'defi-core' || activeNode() === 'core'" (click)="selectNode('defi-core', true)" (mouseenter)="selectNode('defi-core', true)" (keydown.enter)="selectNode('defi-core', true)" (keydown.space)="$event.preventDefault(); selectNode('defi-core', true)" tabindex="0" role="button" aria-label="DEFI Digital Enablement Backbone">
         <rect x="150" y="160" width="380" height="100" rx="16" class="core-box" />
         @if (lang.isArabic()) {
           <circle cx="485" cy="210" r="24" fill="#087E8B" fill-opacity="0.3" stroke="#00D2D3" stroke-width="2"/>
@@ -108,7 +122,7 @@
       </g>
 
       <!-- Layer 3 (Bottom Left): National Registries & Data Assets -->
-      <g class="diagram-node node-interactive" [class.active]="activeNode() === 'registries'" (click)="selectNode('registries', true)" (mouseenter)="selectNode('registries', true)" tabindex="0" role="button" aria-label="National Registries Layer">
+      <g class="diagram-node node-interactive" [class.active]="activeNode() === 'registries'" (click)="selectNode('registries', true)" (mouseenter)="selectNode('registries', true)" (keydown.enter)="selectNode('registries', true)" (keydown.space)="$event.preventDefault(); selectNode('registries', true)" tabindex="0" role="button" aria-label="National Registries Layer">
         <rect x="35" y="340" width="270" height="74" rx="14" class="node-box" />
         @if (lang.isArabic()) {
           <circle cx="268" cy="377" r="18" fill="#1E5FD8" fill-opacity="0.2" stroke="#1E5FD8" stroke-width="1.5"/>
@@ -124,7 +138,7 @@
       </g>
 
       <!-- Layer 3 (Bottom Right): Secure Cloud & Infrastructure -->
-      <g class="diagram-node node-interactive" [class.active]="activeNode() === 'infra'" (click)="selectNode('infra', true)" (mouseenter)="selectNode('infra', true)" tabindex="0" role="button" aria-label="Cloud and Infrastructure Layer">
+      <g class="diagram-node node-interactive" [class.active]="activeNode() === 'infra'" (click)="selectNode('infra', true)" (mouseenter)="selectNode('infra', true)" (keydown.enter)="selectNode('infra', true)" (keydown.space)="$event.preventDefault(); selectNode('infra', true)" tabindex="0" role="button" aria-label="Cloud and Infrastructure Layer">
         <rect x="375" y="340" width="270" height="74" rx="14" class="node-box" />
         @if (lang.isArabic()) {
           <circle cx="608" cy="377" r="18" fill="#087E8B" fill-opacity="0.2" stroke="#087E8B" stroke-width="1.5"/>

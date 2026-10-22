@@ -1,5 +1,5 @@
 <main id="main-content" class="about-page">
-  <!-- Page Header Hero -->
+  <!-- Page Header Hero (Deep Sovereign Navy) -->
   <section class="page-hero-section" aria-label="About DEFI Header">
     <div class="container page-hero-container">
       <span class="section-tag">{{ lang.t().authorityTag }}</span>
@@ -8,8 +8,8 @@
     </div>
   </section>
 
-  <!-- Legal Mandate Narrative -->
-  <section class="section mandate-detail-section" aria-labelledby="mandate-heading">
+  <!-- Legal Mandate Narrative (Warm Architectural Stone Canvas) -->
+  <section class="section section-light mandate-detail-section" aria-labelledby="mandate-heading">
     <div class="container">
       <div class="mandate-editorial-grid">
         <div class="editorial-main">
@@ -20,18 +20,18 @@
         </div>
 
         <div class="editorial-side">
-          <div class="stat-callout glass-panel">
+          <div class="stat-callout">
             <span class="callout-pill">{{ lang.t().heroBadgePre }}</span>
-            <h3 class="callout-title">{{ lang.isArabic() ? 'قرار رئيس الوزراء' : 'Prime Minister Decree' }}</h3>
-            <p class="callout-decree">No. 132 / 2020</p>
+            <h3 class="callout-title">{{ lang.isArabic() ? 'قرار رئيس الوزراء التأسيسي' : 'Prime Minister Decree' }}</h3>
+            <p class="callout-decree">{{ lang.isArabic() ? 'رقم ١٣٢ / ٢٠٢٠' : 'No. 132 / 2020' }}</p>
             <hr class="callout-divider">
             <div class="callout-entity-row">
-              <span class="callout-entity-label">{{ lang.isArabic() ? 'المظلة الاستراتيجية:' : 'Strategic Auspices:' }}</span>
-              <strong class="callout-entity-value">MCIT & ITIDA</strong>
+              <span class="callout-entity-label">{{ lang.isArabic() ? 'المظلة الاستراتيجية والرقابية:' : 'Strategic Auspices:' }}</span>
+              <strong class="callout-entity-value">{{ lang.isArabic() ? 'وزارة الاتصالات (MCIT) وهيئة إيتيدا (ITIDA)' : 'MCIT & ITIDA under Decree 132/2020' }}</strong>
             </div>
             <div class="callout-entity-row">
-              <span class="callout-entity-label">{{ lang.isArabic() ? 'المقر المؤسسي:' : 'Headquarters:' }}</span>
-              <strong class="callout-entity-value">Smart Village, B145, Giza</strong>
+              <span class="callout-entity-label">{{ lang.isArabic() ? 'المقر المؤسسي الرئيسي:' : 'Executive Headquarters:' }}</span>
+              <strong class="callout-entity-value">{{ lang.isArabic() ? 'القرية الذكية، مبنى B145، الجيزة' : 'Smart Village, B145, Giza, Egypt' }}</strong>
             </div>
           </div>
         </div>
@@ -39,99 +39,64 @@
     </div>
   </section>
 
-  <!-- Governance & Alignment Architectural Flow -->
+  <!-- Institutional Investment & PPP Execution Framework (Warm Stone Canvas) -->
+  <section class="section section-light investment-mandate-section" aria-labelledby="investment-heading">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tag">{{ lang.t().investmentTag }}</span>
+        <h2 class="section-title" id="investment-heading">{{ lang.t().investmentTitle }}</h2>
+        <p class="section-subhead">{{ lang.t().investmentSubtitle }}</p>
+      </div>
+
+      <div class="investment-grid">
+        @for (item of lang.t().investmentMandate; track item.id) {
+          <div class="investment-card">
+            <div class="investment-icon-box">
+              <app-icon [name]="item.icon" [size]="24"></app-icon>
+            </div>
+            <h3 class="investment-card-title">{{ item.title }}</h3>
+            <p class="investment-card-desc">{{ item.desc }}</p>
+            <div class="investment-mechanism-box">
+              <span class="mechanism-label">{{ lang.isArabic() ? 'آلية التنفيذ والحوكمة:' : 'Operating Mechanism:' }}</span>
+              <strong class="mechanism-val">{{ item.mechanism }}</strong>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- National Ecosystem Architecture (Interactive Diagram A Component) -->
   <section class="section governance-section" aria-labelledby="governance-heading">
     <div class="container">
-      <div class="section-header">
-        <span class="section-tag">{{ lang.isArabic() ? 'الهيكل التنظيمي والسيادي' : 'INSTITUTIONAL ALIGNMENT' }}</span>
+      <div class="section-header text-center">
+        <span class="section-tag">{{ lang.isArabic() ? 'المعمارية المؤسسية والربط السيادي' : 'INSTITUTIONAL ECOSYSTEM ARCHITECTURE' }}</span>
         <h2 class="section-title" id="governance-heading">{{ lang.t().aboutGovernanceTitle }}</h2>
         <p class="section-subhead">{{ lang.t().aboutGovernanceText }}</p>
       </div>
 
-      <!-- Visual Hierarchy Diagram -->
-      <div class="governance-diagram-container" role="img" [attr.aria-label]="lang.t().aboutGovernanceTitle">
-        <div class="gov-tier tier-state">
-          <span class="tier-badge">{{ lang.isArabic() ? 'المستوى السيادي والتنفيذي' : 'Sovereign Executive Level' }}</span>
-          <div class="tier-card">
-            <span class="tier-icon" aria-hidden="true">🏛️</span>
-            <div>
-              <strong>{{ lang.isArabic() ? 'رئاسة مجلس الوزراء' : 'The Egyptian Cabinet / Prime Minister' }}</strong>
-              <p>{{ lang.isArabic() ? 'إصدار القرار التأسيسي رقم 132 / 2020 وتحديد الأهداف القومية' : 'Decree No. 132/2020 establishing DEFI mandate' }}</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="gov-arrow-down" aria-hidden="true">↓</div>
-
-        <div class="gov-tier tier-mcit">
-          <span class="tier-badge">{{ lang.isArabic() ? 'المظلة التوجيهية والتنظيمية' : 'Strategic Governance & Oversight' }}</span>
-          <div class="tier-grid-2">
-            <div class="tier-card">
-              <span class="tier-icon" aria-hidden="true">📡</span>
-              <div>
-                <strong>MCIT</strong>
-                <p>{{ lang.isArabic() ? 'وزارة الاتصالات وتكنولوجيا المعلومات' : 'Ministry of Communications & Information Technology' }}</p>
-              </div>
-            </div>
-            <div class="tier-card">
-              <span class="tier-icon" aria-hidden="true">🏢</span>
-              <div>
-                <strong>ITIDA</strong>
-                <p>{{ lang.isArabic() ? 'هيئة تنمية صناعة تكنولوجيا المعلومات' : 'Information Technology Industry Development Agency' }}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="gov-arrow-down" aria-hidden="true">↓</div>
-
-        <div class="gov-tier tier-defi">
-          <span class="tier-badge defi-badge">{{ lang.isArabic() ? 'الذراع التنفيذية والهندسية' : 'Executive Architectural Arm' }}</span>
-          <div class="tier-card defi-card">
-            <span class="tier-icon" aria-hidden="true">⚡</span>
-            <div>
-              <strong class="defi-title">DEFI — {{ lang.isArabic() ? 'شركة مصر الرقمية للاستثمار' : 'Digital Egypt For Investment' }}</strong>
-              <p>{{ lang.isArabic() ? 'هندسة البنية المؤسسية، والتشغيل البيني للأنظمة، وإدارة المنظومات الحرجة 24/7' : 'Enterprise architecture, systems interoperability, and 24/7 mission-critical operations' }}</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="gov-arrow-down" aria-hidden="true">↓</div>
-
-        <div class="gov-tier tier-beneficiaries">
-          <span class="tier-badge">{{ lang.isArabic() ? 'الوزارات والهيئات والجمهور' : 'Ministries, Authorities & Citizens' }}</span>
-          <div class="tier-grid-3">
-            <div class="tier-card-small">
-              <strong>{{ lang.isArabic() ? 'الوزارات والهيئات العامة' : 'Government Ministries' }}</strong>
-              <span>MOE · IDSC · 25+ Entities</span>
-            </div>
-            <div class="tier-card-small">
-              <strong>{{ lang.isArabic() ? 'السجلات والبيانات الوطنية' : 'National Registries' }}</strong>
-              <span>Data Interoperability Bus</span>
-            </div>
-            <div class="tier-card-small">
-              <strong>{{ lang.isArabic() ? 'المواطنون وقطاع الأعمال' : 'Citizens & Businesses' }}</strong>
-              <span>Digital Services & Portals</span>
-            </div>
-          </div>
-        </div>
+      <!-- Verified Interactive Ecosystem Component -->
+      <div class="ecosystem-embed-wrap">
+        <app-diagram-ecosystem></app-diagram-ecosystem>
       </div>
     </div>
   </section>
 
-  <!-- Core Corporate Values -->
-  <section class="section values-section" aria-labelledby="values-heading">
+  <!-- Core Corporate Values (Warm Stone Canvas) -->
+  <section class="section section-light values-section" aria-labelledby="values-heading">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header text-center">
         <span class="section-tag">{{ lang.t().valuesLabel }}</span>
         <h2 class="section-title" id="values-heading">{{ lang.isArabic() ? 'القيم المؤسسية الموجهة لأعمالنا' : 'Our Guiding Corporate Values' }}</h2>
         <p class="section-subhead">{{ lang.isArabic() ? 'نلتزم بثقافة هندسية ومؤسسية تحتفي بالجودة العالية وتضع المصلحة الوطنية وسيادة البيانات فوق كل اعتبار.' : 'We adhere to an engineering culture that prizes rigorous quality and places national interest and data sovereignty first.' }}</p>
       </div>
 
       <div class="values-grid">
-        @for (val of lang.t().corporateValues; track val.name) {
-          <div class="value-card glass-panel">
-            <div class="value-icon-box" aria-hidden="true">{{ val.icon }}</div>
+        @for (val of lang.t().corporateValues; track val.name; let idx = $index) {
+          <div class="value-card">
+            <div class="value-icon-box" aria-hidden="true">
+              <app-icon [name]="idx === 0 ? 'shield' : (idx === 1 ? 'layers' : (idx === 2 ? 'award' : 'star'))" [size]="24"></app-icon>
+            </div>
             <h3 class="value-name">{{ val.name }}</h3>
             <span class="value-tagline">{{ val.tagline }}</span>
             <p class="value-description">{{ val.description }}</p>
@@ -142,12 +107,11 @@
       <div class="about-cta-row">
         <a routerLink="/capabilities" class="btn btn-primary">
           <span>{{ lang.t().heroCtaSecondary }}</span>
-          <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M3.333 8h9.334M8 3.333L12.667 8 8 12.667" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+          <span class="btn-arrow" aria-hidden="true">→</span>
         </a>
         <a routerLink="/contact" class="btn btn-secondary">
           <span>{{ lang.t().navContactCTA }}</span>
+          <span class="btn-arrow" aria-hidden="true">→</span>
         </a>
       </div>
     </div>

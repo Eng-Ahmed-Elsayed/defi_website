@@ -1,5 +1,5 @@
 <main id="main-content" class="news-page">
-  <!-- Page Header Hero -->
+  <!-- Page Header Hero (Dark Sovereign Navy) -->
   <section class="page-hero-section" aria-label="News Header">
     <div class="container page-hero-container">
       <span class="section-tag">{{ lang.isArabic() ? 'البيانات والأخبار الرسمية' : 'OFFICIAL ANNOUNCEMENTS' }}</span>
@@ -8,11 +8,11 @@
     </div>
   </section>
 
-  <!-- News List Section -->
-  <section class="section news-list-section" aria-labelledby="news-heading">
+  <!-- News List Section (Warm Architectural Stone Canvas) -->
+  <section class="section section-light news-list-section" aria-labelledby="news-heading">
     <div class="container">
       <!-- Filter Bar -->
-      <div class="news-filter-bar">
+      <div class="news-filter-bar" role="toolbar" [attr.aria-label]="lang.isArabic() ? 'تصفية الأخبار حسب التصنيف' : 'Filter announcements by category'">
         <button 
           type="button" 
           class="filter-pill" 
@@ -39,14 +39,14 @@
           class="filter-pill" 
           [class.active]="selectedCategory() === 'transformation'" 
           (click)="setCategory('transformation')">
-          {{ lang.isArabic() ? 'إنجازات التحول' : 'Transformation Impact' }}
+          {{ lang.isArabic() ? 'أثر التحول' : 'Transformation Impact' }}
         </button>
       </div>
 
       <!-- News Cards Grid -->
       <div class="news-grid">
         @for (item of getFilteredNews(); track item.id) {
-          <article class="news-card glass-panel">
+          <article class="news-card">
             <div class="news-card-meta">
               <span class="news-category-badge">{{ item.category }}</span>
               <div class="news-date-row">
@@ -60,28 +60,91 @@
             <p class="news-card-summary">{{ item.summary }}</p>
 
             <div class="news-card-footer">
-              <span class="source-label">
-                <span aria-hidden="true">🏛️</span>
-                {{ lang.isArabic() ? 'المصدر المعتمد:' : 'Verified Source:' }}
-              </span>
-              <strong class="source-name">{{ item.officialSource }}</strong>
+              <div class="source-row">
+                <app-icon name="government" [size]="16"></app-icon>
+                <span class="source-label">{{ lang.isArabic() ? 'المصدر المعتمد:' : 'Verified Source:' }}</span>
+                <strong class="source-name">{{ item.officialSource }}</strong>
+              </div>
+              <button 
+                type="button" 
+                class="btn-briefing" 
+                (click)="openArticle(item)"
+                [attr.aria-label]="(lang.isArabic() ? 'عرض إيجاز ' : 'Read briefing for ') + item.title">
+                <span>{{ lang.isArabic() ? 'عرض الإيجاز المؤسسي' : 'Read Full Briefing' }}</span>
+                <span class="btn-arrow" aria-hidden="true">→</span>
+              </button>
             </div>
           </article>
+        } @empty {
+          <div class="news-empty-state">
+            <app-icon name="info" [size]="32"></app-icon>
+            <p>{{ lang.isArabic() ? 'لا توجد بيانات صحفية مطابقة لهذا التصنيف حالياً.' : 'No announcements currently match the selected category.' }}</p>
+          </div>
         }
       </div>
 
       <!-- Media & Press Notice -->
-      <div class="press-contact-strip glass-panel">
+      <div class="press-contact-strip">
         <div class="press-text">
           <h3 class="press-title">{{ lang.isArabic() ? 'المكتب الإعلامي والتواصل المؤسسي' : 'Media & Institutional Communications' }}</h3>
           <p class="press-desc">
             {{ lang.isArabic() ? 'لكافة الاستفسارات الصحفية والتغطيات الإعلامية للمشروعات القومية، يرجى التواصل عبر البريد الرسمي:' : 'For verified press inquiries and official public-sector releases, contact our executive communications office:' }}
           </p>
         </div>
-        <a [href]="'mailto:' + lang.t().contactOfficialEmail" class="btn btn-outline">
+        <a [href]="'mailto:' + lang.t().contactOfficialEmail" class="btn btn-primary press-mail-btn">
           <span>{{ lang.t().contactOfficialEmail }}</span>
+          <span class="btn-arrow" aria-hidden="true">→</span>
         </a>
       </div>
     </div>
   </section>
+
+  <!-- Expandable Institutional Briefing Modal -->
+  @if (activeArticle(); as article) {
+    <div 
+      class="briefing-backdrop" 
+      role="dialog" 
+      aria-modal="true" 
+      [attr.aria-label]="article.title"
+      (click)="closeArticle()">
+      <div class="briefing-dialog" (click)="$event.stopPropagation()">
+        <header class="briefing-dialog-header">
+          <div class="briefing-tags">
+            <span class="news-category-badge">{{ article.category }}</span>
+            <span class="briefing-date">{{ article.date }} · {{ article.readTime }}</span>
+          </div>
+          <button type="button" class="briefing-close-btn" (click)="closeArticle()" [attr.aria-label]="lang.isArabic() ? 'إغلاق الإيجاز' : 'Close briefing'">
+            ✕
+          </button>
+        </header>
+
+        <div class="briefing-body">
+          <h2 class="briefing-title">{{ article.title }}</h2>
+          <p class="briefing-summary">{{ article.summary }}</p>
+
+          @if (article.highlights && article.highlights.length > 0) {
+            <div class="briefing-highlights">
+              <h3 class="highlights-heading">{{ lang.isArabic() ? 'المحاور والنتائج الرئيسية:' : 'Key Institutional Highlights:' }}</h3>
+              <ul class="highlights-list">
+                @for (h of article.highlights; track $index) {
+                  <li>
+                    <span class="check-icon" aria-hidden="true"><app-icon name="check" [size]="16"></app-icon></span>
+                    <span>{{ h }}</span>
+                  </li>
+                }
+              </ul>
+            </div>
+          }
+
+          <div class="briefing-footer-source">
+            <app-icon name="government" [size]="18"></app-icon>
+            <div>
+              <span class="footer-source-label">{{ lang.isArabic() ? 'الجهة المعتمدة المصدرة للبيان:' : 'Official Issuing Authority:' }}</span>
+              <span class="footer-source-name">{{ article.officialSource }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
 </main>
